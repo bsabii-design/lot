@@ -250,10 +250,9 @@ button, [role="button"], summary { cursor: pointer; }
   letter-spacing: var(--tracking);
   font-weight: 400;
   text-align: left;
+  pointer-events: none;
 }
 .term-tip strong { display: block; margin-bottom: 0.25rem; font-weight: 400; font-style: italic; }
-.term-tip .src { display: block; margin-top: 0.25rem; color: var(--text-3); }
-.term-tip .src:hover { color: var(--text); text-decoration: underline; }
 
 .card-tags { margin-top: 1rem; font-size: var(--fs); line-height: var(--lh); }
 

@@ -6,13 +6,32 @@
       "châteaux",
       "chateau"
     ],
-    "definition": "A French castle, fortress, manor house, or large country house.",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/ch%C3%A2teau",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A French castle or grand country house. The word is also used for a wine estate, especially in Bordeaux.",
+    "basis": [
+      {
+        "source": "Wiktionary",
+        "lang": "en",
+        "page": "château",
+        "url": "https://en.wiktionary.org/wiki/ch%C3%A2teau",
+        "quote": "A French castle, fortress, manor house, or large country house."
+      },
+      {
+        "source": "Wiktionary",
+        "lang": "en",
+        "page": "château",
+        "url": "https://en.wiktionary.org/wiki/ch%C3%A2teau",
+        "quote": "An estate where wine is produced and often bottled, especially in Bordeaux."
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Château",
+        "url": "https://fr.wikipedia.org/wiki/Ch%C3%A2teau",
+        "quote": "la forteresse médiévale (château fort) et la résidence seigneuriale de prestige (château d'apparat)"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "colombage",
@@ -20,13 +39,25 @@
       "colombage",
       "colombages"
     ],
-    "definition": "half-timbering",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/colombage",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "Half-timbering: a house built on a timber frame whose beams show on the outside, with the spaces between them filled in with light masonry such as plaster, clay or brick.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Maison à colombages",
+        "url": "https://fr.wikipedia.org/wiki/Maison_%C3%A0_colombages",
+        "quote": "le hourdage  (maçonnerie légère : brique, torchis, pierre, plâtre ; bois)"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Timber framing",
+        "url": "https://en.wikipedia.org/wiki/Timber_framing",
+        "quote": "If the structural frame of load-bearing timber is left exposed on the exterior of the building it may be referred to as half-timbered"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "longère",
@@ -35,13 +66,32 @@
       "longere",
       "longères"
     ],
-    "definition": "A longère is a type of longhouse typical of the regions of Brittany and Normandy in northwestern France. It is a long, narrow dwelling, developing along the axis of its peak, typically inhabited by farmers and artisans.",
-    "source": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Long%C3%A8re",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A long, narrow traditional country house built along the line of its roof ridge. Found in Brittany and Normandy and in many other regions of France, it was typically the home of small farmers and craftspeople.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Longère",
+        "url": "https://en.wikipedia.org/wiki/Long%C3%A8re",
+        "quote": "It is a long, narrow dwelling, developing along the axis of its peak, typically inhabited by farmers and artisans."
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Longère",
+        "url": "https://fr.wikipedia.org/wiki/Long%C3%A8re",
+        "quote": "Répandues dans de nombreuses régions françaises, les longères étaient de manière générale l'habitat des petits paysans et artisans."
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Longère",
+        "url": "https://en.wikipedia.org/wiki/Long%C3%A8re",
+        "quote": "typical of the regions of Brittany and Normandy in northwestern France"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "gîte",
@@ -51,13 +101,32 @@
       "gîtes",
       "gites"
     ],
-    "definition": "A French holiday home or rented tourist cottage.",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/g%C3%AEte",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "Typically a holiday home to rent in France, furnished for self-catering and often an old country cottage.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Gîte",
+        "url": "https://en.wikipedia.org/wiki/G%C3%AEte",
+        "quote": "is, typically, a holiday rental home in France"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Gîte",
+        "url": "https://en.wikipedia.org/wiki/G%C3%AEte",
+        "quote": "The holiday homes type are fully furnished and equipped for self-catering."
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Gîte",
+        "url": "https://en.wikipedia.org/wiki/G%C3%AEte",
+        "quote": "Gîtes are generally old farmworkers' cottages"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "dépendance",
@@ -67,13 +136,32 @@
       "dépendances",
       "dependances"
     ],
-    "definition": "outbuilding",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/d%C3%A9pendance",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "An outbuilding that belongs to a larger house or estate, such as stables or garages.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Dépendance (architecture)",
+        "url": "https://fr.wikipedia.org/wiki/D%C3%A9pendance_%28architecture%29",
+        "quote": "Les dépendances sont des locaux annexes au bâtiment principal"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Dépendance (architecture)",
+        "url": "https://fr.wikipedia.org/wiki/D%C3%A9pendance_%28architecture%29",
+        "quote": "écuries, garages"
+      },
+      {
+        "source": "Wiktionary",
+        "lang": "en",
+        "page": "dépendance",
+        "url": "https://en.wiktionary.org/wiki/d%C3%A9pendance",
+        "quote": "outbuilding"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "Petite Cité de Caractère",
@@ -81,13 +169,18 @@
       "Petite Cité de Caractère",
       "Petites Cités de Caractère"
     ],
-    "definition": "Petite Cité de Caractère is a label awarded to towns or villages that meet a set of criteria as set by the Petites Cités de Caractère de France.",
-    "source": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Petites_Cit%C3%A9s_de_Caract%C3%A8re",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A label given to a town or village that meets the criteria set by the association Petites Cités de Caractère de France.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Petites Cités de Caractère",
+        "url": "https://en.wikipedia.org/wiki/Petites_Cit%C3%A9s_de_Caract%C3%A8re",
+        "quote": "is a label awarded to towns or villages that meet a set of criteria as set by the Petites Cités de Caractère de France"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "Parc naturel régional",
@@ -95,13 +188,25 @@
       "Parc naturel régional",
       "Parc naturel regional"
     ],
-    "definition": "A regional nature park or regional natural park is a public establishment in France between local authorities and the French national government covering an inhabited rural area of outstanding beauty in order to protect the scenery and heritage as well as set up sustainable economic development in the area.",
-    "source": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Regional_nature_parks_of_France",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A protected rural area in France where people live and work. It exists to protect the landscape and heritage while supporting the local economy.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Regional nature parks of France",
+        "url": "https://en.wikipedia.org/wiki/Regional_nature_parks_of_France",
+        "quote": "covering an inhabited rural area of outstanding beauty in order to protect the scenery and heritage as well as set up sustainable economic development in the area"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Parc naturel régional (France)",
+        "url": "https://fr.wikipedia.org/wiki/Parc_naturel_r%C3%A9gional_%28France%29",
+        "quote": "développement économique et social"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "Pays d'Auge",
@@ -109,39 +214,89 @@
       "Pays d'Auge",
       "Pays d’Auge"
     ],
-    "definition": "The Pays d'Auge is an area in Normandy, straddling the départements of Calvados and Orne.",
-    "source": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Pays_d'Auge",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A traditional area of Normandy, spread mainly over the départements of Calvados and Orne. Its main town is Lisieux.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Pays d'Auge",
+        "url": "https://en.wikipedia.org/wiki/Pays_d%27Auge",
+        "quote": "is an area in Normandy, straddling the départements of Calvados and Orne"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Pays d'Auge",
+        "url": "https://en.wikipedia.org/wiki/Pays_d%27Auge",
+        "quote": "The chief town is Lisieux."
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Pays d'Auge",
+        "url": "https://fr.wikipedia.org/wiki/Pays_d%27Auge",
+        "quote": "région naturelle et traditionnelle de Normandie"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "Couserans",
     "aliases": [
       "Couserans"
     ],
-    "definition": "Couserans is a former county of France located in the Pyrenees mountains. Today Couserans makes up the western half of the Ariège département, around the towns of Saint-Girons and Saint-Lizier.",
-    "source": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Couserans",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A historic area of the Pyrenees, today the western half of the Ariège département, around Saint-Girons and Saint-Lizier.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Couserans",
+        "url": "https://en.wikipedia.org/wiki/Couserans",
+        "quote": "is a former county of France located in the Pyrenees mountains"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Couserans",
+        "url": "https://en.wikipedia.org/wiki/Couserans",
+        "quote": "makes up the western half of the Ariège département, around the towns of Saint-Girons and Saint-Lizier"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "Minervois",
     "aliases": [
       "Minervois"
     ],
-    "definition": "Minervois is an appellation d'origine contrôlée (AOC) in the Languedoc-Roussillon wine region, in the departments of the Aude and of the Hérault.",
-    "source": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Minervois_AOC",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A natural region of low hills in Occitanie, across the Hérault and the Aude, and also the name of a wine appellation.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Minervois",
+        "url": "https://fr.wikipedia.org/wiki/Minervois",
+        "quote": "C'est un pays de basses collines"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Minervois",
+        "url": "https://fr.wikipedia.org/wiki/Minervois",
+        "quote": "à cheval sur les départements de l'Hérault et de l'Aude"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Minervois AOC",
+        "url": "https://en.wikipedia.org/wiki/Minervois_AOC",
+        "quote": "is an appellation d'origine contrôlée (AOC) in the Languedoc-Roussillon wine region"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "bastide",
@@ -149,26 +304,69 @@
       "bastide",
       "bastides"
     ],
-    "definition": "1. A mansion in Provence. 2. A new town built in medieval Languedoc, Gascony, and Aquitaine during the thirteenth and fourteenth centuries.",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/bastide",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "In south-west France, a fortified 'new town' founded in the 13th–14th centuries. In Provence the word also means a country mansion.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Bastide",
+        "url": "https://en.wikipedia.org/wiki/Bastide",
+        "quote": "are fortified new towns built in medieval Languedoc, Gascony, Aquitaine, England and Wales during the 13th and 14th centuries"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Bastide (ville)",
+        "url": "https://fr.wikipedia.org/wiki/Bastide_%28ville%29",
+        "quote": "dans le sud-ouest du royaume de France au Moyen Âge"
+      },
+      {
+        "source": "Wiktionary",
+        "lang": "en",
+        "page": "bastide",
+        "url": "https://en.wiktionary.org/wiki/bastide",
+        "quote": "A mansion in Provence."
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
+  },
+  {
+    "term": "maison de maître",
+    "aliases": [
+      "maison de maître",
+      "maisons de maître"
+    ],
+    "definition": "The main house of a rural estate, where the owner lived.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Maison de maître",
+        "url": "https://fr.wikipedia.org/wiki/Maison_de_ma%C3%AEtre",
+        "quote": "la demeure occupée par le propriétaire d'un domaine rural"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "mas",
     "aliases": [
       "mas"
     ],
-    "definition": "A country cottage or farmstead in Occitan-speaking territories.",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/mas",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A country house or farmstead found in Occitan-speaking areas.",
+    "basis": [
+      {
+        "source": "Wiktionary",
+        "lang": "en",
+        "page": "mas",
+        "url": "https://en.wiktionary.org/wiki/mas",
+        "quote": "A country cottage or farmstead in Occitan-speaking territories."
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "manoir",
@@ -176,13 +374,32 @@
       "manoir",
       "manoirs"
     ],
-    "definition": "A type of manor or country house.",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/manoir",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A manor house: the seat of a country estate, originally the home of a noble. The word is used mostly in northern France.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Manoir",
+        "url": "https://fr.wikipedia.org/wiki/Manoir",
+        "quote": "Un manoir est avant tout le siège d'un domaine d'origine seigneuriale."
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Manoir",
+        "url": "https://fr.wikipedia.org/wiki/Manoir",
+        "quote": "C'est la résidence ou la demeure d'un noble"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Manoir",
+        "url": "https://fr.wikipedia.org/wiki/Manoir",
+        "quote": "C'est un terme utilisé majoritairement dans le nord de la France."
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "pigeonnier",
@@ -191,13 +408,18 @@
       "pigeonniers",
       "colombier"
     ],
-    "definition": "A dovecote, especially in France.",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/pigeonnier",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A dovecote: a building made to house and raise pigeons.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Colombier (édifice)",
+        "url": "https://fr.wikipedia.org/wiki/Colombier_%28%C3%A9difice%29",
+        "quote": "est un édifice destiné à loger et à élever des pigeons domestiques"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "chaumière",
@@ -205,52 +427,107 @@
       "chaumière",
       "chaumiere"
     ],
-    "definition": "thatched cottage",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/chaumi%C3%A8re",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A traditional rural house with a thatched roof. In France it is found mostly in Normandy.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Chaumière",
+        "url": "https://fr.wikipedia.org/wiki/Chaumi%C3%A8re",
+        "quote": "La chaumière est une maison rurale traditionnelle"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Chaumière",
+        "url": "https://fr.wikipedia.org/wiki/Chaumi%C3%A8re",
+        "quote": "sa toiture recouverte de chaume"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Chaumière",
+        "url": "https://fr.wikipedia.org/wiki/Chaumi%C3%A8re",
+        "quote": "essentiellement en Normandie"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "tuffeau",
     "aliases": [
       "tuffeau"
     ],
-    "definition": "Tuffeau stone — in French, simply tuffeau or tufeau — is a local limestone of the Loire Valley of France.",
-    "source": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Tuffeau_stone",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A soft, pale limestone from the Loire Valley, used to build many of the valley's houses and châteaux.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Tuffeau stone",
+        "url": "https://en.wikipedia.org/wiki/Tuffeau_stone",
+        "quote": "is a local limestone of the Loire Valley of France"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Tuffeau stone",
+        "url": "https://en.wikipedia.org/wiki/Tuffeau_stone",
+        "quote": "The soft stone is extracted from numerous quarries and has made a major mark on the architectural landscape of the Loire and its tributaries — especially the valley's chateaux."
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "pierre de taille",
     "aliases": [
       "pierre de taille"
     ],
-    "definition": "cut stone, dressed stone, ashlar",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/pierre%20de%20taille",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "Dressed stone: natural stone cut by a stonemason into blocks with flat faces, used in building.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Pierre de taille",
+        "url": "https://fr.wikipedia.org/wiki/Pierre_de_taille",
+        "quote": "toutes les faces sont dressées, c'est-à-dire taillées, par un tailleur de pierre"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Pierre de taille",
+        "url": "https://fr.wikipedia.org/wiki/Pierre_de_taille",
+        "quote": "utilisée pour la construction"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "fosse septique",
     "aliases": [
       "fosse septique"
     ],
-    "definition": "septic tank, cesspit (domestic sewage system)",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/fosse%20septique",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A septic tank: part of a private sewage system that treats household waste on a property that is not connected to the public sewer.",
+    "basis": [
+      {
+        "source": "Wikipedia",
+        "lang": "fr",
+        "page": "Fosse septique",
+        "url": "https://fr.wikipedia.org/wiki/Fosse_septique",
+        "quote": "est l'un des éléments constitutifs d'une installation d'assainissement non collectif"
+      },
+      {
+        "source": "Wikipedia",
+        "lang": "en",
+        "page": "Septic tank",
+        "url": "https://en.wikipedia.org/wiki/Septic_tank",
+        "quote": "They can be used in areas that are not connected to a sewerage system"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   },
   {
     "term": "tout-à-l'égout",
@@ -259,12 +536,17 @@
       "tout-à-l’égout",
       "tout à l'égout"
     ],
-    "definition": "mains drainage, mains sewerage",
-    "source": {
-      "name": "Wiktionary",
-      "url": "https://en.wiktionary.org/wiki/tout-%C3%A0-l%27%C3%A9gout",
-      "licence": "CC BY-SA 4.0",
-      "retrieved": "2026-10-18"
-    }
+    "definition": "A connection to the public sewer (mains drainage).",
+    "basis": [
+      {
+        "source": "Wiktionary",
+        "lang": "en",
+        "page": "tout-à-l'égout",
+        "url": "https://en.wiktionary.org/wiki/tout-%C3%A0-l%27%C3%A9gout",
+        "quote": "mains drainage, mains sewerage"
+      }
+    ],
+    "retrieved": "2026-10-18",
+    "reviewed": false
   }
 ]

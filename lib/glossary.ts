@@ -3,9 +3,12 @@ import data from "@/data/glossary.json";
 export interface GlossaryEntry {
   term: string;
   aliases: string[];
-  /** quoted word for word from the source, never paraphrased */
+  /** plain English, in our own words — only what the sources below say */
   definition: string;
-  source: { name: "Wiktionary" | "Wikipedia"; url: string; licence: string; retrieved: string };
+  /** internal evidence (never shown on the site): where each statement comes from, quoted from the source */
+  basis: { source: string; lang: string; page: string; url: string; quote: string }[];
+  retrieved: string;
+  reviewed: boolean;
 }
 
 export const glossary = data as GlossaryEntry[];
