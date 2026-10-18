@@ -171,8 +171,10 @@ button, [role="button"], summary { cursor: pointer; }
 .filterbar .stat,
 .filterbar .clear { display: flex; align-items: center; height: var(--h-row); }
 .filterbar .chip { color: var(--text); text-align: left; }
-.filterbar .chip .k { color: var(--text-3); margin-right: 0.375em; }
-.filterbar .chip::after { content: " \00d7"; color: var(--text-2); }
+.filterbar .chip .k { color: var(--text-3); margin-right: 0.25rem; }
+/* the remove mark is an icon of the set (12px), not a text glyph */
+.filterbar .chip .x { margin-left: 0.25rem; color: var(--text-3); }
+.filterbar .chip:hover .x { color: var(--text); }
 .filterbar .chip:hover { color: var(--text-2); }
 .filterbar .stat { color: var(--text); }
 .filterbar .clear { color: var(--text-3); }

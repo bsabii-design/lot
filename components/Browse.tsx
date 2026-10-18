@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Card from "./Card";
+import Icon from "./Icon";
 import FilterWindow from "./FilterWindow";
 import { useFavs } from "@/lib/favs";
 import { activeFacets, emptyFilters, filterOptions, toggle, visible } from "@/lib/filters";
@@ -148,7 +149,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
         <div className="filterbar">
           {facets.map((f) => (
             <button key={f.name} className="chip" title={`Remove ${f.name.toLowerCase()}`} onClick={() => setFilters(f.off(filters))}>
-              <span className="k">{f.name}</span><span className="v">{f.value}</span>
+              <span className="k">{f.name}</span><span className="v">{f.value}</span><Icon name="close" size="0.75rem" className="x" />
             </button>
           ))}
           <span className="stat">{list.length} {list.length === 1 ? "home" : "homes"}</span>

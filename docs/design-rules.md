@@ -63,7 +63,7 @@ Blocks are separated by 16px. Page edge to logo / tabs / dock / active-filter li
 
 ## 6. Icons
 
-One set (`components/Icon.tsx`): a 24-unit grid, round caps and joins, `currentColor`. The stroke weight is a token, `--icon-stroke` = 0.09 of the interface text size (about the stem of the Times letters, ~1.15px at design size), and it does **not** scale with the icon: a 14px arrow and a 24px chevron have the same line weight as the text next to them. Size: 14px everywhere (buttons, rows, zoom). Photo arrows (feed and fullscreen) sit in a 28px round dark translucent button (`.cbtn`, same tone as the photo counter), because a thin white line vanishes on light photos. Never use text glyphs (‹ › ✕ + −) as icons.
+One set (`components/Icon.tsx`): a 24-unit grid, round caps and joins, `currentColor`. The stroke weight is a token, `--icon-stroke` = 0.09 of the interface text size (about the stem of the Times letters, ~1.15px at design size), and it does **not** scale with the icon: a 14px arrow and a 24px chevron have the same line weight as the text next to them. Size: 14px (buttons, rows, zoom); 12px for the small remove mark (×) after a filter in the active-filter list, 4px from the text. Photo arrows (feed and fullscreen) sit in a 28px round dark translucent button (`.cbtn`, same tone as the photo counter), because a thin white line vanishes on light photos. Never use text glyphs (‹ › ✕ + −) as icons.
 
 ## 7. Regions on the map
 
