@@ -412,24 +412,31 @@ button, [role="button"], summary { cursor: pointer; }
 .maplibregl-ctrl-attrib.maplibregl-compact { background: transparent !important; font-size: 0.5625rem; color: var(--text-3); }
 .maplibregl-ctrl-attrib a { color: var(--text-3) !important; }
 
-.maplibregl-ctrl-group { background: transparent !important; box-shadow: none !important; border: none !important; margin: 0.5rem !important; }
+/* zoom: one white capsule with the site's hairline, same language as the dock and the filter window */
+.maplibregl-ctrl-group {
+  background: #fff !important;
+  border: 1px solid var(--stroke) !important;
+  border-radius: 1rem !important;
+  box-shadow: none !important;
+  margin: 0.5rem !important;
+  overflow: hidden;
+}
 .maplibregl-ctrl-group button {
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  background: rgba(10, 10, 10, 0.55) !important;
-  color: rgba(255, 255, 255, 0.8);
+  width: 2rem !important;
+  height: 2rem !important;
+  background: none !important;
+  color: var(--text);
   border: none !important;
+  border-radius: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.maplibregl-ctrl-group button + button { border-top: none; }
-.maplibregl-ctrl-group button:first-child { border-radius: 0.375rem 0.375rem 0 0 !important; }
-.maplibregl-ctrl-group button:last-child { border-radius: 0 0 0.375rem 0.375rem !important; }
+.maplibregl-ctrl-group button + button { border-top: 1px solid var(--border) !important; }
+.maplibregl-ctrl-group button:hover { background: color-mix(in srgb, var(--text) 6%, #fff) !important; }
 .maplibregl-ctrl-group .maplibregl-ctrl-icon { background-image: none !important; }
-.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon::after { content: "+"; font-size: 0.875rem; }
-.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon::after { content: "\2212"; font-size: 0.875rem; }
-.maplibregl-ctrl-group button:hover { color: #fff; }
+.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon::after { content: "+"; font-size: var(--fs); line-height: 1; }
+.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon::after { content: "\2212"; font-size: var(--fs); line-height: 1; }
 
 /* ---------- filter window ---------- */
 

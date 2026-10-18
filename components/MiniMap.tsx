@@ -23,7 +23,7 @@ export default function MiniMap({ p }: { p: Property }) {
       scrollZoom: false,
     });
     map.touchZoomRotate.disableRotation();
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-left");
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     tuneStyle(map);
 
     /* trackpad pinch (wheel + ctrl) zooms; a plain two-finger scroll keeps scrolling the page */
