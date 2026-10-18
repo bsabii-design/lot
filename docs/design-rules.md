@@ -33,6 +33,7 @@ All heights are multiples of 4px and come from tokens in `styles.css` (`--h-row`
 | Chip (filter option, mobile filter pill, photo counter) | 24px (`--h-chip`) | 8px | interface |
 | Map bubble (price; merged = round, count) | 24px (`--h-chip`) | 8px (round: 4px, min width 24px) | interface |
 | Button, secondary or primary (Save, View listing in the header, Clear filters, Browse all homes) | 32px (`--h-btn`) | 12px | content |
+| Small button (`.btn.sm`, actions inside floating windows: Clear all, Show N homes) | 28px | 12px | interface |
 | Dock (List / Map / Filter) | 32px (`--h-btn`) | 16px | interface |
 | Input (price / size range) | 32px (`--h-btn`) | 8px | interface |
 | Primary CTA, full width (View listing at the bottom of a home) | 40px (`--h-cta`) | centred | content |

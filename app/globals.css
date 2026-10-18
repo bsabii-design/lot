@@ -340,6 +340,9 @@ button, [role="button"], summary { cursor: pointer; }
   color: var(--text);
   background: color-mix(in srgb, var(--text) 9%, var(--bg));
 }
+/* small button: for the actions inside floating windows, which are set in interface size */
+.btn.sm { height: 1.75rem; font-size: var(--fs-sm); line-height: 1; }
+
 .btn.fav.on {
   color: var(--text);
   background: color-mix(in srgb, var(--text) 10%, var(--bg));
@@ -474,8 +477,6 @@ button, [role="button"], summary { cursor: pointer; }
   padding: 0.75rem 1rem;
   border-top: 1px solid var(--border);
 }
-.fclear { font-size: var(--fs-sm); line-height: var(--lh-sm); color: var(--text-2); }
-.fclear:hover { color: var(--text); }
 .ffoot .btn:disabled { opacity: 0.4; cursor: default; }
 
 .frow { position: relative; padding: 0.25rem 0; }
