@@ -64,3 +64,7 @@ Blocks are separated by 16px. Page edge to logo / tabs / dock / active-filter li
 ## 6. Icons
 
 One set (`components/Icon.tsx`): a 24-unit grid, round caps and joins, `currentColor`. The stroke weight is a token, `--icon-stroke` = 0.09 of the interface text size (about the stem of the Times letters, ~1.15px at design size), and it does **not** scale with the icon: a 14px arrow and a 24px chevron have the same line weight as the text next to them. Size: 14px everywhere (buttons, rows, zoom). Photo arrows (feed and fullscreen) sit in a 28px round dark translucent button (`.cbtn`, same tone as the photo counter), because a thin white line vanishes on light photos. Never use text glyphs (‹ › ✕ + −) as icons.
+
+## 7. Regions on the map
+
+A visitor may not know where Normandy or Brittany is, so a chosen region is drawn on the map: a 1.5px black outline and a 5% tint (data: `data/regions.json`, the 13 metropolitan regions, IGN / Etalab open data, credited in the map attribution). It updates live while the filter window is open (the map frames the whole region in the free space beside the window) and stays after "Show N homes". The region names in the filter are the French names, the same as in the data.

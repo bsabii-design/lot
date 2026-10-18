@@ -112,7 +112,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
       </nav>
 
       {view === "map" && !empty ? (
-        <MapView homes={list} />
+        <MapView homes={list} regions={open ? draft.regions : filters.regions} windowOpen={open} />
       ) : (
         <main className="feed">
           {empty ? (

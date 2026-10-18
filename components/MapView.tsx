@@ -7,6 +7,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { STYLE_URL, clusterPoints, tuneStyle } from "@/lib/map";
 import { imageSrc, metaLine, price, priceShort } from "@/lib/format";
 import { RETURN_KEY } from "@/lib/cn";
+import regionsData from "@/data/regions.json";
 import type { Property } from "@/lib/types";
 
 function bubble(text: string, count = false) {
@@ -18,13 +19,29 @@ function bubble(text: string, count = false) {
 
 /** The overview map: one black bubble per home (its price); homes that would overlap at this zoom merge
     into a round bubble with their count, which zooms in on click. */
-export default function MapView({ homes }: { homes: Property[] }) {
+type Ring = number[][];
+const REGIONS = regionsData as unknown as GeoJSON.FeatureCollection<GeoJSON.Polygon | GeoJSON.MultiPolygon, { nom: string }>;
+
+/** Bounds of the named regions together (so the whole region is on screen). */
+function regionBounds(names: string[]) {
+  const b = new maplibregl.LngLatBounds();
+  for (const f of REGIONS.features) {
+    if (!names.includes(f.properties.nom)) continue;
+    const polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
+    for (const poly of polys) for (const ring of poly as Ring[]) for (const [lng, lat] of ring) b.extend([lng, lat]);
+  }
+  return b;
+}
+
+export default function MapView({ homes, regions, windowOpen }: { homes: Property[]; regions: string[]; windowOpen: boolean }) {
   const router = useRouter();
   const box = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const markers = useRef<maplibregl.Marker[]>([]);
   const popup = useRef<maplibregl.Popup | null>(null);
   const homesRef = useRef(homes);
+  const regionsRef = useRef(regions);
+  const windowOpenRef = useRef(windowOpen);
 
   const preview = useCallback((p: Property) => {
     const wrap = document.createElement("div");
@@ -95,7 +112,17 @@ export default function MapView({ homes }: { homes: Property[] }) {
     const map = mapRef.current;
     if (!map) return;
     const pts = homesRef.current.filter((p) => p.lat != null && p.lng != null);
-    if (pts.length) {
+    if (regionsRef.current.length) {
+      /* a chosen region is shown whole, so the visitor sees where it is */
+      /* with the filter window open, frame the region in the free space to the right of it (if there is room) */
+      let padding: maplibregl.PaddingOptions | number = 80;
+      const win = windowOpenRef.current ? document.getElementById("filter-window")?.getBoundingClientRect() : null;
+      if (win) {
+        const left = win.right + 32;
+        if (window.innerWidth - left - 32 >= 220) padding = { top: 80, bottom: 80, left, right: 32 };
+      }
+      map.fitBounds(regionBounds(regionsRef.current), { padding, animate: false });
+    } else if (pts.length) {
       const b = new maplibregl.LngLatBounds();
       pts.forEach((p) => b.extend([p.lng as number, p.lat as number]));
       map.fitBounds(b, { padding: 80, maxZoom: 9, animate: false });
@@ -103,11 +130,20 @@ export default function MapView({ homes }: { homes: Property[] }) {
     draw();
   }, [draw]);
 
+  /* the chosen regions: an outline and a faint tint, so the visitor sees where Normandy or Brittany is */
+  const showRegions = useCallback(() => {
+    const map = mapRef.current;
+    if (!map || !map.getSource("regions")) return;
+    const filter = ["in", ["get", "nom"], ["literal", regionsRef.current]] as maplibregl.FilterSpecification;
+    map.setFilter("region-fill", filter);
+    map.setFilter("region-line", filter);
+  }, []);
+
   useEffect(() => {
     const map = new maplibregl.Map({
       container: box.current!,
       style: STYLE_URL,
-      attributionControl: { compact: false },
+      attributionControl: { compact: false, customAttribution: "Régions: IGN / Etalab" },
       dragRotate: false,
       pitchWithRotate: false,
       center: [2.4, 46.6],
@@ -116,6 +152,17 @@ export default function MapView({ homes }: { homes: Property[] }) {
     map.touchZoomRotate.disableRotation();
     tuneStyle(map);
     map.on("zoomend", draw);
+    map.on("load", () => {
+      const firstLabel = map.getStyle().layers.find((l) => l.type === "symbol")?.id;
+      map.addSource("regions", { type: "geojson", data: REGIONS });
+      map.addLayer({ id: "region-fill", type: "fill", source: "regions", paint: { "fill-color": "#0a0a0a", "fill-opacity": 0.05 } }, firstLabel);
+      map.addLayer({
+        id: "region-line", type: "line", source: "regions",
+        layout: { "line-join": "round" },
+        paint: { "line-color": "#0a0a0a", "line-opacity": 0.7, "line-width": 1.5 },
+      }, firstLabel);
+      showRegions();
+    });
     mapRef.current = map;
     fit();
     return () => {
@@ -123,12 +170,15 @@ export default function MapView({ homes }: { homes: Property[] }) {
       map.remove();
       mapRef.current = null;
     };
-  }, [draw, fit]);
+  }, [draw, fit, showRegions]);
 
   useEffect(() => {
     homesRef.current = homes;
+    regionsRef.current = regions;
+    windowOpenRef.current = windowOpen;
+    showRegions();
     fit();
-  }, [homes, fit]);
+  }, [homes, regions, windowOpen, fit, showRegions]);
 
   return <div className="map" ref={box} />;
 }
