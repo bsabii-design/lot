@@ -87,12 +87,13 @@ export function tuneStyle(map: MapLibreMap) {
       const f = JSON.stringify(map.getLayoutProperty(layer.id, "text-font") || "");
       map.setLayoutProperty(layer.id, "text-font", [/Italic/.test(f) ? "Tinos Italic" : "Tinos Regular"]);
       if (LABEL_SIZE[layer.id]) map.setLayoutProperty(layer.id, "text-size", LABEL_SIZE[layer.id]);
+      map.setLayoutProperty(layer.id, "text-letter-spacing", -0.009);
     }
     /* regions: quiet italic in normal case instead of spaced capitals */
     if (map.getLayer("label_state")) {
       map.setLayoutProperty("label_state", "text-font", ["Tinos Italic"]);
       map.setLayoutProperty("label_state", "text-transform", "none");
-      map.setLayoutProperty("label_state", "text-letter-spacing", 0);
+      map.setLayoutProperty("label_state", "text-letter-spacing", -0.009);
     }
     for (const [id, c] of Object.entries(LABEL_GREY)) if (map.getLayer(id)) map.setPaintProperty(id, "text-color", c);
     greyMap(map);

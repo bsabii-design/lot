@@ -3,6 +3,18 @@
 Everything is set in **rem**, so the whole interface scales with the window (design size: a 1152px window, content column 484px).
 Font: Times New Roman everywhere, including the map labels (self-hosted Tinos glyphs).
 
+## 0. Type settings
+
+Taken from the reference Sabina picked (Times New Roman Regular, 22px / line-height 23.5px / letter-spacing −0.2px / colour `#000000D9`) and applied proportionally to our sizes:
+
+| Setting | Reference | Ours (token) |
+|---|---|---|
+| Line height | 23.5 / 22 = **1.068** | `--lh`, `--lh-sm` = 1.068 (16px at 15px text, 13.6px at 12.75px) |
+| Letter spacing | −0.2 / 22 = **−0.009em** | `--tracking` (−0.135px at 15px; set on `body`, also on the map labels) |
+| Reading colour | `#000000D9` = black 85% | `--text-read` (running text: description, place line values, facts list, map preview); the UI black `--text` `#0a0a0a` stays for chosen / active states, fills and icons |
+
+Because reading text is now 85%, the secondary grey `--text-2` moved from 80% to **68%** so the three steps stay distinct: 85% reading → 68% secondary → 58% quiet.
+
 ## 1. Two text sizes, nothing in between
 
 | Level | Size (at design size) | Token | Used for |
@@ -13,12 +25,12 @@ Font: Times New Roman everywhere, including the map labels (self-hosted Tinos gl
 Rule of thumb: the home is the hero, so its text is the largest thing on screen; everything that helps you *find* a home is smaller.
 Price is bold (700); everything else is regular.
 
-## 2. Colour = importance (black / 80% / 58%)
+## 2. Colour = importance (reading 85% / secondary 68% / quiet 58%; black for chosen)
 
 | Colour | Token | Meaning |
 |---|---|---|
-| Black | `--text` | what matters right now: home information, the chosen option, an active filter, the "N homes" count |
-| 80% | `--text-2` | secondary text on content: place line, grey buttons, text buttons |
+| Black | `--text` (UI) / `--text-read` (85%, running text) | what matters right now: home information, the chosen option, an active filter, the "N homes" count |
+| 68% | `--text-2` | secondary text on content: place line, grey buttons, text buttons |
 | 58% | `--text-3` | inactive or quiet: unchosen tab / List-or-Map, filter names, Clear, hashtags (black on hover) |
 
 Chosen = black, unchosen = 58%. **One grey for everything not chosen**: the unchosen tab, Map/List, Filter with nothing set, Back, unselected chips are all `--text-3` (58%) and turn black on hover. Filter turns black once a filter is set or its window is open.
@@ -46,8 +58,8 @@ The filter window works on a **draft**: picks change only the number on the butt
 | Role | Look | Where |
 |---|---|---|
 | **Primary CTA** | black pill, white text; one per screen | View listing (full width at the bottom of the home page) |
-| **Secondary** | grey tint pill (6% black), 80% text; darker on hover / when on | Save / Saved, Clear filters, Browse all homes |
-| **Tertiary / text button** (`.btn.ghost`) | plain text, no fill, no padding; 80% text, black on hover | Clear all in the filter window, Clear, Custom, Back |
+| **Secondary** | grey tint pill (6% black), 68% text; darker on hover / when on | Save / Saved, Clear filters, Browse all homes |
+| **Tertiary / text button** (`.btn.ghost`) | plain text, no fill, no padding; 68% text, black on hover | Clear all in the filter window, Clear, Custom, Back |
 | **Chip** | 1px outline pill; chosen = black fill, white text | the filter window |
 | **Map bubble** | black pill with the price in k; open = white. On a home's own page the place is a plain 12px black dot, no price | the map |
 
