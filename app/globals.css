@@ -412,31 +412,40 @@ button, [role="button"], summary { cursor: pointer; }
 .maplibregl-ctrl-attrib.maplibregl-compact { background: transparent !important; font-size: 0.5625rem; color: var(--text-3); }
 .maplibregl-ctrl-attrib a { color: var(--text-3) !important; }
 
-/* zoom: one white capsule with the site's hairline, same language as the dock and the filter window */
+/* zoom: one small white capsule with the site hairline, same language as the dock and the filter window.
+   The + and − are drawn as 1px lines so they sit exactly in the middle. */
 .maplibregl-ctrl-group {
   background: #fff !important;
   border: 1px solid var(--stroke) !important;
-  border-radius: 1rem !important;
+  border-radius: 0.75rem !important;
   box-shadow: none !important;
   margin: 0.5rem !important;
   overflow: hidden;
 }
 .maplibregl-ctrl-group button {
-  width: 2rem !important;
-  height: 2rem !important;
+  position: relative;
+  display: block;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
   background: none !important;
   color: var(--text);
   border: none !important;
   border-radius: 0 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .maplibregl-ctrl-group button + button { border-top: 1px solid var(--border) !important; }
 .maplibregl-ctrl-group button:hover { background: color-mix(in srgb, var(--text) 6%, #fff) !important; }
-.maplibregl-ctrl-group .maplibregl-ctrl-icon { background-image: none !important; }
-.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon::after { content: "+"; font-size: var(--fs); line-height: 1; }
-.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon::after { content: "\2212"; font-size: var(--fs); line-height: 1; }
+.maplibregl-ctrl-group .maplibregl-ctrl-icon { position: absolute; inset: 0; background-image: none !important; }
+.maplibregl-ctrl-group .maplibregl-ctrl-icon::before,
+.maplibregl-ctrl-group .maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+.maplibregl-ctrl-group .maplibregl-ctrl-icon::before { width: 0.625rem; height: 1px; }
+.maplibregl-ctrl-group .maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon::after { width: 1px; height: 0.625rem; }
 
 /* ---------- filter window ---------- */
 
