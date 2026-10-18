@@ -340,6 +340,10 @@ button, [role="button"], summary { cursor: pointer; }
   color: var(--text);
   background: color-mix(in srgb, var(--text) 9%, var(--bg));
 }
+/* text button: no fill, just the words — the quietest action (Clear all) */
+.btn.ghost { background: none; padding: 0; }
+.btn.ghost:hover { background: none; }
+
 /* small button: for the actions inside floating windows, which are set in interface size */
 .btn.sm { height: 1.75rem; font-size: var(--fs-sm); line-height: 1; }
 

@@ -99,7 +99,7 @@ export default function FilterWindow({ filters, options, count, onChange, onClea
       <SetRow label="Setting" entries={pairs(options.settings)} selected={filters.settings} onToggle={setRow("settings")} />
       </div>
       <div className="ffoot">
-        <button className="btn sm" onClick={onClear}>Clear all</button>
+        <button className="btn sm ghost" onClick={onClear}>Clear all</button>
         <button className="btn sm visit" disabled={count === 0} onClick={onApply}>
           {count === 0 ? "No homes match" : `Show ${count} ${count === 1 ? "home" : "homes"}`}
         </button>
