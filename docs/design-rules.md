@@ -68,3 +68,7 @@ One set (`components/Icon.tsx`): a 24-unit grid, round caps and joins, `currentC
 ## 7. Regions on the map
 
 A visitor may not know where Normandy or Brittany is, so a chosen region is drawn on the map: a 1.5px black outline and a 5% tint (data: `data/regions.json`, the 13 metropolitan regions, IGN / Etalab open data, credited in the map attribution). It updates live while the filter window is open (the map frames the whole region in the free space beside the window) and stays after "Show N homes". The region names in the filter are the French names, the same as in the data.
+
+## 8. Writing region names (the site is in English)
+
+Data keys stay the official French names (`Bretagne`, `Normandie` …); what the visitor reads comes from `lib/regions.ts`: the established English name where there is one — **Brittany, Normandy, Corsica, Burgundy-Franche-Comté** — and the official name otherwise — **Nouvelle-Aquitaine, Occitanie, Pays de la Loire, Centre-Val de Loire, Auvergne-Rhône-Alpes, Provence-Alpes-Côte d'Azur, Hauts-de-France, Grand Est, Île-de-France**. This is the same in the filter chips, the active-filter list, the place line on cards and home pages. Add a new region there once and it is consistent everywhere.

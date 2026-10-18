@@ -1,5 +1,6 @@
 import type { Filters, Property, Range, Tab } from "./types";
 import { archived } from "./format";
+import { regionLabel } from "./regions";
 
 export const BEDROOMS: [string, string][] = [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4+"]];
 export const CONDITIONS = ["Move-in ready", "Needs some work", "Renovation project"];
@@ -80,8 +81,8 @@ export function activeFacets(f: Filters): Facet[] {
     if (r.max !== "") return "under " + fmt(r.max) + unit;
     return "from " + fmt(r.min) + unit;
   };
-  const setFacet = (key: SetKey, name: string) => {
-    if (f[key].length) out.push({ name, value: f[key].join(", "), off: (x) => ({ ...x, [key]: [] }) });
+  const setFacet = (key: SetKey, name: string, show: (v: string) => string = (v) => v) => {
+    if (f[key].length) out.push({ name, value: f[key].map(show).join(", "), off: (x) => ({ ...x, [key]: [] }) });
   };
   const rangeFacet = (key: "price" | "size", name: string, presets: Preset[], fmt: (v: string) => string, unit: string) => {
     const r = f[key];
@@ -107,7 +108,7 @@ export function activeFacets(f: Filters): Facet[] {
   }
   rangeFacet("price", "Price", PRICE_PRESETS, money, "");
   rangeFacet("size", "Size", SIZE_PRESETS, (v) => v, " m²");
-  setFacet("regions", "Region");
+  setFacet("regions", "Region", regionLabel);
   setFacet("settings", "Setting");
   return out;
 }

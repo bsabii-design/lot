@@ -1,4 +1,5 @@
 import type { Property } from "./types";
+import { regionLabel } from "./regions";
 
 export const imageSrc = (path: string) => "/" + path.replace(/^\//, "");
 
@@ -32,4 +33,4 @@ export function ago(dateStr: string, now = Date.now()) {
   return years === 1 ? "1 year ago" : years + " years ago";
 }
 
-export const placeLine = (p: Property) => `${p.town}, ${p.region}, ${p.country}`;
+export const placeLine = (p: Property) => `${p.town}, ${regionLabel(p.region)}, ${p.country}`;

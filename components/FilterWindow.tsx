@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { BEDROOMS, PRICE_PRESETS, SIZE_PRESETS, toggle, type SetKey } from "@/lib/filters";
+import { regionLabel } from "@/lib/regions";
 import { cn } from "@/lib/cn";
 import type { Filters, Range } from "@/lib/types";
 
@@ -95,7 +96,7 @@ export default function FilterWindow({ filters, options, count, onChange, onClea
         onPreset={preset("price")} onType={type("price")} />
       <RangeRow label="Size" presets={SIZE_PRESETS.map(([k, l]) => [k, l])} range={filters.size} unit="m²" step={10}
         onPreset={preset("size")} onType={type("size")} />
-      <SetRow label="Region" entries={pairs(options.regions)} selected={filters.regions} onToggle={setRow("regions")} />
+      <SetRow label="Region" entries={options.regions.map((v): [string, string] => [v, regionLabel(v)]).sort((a, b) => a[1].localeCompare(b[1]))} selected={filters.regions} onToggle={setRow("regions")} />
       <SetRow label="Setting" entries={pairs(options.settings)} selected={filters.settings} onToggle={setRow("settings")} />
       </div>
       <div className="ffoot">
