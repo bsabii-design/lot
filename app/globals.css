@@ -45,8 +45,9 @@
   --h-btn: 2rem;        /* button, dock, input */
   --h-cta: 2.5rem;      /* full-width primary CTA */
 
-  /* icon stroke = the stem of the Times letters at interface size (~0.09em), so icons weigh the same as the text */
-  --icon-stroke: calc(var(--fs-sm) * 0.09);
+  /* icon stroke: a solid line looks darker than Times letters of the same colour (their hairlines print light),
+     so it is set to 0.07em of the interface text — measured to weigh the same as the grey text next to it */
+  --icon-stroke: calc(var(--fs-sm) * 0.07);
 
   --feed-width: 30.25rem;
 }
