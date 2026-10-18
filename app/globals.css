@@ -110,7 +110,7 @@ button, [role="button"], summary { cursor: pointer; }
   top: 5.5rem;
   gap: 0.25rem;
   z-index: 20;
-  color: var(--text-2);
+  color: var(--text-3);
 }
 .back:hover { color: var(--text); }
 
@@ -142,12 +142,12 @@ button, [role="button"], summary { cursor: pointer; }
 
 .seg { display: flex; }
 .seg button { color: var(--text-3); }
-.seg button:hover { color: var(--text-2); }
+.seg button:hover { color: var(--text); }
 .seg button.active { color: var(--text); }
 .seg button:first-child::after { content: "/"; margin: 0 0.4em; color: var(--text-3); }
 
 /* Filter is an action, not a choice: quiet until it has something to say (filters set, or the window open) */
-.filter-toggle { color: var(--text-2); }
+.filter-toggle { color: var(--text-3); }
 .filter-toggle:hover,
 .filter-toggle.active,
 .filter-toggle.open { color: var(--text); }
@@ -504,7 +504,7 @@ button, [role="button"], summary { cursor: pointer; }
   align-items: center;
   height: var(--h-chip);
   padding: 0 0.5rem;
-  color: var(--text-2);
+  color: var(--text-3);
   font-size: var(--fs-sm);
   line-height: 1;
 }
