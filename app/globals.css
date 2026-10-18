@@ -375,6 +375,9 @@ button, [role="button"], summary { cursor: pointer; }
 .bubble.on { background: var(--bg); color: var(--text); opacity: 1; }
 /* merged homes: a round bubble with the count */
 .bubble.count { min-width: var(--h-chip); justify-content: center; padding: 0 0.25rem; }
+/* a home's own page: the place is a plain dot, the price is already on the page */
+.bubble.dot { width: 0.75rem; height: 0.75rem; min-width: 0; padding: 0; cursor: default; }
+.bubble.dot:hover { opacity: 1; }
 .maplibregl-marker:hover { z-index: 10; }
 
 .lot-popup .maplibregl-popup-content {

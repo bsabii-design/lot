@@ -4,10 +4,9 @@ import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { STYLE_URL, circlePolygon, tuneStyle } from "@/lib/map";
-import { priceShort } from "@/lib/format";
 import type { Property } from "@/lib/types";
 
-/** The small map on a home's page: one price bubble, plus a 3 km circle when the location is only approximate. */
+/** The small map on a home's page: one black dot, plus a 3 km circle when the location is only approximate. */
 export default function MiniMap({ p }: { p: Property }) {
   const box = useRef<HTMLDivElement>(null);
 
@@ -37,9 +36,8 @@ export default function MiniMap({ p }: { p: Property }) {
     map.getContainer().addEventListener("wheel", onWheel, { passive: false });
 
     const el = document.createElement("div");
-    el.className = "bubble";
+    el.className = "bubble dot";
     el.style.pointerEvents = "none";
-    el.textContent = priceShort(p.price);
     new maplibregl.Marker({ element: el }).setLngLat([p.lng, p.lat]).addTo(map);
 
     if (p.approximate_location) {

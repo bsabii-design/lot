@@ -46,7 +46,7 @@ All heights are multiples of 4px and come from tokens in `styles.css` (`--h-row`
 | **Secondary** | grey tint pill (6% black), 80% text; darker on hover / when on | Save / Saved, Clear filters, Browse all homes |
 | **Tertiary** | plain text, no background | Clear, Clear all, Custom, Back |
 | **Chip** | 1px outline pill; chosen = black fill, white text | the filter window |
-| **Map bubble** | black pill with the price in k; open = white | the map |
+| **Map bubble** | black pill with the price in k; open = white. On a home's own page the place is a plain 12px black dot, no price | the map |
 
 Pills are always fully rounded (radius 999). No shadows.
 
