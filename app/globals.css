@@ -252,7 +252,7 @@ button, [role="button"], summary { cursor: pointer; }
   text-align: left;
   pointer-events: none;
 }
-.term-tip strong { display: block; margin-bottom: 0.25rem; font-weight: 400; font-style: italic; }
+.term-tip strong { margin-right: 0.25rem; font-weight: 400; font-style: italic; }
 
 .card-tags { margin-top: 1rem; font-size: var(--fs); line-height: var(--lh); }
 
