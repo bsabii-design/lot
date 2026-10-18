@@ -265,6 +265,17 @@ button, [role="button"], summary { cursor: pointer; }
 .gbox .cnav.prev { left: 0; justify-content: flex-start; padding-left: 0.75rem; }
 .gbox .cnav.next { right: 0; justify-content: flex-end; padding-right: 0.75rem; }
 .gbox:hover .cnav { opacity: 1; }
+/* round dark button behind the arrow, like the counter: a thin white line alone vanishes on light photos */
+.cbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 62.4375rem;
+  background: rgba(10, 10, 10, 0.55);
+  color: rgba(255, 255, 255, 0.9);
+}
 
 .gbox .ccount {
   position: absolute;
@@ -591,7 +602,7 @@ button, [role="button"], summary { cursor: pointer; }
   --text-3: rgba(255, 255, 255, 0.35);
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 10, 0.97);
+  background: #0a0a0a;
   z-index: 100;
   display: flex;
   align-items: center;

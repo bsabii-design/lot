@@ -33,8 +33,8 @@ export default function DetailGallery({ images, title, sold }: { images: string[
         <div className="lightbox">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={imageSrc(images[index])} alt={title} />
-          <div className="lnav prev" onClick={() => gallery.current?.step(-1)}><Icon name="chevron-left" size="1.5rem" /></div>
-          <div className="lnav next" onClick={() => gallery.current?.step(1)}><Icon name="chevron-right" size="1.5rem" /></div>
+          <div className="lnav prev" onClick={() => gallery.current?.step(-1)}><i className="cbtn"><Icon name="chevron-left" /></i></div>
+          <div className="lnav next" onClick={() => gallery.current?.step(1)}><i className="cbtn"><Icon name="chevron-right" /></i></div>
           <button className="lclose" aria-label="Close" onClick={() => setOpen(false)}><Icon name="close" size="1.25rem" /></button>
           <span className="lcount">{index + 1} / {images.length}</span>
         </div>

@@ -120,8 +120,8 @@ export default function Gallery({ images, alt, className, sold, priority, onOpen
       </div>
       {len > 1 && (
         <>
-          <span className="cnav prev" onClick={arrow(-1)}><Icon name="chevron-left" size="1.25rem" /></span>
-          <span className="cnav next" onClick={arrow(1)}><Icon name="chevron-right" size="1.25rem" /></span>
+          <span className="cnav prev" onClick={arrow(-1)}><i className="cbtn"><Icon name="chevron-left" /></i></span>
+          <span className="cnav next" onClick={arrow(1)}><i className="cbtn"><Icon name="chevron-right" /></i></span>
           <span className="ccount">{index + 1} / {len}</span>
         </>
       )}
