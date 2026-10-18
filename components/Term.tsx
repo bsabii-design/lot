@@ -11,6 +11,10 @@ export default function Term({ entry, children, focusable }: { entry: GlossaryEn
   const word = useRef<HTMLSpanElement>(null);
   const tip = useRef<HTMLSpanElement>(null);
   const id = useId();
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const keep = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setOpen(true); };
+  /* a short delay lets the mouse cross the gap onto the card, so its source link can be clicked */
+  const closeSoon = () => { closeTimer.current = setTimeout(() => setOpen(false), 150); };
 
   /* measuring the rendered tip: keep it inside the window */
   useLayoutEffect(() => {
@@ -44,8 +48,8 @@ export default function Term({ entry, children, focusable }: { entry: GlossaryEn
         className="term"
         tabIndex={focusable ? 0 : undefined}
         aria-describedby={open ? id : undefined}
-        onPointerEnter={(e) => { if (e.pointerType === "mouse") setOpen(true); }}
-        onPointerLeave={(e) => { if (e.pointerType === "mouse") setOpen(false); }}
+        onPointerEnter={(e) => { if (e.pointerType === "mouse") keep(); }}
+        onPointerLeave={(e) => { if (e.pointerType === "mouse") closeSoon(); }}
         onFocus={() => setOpen(true)}
         onBlur={() => setOpen(false)}
         onClick={(e) => {
@@ -67,8 +71,14 @@ export default function Term({ entry, children, focusable }: { entry: GlossaryEn
             role="tooltip"
             className="term-tip"
             style={{ left: pos?.left ?? 0, top: pos?.top ?? 0, visibility: pos ? "visible" : "hidden" }}
+            onPointerEnter={(e) => { if (e.pointerType === "mouse") keep(); }}
+            onPointerLeave={(e) => { if (e.pointerType === "mouse") closeSoon(); }}
           >
-            <strong>{entry.term}</strong> {entry.definition}
+            <strong>{entry.term}</strong>
+            {entry.definition}
+            <a className="src" href={entry.source.url} target="_blank" rel="noopener">
+              {entry.source.name} · {entry.source.licence}
+            </a>
           </span>,
           document.body,
         )}

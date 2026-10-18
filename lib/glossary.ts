@@ -3,7 +3,9 @@ import data from "@/data/glossary.json";
 export interface GlossaryEntry {
   term: string;
   aliases: string[];
+  /** quoted word for word from the source, never paraphrased */
   definition: string;
+  source: { name: "Wiktionary" | "Wikipedia"; url: string; licence: string; retrieved: string };
 }
 
 export const glossary = data as GlossaryEntry[];
