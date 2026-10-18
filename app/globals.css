@@ -45,6 +45,9 @@
   --h-btn: 2rem;        /* button, dock, input */
   --h-cta: 2.5rem;      /* full-width primary CTA */
 
+  /* icon stroke = the stem of the Times letters at interface size (~0.09em), so icons weigh the same as the text */
+  --icon-stroke: calc(var(--fs-sm) * 0.09);
+
   --feed-width: 30.25rem;
 }
 
@@ -337,14 +340,17 @@ button, [role="button"], summary { cursor: pointer; }
 }
 .btn.visit:hover { opacity: 0.85; }
 
-.arr {
-  width: 0.875rem;
-  height: 0.875rem;
-  display: inline-block;
+.icon {
+  display: block;
   flex-shrink: 0;
-  position: relative;
-  top: 1px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
+.icon path { vector-effect: non-scaling-stroke; }
+.arr { position: relative; top: 1px; }
 .back .arr { top: 0; }
 
 /* ---------- map ---------- */
@@ -412,41 +418,20 @@ button, [role="button"], summary { cursor: pointer; }
 .maplibregl-ctrl-attrib.maplibregl-compact { background: transparent !important; font-size: 0.5625rem; color: var(--text-3); }
 .maplibregl-ctrl-attrib a { color: var(--text-3) !important; }
 
-/* zoom: one small white capsule with the site hairline, same language as the dock and the filter window.
-   The + and − are drawn as icons so they sit exactly in the middle. */
-.maplibregl-ctrl-group {
-  background: #fff !important;
-  border: 1px solid var(--stroke) !important;
-  border-radius: 0.875rem !important;
-  box-shadow: none !important;
-  margin: 0.5rem !important;
+/* zoom: one small white capsule with the site hairline, same language as the dock and the filter window */
+.zoom {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  background: #fff;
+  border: 1px solid var(--stroke);
+  border-radius: 0.875rem;
   overflow: hidden;
 }
-.maplibregl-ctrl-group button {
-  position: relative;
-  display: block;
-  width: 1.75rem !important;
-  height: 1.75rem !important;
-  background: none !important;
-  color: var(--text);
-  border: none !important;
-  border-radius: 0 !important;
-}
-.maplibregl-ctrl-group button + button { border-top: 1px solid var(--border) !important; }
-.maplibregl-ctrl-group button:hover { background: color-mix(in srgb, var(--text) 6%, #fff) !important; }
-/* + and − use the same icon system as the arrow in "View listing": a 24-unit grid, stroke 2, round caps,
-   drawn at 0.875rem, so the line weight and the look are identical */
-.maplibregl-ctrl-group .maplibregl-ctrl-icon {
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  background-size: 0.875rem !important;
-}
-.maplibregl-ctrl-group .maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 12H18M12 6V18' stroke='%230a0a0a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
-}
-.maplibregl-ctrl-group .maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 12H18' stroke='%230a0a0a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
-}
+.zoom button { display: flex; align-items: center; justify-content: center; width: 1.75rem; height: 1.75rem; color: var(--text); }
+.zoom button + button { border-top: 1px solid var(--border); }
+.zoom button:hover { background: color-mix(in srgb, var(--text) 6%, #fff); }
 
 /* ---------- filter window ---------- */
 

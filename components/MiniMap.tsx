@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Icon from "./Icon";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { STYLE_URL, circlePolygon, tuneStyle } from "@/lib/map";
@@ -9,6 +10,7 @@ import type { Property } from "@/lib/types";
 /** The small map on a home's page: one black dot, plus a 3 km circle when the location is only approximate. */
 export default function MiniMap({ p }: { p: Property }) {
   const box = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
 
   useEffect(() => {
     if (p.lat == null || p.lng == null) return;
@@ -23,7 +25,7 @@ export default function MiniMap({ p }: { p: Property }) {
       scrollZoom: false,
     });
     map.touchZoomRotate.disableRotation();
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    mapRef.current = map;
     tuneStyle(map);
 
     /* trackpad pinch (wheel + ctrl) zooms; a plain two-finger scroll keeps scrolling the page */
@@ -48,12 +50,16 @@ export default function MiniMap({ p }: { p: Property }) {
         map.addLayer({ id: "area-line", type: "line", source: "area", minzoom: 10, paint: { "line-color": "#0a0a0a", "line-opacity": 0.5, "line-width": 1 } });
       });
     }
-    return () => map.remove();
+    return () => { mapRef.current = null; map.remove(); };
   }, [p]);
 
   return (
     <div className="minimap">
       <div ref={box} style={{ width: "100%", height: "100%" }} />
+      <div className="zoom">
+        <button aria-label="Zoom in" onClick={() => mapRef.current?.zoomIn()}><Icon name="plus" /></button>
+        <button aria-label="Zoom out" onClick={() => mapRef.current?.zoomOut()}><Icon name="minus" /></button>
+      </div>
     </div>
   );
 }

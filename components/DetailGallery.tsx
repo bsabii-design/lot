@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Gallery, { type GalleryHandle } from "./Gallery";
+import Icon from "./Icon";
 import { imageSrc } from "@/lib/format";
 
 /** The home's photos, plus the fullscreen viewer that opens from the middle of the photo. */
@@ -32,9 +33,9 @@ export default function DetailGallery({ images, title, sold }: { images: string[
         <div className="lightbox">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={imageSrc(images[index])} alt={title} />
-          <div className="lnav prev" onClick={() => gallery.current?.step(-1)}>&#8249;</div>
-          <div className="lnav next" onClick={() => gallery.current?.step(1)}>&#8250;</div>
-          <button className="lclose" aria-label="Close" onClick={() => setOpen(false)}>&#10005;</button>
+          <div className="lnav prev" onClick={() => gallery.current?.step(-1)}><Icon name="chevron-left" size="1.5rem" /></div>
+          <div className="lnav next" onClick={() => gallery.current?.step(1)}><Icon name="chevron-right" size="1.5rem" /></div>
+          <button className="lclose" aria-label="Close" onClick={() => setOpen(false)}><Icon name="close" size="1.25rem" /></button>
           <span className="lcount">{index + 1} / {images.length}</span>
         </div>
       )}

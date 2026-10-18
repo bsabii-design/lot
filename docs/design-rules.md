@@ -48,7 +48,7 @@ All heights are multiples of 4px and come from tokens in `styles.css` (`--h-row`
 | **Chip** | 1px outline pill; chosen = black fill, white text | the filter window |
 | **Map bubble** | black pill with the price in k; open = white. On a home's own page the place is a plain 12px black dot, no price | the map |
 
-Pills are always fully rounded (radius 999). No shadows. Map zoom buttons (+ / −) are one white capsule with the hairline, 28px squares; the + / − icons use the same icon system as the arrow in View listing (24-unit grid, stroke 2, round caps, drawn at 0.875rem), top-right of the minimap.
+Pills are always fully rounded (radius 999). No shadows. Map zoom buttons (+ / −) are one white capsule with the hairline, 28px squares, top-right of the minimap.
 
 **One stroke.** The only line in the visual language is a 1px hairline, `--stroke` (10% ink; 30% on hover, `--stroke-hover`). It marks two things: *containers that float* (dock, filter window, map preview, minimap) and *controls you can switch* (chips, inputs). Secondary buttons are a grey tint with no line; primary buttons, chosen chips and map bubbles are solid black with no line. List dividers are the even quieter `--border` (8%).
 Floating surfaces (dock, filter window, map preview) are **white everywhere**, on the map and on the list; the mobile "N homes" pill is white on the map and light grey on the list.
@@ -57,3 +57,7 @@ Floating surfaces (dock, filter window, map preview) are **white everywhere**, o
 
 The grid step is **4px** (0.25rem); every gap, padding and margin is a multiple of 4, with deliberate exceptions only (hairlines are 1px).
 Blocks are separated by 16px. Page edge to logo / tabs / dock / active-filter list: 20px (dock and list: 16px from the bottom).
+
+## 6. Icons
+
+One set (`components/Icon.tsx`): a 24-unit grid, round caps and joins, `currentColor`. The stroke weight is a token, `--icon-stroke` = 0.09 of the interface text size (about the stem of the Times letters, ~1.15px at design size), and it does **not** scale with the icon: a 14px arrow and a 24px chevron have the same line weight as the text next to them. Sizes: 14px in buttons and rows, 20px photo arrows, 24px fullscreen arrows. Never use text glyphs (‹ › ✕ + −) as icons.

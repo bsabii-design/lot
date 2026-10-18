@@ -3,6 +3,7 @@ import BackLink from "./BackLink";
 import DetailGallery from "./DetailGallery";
 import SaveButton from "./SaveButton";
 import Ago from "./Ago";
+import Icon from "./Icon";
 import MiniMapLazy from "./MiniMapLazy";
 import { archived, placeLine, price } from "@/lib/format";
 import type { Property } from "@/lib/types";
@@ -13,9 +14,7 @@ function ViewListing({ url }: { url: string }) {
   return (
     <a className="btn visit" href={url} target="_blank" rel="noopener">
       View listing{" "}
-      <svg className="arr" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <Icon name="arrow-up-right" className="arr" />
     </a>
   );
 }

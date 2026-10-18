@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
+import Icon from "./Icon";
 import { imageSrc } from "@/lib/format";
 import { cn } from "@/lib/cn";
 
@@ -119,8 +120,8 @@ export default function Gallery({ images, alt, className, sold, priority, onOpen
       </div>
       {len > 1 && (
         <>
-          <span className="cnav prev" onClick={arrow(-1)}>&#8249;</span>
-          <span className="cnav next" onClick={arrow(1)}>&#8250;</span>
+          <span className="cnav prev" onClick={arrow(-1)}><Icon name="chevron-left" size="1.25rem" /></span>
+          <span className="cnav next" onClick={arrow(1)}><Icon name="chevron-right" size="1.25rem" /></span>
           <span className="ccount">{index + 1} / {len}</span>
         </>
       )}

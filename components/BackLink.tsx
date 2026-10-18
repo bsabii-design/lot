@@ -2,15 +2,8 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Icon from "./Icon";
 import { RETURN_KEY } from "@/lib/cn";
-
-export function ArrowLeft() {
-  return (
-    <svg className="arr" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 12H4M4 12L10 18M4 12L10 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 /** Back to the feed exactly as it was left (filters, scroll) when the visitor came from it, otherwise to the feed. */
 export default function BackLink() {
@@ -27,7 +20,7 @@ export default function BackLink() {
         else router.push("/");
       }}
     >
-      <ArrowLeft /> Back
+      <Icon name="arrow-left" className="arr" /> Back
     </Link>
   );
 }
