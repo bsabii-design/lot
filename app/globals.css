@@ -417,7 +417,7 @@ button, [role="button"], summary { cursor: pointer; }
 .maplibregl-ctrl-group {
   background: #fff !important;
   border: 1px solid var(--stroke) !important;
-  border-radius: 0.75rem !important;
+  border-radius: 0.875rem !important;
   box-shadow: none !important;
   margin: 0.5rem !important;
   overflow: hidden;
@@ -425,8 +425,8 @@ button, [role="button"], summary { cursor: pointer; }
 .maplibregl-ctrl-group button {
   position: relative;
   display: block;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
+  width: 1.75rem !important;
+  height: 1.75rem !important;
   background: none !important;
   color: var(--text);
   border: none !important;
