@@ -36,7 +36,9 @@ All heights are multiples of 4px and come from tokens in `styles.css` (`--h-row`
 | Dock (List / Map / Filter) | 32px (`--h-btn`) | 16px | interface |
 | Input (price / size range) | 32px (`--h-btn`) | 8px | interface |
 | Primary CTA, full width (View listing at the bottom of a home) | 40px (`--h-cta`) | centred | content |
-| Filter window | auto, padding 16px, 8px between groups, 4px label-to-chips and chip-to-chip | | interface |
+| Filter window | auto; scroll area padding 16px, 8px between groups, 4px label-to-chips and chip-to-chip; fixed footer (12px 16px) with a hairline: Clear all (left) and the black button "Show N homes" (right, 32px) | | interface |
+
+The filter window works on a **draft**: picks change only the number on the button, the page behind stays as it is. "Show N homes" applies them, closes the window, and the chosen filters appear in the list at the bottom left. Closing the window without the button (Esc, outside click) throws the draft away.
 
 ## 4. Buttons
 

@@ -22,12 +22,14 @@ export default function Browse({ homes }: { homes: Property[] }) {
   const [tab, setTab] = useState<Tab>("all");
   const [view, setView] = useState<View>("list");
   const [filters, setFilters] = useState<Filters>(emptyFilters);
+  const [draft, setDraft] = useState<Filters>(emptyFilters);
   const [open, setOpen] = useState(false);
   const favs = useFavs();
 
   const options = useMemo(() => filterOptions(homes), [homes]);
   const list = useMemo(() => visible(homes, tab, favs, filters), [homes, tab, favs, filters]);
   const facets = useMemo(() => activeFacets(filters), [filters]);
+  const draftCount = useMemo(() => visible(homes, tab, favs, draft).length, [homes, tab, favs, draft]);
 
   /* keep the browsing state when the visitor opens a home and comes back */
   const latest = useRef<Saved>({ tab, view, y: 0, filters });
@@ -154,14 +156,23 @@ export default function Browse({ homes }: { homes: Property[] }) {
         </div>
       )}
 
-      {open && <FilterWindow filters={filters} options={options} onChange={setFilters} onClear={clearFilters} />}
+      {open && (
+        <FilterWindow
+          filters={draft}
+          options={options}
+          count={draftCount}
+          onChange={setDraft}
+          onClear={() => setDraft(emptyFilters())}
+          onApply={() => { setFilters(draft); setOpen(false); }}
+        />
+      )}
 
       <div className="dock">
         <div className="seg" role="group" aria-label="View">
           <button className={cn(view === "list" && "active")} onClick={() => setView("list")}>List</button>
           <button className={cn(view === "map" && "active")} onClick={() => setView("map")}>Map</button>
         </div>
-        <button className={cn("filter-toggle", facets.length > 0 && "active", open && "open")} onClick={() => setOpen((o) => !o)}>
+        <button className={cn("filter-toggle", facets.length > 0 && "active", open && "open")} onClick={() => { if (!open) setDraft(filters); setOpen((o) => !o); }}>
           Filter{facets.length ? ` (${facets.length})` : ""}
         </button>
       </div>

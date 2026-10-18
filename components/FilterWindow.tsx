@@ -10,8 +10,11 @@ interface Options { types: string[]; conditions: string[]; settings: string[]; r
 interface Props {
   filters: Filters;
   options: Options;
+  /** how many homes the current picks would show */
+  count: number;
   onChange: (next: Filters) => void;
   onClear: () => void;
+  onApply: () => void;
 }
 
 function Chip({ label, on, onClick }: { label: string; on: boolean; onClick: () => void }) {
@@ -72,8 +75,9 @@ function RangeRow({ label, presets, range, unit, step, onPreset, onType }: {
   );
 }
 
-/** The filter window that opens above the dock. Every pick is a multi-select (any of the values matches). */
-export default function FilterWindow({ filters, options, onChange, onClear }: Props) {
+/** The filter window that opens above the dock. Picks are a draft: nothing changes behind the window until
+    "Show N homes". Every pick is a multi-select (any of the values matches). */
+export default function FilterWindow({ filters, options, count, onChange, onClear, onApply }: Props) {
   const setRow = (key: SetKey) => (value: string) => onChange({ ...filters, [key]: toggle(filters[key], value) });
   const pairs = (list: string[]): [string, string][] => list.map((v) => [v, v]);
   const preset = (rk: "price" | "size") => (key: string) =>
@@ -83,6 +87,7 @@ export default function FilterWindow({ filters, options, onChange, onClear }: Pr
 
   return (
     <aside className="filterwin" id="filter-window">
+      <div className="fscroll">
       <SetRow label="Type" entries={pairs(options.types)} selected={filters.types} onToggle={setRow("types")} />
       <SetRow label="Condition" entries={pairs(options.conditions)} selected={filters.conditions} onToggle={setRow("conditions")} />
       <SetRow label="Bedrooms" entries={BEDROOMS} selected={filters.bedrooms} onToggle={setRow("bedrooms")} />
@@ -92,7 +97,13 @@ export default function FilterWindow({ filters, options, onChange, onClear }: Pr
         onPreset={preset("size")} onType={type("size")} />
       <SetRow label="Region" entries={pairs(options.regions)} selected={filters.regions} onToggle={setRow("regions")} />
       <SetRow label="Setting" entries={pairs(options.settings)} selected={filters.settings} onToggle={setRow("settings")} />
-      <div className="drawer-actions"><button onClick={onClear}>Clear all</button></div>
+      </div>
+      <div className="ffoot">
+        <button className="fclear" onClick={onClear}>Clear all</button>
+        <button className="btn visit" disabled={count === 0} onClick={onApply}>
+          {count === 0 ? "No homes match" : `Show ${count} ${count === 1 ? "home" : "homes"}`}
+        </button>
+      </div>
     </aside>
   );
 }
