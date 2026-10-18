@@ -19,7 +19,7 @@ Price is bold (700); everything else is regular.
 |---|---|---|
 | Black | `--text` | what matters right now: home information, the chosen option, an active filter, the "N homes" count |
 | 80% | `--text-2` | secondary: idle actions (Filter with nothing set), supporting info |
-| 58% | `--text-3` | inactive or quiet: unchosen tab / List-or-Map, filter names, Clear |
+| 58% | `--text-3` | inactive or quiet: unchosen tab / List-or-Map, filter names, Clear, hashtags (black on hover) |
 
 Chosen = black, unchosen = 58%. **Filter** is an action, not a choice: 80% until a filter is set or the window is open, then black.
 

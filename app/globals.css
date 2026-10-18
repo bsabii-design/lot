@@ -215,8 +215,8 @@ button, [role="button"], summary { cursor: pointer; }
 
 .card-tags { margin-top: 1rem; font-size: var(--fs); line-height: var(--lh); }
 
-.tag { color: var(--text); margin-right: 0.5rem; }
-.tag:hover { text-decoration: underline; }
+.tag { color: var(--text-3); margin-right: 0.5rem; }
+.tag:hover { color: var(--text); }
 
 /* photo strip */
 .gbox {
