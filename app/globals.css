@@ -224,6 +224,36 @@ button, [role="button"], summary { cursor: pointer; }
   overflow: hidden;
 }
 
+/* French words in the descriptions: dotted underline, the definition on hover */
+.term {
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--text-3);
+  text-underline-offset: 0.2em;
+  cursor: help;
+}
+.term:hover { text-decoration-color: var(--text-read); }
+.term:focus-visible { outline: 1px solid var(--stroke-hover); outline-offset: 2px; border-radius: 2px; }
+.term-tip {
+  position: fixed;
+  z-index: 60;
+  display: block;
+  width: max-content;
+  max-width: 16rem;
+  padding: 0.5rem 0.75rem;
+  background: #fff;
+  color: var(--text-read);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+  letter-spacing: var(--tracking);
+  font-weight: 400;
+  text-align: left;
+  pointer-events: none;
+}
+.term-tip strong { display: block; margin-bottom: 0.25rem; font-weight: 400; font-style: italic; }
+
 .card-tags { margin-top: 1rem; font-size: var(--fs); line-height: var(--lh); }
 
 .tag { color: var(--text-3); margin-right: 0.5rem; }

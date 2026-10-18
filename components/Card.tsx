@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Gallery from "./Gallery";
+import Glossed from "./Glossed";
 import SaveButton from "./SaveButton";
 import { archived, placeLine, price } from "@/lib/format";
 import { RETURN_KEY, cn } from "@/lib/cn";
@@ -51,7 +52,7 @@ export default function Card({ p, first, onTag }: Props) {
         </div>
         <SaveButton id={p.id} />
       </div>
-      {p.short_description && <p className="card-desc">{p.short_description}</p>}
+      {p.short_description && <p className="card-desc"><Glossed text={p.short_description} /></p>}
       <p className="card-tags">
         {tag("type", p.property_type)}
         {tag("condition", p.condition)}

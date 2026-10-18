@@ -3,6 +3,7 @@ import BackLink from "./BackLink";
 import DetailGallery from "./DetailGallery";
 import SaveButton from "./SaveButton";
 import Ago from "./Ago";
+import Glossed from "./Glossed";
 import Icon from "./Icon";
 import MiniMapLazy from "./MiniMapLazy";
 import { archived, placeLine, price } from "@/lib/format";
@@ -49,7 +50,7 @@ export default function HomeDetail({ p }: { p: Property }) {
         <br />
         <span className="sub">{placeLine(p)}</span>
       </div>
-      {p.short_description && <p className="desc">{p.short_description}</p>}
+      {p.short_description && <p className="desc"><Glossed text={p.short_description} focusable /></p>}
       <dl className="datalist">
         {rows.filter(([, v]) => v != null && v !== "").map(([k, v]) => (
           <div key={k}><dt>{k}</dt><dd>{v}</dd></div>
