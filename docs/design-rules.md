@@ -101,4 +101,4 @@ Shown only when filters are active (in the list and on the map alike), black, wi
 
 ## Filter window options
 
-Row labels (Type, Price …) are black. Every option is text in grey brackets, `(Stone house)`; the chosen one is black *italic*. No border, no fill. There is no "Custom" range: price and size are picked from the presets only. Tags (`#village house`) stay grey text; on hover they turn black *italic*, like a chosen option.
+Row labels (Type, Price …) are black. Every option is text in grey brackets, `(Stone house)`; the chosen one is black *italic*. No border, no fill. There is no "Custom" range: price and size are picked from the presets only. Tags (`#village house`) stay grey text and turn black on hover (no italic).
