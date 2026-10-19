@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { BEDROOMS, PRICE_PRESETS, SIZE_PRESETS, toggle, type SetKey } from "@/lib/filters";
 import { regionLabel } from "@/lib/regions";
 import { cn } from "@/lib/cn";
@@ -42,18 +41,13 @@ function SetRow({ label, entries, selected, onToggle }: {
   );
 }
 
-/* quick ranges on one tap (several can be picked); "Custom" opens exact from–to fields */
-function RangeRow({ label, presets, range, unit, step, onPreset, onType }: {
+/* quick ranges on one tap (several can be picked) */
+function RangeRow({ label, presets, range, onPreset }: {
   label: string;
   presets: [string, string][];
   range: Range;
-  unit: string;
-  step: number;
   onPreset: (key: string) => void;
-  onType: (field: "min" | "max", value: string) => void;
 }) {
-  const [custom, setCustom] = useState(false);
-  const show = custom || range.min !== "" || range.max !== "";
   return (
     <div className="frow">
       <span className="flabel">{label}</span>
@@ -62,16 +56,6 @@ function RangeRow({ label, presets, range, unit, step, onPreset, onType }: {
           <Chip key={key} label={text} on={range.presets.includes(key)} onClick={() => onPreset(key)} />
         ))}
       </div>
-      {show && (
-        <div className="range">
-          <input type="number" inputMode="numeric" min={0} step={step} placeholder={`from, ${unit}`} aria-label={`${label} from`}
-            value={range.min} autoFocus={custom} onChange={(e) => onType("min", e.target.value)} />
-          <span>&ndash;</span>
-          <input type="number" inputMode="numeric" min={0} step={step} placeholder={`to, ${unit}`} aria-label={`${label} to`}
-            value={range.max} onChange={(e) => onType("max", e.target.value)} />
-        </div>
-      )}
-      <button className="customlink bk" onClick={() => setCustom((v) => !v)}>Custom</button>
     </div>
   );
 }
@@ -83,8 +67,6 @@ export default function FilterWindow({ filters, options, count, onChange, onClea
   const pairs = (list: string[]): [string, string][] => list.map((v) => [v, v]);
   const preset = (rk: "price" | "size") => (key: string) =>
     onChange({ ...filters, [rk]: { presets: toggle(filters[rk].presets, key), min: "", max: "" } });
-  const type = (rk: "price" | "size") => (field: "min" | "max", value: string) =>
-    onChange({ ...filters, [rk]: { ...filters[rk], [field]: value.trim(), presets: [] } });
 
   return (
     <aside className="filterwin" id="filter-window">
@@ -92,10 +74,10 @@ export default function FilterWindow({ filters, options, count, onChange, onClea
       <SetRow label="Type" entries={pairs(options.types)} selected={filters.types} onToggle={setRow("types")} />
       <SetRow label="Condition" entries={pairs(options.conditions)} selected={filters.conditions} onToggle={setRow("conditions")} />
       <SetRow label="Bedrooms" entries={BEDROOMS} selected={filters.bedrooms} onToggle={setRow("bedrooms")} />
-      <RangeRow label="Price" presets={PRICE_PRESETS.map(([k, l]) => [k, l])} range={filters.price} unit="€" step={5000}
-        onPreset={preset("price")} onType={type("price")} />
-      <RangeRow label="Size" presets={SIZE_PRESETS.map(([k, l]) => [k, l])} range={filters.size} unit="m²" step={10}
-        onPreset={preset("size")} onType={type("size")} />
+      <RangeRow label="Price" presets={PRICE_PRESETS.map(([k, l]) => [k, l])} range={filters.price}
+        onPreset={preset("price")} />
+      <RangeRow label="Size" presets={SIZE_PRESETS.map(([k, l]) => [k, l])} range={filters.size}
+        onPreset={preset("size")} />
       <SetRow label="Region" entries={options.regions.map((v): [string, string] => [v, regionLabel(v)]).sort((a, b) => a[1].localeCompare(b[1]))} selected={filters.regions} onToggle={setRow("regions")} />
       <SetRow label="Setting" entries={pairs(options.settings)} selected={filters.settings} onToggle={setRow("settings")} />
       </div>

@@ -42,10 +42,10 @@ All heights are multiples of 4px and come from tokens in `styles.css` (`--h-row`
 | Component | Height | Side padding | Text |
 |---|---|---|---|
 | Text row (nav tab, Back, active-filter list line) | 20px (`--h-row`) | 0 | interface |
-| Chip (filter option, mobile filter pill, photo counter) | 24px (`--h-chip`) | 8px | interface |
+| Chip (filter option, mobile filter pill, photo counter) | 24px (`--h-chip`) | filter option: 0 (text in brackets); others 8px | interface |
 | Map bubble (price; merged = round, count) | 24px (`--h-chip`) | 8px (round: 4px, min width 24px) | interface |
 | Black button (View listing in the header; **Show N homes** is the small one, 28px) | 32px (`--h-btn`) | 12px | content (small: interface) |
-| Bracket button `.bk` (Save, Clear filters, Browse all homes, Close, Clear all, Custom, Clear) | 32px hit area (28px small, 20px row in the filter list) | 0 | content for actions on a home and empty states, interface otherwise |
+| Bracket button `.bk` (Save, Clear filters, Browse all homes, Close, Clear all, Clear) | 32px hit area (28px small, 20px row in the filter list) | 0 | content for actions on a home and empty states, interface otherwise |
 | Dock (List / Map / Filter) | 32px (`--h-btn`) | 16px | interface |
 | Input (price / size range) | 32px (`--h-btn`) | 8px | interface |
 | Primary CTA, full width (View listing at the bottom of a home) | 40px (`--h-cta`) | centred | content |
@@ -60,12 +60,12 @@ Two kinds only, plus chips: one **black pill** for the main action of a screen, 
 | Role | Look | Where |
 |---|---|---|
 | **Main action** (`.btn`) | black pill, white text; one per screen | View listing (top of a home page and full width at the bottom), Show N homes in the filter window (small) |
-| **Quiet action** (`.bk`) | the label in brackets: `(Save)`. No fill, no line. Grey 58% at rest, black on hover | Save, Close (fullscreen photo), Clear all, Custom, Clear |
+| **Quiet action** (`.bk`) | the label in brackets: `(Save)`. No fill, no line. Grey 58% at rest, black on hover | Save, Close (fullscreen photo), Clear all, Clear |
 | **Quiet action, black** (`.bk.on`) | the same brackets in black at rest | a chosen state — **(Saved)** — and the only action on an empty screen: (Browse all homes), (Clear filters) |
 | **Chip** | 1px outline pill; chosen = black fill, white text | the filter window |
 | **Map bubble** | black pill with the price in k; open = white. On a home's own page the place is a plain 12px black dot, no price | the map |
 
-Brackets are drawn by CSS (`::before` / `::after`) with an empty text alternative, so screen readers read just the label, and the hit area stays 32px high. The state of Save is carried by the colour (grey → black) and by the count in the Saved tab, written like the one on Filter: "Saved (2)". The grey tint pill is gone: it did not read as a button and Saved was hard to tell from Save. Back keeps its arrow (it shows a direction).
+Brackets are drawn by CSS (`::before` / `::after`) with an empty text alternative, so screen readers read just the label, and the hit area stays 32px high. The state of Save is carried by the colour and the type (grey roman → black *italic*, `.bk.saved`) and by the count in the Saved tab, written like the one on Filter: "Saved (2)". The grey tint pill is gone: it did not read as a button and Saved was hard to tell from Save. Back keeps its arrow (it shows a direction).
 
 Pills are always fully rounded (radius 999). No shadows. Map zoom buttons (+ / −) are one white capsule with the hairline, 28px squares, top-right of the minimap.
 
@@ -98,3 +98,7 @@ Words from `data/glossary.json` (20 entries today) are marked in descriptions wi
 ## 10. The "N homes" count
 
 Shown only when filters are active (in the list and on the map alike), black, with the chosen filters and (Clear) in the bottom-left list. With no filters there is no count: on the map the cluster numbers already add up to the total, in the list the feed itself is the total.
+
+## Filter window options
+
+Row labels (Type, Price …) are black. Every option is text in grey brackets, `(Stone house)`; the chosen one is black *italic*. No border, no fill. There is no "Custom" range: price and size are picked from the presets only. Tags (`#village house`) stay plain grey text.

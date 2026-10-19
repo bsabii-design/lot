@@ -7,7 +7,7 @@ export default function SaveButton({ id }: { id: string }) {
   const on = useFavs().includes(id);
   return (
     <button
-      className={cn("bk content", on && "on")}
+      className={cn("bk content", on && "on saved")}
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();

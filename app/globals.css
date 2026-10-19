@@ -397,6 +397,7 @@ button, [role="button"], summary { cursor: pointer; }
 .bk.on { color: var(--text); }
 .bk.content { font-size: var(--fs); }
 .bk.sm { height: 1.75rem; }
+.bk.saved { font-style: italic; }
 
 .icon {
   display: block;
@@ -529,58 +530,28 @@ button, [role="button"], summary { cursor: pointer; }
   display: block;
   font-size: var(--fs-sm);
   line-height: var(--lh-sm);
-  color: var(--text-2);
+  color: var(--text);
   margin-bottom: 0.25rem;
 }
 
-.chips { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 0 0.5rem; }
 
 .chipopt {
   background: none;
-  border: 1px solid var(--stroke);
-  border-radius: 62.4375rem;
-  box-sizing: border-box;
+  border: 0;
   display: inline-flex;
   align-items: center;
   height: var(--h-chip);
-  padding: 0 0.5rem;
+  padding: 0;
   color: var(--text-3);
   font-size: var(--fs-sm);
   line-height: 1;
 }
-.chipopt:hover { color: var(--text); border-color: var(--stroke-hover); }
-.chipopt.on { background: var(--text); border-color: var(--text); color: var(--bg); }
-
-.range { display: flex; align-items: center; gap: 0.5rem; color: var(--text-3); margin-top: 0.5rem; }
-
-/* sits on the label line, right-aligned, so it costs no extra row */
-.customlink {
-  position: absolute;
-  top: 0.25rem;
-  right: 0;
-  height: auto;
-  line-height: var(--lh-sm);
-}
-
-.range input {
-  width: 100%;
-  min-width: 0;
-  background: none;
-  color: var(--text);
-  border: 1px solid var(--stroke);
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  height: var(--h-btn);
-  padding: 0 0.5rem;
-  font: inherit;
-  font-size: var(--fs-sm);
-  line-height: var(--lh-sm);
-  -moz-appearance: textfield;
-}
-.range input::-webkit-outer-spin-button,
-.range input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.range input::placeholder { color: var(--text-3); }
-.range input:focus { outline: none; border-color: var(--stroke-hover); }
+/* every option is bracketed; the chosen one turns black italic */
+.chipopt::before { content: "("; content: "(" / ""; }
+.chipopt::after { content: ")"; content: ")" / ""; }
+.chipopt:hover { color: var(--text); }
+.chipopt.on { color: var(--text); font-style: italic; }
 
 /* ---------- a home's page ---------- */
 
