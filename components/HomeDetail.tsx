@@ -13,7 +13,7 @@ const STATUS = { available: "Available", under_offer: "Under offer", sold: "Sold
 
 function ViewListing({ url }: { url: string }) {
   return (
-    <a className="btn visit" href={url} target="_blank" rel="noopener">
+    <a className="btn" href={url} target="_blank" rel="noopener">
       View listing{" "}
       <Icon name="arrow-up-right" className="arr" />
     </a>

@@ -107,6 +107,7 @@ button, [role="button"], summary { cursor: pointer; }
 }
 
 .nav button { color: var(--text-3); text-align: left; }
+.nav .n { margin-left: 0.25rem; color: var(--text); }
 .nav button:hover,
 .nav button.active { color: var(--text); }
 
@@ -176,6 +177,7 @@ button, [role="button"], summary { cursor: pointer; }
 .filterbar .chip,
 .filterbar .stat,
 .filterbar .clear { display: flex; align-items: center; height: var(--h-row); }
+.filterbar .clear { padding: 0; }
 .filterbar .chip { color: var(--text); text-align: left; }
 .filterbar .chip .k { color: var(--text-3); margin-right: 0.25rem; }
 /* the remove mark is an icon of the set (12px), not a text glyph */
@@ -183,8 +185,7 @@ button, [role="button"], summary { cursor: pointer; }
 .filterbar .chip:hover .x { color: var(--text); }
 .filterbar .chip:hover { color: var(--text-2); }
 .filterbar .stat { color: var(--text); }
-.filterbar .clear { color: var(--text-3); }
-.filterbar .clear:hover { color: var(--text); }
+
 
 /* ---------- feed ---------- */
 
@@ -209,7 +210,7 @@ button, [role="button"], summary { cursor: pointer; }
   color: var(--text-read);
 }
 .card-head .where { color: var(--text-2); }
-.card-head .btn { flex-shrink: 0; }
+.card-head .bk { flex-shrink: 0; }
 
 .price { font-weight: 700; }
 .status-note,
@@ -358,43 +359,45 @@ button, [role="button"], summary { cursor: pointer; }
 }
 .empty .title { color: var(--text); }
 .empty .sub { color: var(--text-2); max-width: 20rem; }
-.empty .btn { margin-top: 1rem; }
+.empty .bk { margin-top: 0.75rem; }
 
 /* ---------- buttons ---------- */
 
+/* the one filled button: the main action of a screen (black pill) */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  color: var(--text-2);
-  border: 1px solid transparent;
-  background: color-mix(in srgb, var(--text) 6%, var(--bg));
+  color: var(--bg);
+  border: 1px solid var(--text);
+  background: var(--text);
   border-radius: 62.4375rem;
   box-sizing: border-box;
   height: var(--h-btn);
   padding: 0 0.75rem;
 }
-.btn:not(.visit):hover {
-  color: var(--text);
-  background: color-mix(in srgb, var(--text) 9%, var(--bg));
-}
-/* text button: no fill, just the words — the quietest action (Clear all) */
-.btn.ghost { background: none; padding: 0; }
-.btn.ghost:hover { background: none; }
-
-/* small button: for the actions inside floating windows, which are set in interface size */
+.btn:hover { opacity: 0.85; }
+/* small: the action inside a floating window, set in interface size */
 .btn.sm { height: 1.75rem; font-size: var(--fs-sm); line-height: 1; }
 
-.btn.fav.on {
-  color: var(--text);
-  background: color-mix(in srgb, var(--text) 10%, var(--bg));
+/* the quiet button: its label in brackets, no fill, no line. Grey at rest, black on hover.
+   .on = black at rest: a chosen state (Saved) or the only action on a screen (Browse all homes). */
+.bk {
+  display: inline-flex;
+  align-items: center;
+  height: var(--h-btn);
+  padding: 0;
+  color: var(--text-3);
+  font-size: var(--fs-sm);
+  line-height: 1;
+  white-space: nowrap;
 }
-.btn.visit {
-  background: var(--text);
-  border-color: var(--text);
-  color: var(--bg);
-}
-.btn.visit:hover { opacity: 0.85; }
+.bk::before { content: "("; content: "(" / ""; }
+.bk::after { content: ")"; content: ")" / ""; }
+.bk:hover,
+.bk.on { color: var(--text); }
+.bk.content { font-size: var(--fs); }
+.bk.sm { height: 1.75rem; }
 
 .icon {
   display: block;
@@ -556,11 +559,9 @@ button, [role="button"], summary { cursor: pointer; }
   position: absolute;
   top: 0.25rem;
   right: 0;
-  color: var(--text-3);
-  font-size: var(--fs-sm);
+  height: auto;
   line-height: var(--lh-sm);
 }
-.customlink:hover { color: var(--text); }
 
 .range input {
   width: 100%;
@@ -591,7 +592,7 @@ button, [role="button"], summary { cursor: pointer; }
 }
 
 .property .head { margin-top: 1rem; }
-.property .head .actions { float: right; display: flex; gap: 0.5rem; }
+.property .head .actions { float: right; display: flex; align-items: center; gap: 1rem; }
 .property .head .sub { color: var(--text-2); }
 
 .property .desc { margin-top: 1rem; color: var(--text-read); }
@@ -675,13 +676,10 @@ button, [role="button"], summary { cursor: pointer; }
 
 .lightbox .lclose {
   position: absolute;
-  top: 1rem;
+  top: 0.75rem;
   right: 1.25rem;
   z-index: 3;
   color: var(--text-2);
-  font-size: 1.375rem;
-  line-height: 1;
-  padding: 0.5rem;
 }
 .lightbox .lclose:hover { color: var(--text); }
 
@@ -713,8 +711,7 @@ button, [role="button"], summary { cursor: pointer; }
     top: 6.5rem; bottom: auto; left: 0.75rem; right: 0.75rem; max-width: none;
     flex-direction: row; flex-wrap: wrap; gap: 0.5rem;
   }
-  .filterbar .chip,
-  .filterbar .clear {
+  .filterbar .chip {
     background: var(--bg); border: 1px solid var(--stroke);
     border-radius: 62.4375rem; height: var(--h-chip); padding: 0 0.5rem; color: var(--text-2);
   }

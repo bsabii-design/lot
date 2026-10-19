@@ -108,7 +108,9 @@ export default function Browse({ homes }: { homes: Property[] }) {
     <div className="browse" data-view={view}>
       <nav className="nav">
         {TABS.map(([key, label]) => (
-          <button key={key} className={cn(tab === key && "active")} onClick={() => pickTab(key)}>{label}</button>
+          <button key={key} className={cn(tab === key && "active")} onClick={() => pickTab(key)}>
+            {label}{key === "favourites" && favs.length > 0 && <span className="n">{favs.length}</span>}
+          </button>
         ))}
       </nav>
 
@@ -121,19 +123,19 @@ export default function Browse({ homes }: { homes: Property[] }) {
               {facets.length ? (
                 <>
                   <p className="title">No {where} match these filters</p>
-                  <button className="btn" onClick={clearFilters}>Clear filters</button>
+                  <button className="bk content on" onClick={clearFilters}>Clear filters</button>
                 </>
               ) : tab === "favourites" ? (
                 <>
                   <p className="title">No saved homes yet</p>
                   <p className="sub">Tap Save on a home and it will wait for you here.</p>
-                  <button className="btn" onClick={() => pickTab("all")}>Browse all homes</button>
+                  <button className="bk content on" onClick={() => pickTab("all")}>Browse all homes</button>
                 </>
               ) : tab === "archive" ? (
                 <>
                   <p className="title">The archive is empty</p>
                   <p className="sub">Homes that are sold or no longer available will move here.</p>
-                  <button className="btn" onClick={() => pickTab("all")}>Browse all homes</button>
+                  <button className="bk content on" onClick={() => pickTab("all")}>Browse all homes</button>
                 </>
               ) : (
                 <p className="title">No homes yet</p>
@@ -153,7 +155,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
             </button>
           ))}
           <span className="stat">{list.length} {list.length === 1 ? "home" : "homes"}</span>
-          {facets.length > 0 && <button className="clear" onClick={clearFilters}>Clear</button>}
+          {facets.length > 0 && <button className="clear bk" onClick={clearFilters}>Clear</button>}
         </div>
       )}
 

@@ -44,8 +44,8 @@ All heights are multiples of 4px and come from tokens in `styles.css` (`--h-row`
 | Text row (nav tab, Back, active-filter list line) | 20px (`--h-row`) | 0 | interface |
 | Chip (filter option, mobile filter pill, photo counter) | 24px (`--h-chip`) | 8px | interface |
 | Map bubble (price; merged = round, count) | 24px (`--h-chip`) | 8px (round: 4px, min width 24px) | interface |
-| Button, secondary or primary (Save, View listing in the header, Clear filters, Browse all homes) | 32px (`--h-btn`) | 12px | content |
-| Small button (`.btn.sm`, actions inside floating windows: Show N homes; the text button Clear all has the same 28px row height, no padding) | 28px | 12px | interface |
+| Black button (View listing in the header; **Show N homes** is the small one, 28px) | 32px (`--h-btn`) | 12px | content (small: interface) |
+| Bracket button `.bk` (Save, Clear filters, Browse all homes, Close, Clear all, Custom, Clear) | 32px hit area (28px small, 20px row in the filter list) | 0 | content for actions on a home and empty states, interface otherwise |
 | Dock (List / Map / Filter) | 32px (`--h-btn`) | 16px | interface |
 | Input (price / size range) | 32px (`--h-btn`) | 8px | interface |
 | Primary CTA, full width (View listing at the bottom of a home) | 40px (`--h-cta`) | centred | content |
@@ -55,17 +55,21 @@ The filter window works on a **draft**: picks change only the number on the butt
 
 ## 4. Buttons
 
+Two kinds only, plus chips: one **black pill** for the main action of a screen, and **brackets** for everything else.
+
 | Role | Look | Where |
 |---|---|---|
-| **Primary CTA** | black pill, white text; one per screen | View listing (full width at the bottom of the home page) |
-| **Secondary** | grey tint pill (6% black), 68% text; darker on hover / when on | Save / Saved, Clear filters, Browse all homes |
-| **Tertiary / text button** (`.btn.ghost`) | plain text, no fill, no padding; 68% text, black on hover | Clear all in the filter window, Clear, Custom, Back |
+| **Main action** (`.btn`) | black pill, white text; one per screen | View listing (top of a home page and full width at the bottom), Show N homes in the filter window (small) |
+| **Quiet action** (`.bk`) | the label in brackets: `(Save)`. No fill, no line. Grey 58% at rest, black on hover | Save, Close (fullscreen photo), Clear all, Custom, Clear |
+| **Quiet action, black** (`.bk.on`) | the same brackets in black at rest | a chosen state — **(Saved)** — and the only action on an empty screen: (Browse all homes), (Clear filters) |
 | **Chip** | 1px outline pill; chosen = black fill, white text | the filter window |
 | **Map bubble** | black pill with the price in k; open = white. On a home's own page the place is a plain 12px black dot, no price | the map |
 
+Brackets are drawn by CSS (`::before` / `::after`) with an empty text alternative, so screen readers read just the label, and the hit area stays 32px high. The state of Save is carried by the colour (grey → black) and by the count next to the Saved tab ("Saved 2"). The grey tint pill is gone: it did not read as a button and Saved was hard to tell from Save. Back keeps its arrow (it shows a direction).
+
 Pills are always fully rounded (radius 999). No shadows. Map zoom buttons (+ / −) are one white capsule with the hairline, 28px squares, top-right of the minimap.
 
-**One stroke.** The only line in the visual language is a 1px hairline, `--stroke` (10% ink; 30% on hover, `--stroke-hover`). It marks two things: *containers that float* (dock, filter window, map preview, minimap) and *controls you can switch* (chips, inputs). Secondary buttons are a grey tint with no line; primary buttons, chosen chips and map bubbles are solid black with no line. List dividers are the even quieter `--border` (8%).
+**One stroke.** The only line in the visual language is a 1px hairline, `--stroke` (10% ink; 30% on hover, `--stroke-hover`). It marks two things: *containers that float* (dock, filter window, map preview, minimap) and *controls you can switch* (chips, inputs). Brackets have no line; the black button, chosen chips and map bubbles are solid black with no line. List dividers are the even quieter `--border` (8%).
 Floating surfaces (dock, filter window, map preview) are **white everywhere**, on the map and on the list; the mobile "N homes" pill is white on the map and light grey on the list.
 
 ## 5. Spacing

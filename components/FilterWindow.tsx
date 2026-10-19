@@ -71,7 +71,7 @@ function RangeRow({ label, presets, range, unit, step, onPreset, onType }: {
             value={range.max} onChange={(e) => onType("max", e.target.value)} />
         </div>
       )}
-      <button className="customlink" onClick={() => setCustom((v) => !v)}>Custom</button>
+      <button className="customlink bk" onClick={() => setCustom((v) => !v)}>Custom</button>
     </div>
   );
 }
@@ -100,8 +100,8 @@ export default function FilterWindow({ filters, options, count, onChange, onClea
       <SetRow label="Setting" entries={pairs(options.settings)} selected={filters.settings} onToggle={setRow("settings")} />
       </div>
       <div className="ffoot">
-        <button className="btn sm ghost" onClick={onClear}>Clear all</button>
-        <button className="btn sm visit" disabled={count === 0} onClick={onApply}>
+        <button className="bk sm" onClick={onClear}>Clear all</button>
+        <button className="btn sm" disabled={count === 0} onClick={onApply}>
           {count === 0 ? "No homes match" : `Show ${count} ${count === 1 ? "home" : "homes"}`}
         </button>
       </div>
