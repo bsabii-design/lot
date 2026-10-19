@@ -259,6 +259,9 @@ button, [role="button"], summary { cursor: pointer; }
 
 .tag { color: var(--text-3); margin-right: 0.5rem; }
 .tag:hover { color: var(--text); font-style: italic; }
+/* the label reserves its own italic width, so hover / choosing never moves its neighbours */
+.lab { display: inline-flex; flex-direction: column; }
+.lab::after { content: attr(data-t); font-style: italic; height: 0; overflow: hidden; visibility: hidden; }
 
 /* photo strip */
 .gbox {

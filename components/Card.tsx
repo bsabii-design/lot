@@ -27,7 +27,7 @@ export default function Card({ p, first, onTag }: Props) {
         onTag(kind, value);
       }}
     >
-      #{value.toLowerCase()}
+      <span className="lab" data-t={`#${value.toLowerCase()}`}>#{value.toLowerCase()}</span>
     </button>
   );
 

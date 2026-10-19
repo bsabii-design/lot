@@ -64,8 +64,8 @@ export default function HomeDetail({ p }: { p: Property }) {
       )}
       <p className="ptags">
         <span>
-          <Link className="tag" href={`/?t=${encodeURIComponent(p.property_type)}`}>#{p.property_type.toLowerCase()}</Link>
-          <Link className="tag" href={`/?c=${encodeURIComponent(p.condition)}`}>#{p.condition.toLowerCase()}</Link>
+          <Link className="tag" href={`/?t=${encodeURIComponent(p.property_type)}`}><span className="lab" data-t={`#${p.property_type.toLowerCase()}`}>#{p.property_type.toLowerCase()}</span></Link>
+          <Link className="tag" href={`/?c=${encodeURIComponent(p.condition)}`}><span className="lab" data-t={`#${p.condition.toLowerCase()}`}>#{p.condition.toLowerCase()}</span></Link>
         </span>
         <Ago date={p.date_added} />
       </p>

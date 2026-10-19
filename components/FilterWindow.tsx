@@ -19,7 +19,7 @@ interface Props {
 
 function Chip({ label, on, onClick }: { label: string; on: boolean; onClick: () => void }) {
   return (
-    <button className={cn("chipopt", on && "on")} onClick={onClick}>{label}</button>
+    <button className={cn("chipopt", on && "on")} onClick={onClick}><span className="lab" data-t={label}>{label}</span></button>
   );
 }
 
