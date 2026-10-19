@@ -109,7 +109,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
       <nav className="nav">
         {TABS.map(([key, label]) => (
           <button key={key} className={cn(tab === key && "active")} onClick={() => pickTab(key)}>
-            {label}{key === "favourites" && favs.length > 0 ? ` (${favs.length})` : ""}
+            {label}{key === "favourites" && favs.length > 0 && <>{" "}<i>({favs.length})</i></>}
           </button>
         ))}
       </nav>
