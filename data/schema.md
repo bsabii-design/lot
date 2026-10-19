@@ -31,3 +31,7 @@ Each entry in properties.json:
 | date_added | string | YYYY-MM-DD |
 | last_checked | string | YYYY-MM-DD |
 | original_listing_price | number\|null | kept when archived |
+
+## data/classification.json
+
+The new filter attributes (property type, settlement, landscape, features, habitability, renovation level), keyed by property id, kept separate from properties.json. A missing key means unknown. See docs/filter-taxonomy.md.

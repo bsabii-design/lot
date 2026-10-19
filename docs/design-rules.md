@@ -101,4 +101,4 @@ Shown only when filters are active (in the list and on the map alike), black, wi
 
 ## Filter window options
 
-Row labels (Type, Price …) are black. Every option is text in grey brackets, `(Stone house)`; the chosen one is black *italic*. No border, no fill. There is no "Custom" range: price and size are picked from the presets only. Tags (`#village house`) stay grey text and turn black on hover (no italic).
+Row labels (Price, Location …) are black; sub-labels inside More filters are grey. Every option is text in grey brackets, `(Stone house)`; the chosen one is black *italic*; an option with no homes behind it is dimmed (40%) and cannot be picked. No border, no fill. Typed Min–Max boxes use the one hairline. "More filters" is a plain row with a plus / minus at its right and the number of its active groups in italic. The full structure and rules are in `docs/filter-taxonomy.md`. Tags (`#village house`) stay grey text and turn black on hover (no italic).

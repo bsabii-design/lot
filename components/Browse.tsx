@@ -6,7 +6,7 @@ import Card from "./Card";
 import Icon from "./Icon";
 import FilterWindow from "./FilterWindow";
 import { useFavs } from "@/lib/favs";
-import { activeFacets, emptyFilters, filterOptions, toggle, visible } from "@/lib/filters";
+import { activeFacets, available, emptyFilters, hasInvalidRange, normalizeFilters, toggle, visible, withoutInvalid } from "@/lib/filters";
 import { RETURN_KEY, STATE_KEY, cn } from "@/lib/cn";
 import type { Filters, Property, Tab, View } from "@/lib/types";
 
@@ -27,10 +27,10 @@ export default function Browse({ homes }: { homes: Property[] }) {
   const [open, setOpen] = useState(false);
   const favs = useFavs();
 
-  const options = useMemo(() => filterOptions(homes), [homes]);
+  const avail = useMemo(() => available(homes), [homes]);
   const list = useMemo(() => visible(homes, tab, favs, filters), [homes, tab, favs, filters]);
   const facets = useMemo(() => activeFacets(filters), [filters]);
-  const draftCount = useMemo(() => visible(homes, tab, favs, draft).length, [homes, tab, favs, draft]);
+  const draftCount = useMemo(() => visible(homes, tab, favs, withoutInvalid(draft)).length, [homes, tab, favs, draft]);
 
   /* keep the browsing state when the visitor opens a home and comes back */
   const latest = useRef<Saved>({ tab, view, y: 0, filters });
@@ -51,7 +51,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
         if (s) {
           setTab(s.tab || "all");
           setView(s.view || "list");
-          setFilters({ ...emptyFilters(), ...s.filters });
+          setFilters(normalizeFilters(s.filters));
           y = s.y || 0;
         }
       } catch {}
@@ -60,8 +60,8 @@ export default function Browse({ homes }: { homes: Property[] }) {
       if (t) setTab(t);
       setFilters((f) => ({
         ...f,
-        types: q.get("t") ? [q.get("t")!] : f.types,
-        conditions: q.get("c") ? [q.get("c")!] : f.conditions,
+        tagTypes: q.get("t") ? [q.get("t")!] : f.tagTypes,
+        tagConditions: q.get("c") ? [q.get("c")!] : f.tagConditions,
       }));
     }
     if (y) requestAnimationFrame(() => window.scrollTo(0, y));
@@ -99,7 +99,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
   };
   const clearFilters = () => setFilters(emptyFilters());
   const tagFilter = (kind: "type" | "condition", value: string) =>
-    setFilters((f) => kind === "type" ? { ...f, types: toggle(f.types, value) } : { ...f, conditions: toggle(f.conditions, value) });
+    setFilters((f) => kind === "type" ? { ...f, tagTypes: toggle(f.tagTypes, value) } : { ...f, tagConditions: toggle(f.tagConditions, value) });
 
   const empty = list.length === 0;
   const where = tab === "favourites" ? "saved homes" : tab === "archive" ? "archived homes" : "homes";
@@ -162,8 +162,9 @@ export default function Browse({ homes }: { homes: Property[] }) {
       {open && (
         <FilterWindow
           filters={draft}
-          options={options}
+          avail={avail}
           count={draftCount}
+          invalid={hasInvalidRange(draft)}
           onChange={setDraft}
           onClear={() => setDraft(emptyFilters())}
           onApply={() => { setFilters(draft); setOpen(false); }}

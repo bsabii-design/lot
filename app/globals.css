@@ -557,6 +557,51 @@ button, [role="button"], summary { cursor: pointer; }
 .chipopt:hover { color: var(--text); }
 .chipopt.on { color: var(--text); font-style: italic; }
 
+.chipopt:disabled { opacity: 0.4; cursor: default; }
+.chipopt:disabled:hover { color: var(--text-3); }
+
+/* typed min–max */
+.range { display: flex; align-items: center; gap: 0.5rem; color: var(--text-3); margin-top: 0.25rem; }
+.range input {
+  width: 100%;
+  min-width: 0;
+  background: none;
+  color: var(--text);
+  border: 1px solid var(--stroke);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  height: var(--h-btn);
+  padding: 0 0.5rem;
+  font: inherit;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+}
+.range input::placeholder { color: var(--text-3); }
+.range input:focus { outline: none; border-color: var(--stroke-hover); }
+.range input[aria-invalid="true"] { border-color: var(--text); }
+.rangenote { color: var(--text-2); font-size: var(--fs-sm); line-height: var(--lh-sm); margin-top: 0.25rem; }
+
+/* More filters: one collapsible block under the five main groups */
+.moretoggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: var(--h-btn);
+  margin-top: 0.5rem;
+  padding: 0;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+  text-align: left;
+}
+.moretoggle:hover { color: var(--text-2); }
+.msec { padding: 0.25rem 0 0.5rem; }
+.msec + .msec { border-top: 1px solid var(--border); padding-top: 0.5rem; }
+.mhead { font-size: var(--fs-sm); line-height: var(--lh-sm); font-weight: 400; color: var(--text); margin-bottom: 0.25rem; }
+.flabel.sub { color: var(--text-3); }
+
 /* ---------- a home's page ---------- */
 
 .property {

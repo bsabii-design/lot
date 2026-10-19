@@ -1,0 +1,364 @@
+{
+ "_about": "New filter attributes, keyed by property id. A missing key means UNKNOWN (never false). basis: legacy = moved label-for-label from the old fields, not reviewed; stated / derived = checked against the listing (evidence required). See docs/filter-taxonomy.md.",
+ "properties": {
+  "pepieux-stone-house-1962": {
+   "features": {
+    "value": [
+     "historic",
+     "original_features",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "le-vigeant-village-house-a37509": {
+   "features": {
+    "value": [
+     "garden",
+     "outbuildings",
+     "pool"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "merdrignac-stone-cottage-newton": {
+   "property_type": {
+    "value": "cottage",
+    "basis": "legacy"
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garden",
+     "stone",
+     "terrace"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "lacaze-timbered-house-60636342": {
+   "features": {
+    "value": [
+     "historic",
+     "original_features",
+     "views"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "champgeneteux-renovation-a44098": {
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "outbuildings",
+     "stone",
+     "views"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "pressignac-stone-cottage-a41100": {
+   "property_type": {
+    "value": "cottage",
+    "basis": "legacy"
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garden",
+     "outbuildings",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "la-chapelle-montbrandeix-stone-house-a29584": {
+   "features": {
+    "value": [
+     "garden",
+     "outbuildings",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "thollet-farmhouse-bvi72280": {
+   "property_type": {
+    "value": "farmhouse",
+    "basis": "legacy"
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garden",
+     "stone",
+     "terrace"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "saint-sebastien-cottage-a45393": {
+   "property_type": {
+    "value": "cottage",
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garden",
+     "original_features"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "locarn-country-house-a45191": {
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garage",
+     "terrace",
+     "views"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "saint-ouen-la-thene-house-a39000": {
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garden",
+     "outbuildings"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "saint-germain-de-confolens-house-a44033": {
+   "features": {
+    "value": [
+     "garden",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "exideuil-village-house-a44580": {
+   "features": {
+    "value": [
+     "garden",
+     "outbuildings"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "azillanet-stone-house-a44962": {
+   "features": {
+    "value": [
+     "stone",
+     "terrace",
+     "views"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "gourdon-stone-house-a43147": {
+   "features": {
+    "value": [
+     "fireplace",
+     "garden",
+     "historic",
+     "original_features",
+     "outbuildings",
+     "stone",
+     "terrace",
+     "views"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "gace-colombage-house-a39921": {
+   "settlement": {
+    "value": "town",
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garden",
+     "historic",
+     "original_features",
+     "terrace"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "la-roque-sur-ceze-village-house-a44763": {
+   "features": {
+    "value": [
+     "historic",
+     "stone",
+     "terrace",
+     "views"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "riberac-stone-house-bvi77914": {
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "fireplace",
+     "original_features",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "saint-sulpice-house-bvi80970": {
+   "features": {
+    "value": [
+     "fireplace",
+     "garden",
+     "original_features"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "chalais-stone-cottage-bvi86937": {
+   "property_type": {
+    "value": "cottage",
+    "basis": "legacy"
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "fireplace",
+     "garden",
+     "original_features",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "la-trimouille-house-bvi85550": {
+   "features": {
+    "value": [
+     "fireplace",
+     "garden",
+     "original_features",
+     "outbuildings"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "chateauponsac-stone-house-am5270": {
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garden",
+     "outbuildings",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "chamberet-stone-house-cc4941": {
+   "features": {
+    "value": [
+     "fireplace",
+     "garage",
+     "garden",
+     "original_features",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "valzergues-farmhouse-28262": {
+   "property_type": {
+    "value": "farmhouse",
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "garden",
+     "outbuildings",
+     "stone"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "lacourt-hamlet-house-32848": {
+   "landscape": {
+    "value": [
+     "mountains"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "terrace",
+     "views"
+    ],
+    "basis": "legacy"
+   }
+  },
+  "ginals-watermill-32445": {
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "legacy"
+   },
+   "features": {
+    "value": [
+     "historic",
+     "original_features"
+    ],
+    "basis": "legacy"
+   }
+  }
+ }
+}
