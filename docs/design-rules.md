@@ -65,7 +65,7 @@ Two kinds only, plus chips: one **black pill** for the main action of a screen, 
 | **Chip** | 1px outline pill; chosen = black fill, white text | the filter window |
 | **Map bubble** | black pill with the price in k; open = white. On a home's own page the place is a plain 12px black dot, no price | the map |
 
-Brackets are drawn by CSS (`::before` / `::after`) with an empty text alternative, so screen readers read just the label, and the hit area stays 32px high. The state of Save is carried by the colour (grey → black) and by the count next to the Saved tab ("Saved 2"). The grey tint pill is gone: it did not read as a button and Saved was hard to tell from Save. Back keeps its arrow (it shows a direction).
+Brackets are drawn by CSS (`::before` / `::after`) with an empty text alternative, so screen readers read just the label, and the hit area stays 32px high. The state of Save is carried by the colour (grey → black) and by the count in the Saved tab, written like the one on Filter: "Saved (2)". The grey tint pill is gone: it did not read as a button and Saved was hard to tell from Save. Back keeps its arrow (it shows a direction).
 
 Pills are always fully rounded (radius 999). No shadows. Map zoom buttons (+ / −) are one white capsule with the hairline, 28px squares, top-right of the minimap.
 

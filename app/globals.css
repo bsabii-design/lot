@@ -107,7 +107,6 @@ button, [role="button"], summary { cursor: pointer; }
 }
 
 .nav button { color: var(--text-3); text-align: left; }
-.nav .n { margin-left: 0.25rem; color: var(--text); }
 .nav button:hover,
 .nav button.active { color: var(--text); }
 
