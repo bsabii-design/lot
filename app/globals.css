@@ -109,6 +109,7 @@ button, [role="button"], summary { cursor: pointer; }
 .nav button { color: var(--text-3); text-align: left; }
 .nav button:hover,
 .nav button.active { color: var(--text); }
+.nav i { margin-left: 0.125rem; } /* italic "(" leans into the word */
 
 .back {
   position: fixed;
