@@ -147,7 +147,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
         </main>
       )}
 
-      {(facets.length > 0 || (view === "map" && !empty)) && (
+      {facets.length > 0 && (
         <div className="filterbar">
           {facets.map((f) => (
             <button key={f.name} className="chip" title={`Remove ${f.name.toLowerCase()}`} onClick={() => setFilters(f.off(filters))}>
