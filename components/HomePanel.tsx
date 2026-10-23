@@ -1,4 +1,4 @@
-import SaveButton from "./SaveButton";
+import { SaveBlock } from "./SaveButton";
 import Price from "./Price";
 import Ago from "./Ago";
 import Glossed from "./Glossed";
@@ -74,9 +74,10 @@ export default function HomePanel({ p }: { p: Property }) {
             {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
           </span>
           <br />
-          <SaveButton id={p.id} />
-          <br /><br />
-          <a className="cta" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
+          <div className="cg-ctas">
+            <a className="cta" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
+            <SaveBlock id={p.id} />
+          </div>
           <br />
           <div className="ui cg-foot">
             <span><CloseLink underline>Return to homes</CloseLink></span>

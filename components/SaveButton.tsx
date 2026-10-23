@@ -21,3 +21,21 @@ export default function SaveButton({ id }: { id: string }) {
     </>
   );
 }
+
+/** The same thing as a black block (panel of a home): "Save"; once saved it turns to an outlined "Saved". */
+export function SaveBlock({ id }: { id: string }) {
+  const on = useFavs().includes(id);
+  return (
+    <button
+      className={cn("cta save", on && "on")}
+      aria-pressed={on}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleFav(id);
+      }}
+    >
+      {on ? "Saved" : "Save"}
+    </button>
+  );
+}
