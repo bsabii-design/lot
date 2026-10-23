@@ -23,23 +23,19 @@ export default function Card({ p, first }: Props) {
     <article className={cn("cg-page", sold && "sold")}>
       <div className="cg">
         <Slideshow images={p.images} alt={p.title} priority={first} href={`/homes/${p.slug}`} />
-        <div className="cg-set" data-stack="true">
-          {/* left: what it costs and where it is */}
+        {/* the whole row under the photo is one target: the "See home..." link stretches over it (Save and the French-word
+            hints stay on top of it) */}
+        <div className="cg-set cg-row" data-stack="true">
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
-            <Link className="cg-open" href={`/homes/${p.slug}`} scroll={false}>
             {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} /></> : <Price value={p.price} />}
             {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
             {" "}{placeLine(p)}
-            </Link>
           </div>
-          {/* right: the story, which ends with the way into the home and opens it as a whole; Save is its own line */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
-            <Link className="cg-open" href={`/homes/${p.slug}`} scroll={false}>
-              <span className="caption">
-                {p.short_description && <><Glossed text={p.short_description} />{" "}</>}
-                (<span className="ul">See home...</span>)
-              </span>
-            </Link>
+            <span className="caption">
+              {p.short_description && <><Glossed text={p.short_description} />{" "}</>}
+              (<Link className="ul cg-stretch" href={`/homes/${p.slug}`} scroll={false}>See home...</Link>)
+            </span>
             <br />
             <SaveButton id={p.id} />
           </div>

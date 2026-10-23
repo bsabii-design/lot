@@ -192,9 +192,16 @@ html.has-panel { overflow: hidden; }
 
 .cg .datalist .posted { color: inherit; font-size: inherit; }
 
-/* the feed row and the middle of the photo open the home; the outer thirds of the photo turn it */
-.cg .cg-open { display: block; color: inherit; text-decoration: none; }
-.cg .cg-open:hover { color: var(--text-2); }
+/* the feed row is one target: the link at the end of the text stretches over the whole row; Save and the word hints sit above it */
+.cg-row { position: relative; cursor: pointer; }
+.cg-row > .cg-u { position: static; } /* so the stretched link covers the whole row, not one column */
+.cg-row .cg-stretch::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.cg-row .lk, .cg-row .term { position: relative; z-index: 2; cursor: pointer; }
+.cg-row .term { cursor: help; }
+.cg-row:hover .cg-u { color: var(--text-2); }
+.cg-row:hover .lk { color: inherit; }
+
+/* the middle of the photo opens the home too; its outer parts turn the photos */
 .ss.has-open { --iw: min(var(--slide-h) * var(--ar), 100%); } /* the picture's width: the middle 40% of it opens the home */
 .ss.has-open .ss-zone-l, .ss.has-open .ss-zone-r { width: calc(50% - var(--iw) * 0.2); }
 .ss-open { position: absolute; top: 0; bottom: 0; left: calc(50% - var(--iw) * 0.2); width: calc(var(--iw) * 0.4); z-index: 2; cursor: pointer; }
