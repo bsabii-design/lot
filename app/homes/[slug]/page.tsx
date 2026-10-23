@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import HomeDetail from "@/components/HomeDetail";
+import HomePanel from "@/components/HomePanel";
+import OverlayShell from "@/components/OverlayShell";
 import { getProperty, properties } from "@/lib/properties";
 import { placeLine, price } from "@/lib/format";
 
@@ -25,12 +26,16 @@ async function Home({ params }: Pick<PageProps<"/homes/[slug]">, "params">) {
   const { slug } = await params;
   const p = getProperty(slug);
   if (!p) notFound();
-  return <HomeDetail p={p} />;
+  return (
+    <OverlayShell modal={false} label={p.title}>
+      <HomePanel p={p} />
+    </OverlayShell>
+  );
 }
 
 export default function HomePage({ params }: PageProps<"/homes/[slug]">) {
   return (
-    <Suspense fallback={<main className="property" />}>
+    <Suspense fallback={null}>
       <Home params={params} />
     </Suspense>
   );

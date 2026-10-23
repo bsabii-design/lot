@@ -98,6 +98,15 @@ export default function Browse({ homes }: { homes: Property[] }) {
     try { history.replaceState(null, "", location.pathname + TAB_URL[t]); } catch {}
   };
   const clearFilters = () => setFilters(emptyFilters());
+  /* a tag clicked inside an opened home asks the feed (which stays mounted behind the panel) to filter */
+  useEffect(() => {
+    const onTag = (e: Event) => {
+      const { kind, value } = (e as CustomEvent<{ kind: "type" | "condition"; value: string }>).detail;
+      setFilters((f) => ({ ...f, tagTypes: kind === "type" ? [value] : f.tagTypes, tagConditions: kind === "condition" ? [value] : f.tagConditions }));
+    };
+    window.addEventListener("lot:tag", onTag);
+    return () => window.removeEventListener("lot:tag", onTag);
+  }, []);
   const tagFilter = (kind: "type" | "condition", value: string) =>
     setFilters((f) => kind === "type" ? { ...f, tagTypes: toggle(f.tagTypes, value) } : { ...f, tagConditions: toggle(f.tagConditions, value) });
 
@@ -142,7 +151,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
               )}
             </div>
           ) : (
-            list.map((p, i) => <Card key={p.id} p={p} first={i === 0} onTag={tagFilter} />)
+            list.map((p, i) => <Card key={p.id} p={p} number={String(homes.indexOf(p) + 1).padStart(2, "0")} first={i === 0} onTag={tagFilter} />)
           )}
         </main>
       )}
