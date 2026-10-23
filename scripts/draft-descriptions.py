@@ -25,28 +25,28 @@ def num(n):
 out = {}
 for p in props:
     parts = []
-    first = []
-    if p.get("size_m2"):
-        first.append(f"{num(p['size_m2'])} m²")
     beds, baths = p.get("bedrooms"), p.get("bathrooms")
     rooms = []
     if beds is not None:
         rooms.append(plural(beds, "bedroom"))
     if baths is not None:
         rooms.append(plural(baths, "bathroom"))
-    s = ""
-    if first and rooms:
-        s = f"{first[0]} with {' and '.join(rooms)}"
-    elif first:
-        s = first[0]
+    land = p.get("land_size_m2")
+    # a paragraph never starts with a figure: "The property measures 80 m², with 2 bedrooms and 2 bathrooms, on a plot of …"
+    if p.get("size_m2"):
+        s = f"The property measures {num(p['size_m2'])} m²"
+        if rooms:
+            s += f", with {' and '.join(rooms)}"
     elif rooms:
-        s = "With " + " and ".join(rooms)
+        s = f"The property has {' and '.join(rooms)}"
+    else:
+        s = ""
     if s:
-        if p.get("land_size_m2"):
-            s += f", on a plot of {num(p['land_size_m2'])} m²"
+        if land:
+            s += f", on a plot of {num(land)} m²"
         parts.append(s + ".")
-    elif p.get("land_size_m2"):
-        parts.append(f"A plot of {num(p['land_size_m2'])} m².")
+    elif land:
+        parts.append(f"The property has a plot of {num(land)} m².")
     feats = [FEATURE[t] for t in p.get("features", []) if t in FEATURE]
     if feats:
         parts.append("Listed features: " + ", ".join(feats) + ".")
