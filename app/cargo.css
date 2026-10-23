@@ -35,8 +35,10 @@
 .mobile .cg-set[data-stack="true"] { display: block; }
 
 /* ---------- the top bar: logo on the left, the tabs on the right ---------- */
-.logo { position: fixed; top: calc(var(--cr) * 0.9); left: var(--cr); z-index: 499; display: block; }
-.logo img { display: block; width: calc(var(--cr) * 3.33); height: calc(var(--cr) * 2.4); }
+/* the logo is sized from the site's text (2.3 lines of it, 1.3x what it was when the tabs were smaller) and its three letters (the top 51.5% of the
+   picture) are centred on the capitals of the tabs, so the mark and the tabs read as one line */
+.logo { position: fixed; top: calc(var(--cr) * 0.9 - var(--fs) * 0.0515); left: var(--cr); z-index: 499; display: block; }
+.logo img { display: block; width: calc(var(--fs) * 3.2); height: calc(var(--fs) * 2.3); }
 .nav {
   position: fixed;
   top: 0;
