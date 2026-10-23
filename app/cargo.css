@@ -108,6 +108,9 @@ html.has-panel { overflow: hidden; }
 .cg-ovcontent { box-sizing: border-box; width: 100%; padding: calc(var(--cr) * 0.9) var(--cr) var(--cr); background: #fff; outline: 0; }
 .mobile .cg-ovlayout { width: 100%; max-width: 100%; }
 
+/* inside a home everything is set in the interface size, like the tabs */
+.cg-ovcontent, .cg-ovcontent .caption { font-size: var(--fs-sm); line-height: var(--lh-sm); }
+
 .cg-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--cr); align-items: start; width: 100%; }
 .cg-grid .media-item { position: relative; display: block; margin: 0; width: 100%; }
 .cg-grid .mi-frame { height: 0; padding-bottom: 75%; }
