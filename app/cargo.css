@@ -152,5 +152,4 @@ html.has-panel { overflow: hidden; }
 .cg-ctas a.cta { flex: 1 1 auto; width: auto; }
 .cg button.cta { box-sizing: border-box; flex: 0 0 30%; padding: 0.75em 1em; border: 1px solid var(--text-read); background: var(--text-read); color: #fff; font: inherit; letter-spacing: inherit; text-align: center; cursor: pointer; }
 .cg button.cta:hover { background: rgba(0, 0, 0, 0.7); }
-.cg button.cta.on { background: #fff; color: var(--text-read); }
-.cg button.cta.on:hover { background: rgba(0, 0, 0, 0.06); }
+.cg button.cta.on { font-style: italic; }
