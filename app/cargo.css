@@ -121,7 +121,6 @@ html.has-panel { overflow: hidden; }
 .cg .lab { display: inline-flex; flex-direction: column; }
 .cg .tag { color: var(--text-3); margin-right: 0.5em; }
 .cg .tag:hover { color: var(--text); }
-.cg .saved { font-style: italic; }
 .cg .status-note, .cg .sub { color: inherit; font-weight: 400; }
 .cg a .icon { display: inline-block; vertical-align: baseline; width: 0.8em; height: 0.8em; stroke-width: 1px; }
 
@@ -152,4 +151,3 @@ html.has-panel { overflow: hidden; }
 .cg-ctas a.cta { flex: 1 1 auto; width: auto; }
 .cg button.cta { box-sizing: border-box; flex: 0 0 30%; padding: 0.75em 1em; border: 1px solid var(--text-read); background: var(--text-read); color: #fff; font: inherit; letter-spacing: inherit; text-align: center; cursor: pointer; }
 .cg button.cta:hover { background: rgba(0, 0, 0, 0.7); }
-.cg button.cta.on { font-style: italic; }

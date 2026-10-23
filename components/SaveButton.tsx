@@ -22,7 +22,7 @@ export default function SaveButton({ id }: { id: string }) {
   );
 }
 
-/** The same thing as a black block (panel of a home): "Save"; once saved the label is the italic "Saved", as everywhere. */
+/** The same thing as a black block (panel of a home): "Save"; once saved the label reads "Saved" (same block, plain type, as in the feed). */
 export function SaveBlock({ id }: { id: string }) {
   const on = useFavs().includes(id);
   return (
