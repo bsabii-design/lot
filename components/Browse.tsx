@@ -116,17 +116,20 @@ export default function Browse({ homes }: { homes: Property[] }) {
   return (
     <div className="browse" data-view={view}>
       <nav className="nav">
-        {TABS.map(([key, label]) => (
-          <button key={key} className={cn(tab === key && "active")} onClick={() => pickTab(key)}>
-            {label}{key === "favourites" && favs.length > 0 && <>{" "}<i>({favs.length})</i></>}
-          </button>
+        {TABS.map(([key, label], i) => (
+          <span key={key}>
+            {i > 0 && <>&nbsp; &nbsp;</>}
+            <button className={cn(tab === key && "active")} onClick={() => pickTab(key)}>
+              {label}{key === "favourites" && favs.length > 0 && <>{" "}<i>({favs.length})</i></>}
+            </button>
+          </span>
         ))}
       </nav>
 
       {view === "map" && !empty ? (
         <MapView homes={list} regions={open ? draft.regions : filters.regions} windowOpen={open} />
       ) : (
-        <main className="feed">
+        <main className="cg-pages">
           {empty ? (
             <div className="empty">
               {facets.length ? (

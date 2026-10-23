@@ -6,19 +6,19 @@ import { useRouter } from "next/navigation";
 const PanelContext = createContext<{ close: () => void; modal: boolean }>({ close: () => {}, modal: false });
 export const usePanel = () => useContext(PanelContext);
 
-/** The panel that opens over the feed (like the project panel in the Cargo layout): the feed stays mounted behind it,
-    faded; Esc, a click outside or "(Close)" closes it. Opened from the feed it is an intercepted route (back closes it);
-    on a direct visit to /homes/<slug> there is nothing behind, and closing goes to the feed. */
-export default function OverlayShell({ children, modal, label }: { children: ReactNode; modal: boolean; label: string }) {
+/** The panel that opens over the feed, as in the Cargo layout: the right half is white, the feed stays behind it
+    faded. Esc, a click outside the panel or "(Close)" closes it. Opened from the feed it is an intercepted route
+    (back closes it); on a direct visit to /homes/<slug> there is nothing behind, and closing goes to the feed. */
+export default function OverlayShell({ children, modal, label, sold }: { children: ReactNode; modal: boolean; label: string; sold?: boolean }) {
   const router = useRouter();
-  const panel = useRef<HTMLDivElement>(null);
+  const content = useRef<HTMLDivElement>(null);
   const close = useCallback(() => { if (modal) router.back(); else router.push("/"); }, [modal, router]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
     document.addEventListener("keydown", onKey);
     document.documentElement.classList.add("has-panel");
-    panel.current?.focus({ preventScroll: true });
+    content.current?.focus({ preventScroll: true });
     return () => {
       document.removeEventListener("keydown", onKey);
       document.documentElement.classList.remove("has-panel");
@@ -27,8 +27,17 @@ export default function OverlayShell({ children, modal, label }: { children: Rea
 
   return (
     <PanelContext.Provider value={{ close, modal }}>
-      <div className="overlay" role="dialog" aria-label={label} onMouseDown={(e) => { if (e.target === e.currentTarget) close(); }}>
-        <div className="panel" ref={panel} tabIndex={-1}>{children}</div>
+      <div
+        className={sold ? "cg-ov sold" : "cg-ov"}
+        role="dialog"
+        aria-label={label}
+        onMouseDown={(e) => { if (!(e.target as Element).closest(".cg-ovcontent")) close(); }}
+      >
+        <div className="cg-ovpage">
+          <div className="cg-ovlayout">
+            <div className="cg-ovcontent cg" ref={content} tabIndex={-1}>{children}</div>
+          </div>
+        </div>
       </div>
     </PanelContext.Provider>
   );

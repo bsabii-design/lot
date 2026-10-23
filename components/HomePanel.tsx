@@ -2,18 +2,19 @@ import SaveButton from "./SaveButton";
 import Ago from "./Ago";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
+import MediaFrame from "./MediaFrame";
 import MiniMapLazy from "./MiniMapLazy";
 import { CloseLink, TagLink } from "./PanelLinks";
-import Image from "next/image";
 import { archived, imageSrc, placeLine, price } from "@/lib/format";
 import { homeNumber } from "@/lib/number";
 import type { Property } from "@/lib/types";
 
 const STATUS = { available: "Available", under_offer: "Under offer", sold: "Sold", unavailable: "No longer available" } as const;
+const span = (n: number) => ({ "--span": n }) as React.CSSProperties;
 
-/** A home's page, laid out like the project panel of the Cargo layout: number and name with "(Close)", the photos
-    stacked, then two columns (the facts on the left, price, place, text and the buttons on the right), the map,
-    and "(Return to homes)" at the foot. */
+/** A home's page, built like the project panel of the Cargo "Basic Feed": number, name and "(Close)"; the photos
+    stacked in one column; two equal columns of caption text (the facts, then price / place / text / buttons); the map;
+    and "(Return to homes)" with the date at the foot. */
 export default function HomePanel({ p }: { p: Property }) {
   const sold = archived(p);
   const rows: [string, string | number | null][] = [
@@ -26,65 +27,64 @@ export default function HomePanel({ p }: { p: Property }) {
     ["Bedrooms", p.bedrooms],
     ["Bathrooms", p.bathrooms],
     ["Features", (p.features || []).join(", ")],
-  ];
+  ].filter(([, v]) => v != null && v !== "") as [string, string | number][];
 
   return (
-    <article className="home">
-      <header className="phead">
-        <h1 className="ptitle"><span className="num">{homeNumber(p.id)}</span>{p.title}</h1>
-        <CloseLink>Close</CloseLink>
-      </header>
-
-      <div className={sold ? "pgallery sold" : "pgallery"}>
+    <>
+      <div className="cg-set">
+        <div className="cg-u" style={span(8)}>
+          <h1>{homeNumber(p.id)} &nbsp; &nbsp;{p.title}</h1>
+        </div>
+        <div className="cg-u" style={span(4)}>
+          <div style={{ textAlign: "right" }}><CloseLink>Close</CloseLink></div>
+        </div>
+      </div>
+      <br />
+      <div className="cg-grid">
         {p.images.map((src, i) => (
-          <div className="pimg" key={src}>
-            <Image src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} fill sizes="(max-width: 700px) 100vw, 50vw" priority={i === 0} loading={i < 2 ? "eager" : "lazy"} />
-          </div>
+          <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 50vw" priority={i === 0} />
         ))}
       </div>
-
-      <div className="pcols">
-        <div className="pfacts">
-          <p className="plabel">Details</p>
-          <dl className="datalist">
-            {rows.filter(([, v]) => v != null && v !== "").map(([k, v]) => (
-              <div key={k}><dt>{k}</dt><dd>{v}</dd></div>
-            ))}
-          </dl>
+      <br />
+      <div className="cg-set" data-stack="true">
+        <div className="cg-u" style={span(6)}>
+          <span className="caption">
+            Details<br /><br />
+            {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
+          </span>
         </div>
-        <div className="ptext">
-          <p className="pwhere">
+        <div className="cg-u" style={span(6)}>
+          <span className="caption">
             <span className="price">
               {sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}
             </span>
             <br />
-            <span className="sub">{placeLine(p)}</span>
-          </p>
-          {p.short_description && <p className="desc"><Glossed text={p.short_description} focusable /></p>}
-          <p className="pbtns">
-            <a className="bk content main" href={p.source_url} target="_blank" rel="noopener">
-              View listing{" "}<Icon name="arrow-up-right" className="arr" />
-            </a>
-            <SaveButton id={p.id} />
-          </p>
-          <p className="ptags">
+            {placeLine(p)}
+            {p.short_description && <><br /><br /><Glossed text={p.short_description} focusable /></>}
+            <br /><br />
+            (<a className="main" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) <SaveButton id={p.id} />
+            <br />
             <TagLink kind="type" value={p.property_type} />
             <TagLink kind="condition" value={p.condition} />
-          </p>
+          </span>
         </div>
       </div>
-
       {p.lat != null && (
-        <div className="pmap">
+        <>
+          <br />
           <MiniMapLazy p={p} />
-          {p.approximate_location && <p className="approx-note">Approximate location — exact address not published.</p>}
-        </div>
+          {p.approximate_location && <><br /><span className="caption approx-note">Approximate location — exact address not published.</span></>}
+        </>
       )}
-
-      <footer className="pfoot">
-        <CloseLink>Return to homes</CloseLink>
-        <Ago date={p.date_added} />
-      </footer>
-    </article>
+      <br /><br /><br /><br /><br /><br />
+      <div className="cg-set">
+        <div className="cg-u" style={span(6)}>
+          <span className="caption"><CloseLink>Return to homes</CloseLink></span>
+        </div>
+        <div className="cg-u" style={span(6)}>
+          <span className="caption"><Ago date={p.date_added} /></span>
+        </div>
+      </div>
+    </>
   );
 }

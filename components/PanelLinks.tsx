@@ -2,12 +2,10 @@
 
 import { usePanel } from "./OverlayShell";
 
-/** "(Close)" / "(Return to homes)": back to the feed exactly as it was. */
+/** "(Close)" / "(Return to homes)": back to the feed exactly as it was. The brackets are plain text. */
 export function CloseLink({ children }: { children: string }) {
   const { close } = usePanel();
-  return (
-    <button className="bk content on" onClick={close}>{children}</button>
-  );
+  return <>(<a href="#" rel="close-overlay" onClick={(e) => { e.preventDefault(); close(); }}>{children}</a>)</>;
 }
 
 /** #tags on a home: close the panel and ask the feed to filter by it (on a direct visit the feed reads it from the URL). */

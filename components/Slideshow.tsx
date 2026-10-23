@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { imageSrc } from "@/lib/format";
 import { cn } from "@/lib/cn";
 
-const SIZES = "(max-width: 700px) 100vw, 36rem";
+const SIZES = "(max-aspect-ratio: 4/5) 100vw, 50vw";
 const SPEED = 0.5;
 
 /** Distance of slide k from the current one, the short way round (the strip loops). */
@@ -18,7 +18,7 @@ function offset(n: number, k: number, i: number) {
 /** The feed's photos, the way the Cargo layout does it: slides travel sideways and loop, the left / right half of the
     photo goes back / forward (cursor arrows), round arrow buttons on touch screens (and on hover), swipe, ← →,
     and a "01 / 08" caption under the photo that stays put. */
-export default function Slideshow({ images, alt, sold, priority }: { images: string[]; alt: string; sold?: boolean; priority?: boolean }) {
+export default function Slideshow({ images, alt, priority }: { images: string[]; alt: string; priority?: boolean }) {
   const n = images.length;
   const [cur, setCur] = useState(0);
   const [warm, setWarm] = useState(false);
@@ -57,7 +57,7 @@ export default function Slideshow({ images, alt, sold, priority }: { images: str
     setCur(state.current.cur);
     setTimeout(() => { state.current.busy = false; }, reduce() ? 0 : SPEED * 1000 * 0.6);
   };
-  const touch = () => window.matchMedia("(max-width: 700px), (hover: none)").matches;
+  const touch = () => document.documentElement.classList.contains("mobile");
 
   /* back to photo 1 once the card scrolls out of view */
   const root = useRef<HTMLDivElement>(null);
@@ -78,10 +78,21 @@ export default function Slideshow({ images, alt, sold, priority }: { images: str
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /* the first picture blurs in when it arrives on screen */
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    if (!root.current) return;
+    const obs = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { setSeen(true); obs.disconnect(); }
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.01 });
+    obs.observe(root.current);
+    return () => obs.disconnect();
+  }, []);
+
   const swipe = useRef<{ x: number; y: number } | null>(null);
 
   return (
-    <div className={cn("ss", sold && "sold", n < 2 && "single")} ref={root} onPointerEnter={() => setWarm(true)}>
+    <div className={cn("ss", n < 2 && "single")} ref={root} onPointerEnter={() => setWarm(true)}>
       <div
         className="ss-view"
         tabIndex={0}
@@ -112,22 +123,26 @@ export default function Slideshow({ images, alt, sold, priority }: { images: str
               style={{ transform: `translate3d(${d * 100}%,0,0)`, visibility: Math.abs(d) > 1 ? "hidden" : "visible" }}
               aria-hidden={k !== 0}
             >
-              <Image
-                src={imageSrc(src)}
-                alt={k ? `${alt} ${k + 1}` : alt}
-                fill
-                sizes={SIZES}
-                priority={priority && k === 0}
-                loading={k === 0 || warm ? "eager" : "lazy"}
-                draggable={false}
-              />
+              <figure className={cn("ss-item media-item", k === 0 && seen && "in-view")}>
+                <span className="mi-frame">
+                  <Image
+                    src={imageSrc(src)}
+                    alt={k ? `${alt} ${k + 1}` : alt}
+                    fill
+                    sizes={SIZES}
+                    priority={priority && k === 0}
+                    loading={k === 0 || warm ? "eager" : "lazy"}
+                    draggable={false}
+                  />
+                </span>
+              </figure>
             </div>
           );
         })}
         {n > 1 && (
           <>
-            <div className="ss-zone l" onClick={() => { if (!touch()) go(-1); }} />
-            <div className="ss-zone r" onClick={() => { if (!touch()) go(1); }} />
+            <div className="ss-zone-l" onClick={() => { if (!touch()) go(-1); }} />
+            <div className="ss-zone-r" onClick={() => { if (!touch()) go(1); }} />
             <button className="ss-btn prev" aria-label="Previous photo" onClick={() => go(-1)}>
               <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M17.5 9.5 12 15l5.5 5.5" /></svg>
             </button>
@@ -137,7 +152,7 @@ export default function Slideshow({ images, alt, sold, priority }: { images: str
           </>
         )}
       </div>
-      <span className="ss-cap" aria-live="polite">{n > 1 ? `${String(cur + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}` : ""}</span>
+      <span className="caption ss-cap" aria-live="polite">{n > 1 ? `${String(cur + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}` : ""}</span>
     </div>
   );
 }

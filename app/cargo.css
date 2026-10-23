@@ -1,0 +1,126 @@
+/* The feed, the top bar, the slideshow and the home panel are laid out exactly like the Cargo "Basic Feed" template
+   (measured in its browser at 1200x800 and 390x800). Only the typeface is LOT's (Times).
+   Cargo's rem is not the browser's: it follows the window (see the script in app/layout.tsx), so every length here is
+   a multiple of --cr, which is that rem in px. */
+
+:root { --cr: 11.52px; }
+
+.cg {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  contain: layout;
+  word-wrap: break-word;
+  font-family: var(--font);
+  font-size: calc(var(--cr) * 1.05);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.0135em;
+  color: rgba(0, 0, 0, 0.85);
+}
+.cg .caption {
+  display: block;
+  font-size: calc(var(--cr) * 0.8);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.015em;
+}
+.cg a, .cg button.lk { color: inherit; text-decoration: none; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; cursor: pointer; }
+.cg .caption a, .cg .caption button.lk { text-decoration: underline; }
+.cg a:active, .cg button.lk:active { opacity: 0.7; }
+.cg h1 { font: inherit; margin: 0; display: inline; }
+
+/* twelve equal columns, 1 rem gutter (Cargo's column-set) */
+.cg-set { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--cr); width: 100%; position: relative; contain: layout; }
+.cg-u { display: block; grid-column: span var(--span, 6); min-width: 0; max-width: 100%; position: relative; word-wrap: break-word; }
+.mobile .cg-set[data-stack="true"] { display: block; }
+
+/* ---------- the top bar: logo on the left, the tabs on the right ---------- */
+.logo { position: fixed; top: calc(var(--cr) * 0.9); left: var(--cr); z-index: 499; display: block; }
+.logo img { display: block; width: calc(var(--cr) * 3.33); height: calc(var(--cr) * 2.4); }
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 498;
+  box-sizing: border-box;
+  padding: calc(var(--cr) * 0.9) var(--cr) 0;
+  text-align: right;
+  pointer-events: none;
+  font-family: var(--font);
+  font-size: calc(var(--cr) * 1.05);
+  line-height: 1.2;
+  letter-spacing: 0.0135em;
+}
+.nav button { pointer-events: auto; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; color: var(--text-3); cursor: pointer; }
+.nav button:hover, .nav button.active { color: rgba(0, 0, 0, 0.85); }
+.nav i { font-style: italic; }
+
+/* ---------- the feed: one page per home, stacked ---------- */
+.cg-pages { width: 100%; padding-top: calc(var(--cr) * 5.16); }
+.cg-page { box-sizing: border-box; width: 100%; padding: calc(var(--cr) * 0.9) var(--cr) calc(var(--cr) * 3); }
+.cg-page.sold .ss-item img, .cg-ov.sold .mi-frame img { filter: grayscale(1); opacity: 0.7; }
+
+/* slideshow: slides travel sideways and loop, the caption stays put */
+.ss { position: relative; width: 100%; max-width: 100%; display: flex; flex-direction: column; --ar: 1.3333; --slide-h: calc(var(--cr) * 35.3); margin-bottom: calc(var(--cr) * 1.1); }
+.ss-view { position: relative; overflow-x: clip; overflow-y: visible; height: var(--slide-h); user-select: none; -webkit-user-select: none; touch-action: pan-y; outline: 0; }
+.ss-slide { position: absolute; top: 0; left: 0; width: 100%; height: var(--slide-h); display: flex; justify-content: center; align-items: flex-start; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+.ss-item { display: block; position: relative; width: calc(var(--slide-h) * var(--ar)); max-width: 100%; height: var(--slide-h); margin: 0; }
+.ss .ss-cap { display: block; text-align: center; margin-top: var(--cr); margin-bottom: 0; min-height: 1.2em; }
+.ss-zone-l, .ss-zone-r { position: absolute; top: 0; bottom: 0; width: 50%; z-index: 2; }
+.ss-zone-l { left: 0; cursor: w-resize; }
+.ss-zone-r { right: 0; cursor: e-resize; }
+.ss.single .ss-zone-l, .ss.single .ss-zone-r { cursor: default; }
+/* round arrows: touch screens only (a mouse clicks the left / right half of the photo) */
+.ss-btn { display: none; position: absolute; top: calc(var(--slide-h) / 2 - 15px); width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(87, 87, 87, 0.35); z-index: 3; padding: 0; cursor: pointer; }
+.ss-btn svg { width: 30px; height: 30px; fill: none; stroke: rgba(255, 255, 255, 0.9); stroke-width: 1.5; }
+.ss-btn:active { opacity: 0.7; }
+.ss-btn.prev { left: 10px; }
+.ss-btn.next { right: 10px; }
+.mobile .ss-btn { display: block; }
+.mobile .ss-zone-l, .mobile .ss-zone-r { cursor: default; }
+.mobile .ss { --slide-h: calc((100vw - 2 * var(--cr)) / var(--ar)); }
+
+/* a picture blurs in as it arrives on screen */
+.mi-frame { position: relative; display: block; width: 100%; height: 100%; isolation: isolate; }
+.mi-frame img { object-fit: cover; }
+.media-item .mi-frame, .ss-item .mi-frame { filter: blur(8px); transform: scale(0.992); }
+.media-item.in-view .mi-frame, .ss-item.in-view .mi-frame { animation: blur-in 1000ms cubic-bezier(0.4, 0, 0.2, 1) both; filter: none; transform: none; }
+.ss-slide + .ss-slide .mi-frame { filter: none; transform: none; animation: none; }
+@keyframes blur-in { 0% { filter: blur(8px); transform: scale(0.992); } 25% { filter: blur(0); transform: scale(1); } 100% { filter: blur(0); transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .ss-slide { transition: none; } .in-view .mi-frame { animation: none; } }
+
+/* ---------- a home: the panel over the feed ---------- */
+html.has-panel { overflow: hidden; }
+.cg-ov { position: fixed; inset: 0; z-index: 999; overflow: auto; overscroll-behavior: none; scrollbar-width: none; }
+.cg-ov::-webkit-scrollbar { display: none; }
+.cg-ovpage {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  animation: ov-in 0.4s cubic-bezier(0.24, 1, 0.29, 1) both;
+}
+@keyframes ov-in { from { opacity: 0; } to { opacity: 1; } }
+.cg-ovlayout { width: 50%; max-width: 50%; position: relative; display: flex; flex-direction: row; align-items: flex-start; min-height: fit-content; }
+.cg-ovcontent { box-sizing: border-box; width: 100%; padding: calc(var(--cr) * 0.9) var(--cr) var(--cr); background: #fff; outline: 0; }
+.mobile .cg-ovlayout { width: 100%; max-width: 100%; }
+
+.cg-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--cr); align-items: start; width: 100%; }
+.cg-grid .media-item { position: relative; display: block; margin: 0; width: 100%; }
+.cg-grid .mi-frame { height: 0; padding-bottom: 75%; }
+.cg-grid .mi-frame img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cg-ovcontent .minimap { margin: 0; border: 0; border-radius: 0; aspect-ratio: 3 / 2; }
+.cg-ovcontent .approx-note { margin-top: 0; color: inherit; font-size: inherit; }
+.cg .lab { display: inline-flex; flex-direction: column; }
+.cg .tag { color: var(--text-3); margin-right: 0.5em; }
+.cg .tag:hover { color: rgba(0, 0, 0, 0.85); }
+.cg .price { font-weight: 700; }
+.cg .price .sub, .cg .status-note { font-weight: 400; color: inherit; }
+.cg .saved { font-style: italic; }
+.cg .main { font-weight: 700; }
+.cg .main .icon { display: inline-block; vertical-align: baseline; width: 0.8em; height: 0.8em; stroke-width: 1px; }
