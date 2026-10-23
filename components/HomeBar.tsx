@@ -8,7 +8,7 @@ export default function HomeBar({ p }: { p: Property }) {
   return (
     <div className="cg cg-bar">
       <span><SaveButton id={p.id} /></span>
-      <span className="posted-wrap"><Ago date={p.date_added} /></span>
+      <span className="posted-wrap"><Ago date={p.date_added} prefix="Posted " /></span>
     </div>
   );
 }
