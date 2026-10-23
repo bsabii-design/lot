@@ -62,7 +62,17 @@ export default function HomePanel({ p }: { p: Property }) {
           </span>
         </div>
         <div className="cg-u" style={span(6)}>
-          {p.short_description && <span className="caption"><Glossed text={p.short_description} focusable /></span>}
+          {p.short_description && (
+            <span className="caption">
+              Description<br /><br />
+              {p.short_description.split("\n").map((para, i) => (
+                <span key={i}>
+                  {i > 0 && <><br />{"\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 "}</>}
+                  <Glossed text={para} focusable />
+                </span>
+              ))}
+            </span>
+          )}
           <br />
           (<a className="ul" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) &nbsp;<SaveButton id={p.id} />
           <br /><br />
