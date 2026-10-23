@@ -46,9 +46,10 @@ export default function HomePanel({ p }: { p: Property }) {
             <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 38vw" priority={i === 0} />
           ))}
         </div>
-        {/* ... while the text stays put: the text, the facts, the map */}
+        {/* ... while the text stays put: the text and the facts (as tall as a photo), then the map (as big as a photo) */}
         <aside className="cg-info">
           <div className="cg-scroll">
+            <div className="cg-cell">
             {p.short_description && (
               <p className="cg-block cg-first">
                 {[...p.short_description.split("\n"), ...(p.description_more ? [p.description_more] : [])].map((para, i) => (
@@ -62,6 +63,7 @@ export default function HomePanel({ p }: { p: Property }) {
             <dl className="datalist cg-block">
               {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
             </dl>
+            </div>
             {p.lat != null && <div className="cg-block"><MiniMapLazy p={p} /></div>}
           </div>
         </aside>

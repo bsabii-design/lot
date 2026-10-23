@@ -172,7 +172,11 @@ html.has-panel { overflow: hidden; }
 
 /* blocks close together */
 .cg-scroll .cg-block { margin: 0.7em 0 0; display: block; }
-.cg-scroll .minimap { margin: 0; aspect-ratio: auto; height: 50vh; } /* half the screen */
+/* the text and the facts fill one photo's height, so the map lands exactly level with the second photo (if the text is longer, the cell grows) */
+.cg-cell { aspect-ratio: 800 / 600; }
+.mobile .cg-cell { aspect-ratio: auto; }
+.cg-scroll .minimap { margin: 0; aspect-ratio: 800 / 600; height: auto; } /* the size of a photo: the column's width, 4:3 */
+.cg-scroll .cg-block:has(> .minimap) { margin-top: var(--cr); } /* and the same gap as between the photos */
 /* the text and the facts: four times the usual gap */
 .cg-scroll .cg-first { margin-top: 0; }
 .cg-scroll p.cg-block + dl.cg-block { margin-top: 2.8em; }
