@@ -14,19 +14,12 @@ interface Props {
   number: string;
   /** the first card's photo is the page's main image: load it eagerly */
   first?: boolean;
-  onTag: (kind: "type" | "condition", value: string) => void;
 }
 
 /** One feed page, built like the Cargo "Basic Feed": the slideshow with its caption, then a row of two equal columns —
     number and name on the left; price, place, text and "(See home...)" on the right. */
-export default function Card({ p, number, first, onTag }: Props) {
+export default function Card({ p, number, first }: Props) {
   const sold = archived(p);
-  const tag = (kind: "type" | "condition", value: string) => (
-    <button className="tag lk" onClick={() => onTag(kind, value)}>
-      <span className="lab" data-t={`#${value.toLowerCase()}`}>#{value.toLowerCase()}</span>
-    </button>
-  );
-
   return (
     <article className={cn("cg-page", sold && "sold")}>
       <div className="cg">
@@ -45,8 +38,6 @@ export default function Card({ p, number, first, onTag }: Props) {
                 {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
                 <br />
                 <span className="where">{placeLine(p)}</span>
-                <br /><br />
-                {tag("type", p.property_type)}{tag("condition", p.condition)}
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ import Card from "./Card";
 import Icon from "./Icon";
 import FilterWindow from "./FilterWindow";
 import { useFavs } from "@/lib/favs";
-import { activeFacets, available, emptyFilters, hasInvalidRange, normalizeFilters, toggle, visible, withoutInvalid } from "@/lib/filters";
+import { activeFacets, available, emptyFilters, hasInvalidRange, normalizeFilters, visible, withoutInvalid } from "@/lib/filters";
 import { RETURN_KEY, STATE_KEY, cn } from "@/lib/cn";
 import type { Filters, Property, Tab, View } from "@/lib/types";
 
@@ -107,8 +107,6 @@ export default function Browse({ homes }: { homes: Property[] }) {
     window.addEventListener("lot:tag", onTag);
     return () => window.removeEventListener("lot:tag", onTag);
   }, []);
-  const tagFilter = (kind: "type" | "condition", value: string) =>
-    setFilters((f) => kind === "type" ? { ...f, tagTypes: toggle(f.tagTypes, value) } : { ...f, tagConditions: toggle(f.tagConditions, value) });
 
   const empty = list.length === 0;
   const where = tab === "favourites" ? "saved homes" : tab === "archive" ? "archived homes" : "homes";
@@ -154,7 +152,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
               )}
             </div>
           ) : (
-            list.map((p, i) => <Card key={p.id} p={p} number={String(homes.indexOf(p) + 1).padStart(2, "0")} first={i === 0} onTag={tagFilter} />)
+            list.map((p, i) => <Card key={p.id} p={p} number={String(homes.indexOf(p) + 1).padStart(2, "0")} first={i === 0} />)
           )}
         </main>
       )}
