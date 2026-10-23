@@ -132,7 +132,9 @@ html.has-panel { overflow: hidden; }
 
 /* "View listing" is the price's own material, only wide: the same black block, the same cells, the same height; the link's
    hit area is taller than the bar */
-.cg a.cta { display: block; position: relative; width: 100%; text-align: left; text-decoration: none; }
+.cg a.cta { display: block; position: relative; width: 100%; text-align: center; text-decoration: none; }
+/* outside the scrolling part: always on screen, just above the last row */
+.cg-info > a.cta { flex: none; margin-top: 0.7em; }
 .cg a.cta::after { content: ""; position: absolute; inset: -0.55em 0; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
 .cg a.cta .pc:last-child { position: relative; height: 1em; vertical-align: top; }

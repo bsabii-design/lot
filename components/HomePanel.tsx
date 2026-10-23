@@ -65,12 +65,12 @@ export default function HomePanel({ p }: { p: Property }) {
           <dl className="datalist cg-block">
             {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
           </dl>
-          <a className="pr cta cg-block" href={p.source_url} target="_blank" rel="noopener" aria-label="View listing">
+        </div>
+          <a className="pr cta" href={p.source_url} target="_blank" rel="noopener" aria-label="View listing">
             <Cells text="View listing ">
               <span className="pc" aria-hidden="true"><Icon name="arrow-up-right" /></span>
             </Cells>
           </a>
-        </div>
           <div className="cg-foot">
             <span><SaveButton id={p.id} /> &nbsp;<span className="ui"><CloseLink underline>Return to homes</CloseLink></span></span>
             <span className="ui"><Ago date={p.date_added} /></span>
