@@ -130,11 +130,13 @@ html.has-panel { overflow: hidden; }
 .cg .pr { display: inline-block; background: var(--text-read); color: #fff; white-space: nowrap; letter-spacing: 0; }
 .cg .pc { display: inline-block; width: 0.6em; text-align: center; }
 
-/* "View listing": the one way out of the site, so the one loud thing in the panel: the price's black block, the full width
-   of the text above it, tall enough to be an easy target */
-.cg a.cta { display: block; box-sizing: border-box; width: 100%; padding: 0.75em 1em; background: var(--text-read); color: #fff; text-align: center; text-decoration: none; }
+/* "View listing" is the price's own material, only wide: the same black block, the same cells, the same height; the link's
+   hit area is taller than the bar */
+.cg a.cta { display: block; position: relative; width: 100%; text-align: left; text-decoration: none; }
+.cg a.cta::after { content: ""; position: absolute; inset: -0.55em 0; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
-.cg a.cta .icon { margin-left: 0.25em; }
+.cg a.cta .pc:last-child { position: relative; height: 1em; vertical-align: top; }
+.cg a.cta .icon { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 0.75em; height: 0.75em; stroke: currentColor; stroke-width: 1px; }
 
 /* a home: a window of its own. The header (price, place, Close) never moves; under it two columns, each scrolling by
    itself: the photos on the left, the text on the right, and the last row (Save, Return to homes, the date) stays on the
