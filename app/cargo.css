@@ -130,3 +130,9 @@ html.has-panel { overflow: hidden; }
    Square corners, regular weight, white type. */
 .cg .pr { display: inline-block; background: var(--text-read); color: #fff; white-space: nowrap; letter-spacing: 0; }
 .cg .pc { display: inline-block; width: 0.6em; text-align: center; }
+
+/* "View listing": the one way out of the site, so the one loud thing in the panel: the price's black block, the full width
+   of the text above it, tall enough to be an easy target */
+.cg a.cta { display: block; box-sizing: border-box; width: 100%; padding: 0.75em 1em; background: var(--text-read); color: #fff; text-align: center; text-decoration: none; }
+.cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
+.cg a.cta .icon { margin-left: 0.25em; }

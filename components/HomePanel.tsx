@@ -74,10 +74,12 @@ export default function HomePanel({ p }: { p: Property }) {
             </span>
           )}
           <br />
-          (<a className="ul" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) &nbsp;<SaveButton id={p.id} />
+          <SaveButton id={p.id} />
         </div>
       </div>
-      <br /><br /><br /><br /><br /><br />
+      <br />
+      <a className="cta" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
+      <br /><br /><br /><br /><br />
       <div className="cg-set">
         <div className="cg-u" style={span(6)}>
           <span className="ui"><CloseLink underline>Return to homes</CloseLink></span>
