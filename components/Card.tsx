@@ -32,11 +32,16 @@ export default function Card({ p, first }: Props) {
             {" "}{placeLine(p)}
             </Link>
           </div>
-          {/* right: the story, then the two things you can do with it */}
+          {/* right: the story, which ends with the way into the home and opens it as a whole; Save is its own line */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
-            {p.short_description && <span className="caption"><Glossed text={p.short_description} /></span>}
+            <Link className="cg-open" href={`/homes/${p.slug}`} scroll={false}>
+              <span className="caption">
+                {p.short_description && <><Glossed text={p.short_description} />{" "}</>}
+                (<span className="ul">See home...</span>)
+              </span>
+            </Link>
             <br />
-            (<Link className="ul" href={`/homes/${p.slug}`} scroll={false}>See home...</Link>) &nbsp;<SaveButton id={p.id} />
+            <SaveButton id={p.id} />
           </div>
         </div>
       </div>
