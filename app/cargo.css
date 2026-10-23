@@ -170,4 +170,6 @@ html.has-panel { overflow: hidden; }
 /* blocks close together */
 .cg-scroll .cg-block { margin: 0.7em 0 0; display: block; }
 .cg-scroll .minimap { margin: 0; }
+/* the text and the facts: four times the usual gap */
+.cg-scroll p.cg-block + dl.cg-block { margin-top: 2.8em; }
 .cg-info .cg-foot { flex: none; padding-top: 0.5em; }
