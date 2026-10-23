@@ -69,10 +69,10 @@ export default function HomePanel({ p }: { p: Property }) {
             </span>
           )}
           <br /><br />
-          <span className="caption">
-            Details<br /><br />
-            {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
-          </span>
+          <span className="caption">Details</span>
+          <dl className="datalist">
+            {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
+          </dl>
           <br />
           <a className="cta" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
           <br />

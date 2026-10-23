@@ -145,3 +145,10 @@ html.has-panel { overflow: hidden; }
 .mobile .cg-info { position: static; max-height: none; overflow: visible; margin-top: var(--cr); }
 
 .cg-foot { display: flex; justify-content: space-between; align-items: baseline; }
+
+/* the facts: name in grey on the left, value on the right, a hairline between the rows (as in LOT) */
+.cg .datalist { margin: 0.5em 0 0; padding: 0; }
+.cg .datalist div { display: grid; grid-template-columns: 1fr 1fr; padding: 0.25rem 0; border-bottom: 1px solid var(--border); }
+.cg .datalist div:last-child { border-bottom: none; }
+.cg .datalist dt { color: var(--text-3); margin: 0; }
+.cg .datalist dd { color: var(--text-read); margin: 0; }
