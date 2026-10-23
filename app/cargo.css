@@ -162,7 +162,6 @@ html.has-panel { overflow: hidden; }
 .mobile .cg-photos, .mobile .cg-scroll { overflow: visible; }
 .mobile .cg-info { display: block; margin-top: var(--cr); }
 
-.cg-foot { display: flex; justify-content: space-between; align-items: baseline; }
 
 /* the facts: name in grey on the left, value on the right, a hairline between the rows (as in LOT) */
 .cg .datalist { margin: 0; padding: 0; }
@@ -176,4 +175,10 @@ html.has-panel { overflow: hidden; }
 .cg-scroll .minimap { margin: 0; aspect-ratio: auto; height: 50vh; } /* half the screen */
 /* the text and the facts: four times the usual gap */
 .cg-scroll p.cg-block + dl.cg-block { margin-top: 2.8em; }
-.cg-info .cg-foot { flex: none; padding-top: 0.5em; }
+
+/* the bottom bar of an open home: the window's full width, like the top bar */
+.cg-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 3; box-sizing: border-box; width: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0 var(--cr) calc(var(--cr) * 0.9); font-size: var(--fs-sm); line-height: var(--lh-sm); pointer-events: none; contain: none; }
+.cg-bar a, .cg-bar button { pointer-events: auto; }
+.cg-bar .posted { color: var(--text-3); font-size: inherit; }
+.cg-ovcontent { padding-bottom: calc(var(--cr) * 1.4 + var(--fs-sm) * var(--lh-sm)); }
+.mobile .cg-bar { position: sticky; background: #fff; padding-top: 0.5em; }

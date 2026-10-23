@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import HomeBar from "@/components/HomeBar";
 import HomePanel from "@/components/HomePanel";
 import OverlayShell from "@/components/OverlayShell";
 import { archived } from "@/lib/format";
@@ -28,7 +29,7 @@ async function Home({ params }: Pick<PageProps<"/homes/[slug]">, "params">) {
   const p = getProperty(slug);
   if (!p) notFound();
   return (
-    <OverlayShell modal={false} label={p.title} sold={archived(p)}>
+    <OverlayShell modal={false} label={p.title} sold={archived(p)} footer={<HomeBar p={p} />}>
       <HomePanel p={p} />
     </OverlayShell>
   );

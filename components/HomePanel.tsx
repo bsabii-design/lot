@@ -1,6 +1,4 @@
-import SaveButton from "./SaveButton";
 import Price, { Cells } from "./Price";
-import Ago from "./Ago";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
 import MediaFrame from "./MediaFrame";
@@ -71,10 +69,6 @@ export default function HomePanel({ p }: { p: Property }) {
               <span className="pc" aria-hidden="true"><Icon name="arrow-up-right" /></span>
             </Cells>
           </a>
-          <div className="cg-foot">
-            <span><SaveButton id={p.id} /> &nbsp;<span className="ui"><CloseLink underline>Return to homes</CloseLink></span></span>
-            <span className="ui"><Ago date={p.date_added} /></span>
-          </div>
         </aside>
       </div>
     </>
