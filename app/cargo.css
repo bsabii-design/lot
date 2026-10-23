@@ -191,3 +191,29 @@ html.has-panel { overflow: hidden; }
 .mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 2; background: #fff; margin-top: calc(var(--cr) * -0.9); padding: calc(var(--cr) * 0.9) 0 calc(var(--cr) * 0.4); }
 
 .cg .datalist .posted { color: inherit; font-size: inherit; }
+
+/* the feed row and the middle of the photo open the home; the outer thirds of the photo turn it */
+.cg .cg-open { display: block; color: inherit; text-decoration: none; }
+.cg .cg-open:hover { color: var(--text-2); }
+.ss.has-open { --iw: min(var(--slide-h) * var(--ar), 100%); } /* the picture's width: the middle 40% of it opens the home */
+.ss.has-open .ss-zone-l, .ss.has-open .ss-zone-r { width: calc(50% - var(--iw) * 0.2); }
+.ss-open { position: absolute; top: 0; bottom: 0; left: calc(50% - var(--iw) * 0.2); width: calc(var(--iw) * 0.4); z-index: 2; cursor: pointer; }
+.mobile .ss-open { cursor: default; }
+
+/* a photo of a home opens on the full screen */
+.cg-grid .media-item.zoomable { cursor: zoom-in; }
+.cg-added { margin: 0; color: var(--text-3); }
+.cg .cg-added .posted { color: inherit; font-size: inherit; }
+
+.cg-lb { position: fixed; inset: 0; z-index: 1000; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font); font-size: var(--fs-sm); line-height: var(--lh-sm); letter-spacing: var(--tracking); }
+.cg-lb img { display: block; max-width: 94vw; max-height: 88vh; object-fit: contain; cursor: zoom-out; }
+.cg-lb .zl, .cg-lb .zr { position: absolute; top: 0; bottom: 0; width: 30%; z-index: 1; }
+.cg-lb .zl { left: 0; cursor: w-resize; }
+.cg-lb .zr { right: 0; cursor: e-resize; }
+.cg-lb .lb-close { position: absolute; top: calc(var(--cr) * 0.9); right: var(--cr); z-index: 2; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; color: #fff; cursor: pointer; }
+.cg-lb .lb-count { position: absolute; bottom: calc(var(--cr) * 0.9); left: 0; right: 0; text-align: center; color: rgba(255, 255, 255, 0.7); pointer-events: none; }
+.cg-lb .lb-btn { display: none; position: absolute; top: calc(50% - 15px); width: 30px; height: 30px; border-radius: 50%; border: 0; background: rgba(87, 87, 87, 0.5); z-index: 2; padding: 0; cursor: pointer; }
+.cg-lb .lb-btn svg { width: 30px; height: 30px; fill: none; stroke: rgba(255, 255, 255, 0.9); stroke-width: 1.5; }
+.cg-lb .lb-btn.prev { left: 10px; }
+.cg-lb .lb-btn.next { right: 10px; }
+.mobile .cg-lb .lb-btn { display: block; }

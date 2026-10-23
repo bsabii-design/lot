@@ -1,12 +1,12 @@
 import Price, { Cells } from "./Price";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
-import MediaFrame from "./MediaFrame";
+import PhotoColumn from "./PhotoColumn";
 import MiniMapLazy from "./MiniMapLazy";
 import { CloseLink } from "./PanelLinks";
 import SaveButton from "./SaveButton";
 import Ago from "./Ago";
-import { archived, imageSrc, placeLine } from "@/lib/format";
+import { archived, placeLine } from "@/lib/format";
 import type { Property } from "@/lib/types";
 
 const STATUS = { available: "Available", under_offer: "Under offer", sold: "Sold", unavailable: "No longer available" } as const;
@@ -43,12 +43,10 @@ export default function HomePanel({ p }: { p: Property }) {
       <br />
       <div className="cg-split">
         {/* the photos scroll, the map is the last tile of them ... */}
-        <div className="cg-grid cg-photos">
-          {p.images.map((src, i) => (
-            <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 38vw" priority={i === 0} />
-          ))}
+        <PhotoColumn images={p.images} title={p.title}>
           {p.lat != null && <div className="cg-tile"><MiniMapLazy p={p} /></div>}
-        </div>
+          <p className="ui cg-added"><Ago date={p.date_added} prefix="Added to LOT " /></p>
+        </PhotoColumn>
         {/* ... while the text stays put: the text and the facts */}
         <aside className="cg-info">
           <div className="cg-scroll">
@@ -64,7 +62,6 @@ export default function HomePanel({ p }: { p: Property }) {
             )}
             <dl className="datalist cg-block">
               {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
-              <div><dt>Posted</dt><dd><Ago date={p.date_added} /></dd></div>
             </dl>
           </div>
         </aside>

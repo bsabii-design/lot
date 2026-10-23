@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 
 /** A picture that blurs in as it arrives on screen (Cargo's media-item). */
-export default function MediaFrame({ src, alt, sizes, priority }: { src: string; alt: string; sizes: string; priority?: boolean }) {
+export default function MediaFrame({ src, alt, sizes, priority, onOpen }: { src: string; alt: string; sizes: string; priority?: boolean; onOpen?: () => void }) {
   const el = useRef<HTMLElement>(null);
   const [seen, setSeen] = useState(false);
   useEffect(() => {
@@ -17,7 +17,15 @@ export default function MediaFrame({ src, alt, sizes, priority }: { src: string;
     return () => obs.disconnect();
   }, []);
   return (
-    <figure className={cn("media-item", seen && "in-view")} ref={el}>
+    <figure
+      className={cn("media-item", seen && "in-view", onOpen && "zoomable")}
+      ref={el}
+      onClick={onOpen}
+      onKeyDown={onOpen ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onOpen(); } } : undefined}
+      role={onOpen ? "button" : undefined}
+      tabIndex={onOpen ? 0 : undefined}
+      aria-label={onOpen ? `Open photo: ${alt}` : undefined}
+    >
       <span className="mi-frame">
         <Image src={src} alt={alt} fill sizes={sizes} priority={priority} />
       </span>

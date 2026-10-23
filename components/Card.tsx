@@ -22,13 +22,15 @@ export default function Card({ p, first }: Props) {
   return (
     <article className={cn("cg-page", sold && "sold")}>
       <div className="cg">
-        <Slideshow images={p.images} alt={p.title} priority={first} />
+        <Slideshow images={p.images} alt={p.title} priority={first} href={`/homes/${p.slug}`} />
         <div className="cg-set" data-stack="true">
           {/* left: what it costs and where it is */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
+            <Link className="cg-open" href={`/homes/${p.slug}`} scroll={false}>
             {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} /></> : <Price value={p.price} />}
             {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
             {" "}{placeLine(p)}
+            </Link>
           </div>
           {/* right: the story, then the two things you can do with it */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>

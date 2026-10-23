@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { imageSrc } from "@/lib/format";
 import { cn } from "@/lib/cn";
@@ -18,7 +19,7 @@ function offset(n: number, k: number, i: number) {
 /** The feed's photos, the way the Cargo layout does it: slides travel sideways and loop, the left / right half of the
     photo goes back / forward (cursor arrows), round arrow buttons on touch screens (and on hover), swipe, ← →,
     and a "01 / 08" caption under the photo that stays put. */
-export default function Slideshow({ images, alt, priority }: { images: string[]; alt: string; priority?: boolean }) {
+export default function Slideshow({ images, alt, priority, href }: { images: string[]; alt: string; priority?: boolean; href?: string }) {
   const n = images.length;
   const [cur, setCur] = useState(0);
   const [warm, setWarm] = useState(false);
@@ -92,7 +93,7 @@ export default function Slideshow({ images, alt, priority }: { images: string[];
   const swipe = useRef<{ x: number; y: number } | null>(null);
 
   return (
-    <div className={cn("ss", n < 2 && "single")} ref={root} onPointerEnter={() => setWarm(true)}>
+    <div className={cn("ss", n < 2 && "single", href && "has-open")} ref={root} onPointerEnter={() => setWarm(true)}>
       <div
         className="ss-view"
         tabIndex={0}
@@ -139,6 +140,7 @@ export default function Slideshow({ images, alt, priority }: { images: string[];
             </div>
           );
         })}
+        {href && <Link className="ss-open" href={href} scroll={false} aria-label={`Open ${alt}`} />}
         {n > 1 && (
           <>
             <div className="ss-zone-l" onClick={() => { if (!touch()) go(-1); }} />
