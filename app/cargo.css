@@ -122,7 +122,6 @@ html.has-panel { overflow: hidden; }
 .cg .status-note, .cg .sub { color: inherit; font-weight: 400; }
 .cg a .icon { display: inline-block; vertical-align: baseline; width: 0.8em; height: 0.8em; stroke-width: 1px; }
 
-/* the price: a touch heavier than the text. Times has only Regular and Bold, so the weight is a thin outline in the text colour
-   (0.03em); the "Sold — last listed for" note stays regular. */
-.cg .pr { -webkit-text-stroke: 0.03em currentColor; paint-order: stroke fill; }
-.cg .pr .sub { -webkit-text-stroke: 0; }
+/* the price sits in a solid black block, like the redaction bars in the reverie texts: square corners, regular weight,
+   white type, the block runs the height of the line */
+.cg .pr { background: var(--text); color: #fff; padding: 0 0.3em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }

@@ -25,7 +25,7 @@ export default function Card({ p, first }: Props) {
         <div className="cg-set" data-stack="true">
           {/* left: what it costs and where it is */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
-            <span className="pr">{sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}</span>
+            {sold ? <>Sold &mdash; last listed for <span className="pr">{price(p.original_listing_price || p.price)}</span></> : <span className="pr">{price(p.price)}</span>}
             {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
             <br />
             {placeLine(p)}

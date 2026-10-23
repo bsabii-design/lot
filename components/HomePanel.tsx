@@ -49,7 +49,7 @@ export default function HomePanel({ p }: { p: Property }) {
       <div className="cg-set" data-stack="true">
         <div className="cg-u" style={span(6)}>
           <span className="caption">
-            <span className="pr">{sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}</span>
+            {sold ? <>Sold &mdash; last listed for <span className="pr">{price(p.original_listing_price || p.price)}</span></> : <span className="pr">{price(p.price)}</span>}
             <br /><br />
             Details<br /><br />
             {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
