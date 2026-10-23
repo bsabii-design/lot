@@ -31,7 +31,7 @@ export default function OverlayShell({ children, footer, modal, label, sold }: {
         className={sold ? "cg-ov sold" : "cg-ov"}
         role="dialog"
         aria-label={label}
-        onMouseDown={(e) => { if (!(e.target as Element).closest(".cg-ovcontent")) close(); }}
+        onMouseDown={(e) => { if (!(e.target as Element).closest(".cg-ovcontent, .cg-bar")) close(); }}
       >
         <div className="cg-ovpage">
           <div className="cg-ovlayout">
