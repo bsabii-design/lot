@@ -136,13 +136,27 @@ html.has-panel { overflow: hidden; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
 .cg a.cta .icon { margin-left: 0.25em; }
 
-/* a home: the text column is pinned on the left while the photos scroll on the right */
-.cg-split { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--cr); align-items: start; width: 100%; }
-.cg-info { grid-column: 7 / span 6; grid-row: 1; position: sticky; top: calc(var(--cr) * 0.9); max-height: calc(100vh - var(--cr) * 1.8); overflow-y: auto; scrollbar-width: none; min-width: 0; }
-.cg-info::-webkit-scrollbar { display: none; }
-.cg-photos { grid-column: 1 / span 6; grid-row: 1; min-width: 0; }
+/* a home: a window of its own. The header (price, place, Close) never moves; under it two columns, each scrolling by
+   itself: the photos on the left, the text on the right, and the last row (Save, Return to homes, the date) stays on the
+   bottom edge. On a phone it is one ordinary scrolling page. */
+.cg-ov { overflow: hidden; }
+.cg-ovpage { height: 100%; min-height: 0; }
+.cg-ovlayout { height: 100%; min-height: 0; align-items: stretch; }
+.cg-ovcontent { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.cg-ovcontent > .cg-set { flex: none; }
+.cg-ovcontent > br { flex: none; }
+.cg-split { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); column-gap: var(--cr); width: 100%; }
+.cg-photos { grid-column: 1 / span 6; grid-row: 1; min-width: 0; min-height: 0; overflow-y: auto; scrollbar-width: none; }
+.cg-info { grid-column: 7 / span 6; grid-row: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+.cg-scroll { flex: 1 1 0; min-height: 0; overflow-y: auto; scrollbar-width: none; }
+.cg-photos::-webkit-scrollbar, .cg-scroll::-webkit-scrollbar { display: none; }
+.mobile .cg-ov { overflow: auto; }
+.mobile .cg-ovpage { height: auto; min-height: 100%; }
+.mobile .cg-ovlayout { height: auto; }
+.mobile .cg-ovcontent { display: block; height: auto; }
 .mobile .cg-split { display: block; }
-.mobile .cg-info { position: static; max-height: none; overflow: visible; margin-top: var(--cr); }
+.mobile .cg-photos, .mobile .cg-scroll { overflow: visible; }
+.mobile .cg-info { display: block; margin-top: var(--cr); }
 
 .cg-foot { display: flex; justify-content: space-between; align-items: baseline; }
 
@@ -153,7 +167,7 @@ html.has-panel { overflow: hidden; }
 .cg .datalist dt { color: var(--text-3); margin: 0; }
 .cg .datalist dd { color: var(--text-read); margin: 0; }
 
-/* the pinned column: blocks close together */
-.cg-info .cg-block { margin: 0.7em 0 0; display: block; }
-.cg-info .cg-foot.cg-block { display: flex; margin-top: 0.5em; }
-.cg-info .minimap { margin: 0; }
+/* blocks close together */
+.cg-scroll .cg-block { margin: 0.7em 0 0; display: block; }
+.cg-scroll .minimap { margin: 0; }
+.cg-info .cg-foot { flex: none; padding-top: 0.5em; }

@@ -50,6 +50,7 @@ export default function HomePanel({ p }: { p: Property }) {
         </div>
         {/* ... while the text stays put: map, description, details, the two actions */}
         <aside className="cg-info">
+        <div className="cg-scroll">
           {p.lat != null && <MiniMapLazy p={p} />}
           {p.short_description && (
             <p className="cg-block">
@@ -65,7 +66,8 @@ export default function HomePanel({ p }: { p: Property }) {
             {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
           </dl>
           <a className="cta cg-block" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
-          <div className="cg-foot cg-block">
+        </div>
+          <div className="cg-foot">
             <span><SaveButton id={p.id} /> &nbsp;<span className="ui"><CloseLink underline>Return to homes</CloseLink></span></span>
             <span className="ui"><Ago date={p.date_added} /></span>
           </div>
