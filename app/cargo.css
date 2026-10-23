@@ -145,9 +145,3 @@ html.has-panel { overflow: hidden; }
 .mobile .cg-info { position: static; max-height: none; overflow: visible; margin-top: var(--cr); }
 
 .cg-foot { display: flex; justify-content: space-between; align-items: baseline; }
-
-/* the two things you can do with a home, side by side: go to the listing (wide) and save it */
-.cg-ctas { display: flex; gap: calc(var(--cr) * 0.5); }
-.cg-ctas a.cta { flex: 1 1 auto; width: auto; }
-.cg button.cta { box-sizing: border-box; flex: 0 0 30%; padding: 0.75em 1em; border: 1px solid var(--text-read); background: var(--text-read); color: #fff; font: inherit; letter-spacing: inherit; text-align: center; cursor: pointer; }
-.cg button.cta:hover { background: rgba(0, 0, 0, 0.7); }
