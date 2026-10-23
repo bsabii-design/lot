@@ -133,8 +133,8 @@ html.has-panel { overflow: hidden; }
 /* "View listing" is the price's own material, only wide: the same black block, the same cells, the same height; the link's
    hit area is taller than the bar */
 .cg a.cta { display: block; position: relative; width: 100%; text-align: center; text-decoration: none; }
-/* outside the scrolling part: always on screen, just above the last row */
-.cg-info > a.cta { flex: none; margin-top: 0.7em; }
+/* under both columns, the panel's width: always on screen, just above the last row */
+.cg-ovcontent > a.cta { flex: none; margin-top: 0.7em; }
 .cg a.cta::after { content: ""; position: absolute; inset: -0.55em 0; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
 .cg a.cta .pc:last-child { position: relative; height: 1em; vertical-align: top; }
@@ -173,8 +173,9 @@ html.has-panel { overflow: hidden; }
 /* blocks close together */
 .cg-scroll .cg-block { margin: 0.7em 0 0; display: block; }
 .cg-scroll .minimap { margin: 0; aspect-ratio: auto; height: 50vh; } /* half the screen */
-/* the text and the facts: four times the usual gap */
-.cg-scroll p.cg-block + dl.cg-block { margin-top: 2.8em; }
+/* the map and the facts: four times the usual gap */
+.cg-scroll .cg-first { margin-top: 0; }
+.cg-scroll div.cg-block + dl.cg-block { margin-top: 2.8em; }
 
 /* the bottom bar of an open home: the full width of the panel (three quarters of the window) */
 .cg-bar { position: fixed; left: 25%; right: 0; bottom: 0; z-index: 3; box-sizing: border-box; width: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0 var(--cr) calc(var(--cr) * 0.9); font-size: var(--fs-sm); line-height: var(--lh-sm); pointer-events: none; contain: none; }

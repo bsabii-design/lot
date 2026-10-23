@@ -46,31 +46,32 @@ export default function HomePanel({ p }: { p: Property }) {
             <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 38vw" priority={i === 0} />
           ))}
         </div>
-        {/* ... while the text stays put: map, description, details, the two actions */}
+        {/* ... while the text stays put: the text, the map, the facts */}
         <aside className="cg-info">
-        <div className="cg-scroll">
-          {p.lat != null && <MiniMapLazy p={p} />}
-          {p.short_description && (
-            <p className="cg-block">
-              {[...p.short_description.split("\n"), ...(p.description_more ? [p.description_more] : [])].map((para, i) => (
-                <span key={i}>
-                  {i > 0 && <><br />{"\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 "}</>}
-                  <Glossed text={para} focusable />
-                </span>
-              ))}
-            </p>
-          )}
-          <dl className="datalist cg-block">
-            {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
-          </dl>
-        </div>
-          <a className="pr cta" href={p.source_url} target="_blank" rel="noopener" aria-label="View listing">
-            <Cells text="View listing ">
-              <span className="pc" aria-hidden="true"><Icon name="arrow-up-right" /></span>
-            </Cells>
-          </a>
+          <div className="cg-scroll">
+            {p.short_description && (
+              <p className="cg-block cg-first">
+                {[...p.short_description.split("\n"), ...(p.description_more ? [p.description_more] : [])].map((para, i) => (
+                  <span key={i}>
+                    {i > 0 && <><br />{"\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 "}</>}
+                    <Glossed text={para} focusable />
+                  </span>
+                ))}
+              </p>
+            )}
+            {p.lat != null && <div className="cg-block"><MiniMapLazy p={p} /></div>}
+            <dl className="datalist cg-block">
+              {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
+            </dl>
+          </div>
         </aside>
       </div>
+      {/* the way out, the width of the panel, always on screen */}
+      <a className="pr cta" href={p.source_url} target="_blank" rel="noopener" aria-label="View listing">
+        <Cells text="View listing ">
+          <span className="pc" aria-hidden="true"><Icon name="arrow-up-right" /></span>
+        </Cells>
+      </a>
     </>
   );
 }
