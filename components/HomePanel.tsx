@@ -41,27 +41,22 @@ export default function HomePanel({ p }: { p: Property }) {
         </div>
       </div>
       <br />
-      <div className="cg-grid">
-        {p.images.map((src, i) => (
-          <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 75vw" priority={i === 0} />
-        ))}
-      </div>
-      <br />
-      {p.lat != null && (
-        <>
-          <MiniMapLazy p={p} />
-          {p.approximate_location && <><br /><span className="ui approx-note">Approximate location — exact address not published.</span><br /></>}
-        </>
-      )}
-      <br />
-      <div className="cg-set" data-stack="true">
-        <div className="cg-u" style={span(6)}>
-          <span className="caption">
-            Details<br /><br />
-            {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
-          </span>
+      <div className="cg-split">
+        {/* the photos scroll ... */}
+        <div className="cg-grid cg-photos">
+          {p.images.map((src, i) => (
+            <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 45vw" priority={i === 0} />
+          ))}
         </div>
-        <div className="cg-u" style={span(6)}>
+        {/* ... while the text stays put: map, description, details, the two actions */}
+        <aside className="cg-info">
+          {p.lat != null && (
+            <>
+              <MiniMapLazy p={p} />
+              {p.approximate_location && <><br /><span className="ui approx-note">Approximate location — exact address not published.</span><br /></>}
+              <br />
+            </>
+          )}
           {p.short_description && (
             <span className="caption">
               Description<br /><br />
@@ -73,12 +68,17 @@ export default function HomePanel({ p }: { p: Property }) {
               ))}
             </span>
           )}
+          <br /><br />
+          <span className="caption">
+            Details<br /><br />
+            {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
+          </span>
           <br />
           <SaveButton id={p.id} />
-        </div>
+          <br /><br />
+          <a className="cta" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
+        </aside>
       </div>
-      <br />
-      <a className="cta" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
       <br /><br /><br /><br /><br />
       <div className="cg-set">
         <div className="cg-u" style={span(6)}>
