@@ -13,8 +13,7 @@ const STATUS = { available: "Available", under_offer: "Under offer", sold: "Sold
 const span = (n: number) => ({ "--span": n }) as React.CSSProperties;
 
 /** A home's page, built like the project panel of the Cargo "Basic Feed": number, name and "(Close)"; the photos
-    stacked in one column; two equal columns of caption text (the facts, then price / place / text / buttons); the map;
-    and "(Return to homes)" with the date at the foot. */
+    stacked in one column; the map; two equal columns of caption text (the facts, then the text and buttons); and "(Return to homes)" with the date at the foot. */
 export default function HomePanel({ p }: { p: Property }) {
   const sold = archived(p);
   const rows: [string, string | number | null][] = [
@@ -48,6 +47,13 @@ export default function HomePanel({ p }: { p: Property }) {
         ))}
       </div>
       <br />
+      {p.lat != null && (
+        <>
+          <MiniMapLazy p={p} />
+          {p.approximate_location && <><br /><span className="ui approx-note">Approximate location — exact address not published.</span><br /></>}
+        </>
+      )}
+      <br />
       <div className="cg-set" data-stack="true">
         <div className="cg-u" style={span(6)}>
           <span className="caption">
@@ -64,13 +70,6 @@ export default function HomePanel({ p }: { p: Property }) {
           <TagLink kind="condition" value={p.condition} />
         </div>
       </div>
-      {p.lat != null && (
-        <>
-          <br />
-          <MiniMapLazy p={p} />
-          {p.approximate_location && <><br /><span className="ui approx-note">Approximate location — exact address not published.</span></>}
-        </>
-      )}
       <br /><br /><br /><br /><br /><br />
       <div className="cg-set">
         <div className="cg-u" style={span(6)}>
