@@ -5,7 +5,7 @@ import Glossed from "./Glossed";
 import Icon from "./Icon";
 import MediaFrame from "./MediaFrame";
 import MiniMapLazy from "./MiniMapLazy";
-import { CloseLink, TagLink } from "./PanelLinks";
+import { CloseLink } from "./PanelLinks";
 import { archived, imageSrc, placeLine } from "@/lib/format";
 import type { Property } from "@/lib/types";
 
@@ -75,9 +75,6 @@ export default function HomePanel({ p }: { p: Property }) {
           )}
           <br />
           (<a className="ul" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) &nbsp;<SaveButton id={p.id} />
-          <br /><br />
-          <TagLink kind="type" value={p.property_type} />
-          <TagLink kind="condition" value={p.condition} />
         </div>
       </div>
       <br /><br /><br /><br /><br /><br />

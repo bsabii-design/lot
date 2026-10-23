@@ -98,15 +98,6 @@ export default function Browse({ homes }: { homes: Property[] }) {
     try { history.replaceState(null, "", location.pathname + TAB_URL[t]); } catch {}
   };
   const clearFilters = () => setFilters(emptyFilters());
-  /* a tag clicked inside an opened home asks the feed (which stays mounted behind the panel) to filter */
-  useEffect(() => {
-    const onTag = (e: Event) => {
-      const { kind, value } = (e as CustomEvent<{ kind: "type" | "condition"; value: string }>).detail;
-      setFilters((f) => ({ ...f, tagTypes: kind === "type" ? [value] : f.tagTypes, tagConditions: kind === "condition" ? [value] : f.tagConditions }));
-    };
-    window.addEventListener("lot:tag", onTag);
-    return () => window.removeEventListener("lot:tag", onTag);
-  }, []);
 
   const empty = list.length === 0;
   const where = tab === "favourites" ? "saved homes" : tab === "archive" ? "archived homes" : "homes";
