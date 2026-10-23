@@ -172,11 +172,6 @@ html.has-panel { overflow: hidden; }
 
 /* blocks close together */
 .cg-scroll .cg-block { margin: 0.7em 0 0; display: block; }
-/* the text and the facts fill one photo's height, so the map lands exactly level with the second photo (if the text is longer, the cell grows) */
-.cg-cell { aspect-ratio: 800 / 600; }
-.mobile .cg-cell { aspect-ratio: auto; }
-.cg-scroll .minimap { margin: 0; aspect-ratio: 800 / 600; height: auto; } /* the size of a photo: the column's width, 4:3 */
-.cg-scroll .cg-block:has(> .minimap) { margin-top: var(--cr); } /* and the same gap as between the photos */
 /* the text and the facts: four times the usual gap */
 .cg-scroll .cg-first { margin-top: 0; }
 .cg-scroll p.cg-block + dl.cg-block { margin-top: 2.8em; }
@@ -187,3 +182,7 @@ html.has-panel { overflow: hidden; }
 .cg-bar .posted { color: var(--text-3); font-size: inherit; }
 .cg-ovcontent { padding-bottom: calc(var(--cr) * 1.4 + var(--fs-sm) * var(--lh-sm)); }
 .mobile .cg-bar { left: 0; position: sticky; background: #fff; padding-top: 0.5em; }
+
+/* the map is the last tile of the photo column: the same box as a photo (4:3, the column's width), the same gap */
+.cg-tile { position: relative; width: 100%; height: 0; padding-bottom: 75%; }
+.cg-tile .minimap { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; margin: 0; border: 0; border-radius: 0; }
