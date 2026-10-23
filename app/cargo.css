@@ -54,7 +54,7 @@
 }
 .nav button { pointer-events: auto; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; color: var(--text-3); cursor: pointer; }
 .nav button:hover, .nav button.active { color: var(--text); }
-.nav i { font-style: italic; }
+.nav i { font-style: normal; }
 
 /* ---------- the feed: one page per home, stacked ---------- */
 .cg-pages { width: 100%; padding-top: calc(var(--cr) * (0.9 + 3) + var(--fs-sm) * var(--lh-sm)); }
