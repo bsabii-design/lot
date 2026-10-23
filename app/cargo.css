@@ -105,7 +105,7 @@ html.has-panel { overflow: hidden; }
 }
 @keyframes ov-in { from { opacity: 0; } to { opacity: 1; } }
 .cg-ovlayout { width: 75%; max-width: 75%; position: relative; display: flex; flex-direction: row; align-items: flex-start; min-height: fit-content; }
-.cg-ovcontent { box-sizing: border-box; width: 100%; padding: calc(var(--cr) * 0.9) var(--cr) var(--cr); background: #fff; outline: 0; }
+.cg-ovcontent { box-sizing: border-box; width: 100%; padding: var(--cr); background: #fff; outline: 0; } /* one gap, 1 rem, everywhere in a home: the edges, under the header, between the photos, between the columns, above View listing */
 .mobile .cg-ovlayout { width: 100%; max-width: 100%; }
 
 /* inside a home the text is the same size as in the feed (the content size), the small interface size is only for the tabs and the counters */
@@ -134,7 +134,7 @@ html.has-panel { overflow: hidden; }
    hit area is taller than the bar */
 .cg a.cta { display: block; position: relative; width: 100%; text-align: center; text-decoration: none; }
 /* under both columns, the panel's width: always on screen */
-.cg-ovcontent > a.cta { flex: none; margin-top: 0.7em; }
+.cg-ovcontent > a.cta { flex: none; margin-top: var(--cr); }
 .cg a.cta::after { content: ""; position: absolute; inset: -0.55em 0; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
 .cg a.cta .pc:last-child { position: relative; height: 1em; vertical-align: top; }
@@ -148,7 +148,7 @@ html.has-panel { overflow: hidden; }
 .cg-ovpage { height: 100%; min-height: 0; }
 .cg-ovlayout { height: 100%; min-height: 0; align-items: stretch; }
 .cg-ovcontent { display: flex; flex-direction: column; height: 100%; min-height: 0; }
-.cg-ovcontent > .cg-set { flex: none; }
+.cg-ovcontent > .cg-set { flex: none; margin-bottom: var(--cr); }
 .cg-ovcontent > br { flex: none; }
 .cg-split { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); column-gap: var(--cr); width: 100%; }
 .cg-photos { grid-column: 1 / span 6; grid-row: 1; min-width: 0; min-height: 0; overflow-y: auto; scrollbar-width: none; }
@@ -172,12 +172,12 @@ html.has-panel { overflow: hidden; }
 .cg .datalist dd { color: var(--text-read); margin: 0; }
 
 /* blocks close together */
-.cg-scroll .cg-block { margin: 0.7em 0 0; display: block; }
+.cg-scroll .cg-block { margin: var(--cr) 0 0; display: block; }
 /* the text and the facts: four times the usual gap */
 .cg-scroll .cg-first { margin-top: 0; }
 /* the text hangs from the top, the facts sit on the bottom edge of the column (never closer than four gaps) */
 .cg-scroll { display: flex; flex-direction: column; }
-.cg-scroll p.cg-block { margin-bottom: 2.8em; }
+.cg-scroll p.cg-block { margin-bottom: var(--cr); }
 .cg-scroll dl.cg-block { margin-top: auto; }
 .mobile .cg-scroll { display: block; }
 .mobile .cg-scroll dl.cg-block { margin-top: 0; }
@@ -188,7 +188,7 @@ html.has-panel { overflow: hidden; }
 .cg-tile .minimap { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; margin: 0; border: 0; border-radius: 0; }
 
 /* on a phone the panel is one page that scrolls, so the header with (Close) stays on top of it */
-.mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 2; background: #fff; margin-top: calc(var(--cr) * -0.9); padding: calc(var(--cr) * 0.9) 0 calc(var(--cr) * 0.4); }
+.mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 2; background: #fff; margin: calc(var(--cr) * -1) 0 0; padding: var(--cr) 0; }
 
 .cg .datalist .posted { color: inherit; font-size: inherit; }
 

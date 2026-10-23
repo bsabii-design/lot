@@ -40,7 +40,6 @@ export default function HomePanel({ p }: { p: Property }) {
           <div className="ui" style={{ textAlign: "right" }}><SaveButton id={p.id} /> &nbsp;<CloseLink>Close</CloseLink></div>
         </div>
       </div>
-      <br />
       <div className="cg-split">
         {/* the photos scroll, the map is the last tile of them ... */}
         <PhotoColumn images={p.images} title={p.title}>
