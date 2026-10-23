@@ -152,7 +152,7 @@ export default function Slideshow({ images, alt, priority }: { images: string[];
           </>
         )}
       </div>
-      <span className="caption ss-cap" aria-live="polite">{n > 1 ? `${String(cur + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}` : ""}</span>
+      <span className="ss-cap ui" aria-live="polite">{n > 1 ? `${String(cur + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}` : ""}</span>
     </div>
   );
 }

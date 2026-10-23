@@ -36,7 +36,7 @@ export default function HomePanel({ p }: { p: Property }) {
           <h1>{homeNumber(p.id)} &nbsp; &nbsp;{p.title}</h1>
         </div>
         <div className="cg-u" style={span(4)}>
-          <div style={{ textAlign: "right" }}><CloseLink>Close</CloseLink></div>
+          <div className="ui" style={{ textAlign: "right" }}><CloseLink>Close</CloseLink></div>
         </div>
       </div>
       <br />
@@ -59,7 +59,7 @@ export default function HomePanel({ p }: { p: Property }) {
               {sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}
             </span>
             <br />
-            {placeLine(p)}
+            <span className="where">{placeLine(p)}</span>
             {p.short_description && <><br /><br /><Glossed text={p.short_description} focusable /></>}
             <br /><br />
             (<a className="main" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) <SaveButton id={p.id} />
@@ -73,16 +73,16 @@ export default function HomePanel({ p }: { p: Property }) {
         <>
           <br />
           <MiniMapLazy p={p} />
-          {p.approximate_location && <><br /><span className="caption approx-note">Approximate location — exact address not published.</span></>}
+          {p.approximate_location && <><br /><span className="ui approx-note">Approximate location — exact address not published.</span></>}
         </>
       )}
       <br /><br /><br /><br /><br /><br />
       <div className="cg-set">
         <div className="cg-u" style={span(6)}>
-          <span className="caption"><CloseLink>Return to homes</CloseLink></span>
+          <span className="ui"><CloseLink>Return to homes</CloseLink></span>
         </div>
         <div className="cg-u" style={span(6)}>
-          <span className="caption"><Ago date={p.date_added} /></span>
+          <span className="ui"><Ago date={p.date_added} /></span>
         </div>
       </div>
     </>

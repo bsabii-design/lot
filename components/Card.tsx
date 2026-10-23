@@ -41,7 +41,7 @@ export default function Card({ p, number, first, onTag }: Props) {
                 {sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}
               </span>
               {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
-              , {placeLine(p)}
+              , <span className="where">{placeLine(p)}</span>
               {p.short_description && <> &mdash; <Glossed text={p.short_description} /></>}
               {" "}(<Link href={`/homes/${p.slug}`} scroll={false}>See home...</Link>)
               <br />
