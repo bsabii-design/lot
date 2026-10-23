@@ -1,11 +1,12 @@
 import SaveButton from "./SaveButton";
+import Price from "./Price";
 import Ago from "./Ago";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
 import MediaFrame from "./MediaFrame";
 import MiniMapLazy from "./MiniMapLazy";
 import { CloseLink, TagLink } from "./PanelLinks";
-import { archived, imageSrc, placeLine, price } from "@/lib/format";
+import { archived, imageSrc, placeLine } from "@/lib/format";
 import type { Property } from "@/lib/types";
 
 const STATUS = { available: "Available", under_offer: "Under offer", sold: "Sold", unavailable: "No longer available" } as const;
@@ -33,7 +34,7 @@ export default function HomePanel({ p }: { p: Property }) {
       <div className="cg-set">
         <div className="cg-u" style={span(9)}>
           <h1 className="sr-only">{p.title}</h1>
-          {sold ? <>Sold &mdash; last listed for <span className="pr">{price(p.original_listing_price || p.price)}</span></> : <span className="pr">{price(p.price)}</span>}
+          {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} /></> : <Price value={p.price} />}
           {" "}{placeLine(p)}
         </div>
         <div className="cg-u" style={span(3)}>

@@ -125,4 +125,5 @@ html.has-panel { overflow: hidden; }
 /* the price sits in a solid block like the redaction bars in the reverie texts (there they are █ characters in Times:
    the block is the font's full height, ~1.1em, and its colour is the text colour, black 85% = #262626 on white).
    Square corners, regular weight, white type. */
-.cg .pr { background: var(--text-read); color: #fff; padding: 0 0.3em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.cg .pr { display: inline-block; background: var(--text-read); color: #fff; white-space: nowrap; letter-spacing: 0; }
+.cg .pc { display: inline-block; width: 0.697em; text-align: center; }

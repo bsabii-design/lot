@@ -4,7 +4,8 @@ import Link from "next/link";
 import Slideshow from "./Slideshow";
 import Glossed from "./Glossed";
 import SaveButton from "./SaveButton";
-import { archived, placeLine, price } from "@/lib/format";
+import Price from "./Price";
+import { archived, placeLine } from "@/lib/format";
 import { cn } from "@/lib/cn";
 import type { Property } from "@/lib/types";
 
@@ -25,7 +26,7 @@ export default function Card({ p, first }: Props) {
         <div className="cg-set" data-stack="true">
           {/* left: what it costs and where it is */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
-            {sold ? <>Sold &mdash; last listed for <span className="pr">{price(p.original_listing_price || p.price)}</span></> : <span className="pr">{price(p.price)}</span>}
+            {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} /></> : <Price value={p.price} />}
             {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
             {" "}{placeLine(p)}
           </div>
