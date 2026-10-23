@@ -69,7 +69,7 @@ export default function HomePanel({ p }: { p: Property }) {
       {/* the way out, the width of the panel, always on screen */}
       <a className="pr cta" href={p.source_url} target="_blank" rel="noopener" aria-label="View listing">
         <Cells text="View listing ">
-          <span className="pc" aria-hidden="true"><Icon name="arrow-up-right" /></span>
+          <span className="pc" aria-hidden="true"><Icon name="arrow-up-right" size="1.5em" /></span>
         </Cells>
       </a>
     </>
