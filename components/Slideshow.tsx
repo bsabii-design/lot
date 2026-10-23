@@ -18,7 +18,7 @@ function offset(n: number, k: number, i: number) {
 /** The feed's photos, the way the Cargo layout does it: slides travel sideways and loop, the left / right half of the
     photo goes back / forward (cursor arrows), round arrow buttons on touch screens (and on hover), swipe, ← →,
     and a "01 / 08" caption under the photo that stays put. */
-export default function Slideshow({ images, alt, priority }: { images: string[]; alt: string; priority?: boolean }) {
+export default function Slideshow({ images, alt, priority, sizes = SIZES }: { images: string[]; alt: string; priority?: boolean; sizes?: string }) {
   const n = images.length;
   const [cur, setCur] = useState(0);
   const [warm, setWarm] = useState(false);
@@ -129,7 +129,7 @@ export default function Slideshow({ images, alt, priority }: { images: string[];
                     src={imageSrc(src)}
                     alt={k ? `${alt} ${k + 1}` : alt}
                     fill
-                    sizes={SIZES}
+                    sizes={sizes}
                     priority={priority && k === 0}
                     loading={k === 0 || warm ? "eager" : "lazy"}
                     draggable={false}

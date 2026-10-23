@@ -3,17 +3,17 @@ import Price from "./Price";
 import Ago from "./Ago";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
-import MediaFrame from "./MediaFrame";
+import Slideshow from "./Slideshow";
 import MiniMapLazy from "./MiniMapLazy";
 import { CloseLink } from "./PanelLinks";
-import { archived, imageSrc, placeLine } from "@/lib/format";
+import { archived, placeLine } from "@/lib/format";
 import type { Property } from "@/lib/types";
 
 const STATUS = { available: "Available", under_offer: "Under offer", sold: "Sold", unavailable: "No longer available" } as const;
 const span = (n: number) => ({ "--span": n }) as React.CSSProperties;
 
 /** A home's page, built like the project panel of the Cargo "Basic Feed": number, name and "(Close)"; the photos
-    stacked in one column; the map; two equal columns of caption text (the facts, then the text and buttons); and "(Return to homes)" with the date at the foot. */
+    in the same slideshow as the feed; the map; two equal columns of caption text (the facts, then the text and buttons); and "(Return to homes)" with the date at the foot. */
 export default function HomePanel({ p }: { p: Property }) {
   const sold = archived(p);
   const rows: [string, string | number | null][] = [
@@ -41,11 +41,7 @@ export default function HomePanel({ p }: { p: Property }) {
         </div>
       </div>
       <br />
-      <div className="cg-grid">
-        {p.images.map((src, i) => (
-          <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 75vw" priority={i === 0} />
-        ))}
-      </div>
+      <Slideshow images={p.images} alt={p.title} priority sizes="(max-aspect-ratio: 4/5) 100vw, 75vw" />
       <br />
       {p.lat != null && (
         <>
