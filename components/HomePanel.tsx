@@ -4,6 +4,8 @@ import Icon from "./Icon";
 import MediaFrame from "./MediaFrame";
 import MiniMapLazy from "./MiniMapLazy";
 import { CloseLink } from "./PanelLinks";
+import SaveButton from "./SaveButton";
+import Ago from "./Ago";
 import { archived, imageSrc, placeLine } from "@/lib/format";
 import type { Property } from "@/lib/types";
 
@@ -29,13 +31,13 @@ export default function HomePanel({ p }: { p: Property }) {
   return (
     <>
       <div className="cg-set">
-        <div className="cg-u" style={span(9)}>
+        <div className="cg-u" style={span(8)}>
           <h1 className="sr-only">{p.title}</h1>
           {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} /></> : <Price value={p.price} />}
           {" "}{placeLine(p)}
         </div>
-        <div className="cg-u" style={span(3)}>
-          <div className="ui" style={{ textAlign: "right" }}><CloseLink>Close</CloseLink></div>
+        <div className="cg-u" style={span(4)}>
+          <div className="ui" style={{ textAlign: "right" }}><SaveButton id={p.id} /> &nbsp;<CloseLink>Close</CloseLink></div>
         </div>
       </div>
       <br />
@@ -62,6 +64,7 @@ export default function HomePanel({ p }: { p: Property }) {
             )}
             <dl className="datalist cg-block">
               {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
+              <div><dt>Posted</dt><dd><Ago date={p.date_added} /></dd></div>
             </dl>
           </div>
         </aside>

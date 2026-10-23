@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import HomeBar from "@/components/HomeBar";
 import HomePanel from "@/components/HomePanel";
 import OverlayShell from "@/components/OverlayShell";
 import { archived } from "@/lib/format";
@@ -12,7 +11,7 @@ async function Panel({ params }: Pick<PageProps<"/homes/[slug]">, "params">) {
   const p = getProperty(slug);
   if (!p) notFound();
   return (
-    <OverlayShell modal label={p.title} sold={archived(p)} footer={<HomeBar p={p} />}>
+    <OverlayShell modal label={p.title} sold={archived(p)}>
       <HomePanel p={p} />
     </OverlayShell>
   );

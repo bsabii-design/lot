@@ -133,7 +133,7 @@ html.has-panel { overflow: hidden; }
 /* "View listing" is the price's own material, only wide: the same black block, the same cells, the same height; the link's
    hit area is taller than the bar */
 .cg a.cta { display: block; position: relative; width: 100%; text-align: center; text-decoration: none; }
-/* under both columns, the panel's width: always on screen, just above the last row */
+/* under both columns, the panel's width: always on screen */
 .cg-ovcontent > a.cta { flex: none; margin-top: 0.7em; }
 .cg a.cta::after { content: ""; position: absolute; inset: -0.55em 0; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
@@ -182,12 +182,6 @@ html.has-panel { overflow: hidden; }
 .mobile .cg-scroll { display: block; }
 .mobile .cg-scroll dl.cg-block { margin-top: 0; }
 
-/* the bottom bar of an open home: the full width of the panel (three quarters of the window) */
-.cg-bar { position: fixed; left: 25%; right: 0; bottom: 0; z-index: 3; box-sizing: border-box; width: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0 var(--cr) calc(var(--cr) * 0.9); font-size: var(--fs-sm); line-height: var(--lh-sm); pointer-events: none; contain: none; }
-.cg-bar a, .cg-bar button { pointer-events: auto; }
-.cg-bar .posted { color: var(--text-3); font-size: inherit; }
-.cg-ovcontent { padding-bottom: calc(var(--cr) * 1.4 + var(--fs-sm) * var(--lh-sm)); }
-.mobile .cg-bar { left: 0; position: sticky; background: #fff; padding-top: 0.5em; }
 
 /* the map is the last tile of the photo column: the same box as a photo (4:3, the column's width), the same gap */
 .cg-tile { position: relative; width: 100%; height: 0; padding-bottom: 75%; }
@@ -195,3 +189,5 @@ html.has-panel { overflow: hidden; }
 
 /* on a phone the panel is one page that scrolls, so the header with (Close) stays on top of it */
 .mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 2; background: #fff; margin-top: calc(var(--cr) * -0.9); padding: calc(var(--cr) * 0.9) 0 calc(var(--cr) * 0.4); }
+
+.cg .datalist .posted { color: inherit; font-size: inherit; }
