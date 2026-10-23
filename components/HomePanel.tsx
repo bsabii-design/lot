@@ -45,7 +45,7 @@ export default function HomePanel({ p }: { p: Property }) {
         {/* the photos scroll ... */}
         <div className="cg-grid cg-photos">
           {p.images.map((src, i) => (
-            <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 45vw" priority={i === 0} />
+            <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 38vw" priority={i === 0} />
           ))}
         </div>
         {/* ... while the text stays put: map, description, details, the two actions */}
@@ -77,16 +77,12 @@ export default function HomePanel({ p }: { p: Property }) {
           <SaveButton id={p.id} />
           <br /><br />
           <a className="cta" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
+          <br />
+          <div className="ui cg-foot">
+            <span><CloseLink underline>Return to homes</CloseLink></span>
+            <Ago date={p.date_added} />
+          </div>
         </aside>
-      </div>
-      <br /><br /><br /><br /><br />
-      <div className="cg-set">
-        <div className="cg-u" style={span(6)}>
-          <span className="ui"><CloseLink underline>Return to homes</CloseLink></span>
-        </div>
-        <div className="cg-u" style={span(6)}>
-          <span className="ui"><Ago date={p.date_added} /></span>
-        </div>
       </div>
     </>
   );
