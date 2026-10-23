@@ -176,9 +176,9 @@ html.has-panel { overflow: hidden; }
 /* the text and the facts: four times the usual gap */
 .cg-scroll p.cg-block + dl.cg-block { margin-top: 2.8em; }
 
-/* the bottom bar of an open home: the window's full width, like the top bar */
-.cg-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 3; box-sizing: border-box; width: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0 var(--cr) calc(var(--cr) * 0.9); font-size: var(--fs-sm); line-height: var(--lh-sm); pointer-events: none; contain: none; }
+/* the bottom bar of an open home: the full width of the panel (three quarters of the window) */
+.cg-bar { position: fixed; left: 25%; right: 0; bottom: 0; z-index: 3; box-sizing: border-box; width: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0 var(--cr) calc(var(--cr) * 0.9); font-size: var(--fs-sm); line-height: var(--lh-sm); pointer-events: none; contain: none; }
 .cg-bar a, .cg-bar button { pointer-events: auto; }
 .cg-bar .posted { color: var(--text-3); font-size: inherit; }
 .cg-ovcontent { padding-bottom: calc(var(--cr) * 1.4 + var(--fs-sm) * var(--lh-sm)); }
-.mobile .cg-bar { position: sticky; background: #fff; padding-top: 0.5em; }
+.mobile .cg-bar { left: 0; position: sticky; background: #fff; padding-top: 0.5em; }
