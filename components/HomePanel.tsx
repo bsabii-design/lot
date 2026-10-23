@@ -44,7 +44,7 @@ export default function HomePanel({ p }: { p: Property }) {
       <br />
       <div className="cg-grid">
         {p.images.map((src, i) => (
-          <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 50vw" priority={i === 0} />
+          <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${p.title} ${i + 1}` : p.title} sizes="(max-aspect-ratio: 4/5) 100vw, 75vw" priority={i === 0} />
         ))}
       </div>
       <br />
