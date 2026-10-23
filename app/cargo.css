@@ -122,6 +122,7 @@ html.has-panel { overflow: hidden; }
 .cg .status-note, .cg .sub { color: inherit; font-weight: 400; }
 .cg a .icon { display: inline-block; vertical-align: baseline; width: 0.8em; height: 0.8em; stroke-width: 1px; }
 
-/* the price sits in a solid black block, like the redaction bars in the reverie texts: square corners, regular weight,
-   white type, the block runs the height of the line */
-.cg .pr { background: var(--text); color: #fff; padding: 0 0.3em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+/* the price sits in a solid block like the redaction bars in the reverie texts (there they are █ characters in Times:
+   the block is the font's full height, ~1.1em, and its colour is the text colour, black 85% = #262626 on white).
+   Square corners, regular weight, white type. */
+.cg .pr { background: var(--text-read); color: #fff; padding: 0 0.3em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
