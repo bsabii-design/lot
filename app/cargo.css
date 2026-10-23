@@ -48,8 +48,8 @@
   text-align: right;
   pointer-events: none;
   font-family: var(--font);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-sm);
+  font-size: var(--fs);
+  line-height: var(--lh);
   letter-spacing: var(--tracking);
 }
 .nav button { pointer-events: auto; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; color: var(--text-3); cursor: pointer; }
@@ -57,7 +57,7 @@
 .nav i { font-style: normal; }
 
 /* ---------- the feed: one page per home, stacked ---------- */
-.cg-pages { width: 100%; padding-top: calc(var(--cr) * (0.9 + 3) + var(--fs-sm) * var(--lh-sm)); }
+.cg-pages { width: 100%; padding-top: calc(var(--cr) * (0.9 + 3) + var(--fs) * var(--lh)); }
 .cg-page { box-sizing: border-box; width: 100%; padding: calc(var(--cr) * 0.9) var(--cr) calc(var(--cr) * 3); }
 .cg-page.sold .ss-item img, .cg-ov.sold .mi-frame img { filter: grayscale(1); opacity: 0.7; }
 
@@ -224,3 +224,11 @@ html.has-panel { overflow: hidden; }
 .cg-lb .lb-btn.prev { left: 10px; }
 .cg-lb .lb-btn.next { right: 10px; }
 .mobile .cg-lb .lb-btn { display: block; }
+
+/* the navigation is set in the site's text size: the tabs on top and the dock at the bottom (the dock keeps its height) */
+.dock button { font-size: var(--fs); line-height: var(--lh); }
+
+/* the filter window: the text inside is the site's size too, but the window keeps its HEIGHT: heights are fixed already, the
+   line height is kept at its old value in px, and the extra width the bigger type needs comes from the window being wider */
+.filterwin { --fs-sm: var(--fs); --lh-sm: 0.9078; }
+@media (min-width: 701px) { .filterwin { width: min(27rem, calc(100vw - 1.5rem)); } }
