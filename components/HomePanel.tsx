@@ -31,11 +31,12 @@ export default function HomePanel({ p }: { p: Property }) {
   return (
     <>
       <div className="cg-set">
-        <div className="cg-u" style={span(8)}>
+        <div className="cg-u" style={span(9)}>
           <h1 className="sr-only">{p.title}</h1>
-          {placeLine(p)}
+          {sold ? <>Sold &mdash; last listed for <span className="pr">{price(p.original_listing_price || p.price)}</span></> : <span className="pr">{price(p.price)}</span>}
+          {" "}{placeLine(p)}
         </div>
-        <div className="cg-u" style={span(4)}>
+        <div className="cg-u" style={span(3)}>
           <div className="ui" style={{ textAlign: "right" }}><CloseLink>Close</CloseLink></div>
         </div>
       </div>
@@ -49,8 +50,6 @@ export default function HomePanel({ p }: { p: Property }) {
       <div className="cg-set" data-stack="true">
         <div className="cg-u" style={span(6)}>
           <span className="caption">
-            {sold ? <>Sold &mdash; last listed for <span className="pr">{price(p.original_listing_price || p.price)}</span></> : <span className="pr">{price(p.price)}</span>}
-            <br /><br />
             Details<br /><br />
             {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
           </span>

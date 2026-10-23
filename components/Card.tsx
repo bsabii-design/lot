@@ -27,8 +27,7 @@ export default function Card({ p, first }: Props) {
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
             {sold ? <>Sold &mdash; last listed for <span className="pr">{price(p.original_listing_price || p.price)}</span></> : <span className="pr">{price(p.price)}</span>}
             {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
-            <br />
-            {placeLine(p)}
+            {" "}{placeLine(p)}
           </div>
           {/* right: the story, then the two things you can do with it */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
