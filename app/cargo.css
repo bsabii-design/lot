@@ -111,9 +111,10 @@ html.has-panel { overflow: hidden; }
 /* inside a home everything is set in the interface size, like the tabs */
 .cg-ovcontent, .cg-ovcontent .caption { font-size: var(--fs-sm); line-height: var(--lh-sm); }
 
-/* the photos fill the panel's width (the panel is three quarters of the window), and never get taller than the window */
-.cg-ovcontent .ss { --slide-h: min(calc((75vw - 2 * var(--cr)) / var(--ar)), 80vh); }
-.mobile .cg-ovcontent .ss { --slide-h: calc((100vw - 2 * var(--cr)) / var(--ar)); }
+.cg-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--cr); align-items: start; width: 100%; }
+.cg-grid .media-item { position: relative; display: block; margin: 0; width: 100%; }
+.cg-grid .mi-frame { height: 0; padding-bottom: 75%; }
+.cg-grid .mi-frame img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .cg-ovcontent .minimap { margin: 0; border: 0; border-radius: 0; aspect-ratio: 3 / 2; }
 .cg-ovcontent .approx-note { margin-top: 0; color: var(--text-3); }
 .cg-ovcontent .posted { color: var(--text-3); }
