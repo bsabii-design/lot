@@ -138,7 +138,7 @@ html.has-panel { overflow: hidden; }
 .cg a.cta::after { content: ""; position: absolute; inset: -0.55em 0; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
 .cg a.cta .pc:last-child { position: relative; height: 1em; vertical-align: top; }
-/* the arrow is as tall as the capitals (1.5em box, the glyph fills 10/24 of it), centred on the capitals' middle (a hair above the line box's), and its stroke is the weight of Times' thick stems (~0.09em) */
+/* the arrow is a bit smaller than the capitals (1.1em box, the glyph fills 10/24 of it), centred on the capitals' middle (a hair above the line box's), and its stroke is the weight of Times' thick stems (~0.09em) */
 .cg a.cta .icon { position: absolute; left: 50%; top: calc(50% + 0.04em); transform: translate(-50%, -50%); stroke: currentColor; stroke-width: 0.09em; }
 
 /* a home: a window of its own. The header (price, place, Close) never moves; under it two columns, each scrolling by
