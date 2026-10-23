@@ -6,7 +6,6 @@ import MediaFrame from "./MediaFrame";
 import MiniMapLazy from "./MiniMapLazy";
 import { CloseLink, TagLink } from "./PanelLinks";
 import { archived, imageSrc, placeLine, price } from "@/lib/format";
-import { homeNumber } from "@/lib/number";
 import type { Property } from "@/lib/types";
 
 const STATUS = { available: "Available", under_offer: "Under offer", sold: "Sold", unavailable: "No longer available" } as const;
@@ -33,7 +32,8 @@ export default function HomePanel({ p }: { p: Property }) {
     <>
       <div className="cg-set">
         <div className="cg-u" style={span(8)}>
-          <h1>{homeNumber(p.id)} &nbsp; &nbsp;{p.title}</h1>
+          <h1 className="sr-only">{p.title}</h1>
+          {placeLine(p)}
         </div>
         <div className="cg-u" style={span(4)}>
           <div className="ui" style={{ textAlign: "right" }}><CloseLink>Close</CloseLink></div>
@@ -49,11 +49,7 @@ export default function HomePanel({ p }: { p: Property }) {
       <div className="cg-set" data-stack="true">
         <div className="cg-u" style={span(6)}>
           <span className="caption">
-            <span className="price">
-              {sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}
-            </span>
-            <br />
-            <span className="where">{placeLine(p)}</span>
+            {sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}
             <br /><br />
             Details<br /><br />
             {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
@@ -62,7 +58,7 @@ export default function HomePanel({ p }: { p: Property }) {
         <div className="cg-u" style={span(6)}>
           {p.short_description && <span className="caption"><Glossed text={p.short_description} focusable /></span>}
           <br />
-          (<a className="main" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) &nbsp;<SaveButton id={p.id} />
+          (<a className="ul" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) &nbsp;<SaveButton id={p.id} />
           <br /><br />
           <TagLink kind="type" value={p.property_type} />
           <TagLink kind="condition" value={p.condition} />

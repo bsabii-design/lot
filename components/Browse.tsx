@@ -152,7 +152,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
               )}
             </div>
           ) : (
-            list.map((p, i) => <Card key={p.id} p={p} number={String(homes.indexOf(p) + 1).padStart(2, "0")} first={i === 0} />)
+            list.map((p, i) => <Card key={p.id} p={p} first={i === 0} />)
           )}
         </main>
       )}

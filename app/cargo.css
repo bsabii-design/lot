@@ -1,7 +1,7 @@
 /* The feed, the top bar, the slideshow and the home panel are laid out exactly like the Cargo "Basic Feed" template
    (measured in its browser at 1200x800 and 390x800): spacing, columns, picture, slideshow, panel. The type is LOT's own
    (docs/design-rules.md §0–2): Times, content 15px / interface 12.75px at design size, line height 1.068, tracking −0.009em,
-   reading colour 85%, price bold.
+   reading colour 85%. One text style in the feed: regular, reading colour; underline marks a button.
    Cargo's rem is not the browser's: it follows the window (see the script in app/layout.tsx), so every length here is
    a multiple of --cr, which is that rem in px. */
 
@@ -26,13 +26,11 @@
 .cg .ui, .ui { font-size: var(--fs-sm); line-height: var(--lh-sm); }
 .cg a, .cg button.lk { color: inherit; text-decoration: none; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; cursor: pointer; }
 .cg .ul:not(.saved) { text-decoration: underline; }
-.cg .where, .cg .sub { color: var(--text-2); }
 .cg a:active, .cg button.lk:active { opacity: 0.7; }
 .cg h1 { font: inherit; margin: 0; display: inline; }
 
 /* twelve equal columns, 1 rem gutter (Cargo's column-set) */
 .cg-set { align-items: baseline; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--cr); width: 100%; position: relative; contain: layout; }
-.cg-name { display: grid; grid-template-columns: 2.1em minmax(0, 1fr); }
 .cg-u { display: block; grid-column: span var(--span, 6); min-width: 0; max-width: 100%; position: relative; word-wrap: break-word; }
 .mobile .cg-set[data-stack="true"] { display: block; }
 
@@ -120,8 +118,6 @@ html.has-panel { overflow: hidden; }
 .cg .lab { display: inline-flex; flex-direction: column; }
 .cg .tag { color: var(--text-3); margin-right: 0.5em; }
 .cg .tag:hover { color: var(--text); }
-.cg .price { font-weight: 700; }
-.cg .price .sub, .cg .status-note { font-weight: 400; color: var(--text-2); }
 .cg .saved { font-style: italic; }
-.cg .main { font-weight: 700; }
-.cg .main .icon { display: inline-block; vertical-align: baseline; width: 0.8em; height: 0.8em; stroke-width: 1px; }
+.cg .status-note, .cg .sub { color: inherit; font-weight: 400; }
+.cg a .icon { display: inline-block; vertical-align: baseline; width: 0.8em; height: 0.8em; stroke-width: 1px; }
