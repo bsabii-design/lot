@@ -53,7 +53,7 @@ export default function HomePanel({ p }: { p: Property }) {
           {p.lat != null && <MiniMapLazy p={p} />}
           {p.short_description && (
             <p className="cg-block">
-              {p.short_description.split("\n").map((para, i) => (
+              {[...p.short_description.split("\n"), ...(p.description_more ? [p.description_more] : [])].map((para, i) => (
                 <span key={i}>
                   {i > 0 && <><br />{"\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 "}</>}
                   <Glossed text={para} focusable />

@@ -52,6 +52,8 @@ export interface Property {
   original_listing_price: number | null;
   /** added at load time from data/classification.json; absent = nothing classified yet */
   facts?: Facts;
+  /** a draft second paragraph (data/description-drafts.json), built from the record's own fields; absent = none */
+  description_more?: string;
 }
 
 export type Tab = "all" | "favourites" | "archive";
