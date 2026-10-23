@@ -32,22 +32,29 @@ export default function Card({ p, number, first, onTag }: Props) {
       <div className="cg">
         <Slideshow images={p.images} alt={p.title} priority={first} />
         <div className="cg-set" data-stack="true">
+          {/* left: what it is, what it costs, where it is, how it is tagged */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
-            {number} &nbsp; &nbsp;{p.title}
+            <div className="cg-name">
+              <span>{number}</span>
+              <div>
+                {p.title}
+                <br /><br />
+                <span className="price">
+                  {sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}
+                </span>
+                {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
+                <br />
+                <span className="where">{placeLine(p)}</span>
+                <br /><br />
+                {tag("type", p.property_type)}{tag("condition", p.condition)}
+              </div>
+            </div>
           </div>
+          {/* right: the story, then the two things you can do with it */}
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
-            <span className="caption">
-              <span className="price">
-                {sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}
-              </span>
-              {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
-              , <span className="where">{placeLine(p)}</span>
-              {p.short_description && <> &mdash; <Glossed text={p.short_description} /></>}
-              {" "}(<Link href={`/homes/${p.slug}`} scroll={false}>See home...</Link>)
-              <br />
-              <SaveButton id={p.id} />
-              {" "}{tag("type", p.property_type)}{tag("condition", p.condition)}
-            </span>
+            {p.short_description && <span className="caption"><Glossed text={p.short_description} /></span>}
+            <br />
+            (<Link className="ul" href={`/homes/${p.slug}`} scroll={false}>See home...</Link>) &nbsp;<SaveButton id={p.id} />
           </div>
         </div>
       </div>

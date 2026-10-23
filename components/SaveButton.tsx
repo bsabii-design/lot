@@ -9,7 +9,7 @@ export default function SaveButton({ id }: { id: string }) {
   return (
     <>
       (<button
-        className={cn("lk", on && "saved")}
+        className={cn("lk ul", on && "saved")}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();

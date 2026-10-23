@@ -49,24 +49,23 @@ export default function HomePanel({ p }: { p: Property }) {
       <div className="cg-set" data-stack="true">
         <div className="cg-u" style={span(6)}>
           <span className="caption">
-            Details<br /><br />
-            {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
-          </span>
-        </div>
-        <div className="cg-u" style={span(6)}>
-          <span className="caption">
             <span className="price">
               {sold ? <>Sold <span className="sub">&mdash; last listed for {price(p.original_listing_price || p.price)}</span></> : price(p.price)}
             </span>
             <br />
             <span className="where">{placeLine(p)}</span>
-            {p.short_description && <><br /><br /><Glossed text={p.short_description} focusable /></>}
             <br /><br />
-            (<a className="main" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) <SaveButton id={p.id} />
-            <br />
-            <TagLink kind="type" value={p.property_type} />
-            <TagLink kind="condition" value={p.condition} />
+            Details<br /><br />
+            {rows.map(([k, v]) => <span key={k}>{k}: {v}<br /></span>)}
           </span>
+        </div>
+        <div className="cg-u" style={span(6)}>
+          {p.short_description && <span className="caption"><Glossed text={p.short_description} focusable /></span>}
+          <br />
+          (<a className="main" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>) &nbsp;<SaveButton id={p.id} />
+          <br /><br />
+          <TagLink kind="type" value={p.property_type} />
+          <TagLink kind="condition" value={p.condition} />
         </div>
       </div>
       {p.lat != null && (
@@ -79,7 +78,7 @@ export default function HomePanel({ p }: { p: Property }) {
       <br /><br /><br /><br /><br /><br />
       <div className="cg-set">
         <div className="cg-u" style={span(6)}>
-          <span className="ui"><CloseLink>Return to homes</CloseLink></span>
+          <span className="ui"><CloseLink underline>Return to homes</CloseLink></span>
         </div>
         <div className="cg-u" style={span(6)}>
           <span className="ui"><Ago date={p.date_added} /></span>
