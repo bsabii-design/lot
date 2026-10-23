@@ -147,8 +147,13 @@ html.has-panel { overflow: hidden; }
 .cg-foot { display: flex; justify-content: space-between; align-items: baseline; }
 
 /* the facts: name in grey on the left, value on the right, a hairline between the rows (as in LOT) */
-.cg .datalist { margin: 0.5em 0 0; padding: 0; }
-.cg .datalist div { display: grid; grid-template-columns: 1fr 1fr; padding: 0.25rem 0; border-bottom: 1px solid var(--border); }
+.cg .datalist { margin: 0; padding: 0; }
+.cg .datalist div { display: grid; grid-template-columns: 1fr 1fr; padding: 0.15rem 0; border-bottom: 1px solid var(--border); }
 .cg .datalist div:last-child { border-bottom: none; }
 .cg .datalist dt { color: var(--text-3); margin: 0; }
 .cg .datalist dd { color: var(--text-read); margin: 0; }
+
+/* the pinned column: blocks close together */
+.cg-info .cg-block { margin: 0.7em 0 0; display: block; }
+.cg-info .cg-foot.cg-block { display: flex; margin-top: 0.5em; }
+.cg-info .minimap { margin: 0; }

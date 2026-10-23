@@ -50,33 +50,22 @@ export default function HomePanel({ p }: { p: Property }) {
         </div>
         {/* ... while the text stays put: map, description, details, the two actions */}
         <aside className="cg-info">
-          {p.lat != null && (
-            <>
-              <MiniMapLazy p={p} />
-              {p.approximate_location && <><br /><span className="ui approx-note">Approximate location — exact address not published.</span><br /></>}
-              <br />
-            </>
-          )}
+          {p.lat != null && <MiniMapLazy p={p} />}
           {p.short_description && (
-            <span className="caption">
-              Description<br /><br />
+            <p className="cg-block">
               {p.short_description.split("\n").map((para, i) => (
                 <span key={i}>
                   {i > 0 && <><br />{"\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 "}</>}
                   <Glossed text={para} focusable />
                 </span>
               ))}
-            </span>
+            </p>
           )}
-          <br /><br />
-          <span className="caption">Details</span>
-          <dl className="datalist">
+          <dl className="datalist cg-block">
             {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
           </dl>
-          <br />
-          <a className="cta" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
-          <br />
-          <div className="cg-foot">
+          <a className="cta cg-block" href={p.source_url} target="_blank" rel="noopener">View listing <Icon name="arrow-up-right" /></a>
+          <div className="cg-foot cg-block">
             <span><SaveButton id={p.id} /> &nbsp;<span className="ui"><CloseLink underline>Return to homes</CloseLink></span></span>
             <span className="ui"><Ago date={p.date_added} /></span>
           </div>
