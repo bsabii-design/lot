@@ -3,7 +3,12 @@
    Cargo's rem is not the browser's: it follows the window (see the script in app/layout.tsx), so every length here is
    a multiple of --cr, which is that rem in px. */
 
-:root { --cr: 11.52px; }
+:root {
+  --cr: 11.52px;
+  /* Times is smaller on the page than Cargo's Inter at the same size: one factor scales every piece of type, the spacing
+     (padding, gutters, the picture) stays Cargo's. Tracking is in em and the line height is unitless, so they follow. */
+  --ft: 1.35;
+}
 
 .cg {
   display: block;
@@ -13,7 +18,7 @@
   contain: layout;
   word-wrap: break-word;
   font-family: var(--font);
-  font-size: calc(var(--cr) * 1.05);
+  font-size: calc(var(--cr) * 1.05 * var(--ft));
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.0135em;
@@ -21,7 +26,7 @@
 }
 .cg .caption {
   display: block;
-  font-size: calc(var(--cr) * 0.8);
+  font-size: calc(var(--cr) * 0.8 * var(--ft));
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.015em;
@@ -50,7 +55,7 @@
   text-align: right;
   pointer-events: none;
   font-family: var(--font);
-  font-size: calc(var(--cr) * 1.05);
+  font-size: calc(var(--cr) * 1.05 * var(--ft));
   line-height: 1.2;
   letter-spacing: 0.0135em;
 }
@@ -59,7 +64,7 @@
 .nav i { font-style: italic; }
 
 /* ---------- the feed: one page per home, stacked ---------- */
-.cg-pages { width: 100%; padding-top: calc(var(--cr) * 5.16); }
+.cg-pages { width: 100%; padding-top: calc(var(--cr) * (0.9 + 3) + var(--cr) * 1.26 * var(--ft)); }
 .cg-page { box-sizing: border-box; width: 100%; padding: calc(var(--cr) * 0.9) var(--cr) calc(var(--cr) * 3); }
 .cg-page.sold .ss-item img, .cg-ov.sold .mi-frame img { filter: grayscale(1); opacity: 0.7; }
 
