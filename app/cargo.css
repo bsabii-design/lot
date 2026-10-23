@@ -173,9 +173,9 @@ html.has-panel { overflow: hidden; }
 /* blocks close together */
 .cg-scroll .cg-block { margin: 0.7em 0 0; display: block; }
 .cg-scroll .minimap { margin: 0; aspect-ratio: auto; height: 50vh; } /* half the screen */
-/* the map and the facts: four times the usual gap */
+/* the text and the facts: four times the usual gap */
 .cg-scroll .cg-first { margin-top: 0; }
-.cg-scroll div.cg-block + dl.cg-block { margin-top: 2.8em; }
+.cg-scroll p.cg-block + dl.cg-block { margin-top: 2.8em; }
 
 /* the bottom bar of an open home: the full width of the panel (three quarters of the window) */
 .cg-bar { position: fixed; left: 25%; right: 0; bottom: 0; z-index: 3; box-sizing: border-box; width: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0 var(--cr) calc(var(--cr) * 0.9); font-size: var(--fs-sm); line-height: var(--lh-sm); pointer-events: none; contain: none; }
