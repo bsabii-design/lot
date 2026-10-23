@@ -60,11 +60,11 @@
 
 /* ---------- the feed: one page per home, stacked ---------- */
 .cg-pages { width: 100%; padding-top: calc(var(--cr) * (0.9 + 3) + var(--fs) * var(--lh)); }
-.cg-page { box-sizing: border-box; width: 100%; padding: calc(var(--cr) * 0.9) var(--cr) calc(var(--cr) * 3); }
+.cg-page { box-sizing: border-box; width: 100%; padding: var(--cr) var(--cr) calc(var(--cr) * 3); } /* one unit (1 rem) inside a home: the same as in the panel; between two homes 4 units */
 .cg-page.sold .ss-item img, .cg-ov.sold .mi-frame img { filter: grayscale(1); opacity: 0.7; }
 
 /* slideshow: slides travel sideways and loop, the caption stays put */
-.ss { position: relative; width: 100%; max-width: 100%; display: flex; flex-direction: column; --ar: 1.3333; --slide-h: calc(var(--cr) * 35.3); margin-bottom: calc(var(--cr) * 1.1); }
+.ss { position: relative; width: 100%; max-width: 100%; display: flex; flex-direction: column; --ar: 1.3333; --slide-h: calc(var(--cr) * 35.3); margin-bottom: var(--cr); }
 .ss-view { position: relative; overflow-x: clip; overflow-y: visible; height: var(--slide-h); user-select: none; -webkit-user-select: none; touch-action: pan-y; outline: 0; }
 .ss-slide { position: absolute; top: 0; left: 0; width: 100%; height: var(--slide-h); display: flex; justify-content: center; align-items: flex-start; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
 .ss-item { display: block; position: relative; width: calc(var(--slide-h) * var(--ar)); max-width: 100%; height: var(--slide-h); margin: 0; }
@@ -234,3 +234,5 @@ html.has-panel { overflow: hidden; }
    line height is kept at its old value in px, and the extra width the bigger type needs comes from the window being wider */
 .filterwin { --fs-sm: var(--fs); --lh-sm: 0.9078; }
 @media (min-width: 701px) { .filterwin { width: min(27rem, calc(100vw - 1.5rem)); } }
+
+.cg-row .cg-save { display: block; margin-top: var(--cr); }

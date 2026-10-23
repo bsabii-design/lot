@@ -36,8 +36,7 @@ export default function Card({ p, first }: Props) {
               {p.short_description && <><Glossed text={p.short_description} />{" "}</>}
               (<Link className="ul cg-stretch" href={`/homes/${p.slug}`} scroll={false}>See home...</Link>)
             </span>
-            <br />
-            <SaveButton id={p.id} />
+            <div className="cg-save"><SaveButton id={p.id} /></div>
           </div>
         </div>
       </div>
