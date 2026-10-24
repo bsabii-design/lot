@@ -282,12 +282,7 @@ html.has-panel { overflow: hidden; }
 .map-preview { display: block; color: var(--text-read); text-decoration: none; cursor: pointer; }
 .map-preview img { margin-bottom: var(--u); }
 .map-preview .where { color: inherit; }
-/* the facts, as on a home: name in grey, value in the text colour, a hairline between the rows */
-.map-preview .datalist { margin: var(--u) 0 0; padding: 0; }
-.map-preview .datalist div { display: grid; grid-template-columns: 1fr 1fr; padding: 0.15rem 0; border-bottom: 1px solid var(--border); }
-.map-preview .datalist div:last-child { border-bottom: none; }
-.map-preview .datalist dt { color: var(--text-3); margin: 0; }
-.map-preview .datalist dd { color: var(--text-read); margin: 0; }
+
 .map-preview:hover .price { background: rgba(0, 0, 0, 0.7); }
 .map-preview:focus-visible { outline: 1px solid var(--text-read); outline-offset: 3px; }
 
@@ -308,3 +303,8 @@ html.has-panel { overflow: hidden; }
 .cg .pr, .filterwin .pr, .map-preview .pr { display: inline-block; }
 /* inside a line of text the block must not make the line taller */
 .cg .pr:not(.cta), .map-preview .pr { margin-block: calc(var(--pad-y) * -1); }
+
+/* scannable facts under the price and place (feed card and map popup): one wrapping line, a wide gap between facts, no dots; the number or
+   the value in the text colour, the quiet word after it in grey */
+.cg .facts, .map-preview .facts { display: flex; flex-wrap: wrap; gap: 0 1.5em; margin-top: calc(var(--u) / 2); }
+.cg .facts .w, .map-preview .facts .w { color: var(--text-3); }

@@ -6,6 +6,7 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { STYLE_URL, clusterPoints, tuneStyle } from "@/lib/map";
 import { imageSrc, placeLine, price, priceShort } from "@/lib/format";
+import { facts } from "@/lib/facts";
 import { RETURN_KEY } from "@/lib/cn";
 import regionsData from "@/data/regions.json";
 import type { Property } from "@/lib/types";
@@ -62,24 +63,21 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     text.innerHTML = '<span class="pr price"></span> <span class="where"></span>';
     text.querySelector(".price")!.textContent = price(p.price);
     text.querySelector(".where")!.textContent = placeLine(p);
-    /* the few facts that decide whether to look further, as rows of the details list (only what the record states; a plot that is not stated is left out) */
-    const rows: [string, string][] = [];
-    if (p.size_m2) rows.push(["Size", p.size_m2 + " m²"]);
-    if (p.bedrooms != null) rows.push(["Bedrooms", String(p.bedrooms)]);
-    if (p.land_size_m2) rows.push(["Plot", p.land_size_m2.toLocaleString("en-US") + " m²"]);
-    if (p.status === "under_offer") rows.push(["Status", "Under offer"]);
-    const list = document.createElement("dl");
-    list.className = "datalist";
-    for (const [k, v] of rows) {
-      const row = document.createElement("div");
-      const dt = document.createElement("dt");
-      dt.textContent = k;
-      const dd = document.createElement("dd");
-      dd.textContent = v;
-      row.append(dt, dd);
-      list.appendChild(row);
+    /* the same few facts as on the feed, on one compact line */
+    const line = document.createElement("div");
+    line.className = "facts";
+    for (const [v, w] of facts(p)) {
+      const item = document.createElement("span");
+      item.append(v);
+      if (w) {
+        const word = document.createElement("span");
+        word.className = "w";
+        word.textContent = w;
+        item.append(" ", word);
+      }
+      line.appendChild(item);
     }
-    if (rows.length) text.appendChild(list);
+    if (line.childElementCount) text.appendChild(line);
     wrap.append(img, text);
     return wrap;
   }, [router]);

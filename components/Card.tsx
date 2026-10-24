@@ -6,6 +6,7 @@ import Glossed from "./Glossed";
 import SaveButton from "./SaveButton";
 import Price from "./Price";
 import { archived, placeLine } from "@/lib/format";
+import { facts } from "@/lib/facts";
 import { cn } from "@/lib/cn";
 import type { Property } from "@/lib/types";
 
@@ -30,6 +31,9 @@ export default function Card({ p, first }: Props) {
             {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} id={p.id} /></> : <Price value={p.price} id={p.id} />}
             {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
             {" "}{placeLine(p)}
+            <div className="facts">
+              {facts(p).map(([v, w]) => <span key={v + (w ?? "")}>{v}{w && <> <span className="w">{w}</span></>}</span>)}
+            </div>
           </div>
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
             <span className="caption">
