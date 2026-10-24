@@ -273,30 +273,31 @@ html.has-panel { overflow: hidden; }
 
 /* the map: square markers (the same black as the price block), a square popup in the site's type */
 /* the markers are the same block (cells, padding, height): only the size of the type is the site's */
-.bubble { height: auto; border-radius: 0; font: var(--fs) / 1.1 var(--font); }
-.bubble.count { min-width: 0; padding: 0 var(--pad); }
+.bubble { height: auto; border-radius: 0; font: var(--fs) / 1 var(--font); }
 .bubble:hover { opacity: 1; background: rgba(0, 0, 0, 0.7); }
 .bubble.on { background: #fff; color: var(--text-read); }
-.bubble.dot { padding: 0; }
+.bubble.dot { padding: 0; width: 0.75rem; height: 0.75rem; }
 .lot-popup .maplibregl-popup-content { border-radius: 0; font: var(--fs) / var(--lh) var(--font); letter-spacing: var(--tracking); padding: var(--u); }
 .map-preview .price { font-weight: 400; }
 .map-preview .open { display: inline; margin-top: 0; color: var(--text-read); text-decoration: underline; }
 .map-preview .open:hover { color: var(--text-2); }
 
 
-/* ---------- THE black block: one definition for the price, View listing, "Show N homes", a chosen option, a map marker and the
-   price in the map popup. The same colour, the same cells (0.6em wide, wider for a wide letter: nothing is squeezed), the same side padding
-   (the width of a bracket), the same height (1.1 lines). ---------- */
-:root { --pad: 0.333em; }
+/* ---------- THE black block: one definition for the price, View listing, "Show N homes", a chosen option, a map marker and the price in the
+   map popup. Same colour, same cells (0.6em wide, wider for a wide letter), and the same air on all four sides: 0.2em above and below,
+   a bracket's width (0.333em) at the sides. A capital's top sits 0.176em below the top of a 1em line box and a cell leaves 0.05em
+   at each side of a digit, so to the eye the space above, below and at the sides is the same (~0.38em). Height: 1.4em for all of them. ---------- */
+:root { --pad: 0.333em; --pad-y: 0.2em; }
 .cg .pr, .filterwin .pr, .map-preview .pr, .bubble, .chipopt.on .lab {
   background: var(--text-read);
   color: #fff;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
-  padding-left: var(--pad);
-  padding-right: var(--pad);
+  padding: var(--pad-y) var(--pad);
 }
 .cg .pr, .filterwin .pr, .map-preview .pr { display: inline-block; }
+/* inside a line of text the block must not make the line taller */
+.cg .pr:not(.cta), .map-preview .pr { margin-block: calc(var(--pad-y) * -1); }
 .cg .pc, .filterwin .pc, .map-preview .pc, .bubble .pc { display: inline-block; min-width: 0.6em; text-align: center; }
