@@ -283,12 +283,16 @@ html.has-panel { overflow: hidden; }
 .bubble.dot { padding: 0; width: 0.75rem; height: 0.75rem; }
 /* a merged group is a square: as wide as the block is high (1.4em), the padding stays as it is */
 .bubble.count { min-width: calc(1em + 2 * var(--pad-y)); justify-content: center; padding: var(--pad-y) var(--pad); }
-.lot-popup .maplibregl-popup-content { width: 19rem; border-radius: 0; font: var(--fs) / var(--lh) var(--font); letter-spacing: var(--tracking); padding: var(--u); }
+.lot-popup .maplibregl-popup-content { width: 19rem; border-radius: 0; font: var(--fs-sm) / var(--lh-sm) var(--font); letter-spacing: var(--tracking); padding: var(--u); }
 /* the card is one link: the picture, then the price block and the place on one line, as on the feed */
 .map-preview { display: block; color: var(--text-read); text-decoration: none; cursor: pointer; }
 .map-preview img { margin-bottom: var(--u); }
 .map-preview .where { color: inherit; }
 
+.map-save { margin: var(--u) 0 0; color: var(--text-read); }
+.map-save .lk { color: inherit; font: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+.map-save .lk.saved { text-decoration: none; }
+.map-save .lk:hover { color: var(--text-2); }
 .map-preview:hover .price { background: rgba(0, 0, 0, 0.7); }
 .map-preview:focus-visible { outline: 1px solid var(--text-read); outline-offset: 3px; }
 
@@ -312,6 +316,8 @@ html.has-panel { overflow: hidden; }
 
 /* scannable facts (feed card and map popup): one under another, all in the text colour */
 .cg .facts, .map-preview .facts { display: flex; flex-direction: column; margin-top: calc(var(--u) / 2); }
+/* in the map card the gap under the price line is the same as the gap above Save */
+.map-preview .facts { margin-top: var(--u); }
 
 /* on the feed card the facts sit above the description, at the top of the right column */
 .cg .facts.cg-facts-above { margin-top: 0; margin-bottom: var(--u); }

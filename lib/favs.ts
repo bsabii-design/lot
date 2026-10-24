@@ -31,6 +31,10 @@ export function useFavs() {
   return useSyncExternalStore(subscribe, read, () => EMPTY);
 }
 
+/** For code outside React (the map's popup): is it saved, and tell me when the saved homes change. */
+export const isFav = (id: string) => read().includes(id);
+export const onFavs = subscribe;
+
 export function toggleFav(id: string) {
   const favs = [...read()];
   const i = favs.indexOf(id);

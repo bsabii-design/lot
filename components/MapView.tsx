@@ -8,6 +8,7 @@ import { STYLE_URL, clusterPoints, tuneStyle } from "@/lib/map";
 import { imageSrc, placeLine, price, priceShort } from "@/lib/format";
 import { facts } from "@/lib/facts";
 import { RETURN_KEY } from "@/lib/cn";
+import { isFav, onFavs, toggleFav } from "@/lib/favs";
 import regionsData from "@/data/regions.json";
 import type { Property } from "@/lib/types";
 
@@ -79,7 +80,22 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     }
     if (line.childElementCount) text.appendChild(line);
     wrap.append(img, text);
-    return wrap;
+    /* "(Save)" under the card, outside the link: the same word and the same state as on the feed */
+    const save = document.createElement("p");
+    save.className = "map-save";
+    const btn = document.createElement("button");
+    btn.className = "lk";
+    const paint = () => {
+      const on = isFav(p.id);
+      btn.textContent = on ? "Saved" : "Save";
+      btn.classList.toggle("saved", on);
+    };
+    btn.addEventListener("click", () => toggleFav(p.id));
+    paint();
+    save.append("(", btn, ")");
+    const card = document.createElement("div");
+    card.append(wrap, save);
+    return { card, stop: onFavs(paint) };
   }, [router]);
 
   const draw = useCallback(() => {
@@ -110,12 +126,13 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         popup.current?.remove();
+        const { card, stop } = preview(p);
         const pop = new maplibregl.Popup({ closeButton: false, className: "lot-popup", offset: 16 * k, maxWidth: "none" })
           .setLngLat([lng, lat])
-          .setDOMContent(preview(p))
+          .setDOMContent(card)
           .addTo(map);
         el.classList.add("on");
-        pop.on("close", () => el.classList.remove("on"));
+        pop.on("close", () => { el.classList.remove("on"); stop(); });
         popup.current = pop;
       });
       markers.current.push(new maplibregl.Marker({ element: el }).setLngLat([lng, lat]).addTo(map));
@@ -186,10 +203,15 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     };
   }, [draw, fit, showRegions]);
 
+  /* a new array with the same homes (saving a home rebuilds the list) must not close the open card or move the map */
+  const shown = useRef("");
   useEffect(() => {
+    const key = [homes.map((h) => h.id).join(","), regions.join(","), windowOpen].join("|");
     homesRef.current = homes;
     regionsRef.current = regions;
     windowOpenRef.current = windowOpen;
+    if (key === shown.current) return;
+    shown.current = key;
     showRegions();
     fit();
   }, [homes, regions, windowOpen, fit, showRegions]);
