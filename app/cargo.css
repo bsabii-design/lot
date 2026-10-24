@@ -255,6 +255,9 @@ html.has-panel { overflow: hidden; }
   }
 }
 
+/* the groups of the filter (Price, Location, Condition ...) stand apart: twice the gap they had */
+.filterwin .fscroll > .frow { padding: 0.5rem 0; }
+
 .cg-row .cg-save { display: block; margin-top: var(--u); }
 
 /* (the blue is switched off for now: --blue / --grain above and public/grain-blue.png are kept; the saved price carries the class .saved-pr, and
