@@ -242,7 +242,7 @@ html.has-panel { overflow: hidden; }
 /* the filter window: the text inside is the site's size too, but the window keeps its HEIGHT: heights are fixed already, the
    line height is kept at its old value in px, and the extra width the bigger type needs comes from the window being wider */
 .filterwin { --fs-sm: var(--fs); --lh-sm: 0.9078; }
-@media (min-width: 701px) { .filterwin { width: min(27rem, calc(100vw - 1.5rem)); } }
+@media (min-width: 701px) { .filterwin { width: min(31rem, calc(100vw - 1.5rem)); } }
 
 .cg-row .cg-save { display: block; margin-top: var(--u); }
 
