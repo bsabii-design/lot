@@ -31,9 +31,9 @@ export default function Card({ p, first }: Props) {
             {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} id={p.id} /></> : <Price value={p.price} id={p.id} />}
             {!sold && p.status === "under_offer" && <span className="status-note"> &middot; under offer</span>}
             {" "}{placeLine(p)}
-            <Facts p={p} />
           </div>
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
+            <Facts p={p} className="cg-facts-above" />
             <span className="caption">
               {p.short_description && <><Glossed text={p.short_description} />{" "}</>}
               (<Link className="ul cg-stretch" href={`/homes/${p.slug}`} scroll={false}>See home...</Link>)

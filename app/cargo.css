@@ -308,3 +308,6 @@ html.has-panel { overflow: hidden; }
    the value in the text colour, the quiet word after it in grey */
 .cg .facts, .map-preview .facts { display: flex; flex-wrap: wrap; gap: 0 1.5em; margin-top: calc(var(--u) / 2); }
 .cg .facts .w, .map-preview .facts .w { color: var(--text-3); }
+
+/* on the feed card the facts sit above the description, at the top of the right column */
+.cg .facts.cg-facts-above { margin-top: 0; margin-bottom: calc(var(--u) / 2); }
