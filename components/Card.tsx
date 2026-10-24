@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Slideshow from "./Slideshow";
-import Glossed from "./Glossed";
+import FeedText from "./FeedText";
 import SaveButton from "./SaveButton";
 import Price from "./Price";
 import { archived, placeLine } from "@/lib/format";
@@ -34,10 +34,9 @@ export default function Card({ p, first }: Props) {
           </div>
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
             <Facts p={p} className="cg-facts-above" />
-            <span className="caption">
-              {p.short_description && <span className="clamp"><Glossed text={p.short_description} /></span>}
-              <span className="more">(<Link className="ul cg-stretch" href={`/homes/${p.slug}`} scroll={false}>See home...</Link>)</span>
-            </span>
+            {p.short_description
+              ? <FeedText text={p.short_description} href={`/homes/${p.slug}`} />
+              : <span className="caption"><Link className="ul cg-stretch" href={`/homes/${p.slug}`} scroll={false}>(See home…)</Link></span>}
             <div className="cg-save"><SaveButton id={p.id} /></div>
           </div>
         </div>

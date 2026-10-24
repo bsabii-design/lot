@@ -30,9 +30,10 @@
   color: var(--text-read);
 }
 .cg .caption { display: block; }
-/* on the feed the text is cut to two lines (with an ellipsis); the link to the home follows on its own line */
-.cg .caption .clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.cg .caption .more { display: block; }
+/* on the feed the text is cut to two lines, the last one ending with the link to the home (see FeedText); until it is measured,
+   nothing sticks out below the two lines */
+.cg .feed-text { max-height: calc(var(--lh) * 2em); overflow: hidden; }
+.cg .feed-text .probe { position: absolute; left: -9999px; top: 0; visibility: hidden; pointer-events: none; }
 /* interface text: counter, close / return, the date, notes */
 .cg .ui, .ui { font-size: var(--fs-sm); line-height: var(--lh-sm); }
 .cg a, .cg button.lk { color: inherit; text-decoration: none; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; cursor: pointer; }
