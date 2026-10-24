@@ -43,28 +43,26 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
   const regionsRef = useRef(regions);
   const windowOpenRef = useRef(windowOpen);
 
+  /* the whole card is the link into the home */
   const preview = useCallback((p: Property) => {
-    const wrap = document.createElement("div");
+    const wrap = document.createElement("a");
     wrap.className = "map-preview";
+    wrap.href = `/homes/${p.slug}`;
+    wrap.addEventListener("click", (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      try { sessionStorage.setItem(RETURN_KEY, "1"); } catch {}
+      router.push(wrap.getAttribute("href")!);
+    });
     const img = document.createElement("img");
     img.src = imageSrc(p.images[0]);
     img.alt = "";
     const text = document.createElement("div");
     const sub = [p.town + ", " + p.country + (p.approximate_location ? " · approximate" : ""), metaLine(p)].filter(Boolean);
-    text.innerHTML = '<span class="pr price"></span><br><span class="sub"></span><br>';
+    text.innerHTML = '<span class="pr price"></span><span class="sub"></span>';
     /* the price in the site's black block (the same material as the price on a home) */
     text.querySelector(".price")!.textContent = price(p.price);
     text.querySelector(".sub")!.innerHTML = sub.map((s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;")).join("<br>");
-    const open = document.createElement("a");
-    open.className = "open";
-    open.href = `/homes/${p.slug}`;
-    open.textContent = "See home...";
-    open.addEventListener("click", (e) => {
-      e.preventDefault();
-      try { sessionStorage.setItem(RETURN_KEY, "1"); } catch {}
-      router.push(open.getAttribute("href")!);
-    });
-    text.append("(", open, ")");
     wrap.append(img, text);
     return wrap;
   }, [router]);
