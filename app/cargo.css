@@ -363,3 +363,6 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 .browse[data-view="list"] .cg-pages { display: flex; flex-direction: column; }
 .browse[data-view="list"] .cg-pages > .cg-page { flex: none; }
 .browse[data-view="list"] .cg-pages > .empty { flex: 1 1 0; min-height: 0; }
+
+/* on a phone the home is one long page: "View listing" stays at the bottom of the screen while it scrolls (the panel's own scroll, as on the desktop it is always on screen) */
+.mobile .cg-ovcontent > a.cta { position: sticky; bottom: calc(var(--u) + env(safe-area-inset-bottom, 0px)); z-index: 3; }
