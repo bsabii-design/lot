@@ -6,6 +6,10 @@
    a multiple of --cr, which is that rem in px. */
 
 :root {
+  /* the one colour: the blue of the reference swatch (#2b409f on average, 9:1 against white), with its fine grain. The base under the grain is a little darker (#1e3494) so that the average
+     after the grain is the swatch's: measured 43/67/159 against the swatch's 43/64/159, grain 5.5 against 5.4 */
+  --blue: #1e3494;
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
   --cr: 11.52px;
   /* the one unit of space, 12px at a 1200x800 window (Cargo's rem is 11.52 there), growing and shrinking with the window like it */
   --u: calc(var(--cr) * 12 / 11.52);
@@ -142,7 +146,7 @@ html.has-panel { overflow: hidden; }
 /* under both columns, the panel's width: always on screen */
 .cg-ovcontent > a.cta { flex: none; margin-top: var(--u); }
 .cg a.cta::after { content: ""; position: absolute; inset: -0.55em 0; }
-.cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
+.cg a.cta:hover { background-color: var(--blue); background-image: var(--grain); background-blend-mode: soft-light; }
 .cg a.cta .pc:last-child { position: relative; height: 1em; vertical-align: top; }
 /* the arrow is a bit smaller than the capitals (1.1em box, the glyph fills 10/24 of it), centred on the capitals' middle (a hair above the line box's), and its stroke is 1px */
 .cg a.cta .icon { position: absolute; left: 50%; top: calc(50% + 0.04em); transform: translate(-50%, -50%); stroke: currentColor; stroke-width: 1px; }
@@ -242,3 +246,6 @@ html.has-panel { overflow: hidden; }
 @media (min-width: 701px) { .filterwin { width: min(27rem, calc(100vw - 1.5rem)); } }
 
 .cg-row .cg-save { display: block; margin-top: var(--u); }
+
+/* a saved home's price turns blue (with the grain); View listing turns the same blue on hover */
+.cg .pr.saved-pr { background-color: var(--blue); background-image: var(--grain); background-blend-mode: soft-light; }

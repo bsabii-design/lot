@@ -33,7 +33,7 @@ export default function HomePanel({ p }: { p: Property }) {
       <div className="cg-set">
         <div className="cg-u" style={span(8)}>
           <h1 className="sr-only">{p.title}</h1>
-          {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} /></> : <Price value={p.price} />}
+          {sold ? <>Sold &mdash; last listed for <Price value={p.original_listing_price || p.price} id={p.id} /></> : <Price value={p.price} id={p.id} />}
           {" "}{placeLine(p)}
         </div>
         <div className="cg-u" style={span(4)}>
