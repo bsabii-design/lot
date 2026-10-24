@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Card from "./Card";
+import Footer from "./Footer";
 import Icon from "./Icon";
 import FilterWindow from "./FilterWindow";
 import { useFavs } from "@/lib/favs";
@@ -148,6 +149,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
           )}
         </main>
       )}
+      {!(view === "map" && !empty) && <Footer />}
 
       {facets.length > 0 && (
         <div className="filterbar">
