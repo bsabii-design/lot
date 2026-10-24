@@ -46,8 +46,9 @@ export default function HomePanel({ p }: { p: Property }) {
         {/* the photos scroll, the map is the last tile of them ... */}
         <PhotoColumn images={p.images} title={p.title}>
           {p.lat != null && <div className="cg-tile"><MiniMapLazy p={p} /></div>}
+          <p className="ui cg-added"><Ago date={p.date_added} prefix="Added " /></p>
         </PhotoColumn>
-        {/* ... while the text stays put: the details, then the text and when it was added */}
+        {/* ... while the text stays put: the details, then the text */}
         <aside className="cg-info">
           <div className="cg-scroll">
             <dl className="datalist cg-block cg-first">
@@ -63,7 +64,6 @@ export default function HomePanel({ p }: { p: Property }) {
                 ))}
               </p>
             )}
-            <p className="ui cg-added"><Ago date={p.date_added} prefix="Added " /></p>
           </div>
         </aside>
       </div>
