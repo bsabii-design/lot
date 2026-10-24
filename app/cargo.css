@@ -183,6 +183,7 @@ html.has-panel { overflow: hidden; }
 .cg-scroll .cg-block { margin: var(--u) 0 0; display: block; }
 /* the text and the facts: four times the usual gap */
 .cg-scroll .cg-first { margin-top: 0; }
+.cg-scroll .facts.cg-block + p.cg-block { margin-top: var(--u); }
 /* the text hangs from the top, the facts sit on the bottom edge of the column (never closer than four gaps) */
 .cg-scroll { display: flex; flex-direction: column; }
 .cg-scroll p.cg-block { margin-bottom: var(--u); }

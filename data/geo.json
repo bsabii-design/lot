@@ -1,0 +1,85 @@
+{
+ "_about": "Derived, not checked by a person: the straight-line distance (km) from each home's point to the nearest coast (Natural Earth 10m coastline, public domain). The point is the commune's centre, so the distance is good to roughly 5-10 km; the site quotes it only as 'sea within N km' for round N. Regenerate with scripts/sea-distance.py.",
+ "basis": "derived",
+ "precision_km": 10,
+ "homes": {
+  "pepieux-stone-house-1962": {
+   "sea_km": 41.0
+  },
+  "le-vigeant-village-house-a37509": {
+   "sea_km": 132.2
+  },
+  "merdrignac-stone-cottage-newton": {
+   "sea_km": 40.6
+  },
+  "lacaze-timbered-house-60636342": {
+   "sea_km": 81.8
+  },
+  "champgeneteux-renovation-a44098": {
+   "sea_km": 83.4
+  },
+  "pressignac-stone-cottage-a41100": {
+   "sea_km": 124.2
+  },
+  "la-chapelle-montbrandeix-stone-house-a29584": {
+   "sea_km": 126.0
+  },
+  "thollet-farmhouse-bvi72280": {
+   "sea_km": 171.3
+  },
+  "saint-sebastien-cottage-a45393": {
+   "sea_km": 201.8
+  },
+  "locarn-country-house-a45191": {
+   "sea_km": 42.2
+  },
+  "saint-ouen-la-thene-house-a39000": {
+   "sea_km": 65.6
+  },
+  "saint-germain-de-confolens-house-a44033": {
+   "sea_km": 131.0
+  },
+  "exideuil-village-house-a44580": {
+   "sea_km": 121.8
+  },
+  "azillanet-stone-house-a44962": {
+   "sea_km": 38.9
+  },
+  "gourdon-stone-house-a43147": {
+   "sea_km": 150.9
+  },
+  "gace-colombage-house-a39921": {
+   "sea_km": 63.2
+  },
+  "la-roque-sur-ceze-village-house-a44763": {
+   "sea_km": 69.8
+  },
+  "riberac-stone-house-bvi77914": {
+   "sea_km": 70.9
+  },
+  "saint-sulpice-house-bvi80970": {
+   "sea_km": 188.1
+  },
+  "chalais-stone-cottage-bvi86937": {
+   "sea_km": 51.4
+  },
+  "la-trimouille-house-bvi85550": {
+   "sea_km": 165.5
+  },
+  "chateauponsac-stone-house-am5270": {
+   "sea_km": 175.2
+  },
+  "chamberet-stone-house-cc4941": {
+   "sea_km": 184.2
+  },
+  "valzergues-farmhouse-28262": {
+   "sea_km": 162.5
+  },
+  "lacourt-hamlet-house-32848": {
+   "sea_km": 151.9
+  },
+  "ginals-watermill-32445": {
+   "sea_km": 154.9
+  }
+ }
+}

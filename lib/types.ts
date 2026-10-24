@@ -52,6 +52,8 @@ export interface Property {
   original_listing_price: number | null;
   /** added at load time from data/classification.json; absent = nothing classified yet */
   facts?: Facts;
+  /** computed from the coordinates (data/geo.json): the distance to the nearest coast in km, good to roughly 5-10 km */
+  geo?: { sea_km: number };
   /** a draft second paragraph (data/description-drafts.json), built from the record's own fields; absent = none */
   description_more?: string;
 }

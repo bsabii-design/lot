@@ -22,7 +22,7 @@ export const AREA_PRESETS: Option[] = [
 /** minimum bedrooms, one at a time; "" = any */
 export const BEDROOM_PRESETS: Option[] = [["", "Any"], ["1", "1+"], ["2", "2+"], ["3", "3+"], ["4", "4+"]];
 
-export const CONDITIONS: Option[] = [["move_in", "Move-in ready"], ["needs_work", "Liveable, needs work"], ["project", "Renovation project"]];
+export const CONDITIONS: Option[] = [["move_in", "Move-in ready"], ["light_works", "Light works"], ["needs_renovation", "Needs renovation"], ["restoration", "Restoration project"]];
 
 export const OUTDOOR: Option[] = [["garden", "Garden"], ["courtyard", "Courtyard"]];
 export const SETTLEMENTS: Option[] = [["village", "Village"], ["hamlet", "Hamlet"], ["town", "Town"], ["isolated", "Isolated"]];
@@ -42,13 +42,16 @@ export const FEATURES: Option[] = [
 export const HABITABILITY = ["habitable", "habitable_after_light_works", "partly_habitable", "not_habitable"];
 export const RENOVATION_LEVEL = ["recently_renovated", "good_order", "needs_refreshing", "needs_renovation", "restoration_project"];
 
-/** The visitor-facing condition, from the two attributes. Both must be known, otherwise it is unknown (null). */
+/** The visitor-facing condition (the more work, the lower), from the two attributes. Both must be known, otherwise it is unknown (null).
+    restoration: not or partly habitable, or a restoration project · needs renovation: habitable, but a renovation is needed ·
+    light works: habitable after light works, or only needs refreshing · move-in ready: habitable and recently renovated or in good order. */
 export function conditionOf(f: Facts | undefined): string | null {
   const h = f?.habitability?.value;
   const r = f?.renovation_level?.value;
   if (!h || !r) return null;
-  if (h === "not_habitable" || h === "partly_habitable" || r === "restoration_project") return "project";
-  if (h === "habitable_after_light_works" || r === "needs_refreshing" || r === "needs_renovation") return "needs_work";
+  if (h === "not_habitable" || h === "partly_habitable" || r === "restoration_project") return "restoration";
+  if (r === "needs_renovation") return "needs_renovation";
+  if (h === "habitable_after_light_works" || r === "needs_refreshing") return "light_works";
   if (h === "habitable" && (r === "recently_renovated" || r === "good_order")) return "move_in";
   return null;
 }

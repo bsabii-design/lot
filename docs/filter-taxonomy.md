@@ -8,7 +8,7 @@ The approved filter panel: five main groups, then a collapsed **More filters** b
 |---|---|---|
 | Price | Up to €50k … €150k; typed Min–Max | presets are **upper limits**; one at a time; typing clears the preset, picking a preset clears the typed numbers |
 | Location | all 13 metropolitan regions | several; OR |
-| Condition | Move-in ready · Liveable, needs work · Renovation project | several; OR; see "Condition" below |
+| Condition | Move-in ready · Light works · Needs renovation · Restoration project | several; OR; see "Condition" below |
 | Living area | Any size, 50+, 75+, 100+, 150+ m²; typed Min–Max | presets are **minimums**; one at a time |
 | Bedrooms | Any, 1+ … 4+ | minimum, one at a time |
 | **More filters** (starts collapsed) | | |
@@ -43,8 +43,9 @@ Price, region, living area (`size_m2`), bedrooms and plot (`land_size_m2`) use t
 
 Two attributes per home: **habitability** (`habitable`, `habitable_after_light_works`, `partly_habitable`, `not_habitable`) and **renovation level** (`recently_renovated`, `good_order`, `needs_refreshing`, `needs_renovation`, `restoration_project`). The visitor-facing category is computed in `conditionOf()` (`lib/taxonomy.ts`) and needs both known:
 
-- Renovation project: not or partly habitable, or a restoration project
-- Liveable, needs work: habitable after light works, or needs refreshing / renovation
+- Restoration project: not or partly habitable, or a restoration project
+- Needs renovation: a renovation is needed (habitable or not)
+- Light works: habitable after light works, or only needs refreshing
 - Move-in ready: habitable and recently renovated or in good order
 
 **This mapping is a proposal; confirm or change it there.**
@@ -56,3 +57,11 @@ A choice with no home behind it is dimmed and cannot be picked (a filter that ca
 ## Hashtags
 
 `#type` and `#condition` on cards and home pages still filter on the **old labels** (cards are out of scope). They appear in the active list as "Tag" and are not shown in the panel.
+
+## Distance to the sea (computed, not judged)
+
+`data/geo.json`, written by `scripts/sea-distance.py` from the Natural Earth 10m coastline (public domain): the straight-line distance from each home's point to the nearest coast, in km. The point is a commune's centre, so the figure is good to roughly 5-10 km. The site rounds it to 5 km (10 beyond 100 km), writes it with a tilde ("~40 km to the sea"), shows it on a card only up to 60 km, and in the full list inside a home for every home. Today the nearest home is 39 km from the coast.
+
+## The facts line
+
+`lib/facts.ts`: state, settlement, living area, bedrooms, plot, sea: on the feed card, in the map popup and above the description inside a home. A value nobody has checked (state, settlement) is not shown; `docs/review-sheet.md` lists what to check.
