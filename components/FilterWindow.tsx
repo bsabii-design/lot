@@ -9,6 +9,7 @@ import {
 import { regionLabel } from "@/lib/regions";
 import { cn } from "@/lib/cn";
 import Icon from "./Icon";
+import { Cells } from "./Price";
 import type { Filters, NumRange } from "@/lib/types";
 
 interface Props {
@@ -167,8 +168,8 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
       </div>
       <div className="ffoot">
         <button className="bk sm" onClick={onClear}>Clear all</button>
-        <button className="btn sm" disabled={count === 0 || invalid} onClick={onApply}>
-          {invalid ? "Check the range" : count === 0 ? "No homes match" : `Show ${count} ${count === 1 ? "home" : "homes"}`}
+        <button className="pr apply" disabled={count === 0 || invalid} onClick={onApply}>
+          <Cells text={invalid ? "Check the range" : count === 0 ? "No homes match" : `Show ${count} ${count === 1 ? "home" : "homes"}`} />
         </button>
       </div>
     </aside>

@@ -249,3 +249,33 @@ html.has-panel { overflow: hidden; }
 
 /* a saved home's price turns blue (with the grain); View listing turns the same blue on hover */
 .cg .pr.saved-pr { background: var(--blue) var(--grain) 0 0 / 128px 128px; }
+
+
+/* ---------- the map and the filters, in the site's own language: square, no pills; the black block is the one loud thing;
+   a chosen option is that block too; no italic ---------- */
+
+/* the black block outside .cg (the filter window, the map popup): the same as on a home */
+.filterwin .pr, .map-preview .pr { display: inline-block; background: var(--text-read); color: #fff; white-space: nowrap; letter-spacing: 0; font-weight: 400; }
+.filterwin .pc, .map-preview .pc { display: inline-block; width: 0.6em; text-align: center; }
+
+/* filter window: square corners, the apply button is a black block (blue grain on hover), a chosen option is a black block */
+.filterwin { border-radius: 0; }
+.range input { border-radius: 0; }
+.ffoot .apply { box-sizing: border-box; height: 1.75rem; padding: 0 0.3em; border: 0; font: inherit; font-size: var(--fs-sm); line-height: 1.75rem; cursor: pointer; }
+.ffoot .apply:hover:not(:disabled) { background: var(--blue) var(--grain) 0 0 / 128px 128px; }
+.ffoot .apply:disabled { opacity: 0.4; cursor: default; }
+.chipopt.on { background: var(--text-read); color: #fff; font-style: normal; }
+.chipopt.on::before, .chipopt.on::after { content: ""; display: inline-block; width: 0.333em; } /* the brackets' width, so nothing moves */
+
+/* the dock and the zoom control: square */
+.dock, .zoom { border-radius: 0; }
+.filterbar .chip, .filterbar .stat { border-radius: 0; }
+
+/* the map: square markers (the same black as the price block), a square popup in the site's type */
+.bubble { border-radius: 0; background: var(--text-read); color: #fff; }
+.bubble:hover { opacity: 1; background: rgba(0, 0, 0, 0.7); }
+.bubble.on { background: #fff; color: var(--text-read); }
+.lot-popup .maplibregl-popup-content { border-radius: 0; font: var(--fs) / var(--lh) var(--font); letter-spacing: var(--tracking); padding: var(--u); }
+.map-preview .price { font-weight: 400; }
+.map-preview .open { display: inline; margin-top: 0; color: var(--text-read); text-decoration: underline; }
+.map-preview .open:hover { color: var(--text-2); }

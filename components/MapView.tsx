@@ -51,19 +51,26 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     img.alt = "";
     const text = document.createElement("div");
     const sub = [p.town + ", " + p.country + (p.approximate_location ? " · approximate" : ""), metaLine(p)].filter(Boolean);
-    text.innerHTML = '<span class="price"></span><br><span class="sub"></span><br>';
-    text.querySelector(".price")!.textContent = price(p.price);
+    text.innerHTML = '<span class="pr price"></span><br><span class="sub"></span><br>';
+    /* the price in the site's black block, one cell per character (the same material as the price on a home) */
+    const cells = text.querySelector(".price")!;
+    for (const c of price(p.price)) {
+      const cell = document.createElement("span");
+      cell.className = "pc";
+      cell.textContent = c;
+      cells.appendChild(cell);
+    }
     text.querySelector(".sub")!.innerHTML = sub.map((s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;")).join("<br>");
     const open = document.createElement("a");
     open.className = "open";
     open.href = `/homes/${p.slug}`;
-    open.textContent = "Open →";
+    open.textContent = "See home...";
     open.addEventListener("click", (e) => {
       e.preventDefault();
       try { sessionStorage.setItem(RETURN_KEY, "1"); } catch {}
       router.push(open.getAttribute("href")!);
     });
-    text.appendChild(open);
+    text.append("(", open, ")");
     wrap.append(img, text);
     return wrap;
   }, [router]);
