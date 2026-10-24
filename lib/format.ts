@@ -33,4 +33,8 @@ export function ago(dateStr: string, now = Date.now()) {
   return years === 1 ? "1 year ago" : years + " years ago";
 }
 
-export const placeLine = (p: Property) => `${p.town}, ${regionLabel(p.region)}, ${p.country}`;
+/** On the site the country is not said: every home is in France. */
+export const placeLine = (p: Property) => `${p.town}, ${regionLabel(p.region)}`;
+
+/** With the country, for a link preview shared outside the site (the page's description). */
+export const placeLineFull = (p: Property) => `${placeLine(p)}, ${p.country}`;

@@ -5,7 +5,7 @@ import HomePanel from "@/components/HomePanel";
 import OverlayShell from "@/components/OverlayShell";
 import { archived } from "@/lib/format";
 import { getProperty, properties } from "@/lib/properties";
-import { placeLine, price } from "@/lib/format";
+import { placeLineFull, price } from "@/lib/format";
 
 export function generateStaticParams() {
   return properties.map((p) => ({ slug: p.slug }));
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps<"/homes/[slug]">): 
   const { slug } = await params;
   const p = getProperty(slug);
   if (!p) return {};
-  const description = `${price(p.price)} · ${placeLine(p)}. ${p.short_description}`;
+  const description = `${price(p.price)} · ${placeLineFull(p)}. ${p.short_description}`;
   return {
     title: p.title,
     description,
