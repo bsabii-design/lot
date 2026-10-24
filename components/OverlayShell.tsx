@@ -2,14 +2,15 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/cn";
 
 const PanelContext = createContext<{ close: () => void; modal: boolean }>({ close: () => {}, modal: false });
 export const usePanel = () => useContext(PanelContext);
 
 /** The panel that opens over the feed, as in the Cargo layout: the right three quarters are white, the feed stays behind it
-    faded. Esc, a click outside the panel or "(Close)" closes it. Opened from the feed it is an intercepted route
+    faded (a text page — About, Privacy — is `wide`: the white covers the whole page). Esc, a click outside the panel or "(Close)" closes it. Opened from the feed it is an intercepted route
     (back closes it); on a direct visit to /homes/<slug> there is nothing behind, and closing goes to the feed. */
-export default function OverlayShell({ children, modal, label, sold }: { children: ReactNode; modal: boolean; label: string; sold?: boolean }) {
+export default function OverlayShell({ children, modal, label, sold, wide }: { children: ReactNode; modal: boolean; label: string; sold?: boolean; wide?: boolean }) {
   const router = useRouter();
   const content = useRef<HTMLDivElement>(null);
   const close = useCallback(() => { if (modal) router.back(); else router.push("/"); }, [modal, router]);
@@ -28,7 +29,7 @@ export default function OverlayShell({ children, modal, label, sold }: { childre
   return (
     <PanelContext.Provider value={{ close, modal }}>
       <div
-        className={sold ? "cg-ov sold" : "cg-ov"}
+        className={cn("cg-ov", sold && "sold", wide && "wide")}
         role="dialog"
         aria-label={label}
         onMouseDown={(e) => { if (!(e.target as Element).closest(".cg-ovcontent")) close(); }}
