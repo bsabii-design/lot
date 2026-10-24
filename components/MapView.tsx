@@ -133,6 +133,15 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
           .addTo(map);
         el.classList.add("on");
         pop.on("close", () => { el.classList.remove("on"); stop(); });
+        /* the card must be on the screen whole: below the top bar, above the dock, not past the sides */
+        requestAnimationFrame(() => {
+          const r = pop.getElement()?.getBoundingClientRect();
+          if (!r) return;
+          const side = 12 * k, top = 56 * k, bottom = 72 * k;
+          const dx = r.left < side ? side - r.left : r.right > innerWidth - side ? innerWidth - side - r.right : 0;
+          const dy = r.top < top ? top - r.top : r.bottom > innerHeight - bottom ? innerHeight - bottom - r.bottom : 0;
+          if (dx || dy) map.panBy([-dx, -dy], { duration: 250 });
+        });
         popup.current = pop;
       });
       markers.current.push(new maplibregl.Marker({ element: el }).setLngLat([lng, lat]).addTo(map));

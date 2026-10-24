@@ -104,6 +104,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
 
   return (
     <div className="browse" data-view={view}>
+      <h1 className="sr-only">LOT: homes across France</h1>
       <nav className="nav">
         {TABS.map(([key, label], i) => (
           <span key={key}>

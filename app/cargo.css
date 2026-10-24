@@ -244,16 +244,18 @@ html.has-panel { overflow: hidden; }
    line height is kept at its old value in px, and the extra width the bigger type needs comes from the window being wider */
 .filterwin { --fs-sm: var(--fs); --lh-sm: 0.9078; }
 /* over the first photo of the feed the window leaves the same gap (one unit) on the left, on the right and above: it hangs one unit below the
-   photo's top edge and is two units narrower than the photo (35.3 cr high, 4:3). Photo top = 4.9 units + one line of text. */
-@media (min-width: 701px) {
-  .filterwin {
-    --fw-top: calc(var(--u) * 5.9 + var(--fs) * var(--lh));
-    top: var(--fw-top);
-    bottom: auto;
-    width: min(calc(var(--cr) * 35.3 * 4 / 3 - 2 * var(--u)), calc(100vw - 1.5rem));
-    max-height: calc(100vh - var(--fw-top) - 3.75rem);
-  }
+   photo's top edge (photo top = 4.9 units + one line of text) and is two units narrower than the photo — 35.3 cr high, 4:3 on a wide
+   screen, the full width of the page (minus one unit each side) in the .mobile layout */
+.filterwin {
+  --fw-top: calc(var(--u) * 5.9 + var(--fs) * var(--lh));
+  top: var(--fw-top);
+  bottom: auto;
+  max-height: calc(100vh - var(--fw-top) - 3.75rem);
 }
+@media (min-width: 701px) {
+  .filterwin { width: min(calc(var(--cr) * 35.3 * 4 / 3 - 2 * var(--u)), calc(100vw - 1.5rem)); }
+}
+html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); width: auto; transform: none; }
 
 /* the groups of the filter (Price, Location, Condition ...) stand apart: twice the gap they had */
 .filterwin .fscroll > .frow { padding: 0.5rem 0; }
@@ -331,3 +333,11 @@ html.has-panel { overflow: hidden; }
 
 /* on the feed card the facts sit above the description, at the top of the right column */
 .cg .facts.cg-facts-above { margin-top: 0; margin-bottom: var(--u); }
+
+/* on a phone a field smaller than 16px makes the browser zoom the page when it is tapped */
+.mobile .filterwin input { font-size: max(16px, var(--fs)); }
+
+/* touch: the words stay as small as they are, the area that answers a finger grows around them (padding out, the same margin back in) */
+.mobile .nav button { padding: 0.6em 0.45em; margin: -0.6em -0.45em; }
+.mobile .cg-row .cg-save .lk, .mobile .cg-ovcontent > .cg-set .ui :is(a, button), .mobile .map-save .lk { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
+.mobile .dock button { height: var(--h-btn); }
