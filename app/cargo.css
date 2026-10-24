@@ -145,9 +145,9 @@ html.has-panel { overflow: hidden; }
 .cg-ovcontent > a.cta { flex: none; margin-top: var(--u); }
 .cg a.cta::after { content: ""; position: absolute; inset: -0.55em 0; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
-.cg a.cta .pc:last-child { position: relative; height: 1em; vertical-align: top; }
 /* the arrow is a bit smaller than the capitals (1.1em box, the glyph fills 10/24 of it), centred on the capitals' middle (a hair above the line box's), and its stroke is 1px */
-.cg a.cta .icon { position: absolute; left: 50%; top: calc(50% + 0.04em); transform: translate(-50%, -50%); stroke: currentColor; stroke-width: 1px; }
+/* the arrow: 1px line, lowered so its middle is the middle of the capitals (0.12em below the baseline); its margins are negative so it does not make the line taller */
+.cg a.cta .icon { display: inline-block; vertical-align: -0.12em; margin: -0.3em 0 -0.3em 0.25em; stroke: currentColor; stroke-width: 1px; }
 
 /* a home: a window of its own. The header (price, place, Close) never moves; under it two columns, each scrolling by
    itself: the photos on the left, the text on the right, and the last row (Save, Return to homes, the date) stays on the
@@ -273,7 +273,7 @@ html.has-panel { overflow: hidden; }
 
 /* the map: square markers (the same black as the price block), a square popup in the site's type */
 /* the markers are the same block (cells, padding, height): only the size of the type is the site's */
-.bubble { height: auto; border-radius: 0; font: var(--fs) / 1 var(--font); }
+.bubble { height: auto; border-radius: 0; font: var(--fs-sm) / 1 var(--font); } /* the map's prices keep the smaller interface size */
 .bubble:hover { opacity: 1; background: rgba(0, 0, 0, 0.7); }
 .bubble.on { background: #fff; color: var(--text-read); }
 .bubble.dot { padding: 0; width: 0.75rem; height: 0.75rem; }
@@ -284,7 +284,7 @@ html.has-panel { overflow: hidden; }
 
 
 /* ---------- THE black block: one definition for the price, View listing, "Show N homes", a chosen option, a map marker and the price in the
-   map popup. Same colour, same cells (0.6em wide, wider for a wide letter), and the same air on all four sides: 0.2em above and below,
+   map popup. Same colour, the site's own type (no letter-spacing), and the same air on all four sides: 0.2em above and below,
    a bracket's width (0.333em) at the sides. A capital's top sits 0.176em below the top of a 1em line box and a cell leaves 0.05em
    at each side of a digit, so to the eye the space above, below and at the sides is the same (~0.38em). Height: 1.4em for all of them. ---------- */
 :root { --pad: 0.333em; --pad-y: 0.2em; }
@@ -293,11 +293,9 @@ html.has-panel { overflow: hidden; }
   color: #fff;
   font-weight: 400;
   line-height: 1;
-  letter-spacing: 0;
   white-space: nowrap;
   padding: var(--pad-y) var(--pad);
 }
 .cg .pr, .filterwin .pr, .map-preview .pr { display: inline-block; }
 /* inside a line of text the block must not make the line taller */
 .cg .pr:not(.cta), .map-preview .pr { margin-block: calc(var(--pad-y) * -1); }
-.cg .pc, .filterwin .pc, .map-preview .pc, .bubble .pc { display: inline-block; min-width: 0.6em; text-align: center; }

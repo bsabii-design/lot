@@ -5,12 +5,11 @@ import { useFavs } from "@/lib/favs";
 import { cn } from "@/lib/cn";
 import type { ReactNode } from "react";
 
-/** Text in a solid block, one cell per character like the █ redaction bars of the reference: every cell is 0.6em wide,
-    so the block is as wide as that many bars. The price and "View listing" are the same material. */
+/** The text of a black block: plain type, the site's own (the price, "View listing" and "Show N homes" are the same material). */
 export function Cells({ text, children }: { text: string; children?: ReactNode }) {
   return (
     <>
-      {[...text].map((c, i) => <span className="pc" key={i} aria-hidden="true">{c}</span>)}
+      {text}
       {children}
     </>
   );
@@ -22,7 +21,7 @@ export default function Price({ value, id }: { value: number; id?: string }) {
   const saved = useFavs().includes(id ?? "");
   return (
     <span className={cn("pr", saved && "saved-pr")} aria-label={saved ? `${text}, saved` : text}>
-      <Cells text={text} />
+      {text}
     </span>
   );
 }

@@ -1,4 +1,4 @@
-import Price, { Cells } from "./Price";
+import Price from "./Price";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
 import PhotoColumn from "./PhotoColumn";
@@ -67,9 +67,7 @@ export default function HomePanel({ p }: { p: Property }) {
       </div>
       {/* the way out, the width of the panel, always on screen */}
       <a className="pr cta" href={p.source_url} target="_blank" rel="noopener" aria-label="View listing">
-        <Cells text="View listing ">
-          <span className="pc" aria-hidden="true"><Icon name="arrow-up-right" size="1.1em" /></span>
-        </Cells>
+        View listing <Icon name="arrow-up-right" size="1.1em" />
       </a>
     </>
   );

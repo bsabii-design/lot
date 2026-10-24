@@ -13,13 +13,7 @@ import type { Property } from "@/lib/types";
 function bubble(text: string, count = false) {
   const el = document.createElement("div");
   el.className = "bubble" + (count ? " count" : "");
-  /* one cell per character, like every black block on the site */
-  for (const c of text) {
-    const cell = document.createElement("span");
-    cell.className = "pc";
-    cell.textContent = c;
-    el.appendChild(cell);
-  }
+  el.textContent = text;
   return el;
 }
 
@@ -58,14 +52,8 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     const text = document.createElement("div");
     const sub = [p.town + ", " + p.country + (p.approximate_location ? " · approximate" : ""), metaLine(p)].filter(Boolean);
     text.innerHTML = '<span class="pr price"></span><br><span class="sub"></span><br>';
-    /* the price in the site's black block, one cell per character (the same material as the price on a home) */
-    const cells = text.querySelector(".price")!;
-    for (const c of price(p.price)) {
-      const cell = document.createElement("span");
-      cell.className = "pc";
-      cell.textContent = c;
-      cells.appendChild(cell);
-    }
+    /* the price in the site's black block (the same material as the price on a home) */
+    text.querySelector(".price")!.textContent = price(p.price);
     text.querySelector(".sub")!.innerHTML = sub.map((s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;")).join("<br>");
     const open = document.createElement("a");
     open.className = "open";
