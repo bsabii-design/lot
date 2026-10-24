@@ -2,7 +2,6 @@ import Price from "./Price";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
 import PhotoColumn from "./PhotoColumn";
-import Facts from "./Facts";
 import { seaKm } from "@/lib/facts";
 import MiniMapLazy from "./MiniMapLazy";
 import { CloseLink } from "./PanelLinks";
@@ -52,7 +51,6 @@ export default function HomePanel({ p }: { p: Property }) {
         {/* ... while the text stays put: the text and the facts */}
         <aside className="cg-info">
           <div className="cg-scroll">
-            <Facts p={p} className="cg-block cg-first" />
             {p.short_description && (
               <p className="cg-block cg-first">
                 {[...p.short_description.split("\n"), ...(p.description_more ? [p.description_more] : [])].map((para, i) => (
