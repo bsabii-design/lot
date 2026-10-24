@@ -48,11 +48,14 @@ export default function HomePanel({ p }: { p: Property }) {
           {p.lat != null && <div className="cg-tile"><MiniMapLazy p={p} /></div>}
           <p className="ui cg-added"><Ago date={p.date_added} prefix="Added to LOT " /></p>
         </PhotoColumn>
-        {/* ... while the text stays put: the text and the facts */}
+        {/* ... while the text stays put: the details, then the text */}
         <aside className="cg-info">
           <div className="cg-scroll">
+            <dl className="datalist cg-block cg-first">
+              {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
+            </dl>
             {p.short_description && (
-              <p className="cg-block cg-first">
+              <p className="cg-block">
                 {[...p.short_description.split("\n"), ...(p.description_more ? [p.description_more] : [])].map((para, i) => (
                   <span key={i}>
                     {i > 0 && <><br />{"\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 "}</>}
@@ -61,9 +64,6 @@ export default function HomePanel({ p }: { p: Property }) {
                 ))}
               </p>
             )}
-            <dl className="datalist cg-block">
-              {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
-            </dl>
           </div>
         </aside>
       </div>

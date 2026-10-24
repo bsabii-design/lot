@@ -181,14 +181,14 @@ html.has-panel { overflow: hidden; }
 
 /* blocks close together */
 .cg-scroll .cg-block { margin: var(--u) 0 0; display: block; }
-/* the text and the facts: four times the usual gap */
+/* the details first, then the text */
 .cg-scroll .cg-first { margin-top: 0; }
-/* the text hangs from the top, the facts sit on the bottom edge of the column (never closer than four gaps) */
+/* the details hang from the top, the text sits on the bottom edge of the column (never closer than one gap) */
 .cg-scroll { display: flex; flex-direction: column; }
-.cg-scroll p.cg-block { margin-bottom: var(--u); }
-.cg-scroll dl.cg-block { margin-top: auto; }
+.cg-scroll dl.cg-block { margin-bottom: var(--u); }
+.cg-scroll p.cg-block { margin-top: auto; }
 .mobile .cg-scroll { display: block; }
-.mobile .cg-scroll dl.cg-block { margin-top: 0; }
+.mobile .cg-scroll p.cg-block { margin-top: var(--u); }
 
 
 /* the map is the last tile of the photo column: the same box as a photo (4:3, the column's width), the same gap */
@@ -304,10 +304,8 @@ html.has-panel { overflow: hidden; }
 /* inside a line of text the block must not make the line taller */
 .cg .pr:not(.cta), .map-preview .pr { margin-block: calc(var(--pad-y) * -1); }
 
-/* scannable facts under the price and place (feed card and map popup): one wrapping line, a wide gap between facts, no dots; the number or
-   the value in the text colour, the quiet word after it in grey */
-.cg .facts, .map-preview .facts { display: flex; flex-wrap: wrap; gap: 0 1.5em; margin-top: calc(var(--u) / 2); }
-.cg .facts .w, .map-preview .facts .w { color: var(--text-3); }
+/* scannable facts (feed card and map popup): one under another, all in the text colour */
+.cg .facts, .map-preview .facts { display: flex; flex-direction: column; margin-top: calc(var(--u) / 2); }
 
 /* on the feed card the facts sit above the description, at the top of the right column */
-.cg .facts.cg-facts-above { margin-top: 0; margin-bottom: calc(var(--u) / 2); }
+.cg .facts.cg-facts-above { margin-top: 0; margin-bottom: var(--u); }
