@@ -13,7 +13,13 @@ import type { Property } from "@/lib/types";
 function bubble(text: string, count = false) {
   const el = document.createElement("div");
   el.className = "bubble" + (count ? " count" : "");
-  el.textContent = text;
+  /* one cell per character, like every black block on the site */
+  for (const c of text) {
+    const cell = document.createElement("span");
+    cell.className = "pc";
+    cell.textContent = c;
+    el.appendChild(cell);
+  }
   return el;
 }
 

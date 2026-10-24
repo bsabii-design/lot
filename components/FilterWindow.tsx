@@ -168,8 +168,8 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
       </div>
       <div className="ffoot">
         <button className="bk sm" onClick={onClear}>Clear all</button>
-        <button className="pr apply" disabled={count === 0 || invalid} onClick={onApply}>
-          <Cells text={invalid ? "Check the range" : count === 0 ? "No homes match" : `Show ${count} ${count === 1 ? "home" : "homes"}`} />
+        <button className="apply" disabled={count === 0 || invalid} onClick={onApply}>
+          <span className="pr"><Cells text={invalid ? "Check the range" : count === 0 ? "No homes match" : `Show ${count} ${count === 1 ? "home" : "homes"}`} /></span>
         </button>
       </div>
     </aside>
