@@ -243,8 +243,8 @@ html.has-panel { overflow: hidden; }
 /* the filter window: the text inside is the site's size too, but the window keeps its HEIGHT: heights are fixed already, the
    line height is kept at its old value in px, and the extra width the bigger type needs comes from the window being wider */
 .filterwin { --fs-sm: var(--fs); --lh-sm: 0.9078; }
-/* narrower than the photo of a home on the feed (35.3 cr high, 4:3): four fifths of its width */
-@media (min-width: 701px) { .filterwin { width: min(calc(var(--cr) * 35.3 * 4 / 3 * 0.8), calc(100vw - 1.5rem)); } }
+/* narrower than the photo of a home on the feed (35.3 cr high, 4:3): nine tenths of its width */
+@media (min-width: 701px) { .filterwin { width: min(calc(var(--cr) * 35.3 * 4 / 3 * 0.9), calc(100vw - 1.5rem)); } }
 
 .cg-row .cg-save { display: block; margin-top: var(--u); }
 
