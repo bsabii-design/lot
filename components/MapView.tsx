@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { STYLE_URL, clusterPoints, tuneStyle } from "@/lib/map";
-import { imageSrc, metaLine, price, priceShort } from "@/lib/format";
+import { imageSrc, placeLine, price, priceShort } from "@/lib/format";
 import { RETURN_KEY } from "@/lib/cn";
 import regionsData from "@/data/regions.json";
 import type { Property } from "@/lib/types";
@@ -57,12 +57,11 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     const img = document.createElement("img");
     img.src = imageSrc(p.images[0]);
     img.alt = "";
+    /* as on the feed: the price block and the place on one line, in the text colour; nothing else */
     const text = document.createElement("div");
-    const sub = [p.town + ", " + p.country + (p.approximate_location ? " · approximate" : ""), metaLine(p)].filter(Boolean);
-    text.innerHTML = '<span class="pr price"></span><span class="sub"></span>';
-    /* the price in the site's black block (the same material as the price on a home) */
+    text.innerHTML = '<span class="pr price"></span> <span class="where"></span>';
     text.querySelector(".price")!.textContent = price(p.price);
-    text.querySelector(".sub")!.innerHTML = sub.map((s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;")).join("<br>");
+    text.querySelector(".where")!.textContent = placeLine(p);
     wrap.append(img, text);
     return wrap;
   }, [router]);
