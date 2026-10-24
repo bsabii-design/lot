@@ -35,8 +35,8 @@ export default function Card({ p, first }: Props) {
           <div className="cg-u" style={{ "--span": 6 } as React.CSSProperties}>
             <Facts p={p} className="cg-facts-above" />
             <span className="caption">
-              {p.short_description && <><Glossed text={p.short_description} />{" "}</>}
-              (<Link className="ul cg-stretch" href={`/homes/${p.slug}`} scroll={false}>See home...</Link>)
+              {p.short_description && <span className="clamp"><Glossed text={p.short_description} /></span>}
+              <span className="more">(<Link className="ul cg-stretch" href={`/homes/${p.slug}`} scroll={false}>See home...</Link>)</span>
             </span>
             <div className="cg-save"><SaveButton id={p.id} /></div>
           </div>
