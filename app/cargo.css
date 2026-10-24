@@ -210,10 +210,6 @@ html.has-panel { overflow: hidden; }
 .cg-row .cg-stretch::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .cg-row .lk, .cg-row .term { position: relative; z-index: 2; cursor: pointer; }
 .cg-row .term { cursor: help; }
-/* the row lights up as one when the pointer is on it, but not on Save: Save has its own hover (and its own colour, so the row's hover never touches it) */
-.cg-row:hover:not(:has(.cg-save:hover)) .cg-u { color: var(--text-2); }
-.cg-row .cg-save, .cg-row .cg-save .lk { color: var(--text-read); }
-.cg-row .cg-save .lk:hover { color: var(--text-2); }
 
 /* the middle of the photo opens the home too; its outer parts turn the photos */
 .ss.has-open { --iw: min(var(--slide-h) * var(--ar), 100%); } /* the picture's width: the middle 40% of it opens the home */
@@ -292,8 +288,6 @@ html.has-panel { overflow: hidden; }
 .map-save { margin: var(--u) 0 0; color: var(--text-read); }
 .map-save .lk { color: inherit; font: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
 .map-save .lk.saved { text-decoration: none; }
-.map-save .lk:hover { color: var(--text-2); }
-.map-preview:hover .price { background: rgba(0, 0, 0, 0.7); }
 .map-preview:focus-visible { outline: 1px solid var(--text-read); outline-offset: 3px; }
 
 
