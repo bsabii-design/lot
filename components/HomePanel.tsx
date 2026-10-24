@@ -63,7 +63,7 @@ export default function HomePanel({ p }: { p: Property }) {
                 ))}
               </p>
             )}
-            <p className="ui cg-added"><Ago date={p.date_added} prefix="Added to LOT " /></p>
+            <p className="ui cg-added"><Ago date={p.date_added} prefix="Added " /></p>
           </div>
         </aside>
       </div>
