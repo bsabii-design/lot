@@ -223,7 +223,7 @@ html.has-panel { overflow: hidden; }
 
 /* a photo of a home opens on the full screen */
 .cg-grid .media-item.zoomable { cursor: zoom-in; }
-.cg-added { margin: 0; color: var(--text-3); }
+.cg-added { margin: var(--u) 0 0; color: var(--text-3); }
 .cg .cg-added .posted { color: inherit; font-size: inherit; }
 
 .cg-lb { position: fixed; inset: 0; z-index: 1000; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font); font-size: var(--fs-sm); line-height: var(--lh-sm); letter-spacing: var(--tracking); }
