@@ -281,6 +281,8 @@ html.has-panel { overflow: hidden; }
 .bubble:hover { opacity: 1; background: rgba(0, 0, 0, 0.7); }
 .bubble.on { background: #fff; color: var(--text-read); }
 .bubble.dot { padding: 0; width: 0.75rem; height: 0.75rem; }
+/* a merged group is a square: as wide as the block is high (1.4em), the padding stays as it is */
+.bubble.count { min-width: calc(1em + 2 * var(--pad-y)); justify-content: center; padding: var(--pad-y) var(--pad); }
 .lot-popup .maplibregl-popup-content { width: 19rem; border-radius: 0; font: var(--fs) / var(--lh) var(--font); letter-spacing: var(--tracking); padding: var(--u); }
 /* the card is one link: the picture, then the price block and the place on one line, as on the feed */
 .map-preview { display: block; color: var(--text-read); text-decoration: none; cursor: pointer; }
