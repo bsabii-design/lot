@@ -252,8 +252,15 @@ html.has-panel { overflow: hidden; }
     bottom: auto;
     width: min(calc(var(--cr) * 35.3 * 4 / 3 - 2 * var(--u)), calc(100vw - 1.5rem));
     max-height: calc(100vh - var(--fw-top) - 3.75rem);
+    /* the height stays as it was (47 cr); what does not fit scrolls inside the window, under the fixed header gap and above the footer */
+    height: min(calc(var(--cr) * 47), calc(100vh - var(--fw-top) - 3.75rem));
   }
+  .filterwin .fscroll { flex: 1 1 auto; min-height: 0; }
 }
+/* the groups of the filter (Price, Location, Condition ...) stand apart: two and a half times the gap they had */
+.filterwin .frow { padding: 0.625rem 0; }
+.filterwin .msec { padding: 0.5rem 0 1.25rem; }
+.filterwin .msec + .msec { padding-top: 1.25rem; }
 
 .cg-row .cg-save { display: block; margin-top: var(--u); }
 
