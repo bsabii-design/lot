@@ -18,7 +18,7 @@ function offset(n: number, k: number, i: number) {
 
 /** The feed's photos, the way the Cargo layout does it: slides travel sideways and loop, the left / right half of the
     photo goes back / forward (cursor arrows), round arrow buttons on touch screens (and on hover), swipe, ← →,
-    and a "01 / 08" caption under the photo that stays put. */
+    and no visible counter (a hidden live region says which photo it is). */
 export default function Slideshow({ images, alt, priority, href }: { images: string[]; alt: string; priority?: boolean; href?: string }) {
   const n = images.length;
   const [cur, setCur] = useState(0);
@@ -154,7 +154,8 @@ export default function Slideshow({ images, alt, priority, href }: { images: str
           </>
         )}
       </div>
-      <span className="ss-cap ui" aria-live="polite">{n > 1 ? `${String(cur + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}` : ""}</span>
+      {/* no visible counter; screen readers still hear which photo it is */}
+      <span className="sr-only" aria-live="polite">{n > 1 ? `Photo ${cur + 1} of ${n}` : ""}</span>
     </div>
   );
 }

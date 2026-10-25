@@ -80,7 +80,6 @@
 .ss-view { position: relative; overflow-x: clip; overflow-y: visible; height: var(--slide-h); user-select: none; -webkit-user-select: none; touch-action: pan-y; outline: 0; }
 .ss-slide { position: absolute; top: 0; left: 0; width: 100%; height: var(--slide-h); display: flex; justify-content: center; align-items: flex-start; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
 .ss-item { display: block; position: relative; width: calc(var(--slide-h) * var(--ar)); max-width: 100%; height: var(--slide-h); margin: 0; }
-.ss .ss-cap { display: block; text-align: center; margin-top: var(--u); margin-bottom: 0; min-height: var(--lh-sm); color: var(--text-2); }
 .ss-zone-l, .ss-zone-r { position: absolute; top: 0; bottom: 0; width: 50%; z-index: 2; }
 .ss-zone-l { left: 0; cursor: w-resize; }
 .ss-zone-r { right: 0; cursor: e-resize; }
