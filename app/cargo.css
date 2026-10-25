@@ -341,17 +341,17 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 .mobile .cg-row .cg-save .lk, .mobile .cg-ovcontent > .cg-set .ui :is(a, button), .mobile .map-save .lk { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
 .mobile .dock button { height: var(--h-btn); }
 
-/* the foot of the feed: © under the left column, About at the start of the right one, Privacy at the far right; quiet grey words, no hover colour.
-   The page is at least as tall as the window so the foot sits at the bottom of a short page too; the bottom padding keeps it clear of the dock. */
+/* the foot of the feed: © at the left, About and Privacy together at the right (nothing in the middle, where the dock stands); quiet grey words, no hover colour.
+   The page is at least as tall as the window so the foot sits at the bottom of a short page too. */
 .browse[data-view="list"] { min-height: 100vh; display: flex; flex-direction: column; }
 .browse[data-view="list"] .cg-pages { flex: 1 0 auto; }
 .cg-foot {
-  display: grid; grid-template-columns: 1fr 1fr; align-items: baseline;
-  padding: var(--u) var(--u) calc(var(--u) * 6);
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: var(--u);
   font-family: var(--font); font-size: var(--fs-sm); line-height: var(--lh-sm); letter-spacing: var(--tracking); color: var(--text-3);
 }
 .cg-foot a { color: inherit; text-decoration: none; cursor: pointer; }
-.cg-foot-r { display: flex; justify-content: space-between; }
+.cg-foot-r { display: flex; gap: calc(var(--u) * 2); }
 .mobile .cg-foot a { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
 
 /* About and Privacy: the Cargo "Information" overlay — the white covers the whole page, the logo stays on top of it, the header row is
