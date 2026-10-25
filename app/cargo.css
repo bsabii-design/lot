@@ -117,7 +117,7 @@ html.has-panel { overflow: hidden; }
   animation: ov-in 0.4s cubic-bezier(0.24, 1, 0.29, 1) both;
 }
 @keyframes ov-in { from { opacity: 0; } to { opacity: 1; } }
-.cg-ovlayout { width: 75%; max-width: 75%; position: relative; display: flex; flex-direction: row; align-items: flex-start; min-height: fit-content; }
+.cg-ovlayout { width: 66.6667%; max-width: 66.6667%; position: relative; display: flex; flex-direction: row; align-items: flex-start; min-height: fit-content; }
 .cg-ovcontent { box-sizing: border-box; width: 100%; padding: var(--u); background: var(--bg); outline: 0; } /* one gap, 1 rem, everywhere in a home: the edges, under the header, between the photos, between the columns, above View listing */
 .mobile .cg-ovlayout { width: 100%; max-width: 100%; }
 

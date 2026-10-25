@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 const PanelContext = createContext<{ close: () => void; modal: boolean }>({ close: () => {}, modal: false });
 export const usePanel = () => useContext(PanelContext);
 
-/** The panel that opens over the feed, as in the Cargo layout: the right three quarters are white, the feed stays behind it
+/** The panel that opens over the feed, as in the Cargo layout: the right two thirds are white (the screen is three columns), the feed stays behind it
     faded (a text page — About, Privacy — is `wide`: the white covers the whole page). Esc, a click outside the panel or "(Close)" closes it. Opened from the feed it is an intercepted route
     (back closes it); on a direct visit to /homes/<slug> there is nothing behind, and closing goes to the feed. */
 export default function OverlayShell({ children, modal, label, sold, wide }: { children: ReactNode; modal: boolean; label: string; sold?: boolean; wide?: boolean }) {
