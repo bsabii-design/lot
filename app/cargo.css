@@ -114,12 +114,12 @@ html.has-panel { overflow: hidden; }
   justify-content: flex-end;
   min-height: 100%;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: color-mix(in srgb, var(--bg) 95%, transparent);
   animation: ov-in 0.4s cubic-bezier(0.24, 1, 0.29, 1) both;
 }
 @keyframes ov-in { from { opacity: 0; } to { opacity: 1; } }
 .cg-ovlayout { width: 75%; max-width: 75%; position: relative; display: flex; flex-direction: row; align-items: flex-start; min-height: fit-content; }
-.cg-ovcontent { box-sizing: border-box; width: 100%; padding: var(--u); background: #fff; outline: 0; } /* one gap, 1 rem, everywhere in a home: the edges, under the header, between the photos, between the columns, above View listing */
+.cg-ovcontent { box-sizing: border-box; width: 100%; padding: var(--u); background: var(--bg); outline: 0; } /* one gap, 1 rem, everywhere in a home: the edges, under the header, between the photos, between the columns, above View listing */
 .mobile .cg-ovlayout { width: 100%; max-width: 100%; }
 
 /* inside a home the text is the same size as in the feed (the content size), the small interface size is only for the tabs and the counters */
@@ -200,7 +200,7 @@ html.has-panel { overflow: hidden; }
 .cg-tile .minimap { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; margin: 0; border: 0; border-radius: 0; }
 
 /* on a phone the panel is one page that scrolls, so the header with (Close) stays on top of it */
-.mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 2; background: #fff; margin: calc(var(--u) * -1) 0 0; padding: var(--u) 0; }
+.mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 2; background: var(--bg); margin: calc(var(--u) * -1) 0 0; padding: var(--u) 0; }
 
 .cg .datalist .posted { color: inherit; font-size: inherit; }
 
@@ -292,7 +292,7 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 /* the markers are the same block (cells, padding, height): only the size of the type is the site's */
 .bubble { height: auto; border-radius: 0; font: var(--fs-sm) / 1 var(--font); } /* the map's prices keep the smaller interface size */
 .bubble:hover { opacity: 1; background: rgba(0, 0, 0, 0.7); }
-.bubble.on { background: #fff; color: var(--text-read); }
+.bubble.on { background: var(--bg); color: var(--text-read); }
 .bubble.dot { padding: 0; width: 0.75rem; height: 0.75rem; }
 /* a merged group is a square: as wide as the block is high (1.4em), the padding stays as it is */
 .bubble.count { min-width: calc(1em + 2 * var(--pad-y)); justify-content: center; padding: var(--pad-y) var(--pad); }
