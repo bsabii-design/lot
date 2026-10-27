@@ -4,8 +4,7 @@ import Icon from "./Icon";
 import PhotoColumn from "./PhotoColumn";
 import { seaKm } from "@/lib/facts";
 import MiniMapLazy from "./MiniMapLazy";
-import { CloseLink } from "./PanelLinks";
-import SaveButton from "./SaveButton";
+import PanelActions from "./PanelActions";
 import Ago from "./Ago";
 import { archived, placeLine } from "@/lib/format";
 import type { Property } from "@/lib/types";
@@ -39,7 +38,7 @@ export default function HomePanel({ p }: { p: Property }) {
           {" "}{placeLine(p)}
         </div>
         <div className="cg-u" style={span(4)}>
-          <div className="ui" style={{ textAlign: "right" }}><SaveButton id={p.id} /> &nbsp;<CloseLink>Close</CloseLink></div>
+          <PanelActions id={p.id} title={p.title} />
         </div>
       </div>
       <div className="cg-split">
