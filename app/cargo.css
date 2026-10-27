@@ -370,3 +370,11 @@ html:has(.cg-ov.wide) .logo { z-index: 1000; }
    and between List and Map one unit from word to word with the slash in the middle (a slash is about 0.268em wide) */
 .dock { padding: 0 calc(var(--u) - 1px); gap: var(--u); }
 .seg button:first-child::after { margin: 0 calc((var(--u) - 0.268em) / 2); }
+
+/* the feed's pages are a column, so on a short page (an empty tab) the foot sits at the bottom of the window */
+.browse[data-view="list"] .cg-pages { display: flex; flex-direction: column; }
+.browse[data-view="list"] .cg-pages > .cg-page { flex: none; }
+.browse[data-view="list"] .cg-pages > .empty { flex: 1 1 0; min-height: 0; }
+
+/* on a phone the home is one long page: "View listing" stays at the bottom of the screen while it scrolls (the panel's own scroll; on the desktop it is always on screen) */
+.mobile .cg-ovcontent > a.cta { position: sticky; bottom: calc(var(--u) + env(safe-area-inset-bottom, 0px)); z-index: 3; }
