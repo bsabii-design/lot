@@ -383,13 +383,15 @@ html:has(.cg-ov.wide) .logo { z-index: 1000; }
    (the black block reaches a little below its line, so 0.167em is added to the unit) */
 .mobile .cg-row > .cg-u + .cg-u { margin-top: calc(var(--u) + 0.167em); }
 
-/* the header buttons of a home: both in the line on a wide screen, behind one "…" on a phone */
+/* the header buttons of a home: "(Save)  (Close)" in the line on a wide screen; on a phone "…  (Close)", with Save and Share behind the "…".
+   The dots are drawn like the full stop of the text: round, 0.15em across, a third of an em apart, on the middle of the capitals (0.33em above the line). */
 .cg-ovcontent > .cg-set .cg-actions-inline { text-align: right; }
 .cg-ovcontent > .cg-set .cg-actions-menu { display: none; }
 .mobile .cg-ovcontent > .cg-set .cg-actions-inline { display: none; }
-.mobile .cg-ovcontent > .cg-set .cg-actions-menu { display: block; position: relative; text-align: right; }
-.cg-more { display: inline-block; padding: 0; margin: 0; border: 0; background: none; color: inherit; cursor: pointer; line-height: 0; vertical-align: middle; }
-.cg-more svg { display: block; width: 1.5em; height: 1.5em; fill: currentColor; }
+.mobile .cg-ovcontent > .cg-set .cg-actions-menu { display: block; text-align: right; }
+.cg-more-wrap { position: relative; display: inline-block; }
+.cg-more { display: inline-block; padding: 0; margin: 0; border: 0; background: none; color: inherit; cursor: pointer; line-height: 0; }
+.cg-more svg { display: block; width: 1em; height: 1em; fill: currentColor; }
 .mobile .cg-ovcontent > .cg-set .cg-more { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
 .cg-menu { position: absolute; top: 100%; right: 0; z-index: 5; margin-top: calc(var(--u) * 0.5); padding: var(--u); display: flex; flex-direction: column; gap: var(--u); align-items: flex-end; background: var(--bg); border: 1px solid var(--stroke); white-space: nowrap; }
 .cg-menu a, .cg-menu button.lk { padding: 0.5em; margin: -0.5em; }

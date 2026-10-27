@@ -38,17 +38,19 @@ export default function PanelActions({ id, title }: { id: string; title: string 
   return (
     <>
       <div className="ui cg-actions-inline"><SaveButton id={id} /> &nbsp;<CloseLink>Close</CloseLink></div>
-      <div className="ui cg-actions-menu" ref={box}>
-        <button className="cg-more" aria-label="More" aria-haspopup="true" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.9" /><circle cx="12" cy="12" r="1.9" /><circle cx="19" cy="12" r="1.9" /></svg>
-        </button>
-        {open && (
-          <div className="cg-menu" role="group">
-            <div><SaveButton id={id} /></div>
-            <div>(<button className="lk ul" onClick={share}>{copied ? "Link copied" : "Share"}</button>)</div>
-            <div><CloseLink>Close</CloseLink></div>
-          </div>
-        )}
+      <div className="ui cg-actions-menu">
+        <span className="cg-more-wrap" ref={box}>
+          <button className="cg-more" aria-label="More" aria-haspopup="true" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+            <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="20" cy="67" r="7.5" /><circle cx="50" cy="67" r="7.5" /><circle cx="80" cy="67" r="7.5" /></svg>
+          </button>
+          {open && (
+            <div className="cg-menu" role="group">
+              <div><SaveButton id={id} /></div>
+              <div>(<button className="lk ul" onClick={share}>{copied ? "Link copied" : "Share"}</button>)</div>
+            </div>
+          )}
+        </span>
+        {" "}&nbsp;<CloseLink>Close</CloseLink>
       </div>
     </>
   );
