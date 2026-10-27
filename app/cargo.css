@@ -378,3 +378,7 @@ html:has(.cg-ov.wide) .logo { z-index: 1000; }
 
 /* on a phone the home is one long page: "View listing" stays at the bottom of the screen while it scrolls (the panel's own scroll; on the desktop it is always on screen) */
 .mobile .cg-ovcontent > a.cta { position: sticky; bottom: calc(var(--u) + env(safe-area-inset-bottom, 0px)); z-index: 3; }
+
+/* on a phone the feed row is stacked: the price block and the facts under it are one unit apart, as the facts and the text, and the text and Save
+   (the black block reaches a little below its line, so 0.167em is added to the unit) */
+.mobile .cg-row > .cg-u + .cg-u { margin-top: calc(var(--u) + 0.167em); }
