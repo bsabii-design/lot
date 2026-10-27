@@ -18,8 +18,9 @@ function offset(n: number, k: number, i: number) {
 
 /** The feed's photos, the way the Cargo layout does it: slides travel sideways and loop, the left / right half of the
     photo goes back / forward (cursor arrows), round arrow buttons on touch screens (and on hover), swipe, ← →,
-    and no visible counter (a hidden live region says which photo it is). */
-export default function Slideshow({ images, alt, priority, href }: { images: string[]; alt: string; priority?: boolean; href?: string }) {
+    and no visible counter (a hidden live region says which photo it is). With `href` the middle of the photo opens that page,
+    with `onOpen` it calls it with the number of the photo on show (a home's slider on a phone opens the full-screen viewer). */
+export default function Slideshow({ images, alt, priority, href, onOpen }: { images: string[]; alt: string; priority?: boolean; href?: string; onOpen?: (index: number) => void }) {
   const n = images.length;
   const [cur, setCur] = useState(0);
   const [warm, setWarm] = useState(false);
@@ -93,7 +94,7 @@ export default function Slideshow({ images, alt, priority, href }: { images: str
   const swipe = useRef<{ x: number; y: number } | null>(null);
 
   return (
-    <div className={cn("ss", n < 2 && "single", href && "has-open")} ref={root} onPointerEnter={() => setWarm(true)}>
+    <div className={cn("ss", n < 2 && "single", (href || onOpen) && "has-open")} ref={root} onPointerEnter={() => setWarm(true)}>
       <div
         className="ss-view"
         tabIndex={0}
@@ -141,6 +142,7 @@ export default function Slideshow({ images, alt, priority, href }: { images: str
           );
         })}
         {href && <Link className="ss-open" href={href} scroll={false} aria-label={`Open ${alt}`} />}
+        {!href && onOpen && <button className="ss-open" aria-label={`Open ${alt} full screen`} onClick={() => onOpen(state.current.cur)} />}
         {n > 1 && (
           <>
             <div className="ss-zone-l" onClick={() => { if (!touch()) go(-1); }} />

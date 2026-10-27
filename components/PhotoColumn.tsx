@@ -3,14 +3,17 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import MediaFrame from "./MediaFrame";
+import Slideshow from "./Slideshow";
 import { imageSrc } from "@/lib/format";
 
-/** The photos of an open home, one under another; a click on one opens it on the full screen. What follows them
+/** The photos of an open home, one under another (a slider on a phone); a click on one opens it on the full screen. What follows them
     (the map, a note) is passed as children and scrolls with them. */
 export default function PhotoColumn({ images, title, children }: { images: string[]; title: string; children?: ReactNode }) {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <div className="cg-grid cg-photos">
+      {/* on a phone the photos are one slider (the CSS hides the stack there, and the slider on a wide screen), not a page eight photos long */}
+      <div className="cg-slider"><Slideshow images={images} alt={title} onOpen={(i) => setOpen(i)} /></div>
       {images.map((src, i) => (
         <MediaFrame key={src} src={imageSrc(src)} alt={i ? `${title} ${i + 1}` : title} sizes="(max-aspect-ratio: 4/5) 100vw, 38vw" priority={i === 0} onOpen={() => setOpen(i)} />
       ))}

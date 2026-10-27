@@ -395,3 +395,9 @@ html:has(.cg-ov.wide) .logo { z-index: 1000; }
 .mobile .cg-ovcontent > .cg-set .cg-more { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
 .cg-menu { position: absolute; top: 100%; right: 0; z-index: 5; margin-top: calc(var(--u) * 0.5); padding: var(--u); display: flex; flex-direction: column; gap: var(--u); align-items: flex-end; background: var(--bg); border: 1px solid var(--stroke); white-space: nowrap; }
 .cg-menu a, .cg-menu button.lk { padding: 0.5em; margin: -0.5em; }
+
+/* a home's photos on a phone: one slider (swipe, arrows, a tap in the middle opens the full-screen viewer) instead of a stack of them */
+.cg-slider { display: none; }
+.mobile .cg-slider { display: block; }
+.mobile .cg-photos > .media-item { display: none; }
+.cg-slider .ss { margin-bottom: 0; }
