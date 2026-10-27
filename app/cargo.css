@@ -150,7 +150,7 @@ html.has-panel { overflow: hidden; }
 .cg a.cta:hover { background: rgba(0, 0, 0, 0.7); }
 /* the arrow is a bit smaller than the capitals (1.1em box, the glyph fills 10/24 of it), centred on the capitals' middle (a hair above the line box's), and its stroke is 1px */
 /* the arrow: 1px line, its middle on the middle of the capitals (about 0.33em above the baseline); its margins are negative so it does not make the line taller */
-.cg a.cta .icon { display: inline-block; vertical-align: 0.07em; margin: -0.3em 0 -0.3em 0.25em; stroke: currentColor; stroke-width: 1px; }
+.cg a.cta .icon { display: inline-block; vertical-align: 0.07em; margin: -0.3em -0.3em -0.3em -0.15em; stroke: currentColor; stroke-width: 1px; }
 
 /* a home: a window of its own. The header (price, place, Close) never moves; under it two columns, each scrolling by
    itself: the photos on the left, the text on the right, and the last row (Save, Return to homes, the date) stays on the
