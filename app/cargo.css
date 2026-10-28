@@ -425,3 +425,10 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 /* no scrollbar bar inside the filter window, like the other panels of the site (the content still scrolls) */
 .fscroll { scrollbar-width: none; }
 .fscroll::-webkit-scrollbar { display: none; }
+
+/* the padding inside the filter window is one unit on every side (to the words and to the black block), measured to what is drawn:
+   the groups carry half a rem of their own above and below, which the scroll area takes off */
+.filterwin .fscroll { padding: calc(var(--u) - 0.5rem) var(--u) var(--u); }
+.filterwin .ffoot { padding: var(--u); }
+.filterwin .ffoot .apply, .filterwin .ffoot .bk { height: auto; }
+.mobile .filterwin .ffoot :is(.apply, .bk) { padding: 0.5em; margin: -0.5em; }
