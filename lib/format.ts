@@ -38,3 +38,7 @@ export const placeLine = (p: Property) => `${p.town}, ${regionLabel(p.region)}`;
 
 /** With the country, for a link preview shared outside the site (the page's description). */
 export const placeLineFull = (p: Property) => `${placeLine(p)}, ${p.country}`;
+
+/** The feed lists the newest additions first and the older ones lower. Homes added on the same day keep the order of the catalogue file
+    (Array.prototype.sort is stable). */
+export const newestFirst = <T extends { date_added: string }>(list: T[]): T[] => [...list].sort((a, b) => b.date_added.localeCompare(a.date_added));

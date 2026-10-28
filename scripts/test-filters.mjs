@@ -10,7 +10,7 @@ const { visible, emptyFilters, activeFacets, withoutInvalid, hasInvalidRange, no
 const read = (f) => JSON.parse(readFileSync(new URL("../" + f, import.meta.url)));
 const raw = read("data/properties.json").properties;
 const cls = read("data/classification.json").properties;
-const { archived } = await import("../lib/format.ts");
+const { archived, newestFirst } = await import("../lib/format.ts");
 /* the filters see only the homes that are still listed (sold / no longer available ones are off the feed), so the checks run on those */
 const homes = raw.filter((p) => !archived(p)).map((p) => ({ ...p, facts: cls[p.id] }));
 
@@ -29,6 +29,13 @@ check("26 records", raw.length, 26);
 check("id equals slug for all", raw.every((p) => p.id === p.slug), true);
 const baseline = "1c79c5d0d55938848e3e2567696b2b0955fd8aa1";
 check("properties.json is byte-identical to the published version", execSync("git hash-object data/properties.json").toString().trim(), baseline);
+
+/* --- the order of the feed: newest additions first, the same day keeps the file order --- */
+{
+  const sample = [{ id: "a", date_added: "2026-08-25" }, { id: "b", date_added: "2026-10-28" }, { id: "c", date_added: "2026-08-25" }, { id: "d", date_added: "2026-10-28" }];
+  check("newest additions first, same day in file order", newestFirst(sample).map((p) => p.id), ["b", "d", "a", "c"]);
+  check("sorting does not touch the original list", sample.map((p) => p.id), ["a", "b", "c", "d"]);
+}
 
 /* --- numbers --- */
 check("no filter shows every home that is still listed", run({}).length, homes.length);
