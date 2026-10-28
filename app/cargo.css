@@ -365,7 +365,7 @@ html.has-info .logo { display: none; } /* no logo on a text page (the class is s
 /* with no logo at the left of the header row the text would hang one empty line below "(Close)": on a wide screen the header row is lifted out of the flow so the
    text starts on the same line as "(Close)" (the top edge of the page, one unit in); on a phone "(Close)" keeps its own row and the text follows one unit below */
 html:not(.mobile) .cg-ov.wide .cg-ovcontent { position: relative; }
-html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: absolute; top: var(--u); left: var(--u); right: var(--u); width: auto; }
+html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: absolute; z-index: 3; /* above the text row, which spans the whole width and would catch the click */ top: var(--u); left: var(--u); right: var(--u); width: auto; }
 .cg-prose p { margin: 0; }
 .cg-prose p + p { text-indent: 3em; }
 .mobile .cg-ov.wide .cg-ovcontent > .cg-set { position: static; background: none; margin: 0; padding: 0; }
