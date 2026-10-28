@@ -10,7 +10,9 @@ const { visible, emptyFilters, activeFacets, withoutInvalid, hasInvalidRange, no
 const read = (f) => JSON.parse(readFileSync(new URL("../" + f, import.meta.url)));
 const raw = read("data/properties.json").properties;
 const cls = read("data/classification.json").properties;
-const homes = raw.map((p) => ({ ...p, facts: cls[p.id] }));
+const { archived } = await import("../lib/format.ts");
+/* the filters see only the homes that are still listed (sold / no longer available ones are off the feed), so the checks run on those */
+const homes = raw.filter((p) => !archived(p)).map((p) => ({ ...p, facts: cls[p.id] }));
 
 let failed = 0;
 const check = (name, got, want) => {
@@ -25,11 +27,12 @@ const brute = (test, list = homes) => ids(list.filter(test));
 /* --- the catalogue itself is untouched --- */
 check("26 records", raw.length, 26);
 check("id equals slug for all", raw.every((p) => p.id === p.slug), true);
-const baseline = "f3f08a4eecaae7055857bc2dd1b0b444d07af31a";
+const baseline = "1c79c5d0d55938848e3e2567696b2b0955fd8aa1";
 check("properties.json is byte-identical to the published version", execSync("git hash-object data/properties.json").toString().trim(), baseline);
 
 /* --- numbers --- */
-check("no filter shows all 26", run({}).length, 26);
+check("no filter shows every home that is still listed", run({}).length, homes.length);
+check("the listed homes are the records that are not archived", homes.length, raw.filter((p) => !archived(p)).length);
 check("price preset is an upper limit (<= 100k)", run({ price: { preset: "100000", min: "", max: "" } }), brute((p) => p.price <= 100000));
 check("price preset 50k", run({ price: { preset: "50000", min: "", max: "" } }).length, raw.filter((p) => p.price <= 50000).length);
 check("price typed 60,000-100,000 inclusive", run({ price: { preset: "", min: "60000", max: "100000" } }), brute((p) => p.price >= 60000 && p.price <= 100000));
@@ -66,7 +69,7 @@ check("features need ALL (garden + stone)", run({ features: ["garden", "stone"] 
 check("features single (pool)", run({ features: ["pool"] }), brute((p) => p.features.includes("pool")));
 check("features with no data (detached) return none", run({ features: ["detached"] }), []);
 check("features: garden + courtyard returns none", run({ features: ["garden", "courtyard"] }), []);
-check("features unknown is not false: nothing excluded without the filter", run({}).length, 26);
+check("features unknown is not false: nothing excluded without the filter", run({}).length, homes.length);
 check("AND across groups (Occitanie + garden + 3+ bedrooms)", run({ regions: ["Occitanie"], features: ["garden"], bedrooms: "3" }),
   brute((p) => p.region === "Occitanie" && p.features.includes("garden") && p.bedrooms >= 3));
 check("AND across groups (price<=100k + area>=75 + Nouvelle-Aquitaine)", run({ price: { preset: "100000", min: "", max: "" }, area: { preset: "75", min: "", max: "" }, regions: ["Nouvelle-Aquitaine"] }),
@@ -79,7 +82,7 @@ check("#tag on the old condition label", run({ tagConditions: ["Needs some work"
 /* --- ranges --- */
 const bad = { ...emptyFilters(), price: { preset: "", min: "200", max: "100" } };
 check("wrong-way range is detected", hasInvalidRange(bad), true);
-check("wrong-way range is ignored in live counts", visible(homes, "all", [], withoutInvalid(bad)).length, 26);
+check("wrong-way range is ignored in live counts", visible(homes, "all", [], withoutInvalid(bad)).length, homes.length);
 check("wrong-way range matches nothing if it ever reaches visible()", visible(homes, "all", [], bad).length, 0);
 
 /* --- facets list and clearing --- */
