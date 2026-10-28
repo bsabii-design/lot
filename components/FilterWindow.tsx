@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { digits, moreCount, rangeInvalid, toggle, type Availability } from "@/lib/filters";
 import {
   AREA_PRESETS, BEDROOM_PRESETS, CONDITIONS, FEATURES, LANDSCAPES, OUTDOOR, PRICE_PRESETS, REGIONS, SETTLEMENTS, TYPES,
@@ -147,6 +148,39 @@ function RangeInputs({ label, unit, range, onChange }: { label: string; unit: st
     "Show N homes". Inside a group any of the picks matches; between groups all of them must. */
 export default function FilterWindow({ closing, filters, avail, count, invalid, onChange, onClear, onApply }: Props) {
   const [more, setMore] = useState(false);
+  const winRef = useRef<HTMLElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  /** "More filters" opens and closes smoothly. The window may only grow as fast as its own ceiling rises (otherwise it jumps to its full
+      height in a moment, with the new rows still below the edge), and when it opens the block slides up under the top edge so that what
+      opened is what you see. */
+  const toggleMore = () => {
+    const win = winRef.current, scroller = scrollRef.current, toggle = toggleRef.current;
+    if (!win || !scroller || !toggle || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setMore((v) => !v); return; }
+    const opening = !more;
+    win.style.transition = "none";
+    win.style.maxHeight = `${win.getBoundingClientRect().height}px`;
+    void win.offsetHeight;
+    flushSync(() => setMore(opening));
+    requestAnimationFrame(() => {
+      win.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+      win.style.maxHeight = "";
+      window.setTimeout(() => { win.style.transition = ""; }, 450);
+    });
+    if (!opening) return;
+    const from = scroller.scrollTop;
+    const unit = parseFloat(getComputedStyle(scroller).paddingLeft);
+    const to = from + toggle.getBoundingClientRect().top - scroller.getBoundingClientRect().top - unit;
+    const start = performance.now();
+    const ease = (p: number) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
+    const step = (now: number) => {
+      const p = Math.min(1, (now - start) / 450);
+      scroller.scrollTop = Math.min(from + (to - from) * ease(p), scroller.scrollHeight - scroller.clientHeight);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
   /** "Custom" is chosen: the typed from–to shows (it starts open when the filters already hold typed numbers) */
   const typed = (r: NumRange) => r.min !== "" || r.max !== "";
   const [custom, setCustom] = useState({ price: typed(filters.price), area: typed(filters.area), plot: typed(filters.plot) });
@@ -166,8 +200,8 @@ export default function FilterWindow({ closing, filters, avail, count, invalid, 
   const extra = moreCount(filters);
 
   return (
-    <aside className={cn("filterwin", closing && "closing")} id="filter-window">
-      <div className="fscroll">
+    <aside ref={winRef} className={cn("filterwin", closing && "closing")} id="filter-window">
+      <div className="fscroll" ref={scrollRef}>
         <div className="frow">
           <span className="flabel">Price</span>
           <NumberGroup label="Price" unit="€" entries={[["", "Any price"], ...PRICE_PRESETS]} range={filters.price} custom={custom.price}
@@ -188,7 +222,7 @@ export default function FilterWindow({ closing, filters, avail, count, invalid, 
           <OneRow entries={BEDROOM_PRESETS} value={filters.bedrooms} onPick={(bedrooms) => set({ bedrooms })} />
         </div>
 
-        <button className="moretoggle" aria-expanded={more} aria-controls="more-filters" onClick={() => setMore((v) => !v)}>
+        <button ref={toggleRef} className="moretoggle" aria-expanded={more} aria-controls="more-filters" onClick={toggleMore}>
           <span>More filters{extra > 0 && <>{" "}<i>({extra})</i></>}</span>
           <Icon name={more ? "minus" : "plus"} size="0.75rem" />
         </button>
