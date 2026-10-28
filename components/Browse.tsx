@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Card from "./Card";
 import Footer from "./Footer";
@@ -14,8 +15,7 @@ import type { Filters, Property, Tab, View } from "@/lib/types";
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
 const TAB_URL: Record<Tab, string> = { all: "", favourites: "?tab=saved", archive: "?tab=archive" };
-/* (the "Saved" tab is off for now: with no accounts a saved home lives in one browser only) */
-const TABS: [Tab, string][] = [["all", "All posts"], ["archive", "Archive"]];
+/* (the "Saved" tab is off for now: with no accounts a saved home lives in one browser only; the "Archive" tab is gone: sold homes stay in the data, not on the page) */
 
 interface Saved { tab: Tab; view: View; y: number; filters: Filters }
 
@@ -56,8 +56,6 @@ export default function Browse({ homes }: { homes: Property[] }) {
         }
       } catch {}
     } else {
-      const t = { archive: "archive" }[q.get("tab") ?? ""] as Tab | undefined;
-      if (t) setTab(t);
       setFilters((f) => ({
         ...f,
         tagTypes: q.get("t") ? [q.get("t")!] : f.tagTypes,
@@ -100,20 +98,14 @@ export default function Browse({ homes }: { homes: Property[] }) {
   const clearFilters = () => setFilters(emptyFilters());
 
   const empty = list.length === 0;
-  const where = tab === "archive" ? "archived homes" : "homes";
+  const where = "homes";
 
   return (
     <div className="browse" data-view={view}>
       <h1 className="sr-only">LOT: homes across France</h1>
       <nav className="nav">
-        {TABS.map(([key, label], i) => (
-          <span key={key}>
-            {i > 0 && <>&nbsp; &nbsp;</>}
-            <button className={cn(tab === key && "active")} onClick={() => pickTab(key)}>
-              {label}
-            </button>
-          </span>
-        ))}
+        <span><button className="active" onClick={() => pickTab("all")}>All posts</button></span>
+        <span>&nbsp; &nbsp;<Link href="/about" scroll={false}>About</Link></span>
       </nav>
 
       {view === "map" && !empty ? (
@@ -126,12 +118,6 @@ export default function Browse({ homes }: { homes: Property[] }) {
                 <>
                   <p className="title">No {where} match these filters</p>
                   <button className="bk content on" onClick={clearFilters}>Clear filters</button>
-                </>
-              ) : tab === "archive" ? (
-                <>
-                  <p className="title">The archive is empty</p>
-                  <p className="sub">Homes that are sold or no longer available will move here.</p>
-                  <button className="bk content on" onClick={() => pickTab("all")}>Browse all homes</button>
                 </>
               ) : (
                 <p className="title">No homes yet</p>

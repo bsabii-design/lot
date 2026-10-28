@@ -68,6 +68,8 @@
 }
 .nav button { pointer-events: auto; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; color: var(--text-3); cursor: pointer; }
 .nav button:hover, .nav button.active { color: var(--text); }
+.nav a { pointer-events: auto; color: var(--text-3); text-decoration: none; cursor: pointer; }
+.nav a:hover { color: var(--text); }
 .nav i { font-style: normal; }
 
 /* ---------- the feed: one page per home, stacked ---------- */
@@ -337,7 +339,7 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 .mobile .filterwin input { font-size: max(16px, var(--fs)); }
 
 /* touch: the words stay as small as they are, the area that answers a finger grows around them (padding out, the same margin back in) */
-.mobile .nav button { padding: 0.6em 0.45em; margin: -0.6em -0.45em; }
+.mobile .nav button, .mobile .nav a { padding: 0.6em 0.45em; margin: -0.6em -0.45em; }
 .mobile .cg-row .cg-save .lk, .mobile .cg-ovcontent > .cg-set .ui :is(a, button), .mobile .map-save .lk { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
 .mobile .dock button { height: var(--h-btn); }
 
