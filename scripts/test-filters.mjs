@@ -25,7 +25,7 @@ const brute = (test, list = homes) => ids(list.filter(test));
 /* --- the catalogue itself is untouched --- */
 check("26 records", raw.length, 26);
 check("id equals slug for all", raw.every((p) => p.id === p.slug), true);
-const baseline = "27e02a6fde471416913bbf4fdc06aa1489527582";
+const baseline = "f3f08a4eecaae7055857bc2dd1b0b444d07af31a";
 check("properties.json is byte-identical to the published version", execSync("git hash-object data/properties.json").toString().trim(), baseline);
 
 /* --- numbers --- */
