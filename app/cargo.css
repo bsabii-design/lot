@@ -433,9 +433,8 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 .filterwin .ffoot .apply, .filterwin .ffoot .bk { height: auto; }
 .mobile .filterwin .ffoot :is(.apply, .bk) { padding: 0.5em; margin: -0.5em; }
 
-/* a chosen option in the filter window has no fill: the same colour as the window, the words black (the others stay grey), the brackets stay */
-.filterwin .chipopt.on .lab { background: none; color: var(--text-read); padding: 0; }
-.filterwin .chipopt.on::before { content: "(" / ""; }
-.filterwin .chipopt.on::after { content: ")" / ""; }
+/* a chosen option in the filter window is a block in the colour of the page (beige) with black words; the others stay grey. The block's own
+   padding takes the place of the brackets, so nothing moves (the same as the black block it replaces) */
+.filterwin .chipopt.on .lab { background: var(--paper); color: var(--text-read); }
 /* typed from–to is only there when "Custom" is chosen, and it is a lower field */
 .filterwin .range input { height: var(--h-chip); }
