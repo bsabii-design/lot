@@ -70,6 +70,37 @@ function OneRow({ entries, value, onPick }: { entries: Option[]; value: string; 
   );
 }
 
+const CUSTOM: Option = ["custom", "Custom"];
+
+/** The choices of a number group: the group's "any", its presets, then "Custom" (the typed min–max shows only when it is chosen). */
+function NumberGroup({ label, unit, entries, range, custom, onPreset, onCustom, onChange }: {
+  label: string;
+  unit: string;
+  entries: Option[];
+  range: NumRange;
+  custom: boolean;
+  onPreset: (preset: string) => void;
+  onCustom: (on: boolean) => void;
+  onChange: (next: NumRange) => void;
+}) {
+  const value = custom ? "custom" : range.preset;
+  return (
+    <>
+      <div className="chips">
+        {[...entries, CUSTOM].map(([key, text]) => (
+          <Chip
+            key={key || "any"}
+            label={text}
+            on={value === key}
+            onClick={() => (key === "custom" ? onCustom(!custom) : onPreset(value === key ? "" : key))}
+          />
+        ))}
+      </div>
+      {custom && <RangeInputs label={label} unit={unit} range={range} onChange={onChange} />}
+    </>
+  );
+}
+
 /** Typed min–max (digits only). Typing clears the preset. */
 function RangeInputs({ label, unit, range, onChange }: { label: string; unit: string; range: NumRange; onChange: (next: NumRange) => void }) {
   const bad = rangeInvalid(range);
@@ -101,12 +132,22 @@ function RangeInputs({ label, unit, range, onChange }: { label: string; unit: st
     "Show N homes". Inside a group any of the picks matches; between groups all of them must. */
 export default function FilterWindow({ filters, avail, count, invalid, onChange, onClear, onApply }: Props) {
   const [more, setMore] = useState(false);
+  /** "Custom" is chosen: the typed from–to shows (it starts open when the filters already hold typed numbers) */
+  const typed = (r: NumRange) => r.min !== "" || r.max !== "";
+  const [custom, setCustom] = useState({ price: typed(filters.price), area: typed(filters.area), plot: typed(filters.plot) });
   const set = (patch: Partial<Filters>) => onChange({ ...filters, ...patch });
-  const pick = (key: "price" | "area") => (value: string) => set({ [key]: { preset: value, min: "", max: "" } });
+  const pick = (key: "price" | "area" | "plot") => (value: string) => {
+    setCustom((c) => ({ ...c, [key]: false }));
+    set({ [key]: { preset: value, min: "", max: "" } });
+  };
+  const openCustom = (key: "price" | "area" | "plot") => (on: boolean) => {
+    setCustom((c) => ({ ...c, [key]: on }));
+    set({ [key]: { preset: "", min: on ? filters[key].min : "", max: on ? filters[key].max : "" } });
+  };
+  const clearAll = () => { setCustom({ price: false, area: false, plot: false }); onClear(); };
   const setKey = (key: "regions" | "conditions" | "settlements" | "landscapes" | "types" | "features") => (value: string) =>
     set({ [key]: toggle(filters[key], value) });
   const regions: Option[] = REGIONS.map((v): Option => [v, regionLabel(v)]).sort((a, b) => a[1].localeCompare(b[1]));
-  const areaAny = filters.area.preset === "" && filters.area.min === "" && filters.area.max === "";
   const extra = moreCount(filters);
 
   return (
@@ -114,8 +155,8 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
       <div className="fscroll">
         <div className="frow">
           <span className="flabel">Price</span>
-          <OneRow entries={PRICE_PRESETS} value={filters.price.preset} onPick={pick("price")} />
-          <RangeInputs label="Price" unit="€" range={filters.price} onChange={(price) => set({ price })} />
+          <NumberGroup label="Price" unit="€" entries={[["", "Any price"], ...PRICE_PRESETS]} range={filters.price} custom={custom.price}
+            onPreset={pick("price")} onCustom={openCustom("price")} onChange={(price) => set({ price })} />
         </div>
 
         <SetRow label="Location" entries={regions} selected={filters.regions} onToggle={setKey("regions")} />
@@ -123,8 +164,8 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
 
         <div className="frow">
           <span className="flabel">Living area</span>
-          <OneRow entries={AREA_PRESETS} value={areaAny ? "" : filters.area.preset || "custom"} onPick={pick("area")} />
-          <RangeInputs label="Living area" unit="m²" range={filters.area} onChange={(area) => set({ area })} />
+          <NumberGroup label="Living area" unit="m²" entries={AREA_PRESETS} range={filters.area} custom={custom.area}
+            onPreset={pick("area")} onCustom={openCustom("area")} onChange={(area) => set({ area })} />
         </div>
 
         <div className="frow">
@@ -143,7 +184,8 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
               <h3 className="mhead">Plot &amp; outdoor</h3>
               <div className="frow">
                 <span className="flabel sub">Plot size</span>
-                <RangeInputs label="Plot size" unit="m²" range={filters.plot} onChange={(plot) => set({ plot })} />
+                <NumberGroup label="Plot size" unit="m²" entries={[["", "Any plot"]]} range={filters.plot} custom={custom.plot}
+                  onPreset={pick("plot")} onCustom={openCustom("plot")} onChange={(plot) => set({ plot })} />
               </div>
               <SetRow label="Outdoor" sub entries={OUTDOOR} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
             </section>
@@ -167,7 +209,7 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
         )}
       </div>
       <div className="ffoot">
-        <button className="bk sm" onClick={onClear}>Clear all</button>
+        <button className="bk sm" onClick={clearAll}>Clear all</button>
         <button className="apply" disabled={count === 0 || invalid} onClick={onApply}>
           <span className="pr"><Cells text={invalid ? "Check the range" : count === 0 ? "No homes match" : `Show ${count} ${count === 1 ? "home" : "homes"}`} /></span>
         </button>
