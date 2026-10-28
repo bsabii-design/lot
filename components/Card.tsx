@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Slideshow from "./Slideshow";
 import FeedText from "./FeedText";
-import ShareButton from "./ShareButton";
 import Price from "./Price";
 import { archived, placeLine } from "@/lib/format";
 import Facts from "./Facts";
@@ -37,7 +36,6 @@ export default function Card({ p, first }: Props) {
             {p.short_description
               ? <FeedText text={p.short_description} href={`/homes/${p.slug}`} />
               : <span className="caption"><Link className="ul cg-stretch" href={`/homes/${p.slug}`} scroll={false}>(See home…)</Link></span>}
-            <div className="cg-save"><ShareButton title={p.title} slug={p.slug} /></div>
           </div>
         </div>
       </div>

@@ -8,7 +8,6 @@ import { STYLE_URL, clusterPoints, tuneStyle } from "@/lib/map";
 import { imageSrc, placeLine, price, priceShort } from "@/lib/format";
 import { facts } from "@/lib/facts";
 import { RETURN_KEY } from "@/lib/cn";
-import { shareHome } from "@/lib/share";
 import regionsData from "@/data/regions.json";
 import type { Property } from "@/lib/types";
 
@@ -80,16 +79,9 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     }
     if (line.childElementCount) text.appendChild(line);
     wrap.append(img, text);
-    /* "(Share)" under the card, outside the link */
-    const share = document.createElement("p");
-    share.className = "map-save";
-    const btn = document.createElement("button");
-    btn.className = "lk";
-    btn.textContent = "Share";
-    btn.addEventListener("click", () => { void shareHome(p.title, `/homes/${p.slug}`, btn); });
-    share.append("(", btn, ")");
+    /* the whole card is the link; Share lives on the home's own page */
     const card = document.createElement("div");
-    card.append(wrap, share);
+    card.append(wrap);
     return card;
   }, [router]);
 

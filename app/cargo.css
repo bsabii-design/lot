@@ -211,7 +211,7 @@ html.has-panel { overflow: hidden; }
 .cg-row .lk, .cg-row .term { position: relative; z-index: 2; cursor: pointer; }
 .cg-row .term { cursor: help; }
 /* the two buttons of the row keep their hover (grey): "(See home…)" (its link covers the whole row, so the pointer anywhere on the row lights it) and "(Save)" */
-.cg-row .cg-stretch:hover, .cg-row .cg-save .lk:hover { color: var(--text-2); }
+.cg-row .cg-stretch:hover { color: var(--text-2); }
 
 /* the middle of the photo opens the home too; its outer parts turn the photos */
 .ss.has-open { --iw: min(var(--slide-h) * var(--ar), 100%); } /* the picture's width: the middle 40% of it opens the home */
@@ -260,7 +260,6 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 /* the groups of the filter (Price, Location, Condition ...) stand apart: twice the gap they had */
 .filterwin .fscroll > .frow { padding: 0.5rem 0; }
 
-.cg-row .cg-save { display: block; margin-top: var(--u); }
 
 /* (the blue is switched off for now: --blue / --grain above and public/grain-blue.png are kept; the saved price carries the class .saved-pr, and
    View listing / Show N homes can take var(--blue) var(--grain) on hover again) */
@@ -302,10 +301,6 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 .map-preview img { margin-bottom: var(--u); }
 .map-preview .where { color: inherit; }
 
-.map-save { margin: var(--u) 0 0; color: var(--text-read); }
-.map-save .lk { color: inherit; font: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
-.map-save .lk.saved { text-decoration: none; }
-.map-save .lk:hover { color: var(--text-2); }
 .map-preview:focus-visible { outline: 1px solid var(--text-read); outline-offset: 3px; }
 
 
@@ -339,7 +334,7 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 
 /* touch: the words stay as small as they are, the area that answers a finger grows around them (padding out, the same margin back in) */
 .mobile .nav button, .mobile .nav a { padding: 0.6em 0.45em; margin: -0.6em -0.45em; }
-.mobile .cg-row .cg-save .lk, .mobile .cg-ovcontent > .cg-set .ui :is(a, button), .mobile .map-save .lk { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
+.mobile .cg-ovcontent > .cg-set .ui :is(a, button) { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
 .mobile .dock button { height: var(--h-btn); }
 
 /* the foot of the feed: © at the left, About and Privacy together at the right (nothing in the middle, where the dock stands); quiet grey words, no hover colour.
