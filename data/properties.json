@@ -1393,7 +1393,7 @@
    "bedrooms": 3,
    "bathrooms": 2,
    "property_type": "Stone house",
-   "condition": "Move-in ready",
+   "condition": "Habitable",
    "setting": "Countryside",
    "features": [
     "stone",
