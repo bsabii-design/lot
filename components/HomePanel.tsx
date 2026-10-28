@@ -27,6 +27,7 @@ export default function HomePanel({ p }: { p: Property }) {
     ["Bedrooms", p.bedrooms],
     ["Bathrooms", p.bathrooms],
     ["Features", (p.features || []).join(", ")],
+    ...(p.extra_details ?? []),
     ["To the sea", seaKm(p) !== null ? `about ${seaKm(p)} km` : null],
   ].filter(([, v]) => v != null && v !== "") as [string, string | number][];
 

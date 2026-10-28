@@ -54,6 +54,8 @@ export interface Property {
   facts?: Facts;
   /** computed from the coordinates (data/geo.json): the distance to the nearest coast in km, good to roughly 5-10 km */
   geo?: { sea_km: number };
+  /** extra rows for the Details block (data/details.json): energy, heating, drainage, tax, agency fee; absent = none stated */
+  extra_details?: [label: string, value: string][];
   /** a draft second paragraph (data/description-drafts.json), built from the record's own fields; absent = none */
   description_more?: string;
 }

@@ -1,0 +1,125 @@
+{
+ "_about": "Extra rows for the Details block of a home (energy use and cost, heating, drainage, tax, agency fee), keyed by property id, quoted from the listing; a row that is not here is unknown, not zero. Energy use is the DPE figure in kWh per m² per year; the energy cost is the agency's estimate for standard use.",
+ "homes": {
+  "millac-hamlet-house-bvi87682": [
+   [
+    "Energy use",
+    "214 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€2,380–3,260 a year (estimate)"
+   ],
+   [
+    "Heating",
+    "Electric, wood, pellet"
+   ],
+   [
+    "Drainage",
+    "Micro sewage treatment plant"
+   ],
+   [
+    "Agency fee",
+    "Included in the price (9%)"
+   ]
+  ],
+  "ladapeyre-modernised-house-a36890": [
+   [
+    "Energy use",
+    "230 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€1,510–2,090 a year (estimate)"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ],
+   [
+    "Agency fee",
+    "Included in the price"
+   ]
+  ],
+  "siran-village-house-a42822": [
+   [
+    "Energy use",
+    "232 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€1,100–1,540 a year (estimate)"
+   ],
+   [
+    "Property tax",
+    "From €224 a year"
+   ],
+   [
+    "Furnished",
+    "Sold furnished"
+   ],
+   [
+    "Agency fee",
+    "Paid by the seller, included in the price"
+   ]
+  ],
+  "jumilhac-village-house-bvi85468": [
+   [
+    "Energy use",
+    "291 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€1,710–2,350 a year (estimate)"
+   ],
+   [
+    "Heating",
+    "Electric, wood"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ],
+   [
+    "Agency fee",
+    "Included in the price (9%)"
+   ]
+  ],
+  "avene-stone-house-a36741": [
+   [
+    "Energy use",
+    "483 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€2,409–3,259 a year (estimate)"
+   ],
+   [
+    "Agency fee",
+    "Included in the price"
+   ]
+  ],
+  "saint-laurent-de-ceris-farmhouse-bvi84419": [
+   [
+    "Energy use",
+    "216 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€2,050–2,860 a year (estimate)"
+   ],
+   [
+    "Heating",
+    "Fuel oil"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ],
+   [
+    "Agency fee",
+    "Included in the price (10%)"
+   ]
+  ]
+ }
+}

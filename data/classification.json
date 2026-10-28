@@ -359,6 +359,175 @@
     ],
     "basis": "legacy"
    }
+  },
+  "millac-hamlet-house-bvi87682": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated"
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated"
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated"
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "stated"
+   },
+   "features": {
+    "value": [
+     "fireplace",
+     "outbuildings"
+    ],
+    "basis": "stated"
+   }
+  },
+  "ladapeyre-modernised-house-a36890": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated"
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated"
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated"
+   },
+   "renovation_level": {
+    "value": "recently_renovated",
+    "basis": "stated"
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "stated"
+   }
+  },
+  "siran-village-house-a42822": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated"
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated"
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated"
+   },
+   "renovation_level": {
+    "value": "recently_renovated",
+    "basis": "stated"
+   },
+   "features": {
+    "value": [
+     "stone",
+     "terrace"
+    ],
+    "basis": "stated"
+   }
+  },
+  "jumilhac-village-house-bvi85468": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated"
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated"
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated"
+   },
+   "renovation_level": {
+    "value": "recently_renovated",
+    "basis": "stated"
+   },
+   "features": {
+    "value": [
+     "fireplace",
+     "garden",
+     "original_features",
+     "views"
+    ],
+    "basis": "stated"
+   }
+  },
+  "avene-stone-house-a36741": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated"
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated"
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated"
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "stated"
+   },
+   "features": {
+    "value": [
+     "detached",
+     "garden",
+     "stone"
+    ],
+    "basis": "stated"
+   }
+  },
+  "saint-laurent-de-ceris-farmhouse-bvi84419": {
+   "property_type": {
+    "value": "farmhouse",
+    "basis": "stated"
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated"
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated"
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "stated"
+   },
+   "features": {
+    "value": [
+     "detached",
+     "garden",
+     "original_features",
+     "outbuildings",
+     "stone"
+    ],
+    "basis": "stated"
+   }
   }
  }
 }

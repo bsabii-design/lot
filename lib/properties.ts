@@ -2,6 +2,7 @@ import data from "@/data/properties.json";
 import classification from "@/data/classification.json";
 import drafts from "@/data/description-drafts.json";
 import geo from "@/data/geo.json";
+import details from "@/data/details.json";
 import type { Facts, Property } from "./types";
 import { newestFirst } from "./format";
 
@@ -11,7 +12,8 @@ import { newestFirst } from "./format";
    attached here (a record without an entry has no facts, i.e. everything unknown). */
 const facts = (classification as unknown as { properties: Record<string, Facts> }).properties;
 const seaOf = (geo as unknown as { homes: Record<string, { sea_km: number }> }).homes;
+const extra = (details as unknown as { homes: Record<string, [string, string][]> }).homes;
 const more = (drafts as unknown as { paragraphs: Record<string, string> }).paragraphs;
-export const properties: Property[] = newestFirst((data as unknown as { properties: Property[] }).properties).map((p) => ({ ...p, facts: facts[p.id], description_more: more[p.id], geo: seaOf[p.id] }));
+export const properties: Property[] = newestFirst((data as unknown as { properties: Property[] }).properties).map((p) => ({ ...p, facts: facts[p.id], description_more: more[p.id], geo: seaOf[p.id], extra_details: extra[p.id] }));
 
 export const getProperty = (slug: string) => properties.find((p) => p.slug === slug);

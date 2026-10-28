@@ -25,9 +25,9 @@ const run = (patch, list = homes) => ids(visible(list, "all", [], { ...emptyFilt
 const brute = (test, list = homes) => ids(list.filter(test));
 
 /* --- the catalogue itself is untouched --- */
-check("26 records", raw.length, 26);
+check("32 records", raw.length, 32);
 check("id equals slug for all", raw.every((p) => p.id === p.slug), true);
-const baseline = "1c79c5d0d55938848e3e2567696b2b0955fd8aa1";
+const baseline = "2a16522d0b72a7addccfeb6789c002eae9031595";
 check("properties.json is byte-identical to the published version", execSync("git hash-object data/properties.json").toString().trim(), baseline);
 
 /* --- the order of the feed: newest additions first, the same day keeps the file order --- */
@@ -68,13 +68,13 @@ check("regions OR", run({ regions: ["Bretagne", "Normandie"] }), brute((p) => ["
 check("a region without homes returns none", run({ regions: ["Corse"] }), []);
 check("types OR (cottage, farmhouse)", run({ types: ["cottage", "farmhouse"] }), brute((p) => ["Cottage", "Farmhouse"].includes(p.property_type)));
 check("types: a type nobody has classified returns none", run({ types: ["mill"] }), []);
-check("landscape OR (mountains, countryside)", run({ landscapes: ["mountains", "countryside"] }), brute((p) => ["Mountains", "Countryside"].includes(p.setting)));
+check("landscape OR (mountains, countryside)", run({ landscapes: ["mountains", "countryside"] }), brute((p) => (cls[p.id]?.landscape?.value ?? []).some((l) => ["mountains", "countryside"].includes(l))));
 check("settlement town", run({ settlements: ["town"] }), brute((p) => p.setting === "Town"));
-check("settlement village is unknown for all", run({ settlements: ["village"] }), []);
-check("condition is unknown for all (never inferred from the old label)", run({ conditions: ["move_in"] }), []);
+check("settlement village: only the homes whose listing says so (stated)", run({ settlements: ["village"] }), ["jumilhac-village-house-bvi85468", "ladapeyre-modernised-house-a36890", "saint-laurent-de-ceris-farmhouse-bvi84419", "siran-village-house-a42822"]);
+check("condition: only the homes with a stated habitability and renovation level (never the old label)", run({ conditions: ["move_in"] }), ["jumilhac-village-house-bvi85468", "ladapeyre-modernised-house-a36890", "millac-hamlet-house-bvi87682", "saint-laurent-de-ceris-farmhouse-bvi84419", "siran-village-house-a42822"]);
 check("features need ALL (garden + stone)", run({ features: ["garden", "stone"] }), brute((p) => p.features.includes("garden") && p.features.includes("stone")));
 check("features single (pool)", run({ features: ["pool"] }), brute((p) => p.features.includes("pool")));
-check("features with no data (detached) return none", run({ features: ["detached"] }), []);
+check("features: detached only where the listing says so", run({ features: ["detached"] }), ["avene-stone-house-a36741", "saint-laurent-de-ceris-farmhouse-bvi84419"]);
 check("features: garden + courtyard returns none", run({ features: ["garden", "courtyard"] }), []);
 check("features unknown is not false: nothing excluded without the filter", run({}).length, homes.length);
 check("AND across groups (Occitanie + garden + 3+ bedrooms)", run({ regions: ["Occitanie"], features: ["garden"], bedrooms: "3" }),
@@ -108,11 +108,11 @@ check("old saved filter shapes are made safe", JSON.stringify(normalizeFilters({
 
 /* --- what is dimmed in the panel --- */
 const av = available(homes);
-check("conditions: nothing classified, all dimmed", [...av.conditions], []);
-check("types with homes", [...av.types].sort(), ["cottage", "farmhouse"]);
+check("conditions with homes", [...av.conditions], ["move_in"]);
+check("types with homes", [...av.types].sort(), ["cottage", "farmhouse", "house"]);
 check("landscapes with homes", [...av.landscapes].sort(), ["countryside", "mountains"]);
-check("settlements with homes", [...av.settlements], ["town"]);
-check("features with homes", [...av.features].sort(), ["fireplace", "garage", "garden", "historic", "original_features", "outbuildings", "pool", "stone", "terrace", "views"]);
+check("settlements with homes", [...av.settlements].sort(), ["hamlet", "town", "village"]);
+check("features with homes", [...av.features].sort(), ["detached", "fireplace", "garage", "garden", "historic", "original_features", "outbuildings", "pool", "stone", "terrace", "views"]);
 
 console.log(failed ? `\n${failed} FAILED` : "\nall passed");
 process.exit(failed ? 1 : 0);
