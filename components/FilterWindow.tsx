@@ -229,31 +229,16 @@ export default function FilterWindow({ closing, filters, avail, count, invalid, 
 
         <Reveal open={more}>
           <div className="more" id="more-filters">
-            <section className="msec">
-              <h3 className="mhead">Plot &amp; outdoor</h3>
-              <div className="frow">
-                <span className="flabel sub">Plot size</span>
-                <NumberGroup label="Plot size" unit="m²" entries={[["", "Any plot"]]} range={filters.plot} custom={custom.plot}
-                  onPreset={pick("plot")} onCustom={openCustom("plot")} onChange={(plot) => set({ plot })} />
-              </div>
-              <SetRow label="Outdoor" sub entries={OUTDOOR} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
-            </section>
-
-            <section className="msec">
-              <h3 className="mhead">Surroundings</h3>
-              <SetRow label="Settlement" sub entries={SETTLEMENTS} selected={filters.settlements} has={avail.settlements} onToggle={setKey("settlements")} />
-              <SetRow label="Landscape" sub entries={LANDSCAPES} selected={filters.landscapes} has={avail.landscapes} onToggle={setKey("landscapes")} />
-            </section>
-
-            <section className="msec">
-              <h3 className="mhead">Property type</h3>
-              <SetRow label="Type" sub entries={TYPES} selected={filters.types} has={avail.types} onToggle={setKey("types")} />
-            </section>
-
-            <section className="msec">
-              <h3 className="mhead">Features</h3>
-              <SetRow label="All of" sub entries={FEATURES} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
-            </section>
+            <div className="frow">
+              <span className="flabel">Plot size</span>
+              <NumberGroup label="Plot size" unit="m²" entries={[["", "Any plot"]]} range={filters.plot} custom={custom.plot}
+                onPreset={pick("plot")} onCustom={openCustom("plot")} onChange={(plot) => set({ plot })} />
+            </div>
+            <SetRow label="Outdoor" entries={OUTDOOR} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
+            <SetRow label="Settlement" entries={SETTLEMENTS} selected={filters.settlements} has={avail.settlements} onToggle={setKey("settlements")} />
+            <SetRow label="Landscape" entries={LANDSCAPES} selected={filters.landscapes} has={avail.landscapes} onToggle={setKey("landscapes")} />
+            <SetRow label="Type" entries={TYPES} selected={filters.types} has={avail.types} onToggle={setKey("types")} />
+            <SetRow label="Features" entries={FEATURES} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
           </div>
         </Reveal>
       </div>
