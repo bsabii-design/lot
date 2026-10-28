@@ -34,6 +34,27 @@ async function copyText(text: string) {
   }
 }
 
+/** Opens the mail app with the link in a new message. A "mailto:" in a new tab does nothing in many browsers, and with no mail app set up it does nothing at all
+    (desktop browsers do not say so): so it is opened in this tab, and if the page was not left in a moment the link is copied instead and the visitor is told. */
+function email(title: string, url: string, say: (t: string) => void) {
+  let left = false;
+  const gone = () => { left = true; };
+  const hidden = () => { if (document.hidden) left = true; };
+  window.addEventListener("blur", gone, { once: true });
+  document.addEventListener("visibilitychange", hidden);
+  location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+  setTimeout(async () => {
+    window.removeEventListener("blur", gone);
+    document.removeEventListener("visibilitychange", hidden);
+    if (left) return;
+    if (await copyText(url)) say("No mail app found: link copied");
+    else {
+      say("No mail app found");
+      document.querySelector<HTMLInputElement>(".share-url")?.select(); // so the link can be copied by hand
+    }
+  }, 1200);
+}
+
 function openShareWindow(title: string, url: string) {
   const back = document.activeElement as HTMLElement | null;
   const ov = document.createElement("div");
@@ -92,7 +113,7 @@ function openShareWindow(title: string, url: string) {
   const body = encodeURIComponent(`${title} ${url}`);
   row.append(
     button("Copy link", async () => { field.select(); say((await copyText(url)) ? "Link copied" : "Press Ctrl+C to copy"); }),
-    link("Email", `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`),
+    button("Email", () => email(title, url, say)),
     link("WhatsApp", `https://wa.me/?text=${body}`),
     link("Telegram", `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`),
   );
