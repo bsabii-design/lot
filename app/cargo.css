@@ -419,5 +419,5 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 .dock button, .mobile .dock button { height: auto; font-size: var(--fs); line-height: var(--lh); letter-spacing: var(--tracking); }
 .mobile .dock button { padding: 0.6em 0.45em; margin: -0.6em -0.45em; }
 
-/* the filter window: white, no outline */
-.filterwin { background: #fff; border: 0; }
+/* the filter window: white, no outline, and it hangs one unit below the Filter word (the same gap as between a photo and its details in the feed) */
+.filterwin { --fw-top: calc(var(--u) * 1.9 + var(--fs) * var(--lh)); background: #fff; border: 0; }
