@@ -39,18 +39,22 @@ function Chip({ label, on, disabled, onClick }: { label: string; on: boolean; di
 }
 
 /** Several can be picked (any of them matches). `has` limits the choices that have homes; undefined = all are live. */
-function SetRow({ label, sub, entries, selected, has, onToggle }: {
+function SetRow({ label, sub, any, entries, selected, has, onToggle, onAny }: {
   label: string;
   sub?: boolean;
+  /** the group's "any" ("Any location"): chosen while nothing is picked; picking it again clears the picks */
+  any?: string;
   entries: Option[];
   selected: string[];
   has?: Set<string>;
   onToggle: (key: string) => void;
+  onAny?: () => void;
 }) {
   return (
     <div className="frow">
       <span className={cn("flabel", sub && "sub")}>{label}</span>
       <div className="chips">
+        {any && <Chip label={any} on={selected.length === 0} onClick={() => onAny?.()} />}
         {entries.map(([key, text]) => (
           <Chip key={key} label={text} on={selected.includes(key)} disabled={has ? !has.has(key) && !selected.includes(key) : false} onClick={() => onToggle(key)} />
         ))}
@@ -159,8 +163,8 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
             onPreset={pick("price")} onCustom={openCustom("price")} onChange={(price) => set({ price })} />
         </div>
 
-        <SetRow label="Location" entries={regions} selected={filters.regions} onToggle={setKey("regions")} />
-        <SetRow label="Condition" entries={CONDITIONS} selected={filters.conditions} has={avail.conditions} onToggle={setKey("conditions")} />
+        <SetRow label="Location" any="Any location" entries={regions} selected={filters.regions} onToggle={setKey("regions")} onAny={() => set({ regions: [] })} />
+        <SetRow label="Condition" any="Any condition" entries={CONDITIONS} selected={filters.conditions} has={avail.conditions} onToggle={setKey("conditions")} onAny={() => set({ conditions: [] })} />
 
         <div className="frow">
           <span className="flabel">Living area</span>
