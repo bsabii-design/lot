@@ -43,58 +43,73 @@ function openShareWindow(title: string, url: string) {
   ov.setAttribute("aria-label", "Share");
   const box = document.createElement("div");
   box.className = "share-box cg";
-  box.tabIndex = -1;
 
-  const link = document.createElement("div");
-  link.className = "share-url";
-  link.textContent = url;
-
-  const row = document.createElement("div");
-  row.className = "share-row";
-  const act = (label: string, onClick?: () => void, href?: string) => {
+  /* "(Text)": the word is the button or link, the brackets are plain text */
+  const bracket = (label: string, el: HTMLElement) => {
     const wrap = document.createElement("span");
-    const el = document.createElement(href ? "a" : "button");
     el.className = "lk ul";
     el.textContent = label;
-    if (href) { (el as HTMLAnchorElement).href = href; (el as HTMLAnchorElement).target = "_blank"; (el as HTMLAnchorElement).rel = "noopener"; }
-    if (onClick) el.addEventListener("click", onClick);
     wrap.append("(", el, ")");
-    row.appendChild(wrap);
-    return el;
+    return wrap;
+  };
+  const button = (label: string, onClick: () => void) => {
+    const el = document.createElement("button");
+    el.addEventListener("click", onClick);
+    return bracket(label, el);
+  };
+  const link = (label: string, href: string) => {
+    const el = document.createElement("a");
+    el.href = href;
+    el.target = "_blank";
+    el.rel = "noopener";
+    return bracket(label, el);
   };
 
-  /* the confirmation is a line of its own under the buttons (it keeps its place, so nothing jumps) */
-  const note = document.createElement("p");
+  /* the header: "Share", a quiet "Link copied" after it when it has been copied, "(Close)" at the right edge */
+  const head = document.createElement("div");
+  head.className = "share-head";
+  const heading = document.createElement("span");
+  heading.textContent = "Share";
+  const note = document.createElement("span");
   note.className = "share-note";
   note.setAttribute("aria-live", "polite");
+  const close = button("Close", () => done());
+  close.classList.add("share-close");
+  head.append(heading, note, close);
+
+  const field = document.createElement("input");
+  field.className = "share-url";
+  field.readOnly = true;
+  field.value = url;
+  field.setAttribute("aria-label", "Link to this home");
+  field.addEventListener("focus", () => field.select());
+
   let timer: ReturnType<typeof setTimeout> | undefined;
   const say = (t: string) => { note.textContent = t; clearTimeout(timer); timer = setTimeout(() => { note.textContent = ""; }, 2200); };
 
-  const text = encodeURIComponent(`${title} ${url}`);
-  act("Copy link", async () => say((await copyText(url)) ? "Link copied" : "Select the link and copy it"));
-  act("Email", undefined, `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`);
-  act("WhatsApp", undefined, `https://wa.me/?text=${text}`);
-  act("Telegram", undefined, `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`);
-  act("Close", () => close());
+  const row = document.createElement("div");
+  row.className = "share-row";
+  const body = encodeURIComponent(`${title} ${url}`);
+  row.append(
+    button("Copy link", async () => { field.select(); say((await copyText(url)) ? "Link copied" : "Press Ctrl+C to copy"); }),
+    link("Email", `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`),
+    link("WhatsApp", `https://wa.me/?text=${body}`),
+    link("Telegram", `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`),
+  );
 
-  box.append(link, row, note);
+  box.append(head, field, row);
   ov.appendChild(box);
 
-  const close = () => {
+  const done = () => {
     clearTimeout(timer);
     document.removeEventListener("keydown", onKey, true);
     ov.remove();
     back?.focus?.({ preventScroll: true });
   };
-  const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { e.stopPropagation(); close(); } };
+  const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { e.stopPropagation(); done(); } };
   document.addEventListener("keydown", onKey, true);
-  ov.addEventListener("mousedown", (e) => { e.stopPropagation(); if (e.target === ov) close(); });
+  ov.addEventListener("mousedown", (e) => { e.stopPropagation(); if (e.target === ov) done(); });
 
   document.body.appendChild(ov);
-  box.focus({ preventScroll: true });
-  const range = document.createRange();
-  range.selectNodeContents(link);
-  const sel = getSelection();
-  sel?.removeAllRanges();
-  sel?.addRange(range);
+  field.focus({ preventScroll: true });
 }
