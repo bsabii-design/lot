@@ -5,7 +5,7 @@ export function About({ modal }: { modal: boolean }) {
     <InfoPanel title="About" modal={modal}>
       <p>LOT is a small selection of homes across France, all priced at €150,000 or less. We pick them by eye: houses with character that a modest budget can still reach.</p>
       <p>Every home links to its original listing, and that is where the seller or the agent can be reached. Photos and descriptions come from those listings. What we add ourselves, such as the distance to the sea, is calculated; the short descriptions are drafted from the listing. If we cannot be sure of a detail, we leave it out.</p>
-      <p>The selection changes as homes are added, sold or taken off the market. Sold homes move to the Archive.</p>
+      <p>The selection changes as homes are added, sold or taken off the market.</p>
     </InfoPanel>
   );
 }

@@ -361,11 +361,15 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 .cg-ov.wide .cg-ovcontent { background: transparent; }
 .cg-ov.wide .cg-ovcontent > .cg-set { margin-bottom: 0; }
 html.has-info .logo { display: none; } /* no logo on a text page (the class is set while it is open, not just present in the page) */
-.cg-info-page { margin-top: calc(var(--fs) * var(--lh)); }
+.cg-info-page { margin-top: 0; }
+/* with no logo at the left of the header row the text would hang one empty line below "(Close)": on a wide screen the header row is lifted out of the flow so the
+   text starts on the same line as "(Close)" (the top edge of the page, one unit in); on a phone "(Close)" keeps its own row and the text follows one unit below */
+html:not(.mobile) .cg-ov.wide .cg-ovcontent { position: relative; }
+html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: absolute; top: var(--u); left: var(--u); right: var(--u); width: auto; }
 .cg-prose p { margin: 0; }
 .cg-prose p + p { text-indent: 3em; }
 .mobile .cg-ov.wide .cg-ovcontent > .cg-set { position: static; background: none; margin: 0; padding: 0; }
-.mobile .cg-ov.wide .cg-ovcontent > .cg-info-page { margin-top: calc(var(--fs) * var(--lh)); }
+.mobile .cg-ov.wide .cg-ovcontent > .cg-info-page { margin-top: var(--u); }
 
 /* the dock keeps to the one unit like the tabs at the top: one unit from the edge (the 1px line included) to the words, one unit between List / Map and Filter,
    and between List and Map one unit from word to word with the slash in the middle (a slash is about 0.268em wide) */
