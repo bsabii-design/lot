@@ -19,12 +19,13 @@ export default function OverlayShell({ children, modal, label, sold, wide }: { c
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
     document.addEventListener("keydown", onKey);
     document.documentElement.classList.add("has-panel");
+    if (wide) document.documentElement.classList.add("has-info");
     content.current?.focus({ preventScroll: true });
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.documentElement.classList.remove("has-panel");
+      document.documentElement.classList.remove("has-panel", "has-info");
     };
-  }, [close]);
+  }, [close, wide]);
 
   return (
     <PanelContext.Provider value={{ close, modal }}>

@@ -14,7 +14,6 @@ import type { Filters, Property, Tab, View } from "@/lib/types";
 /* the map is client-only (WebGL) and loads on demand */
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
-const TAB_URL: Record<Tab, string> = { all: "", favourites: "?tab=saved", archive: "?tab=archive" };
 /* (the "Saved" tab is off for now: with no accounts a saved home lives in one browser only; the "Archive" tab is gone: sold homes stay in the data, not on the page) */
 
 interface Saved { tab: Tab; view: View; y: number; filters: Filters }
@@ -49,7 +48,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
       try {
         const s = JSON.parse(sessionStorage.getItem(STATE_KEY) || "null") as Saved | null;
         if (s) {
-          setTab(s.tab || "all");
+          setTab("all"); // an older visit may have left the Saved or Archive tab: both are gone
           setView(s.view || "list");
           setFilters(normalizeFilters(s.filters));
           y = s.y || 0;
@@ -91,10 +90,6 @@ export default function Browse({ homes }: { homes: Property[] }) {
     };
   }, [open]);
 
-  const pickTab = (t: Tab) => {
-    setTab(t);
-    try { history.replaceState(null, "", location.pathname + TAB_URL[t]); } catch {}
-  };
   const clearFilters = () => setFilters(emptyFilters());
 
   const empty = list.length === 0;
@@ -104,8 +99,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
     <div className="browse" data-view={view}>
       <h1 className="sr-only">LOT: homes across France</h1>
       <nav className="nav">
-        <span><button className="active" onClick={() => pickTab("all")}>All posts</button></span>
-        <span>&nbsp; &nbsp;<Link href="/about" scroll={false}>About</Link></span>
+        <Link href="/about" scroll={false}>About</Link>
       </nav>
 
       {view === "map" && !empty ? (

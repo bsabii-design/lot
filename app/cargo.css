@@ -68,8 +68,7 @@
 }
 .nav button { pointer-events: auto; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; color: var(--text-3); cursor: pointer; }
 .nav button:hover, .nav button.active { color: var(--text); }
-.nav a { pointer-events: auto; color: var(--text-3); text-decoration: none; cursor: pointer; }
-.nav a:hover { color: var(--text); }
+.nav a { pointer-events: auto; color: var(--text); text-decoration: none; cursor: pointer; }
 .nav i { font-style: normal; }
 
 /* ---------- the feed: one page per home, stacked ---------- */
@@ -356,12 +355,12 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
 .cg-foot-r { display: flex; gap: var(--u); } /* the same gap as between the tabs at the top (one unit) */
 .mobile .cg-foot a { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
 
-/* About and Privacy: the Cargo "Information" overlay — the white covers the whole page, the logo stays on top of it, the header row is
+/* About and Privacy: the Cargo "Information" overlay — the white covers the whole page (the logo is hidden), the header row is
    followed by one empty line, then the text (3 columns) and the contact block (3 columns); the paragraphs follow each other, the next ones indented */
 .cg-ov.wide .cg-ovlayout { width: 100%; max-width: 100%; }
 .cg-ov.wide .cg-ovcontent { background: transparent; }
 .cg-ov.wide .cg-ovcontent > .cg-set { margin-bottom: 0; }
-html:has(.cg-ov.wide) .logo { z-index: 1000; }
+html.has-info .logo { display: none; } /* no logo on a text page (the class is set while it is open, not just present in the page) */
 .cg-info-page { margin-top: calc(var(--fs) * var(--lh)); }
 .cg-prose p { margin: 0; }
 .cg-prose p + p { text-indent: 3em; }
