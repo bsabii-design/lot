@@ -1,13 +1,11 @@
 "use client";
 
-/** Share a home. On a phone or tablet the device's own share sheet opens (the system puts it where it belongs: copy, AirDrop, mail, messengers, social networks).
-    On a computer a small window of our own opens right next to the button that was pressed: the link, copy, mail, WhatsApp, Telegram and, where the browser has one,
-    "(More…)" for its own share sheet (AirDrop and the rest) — a computer's own sheet appears wherever the system likes, not by the button. */
+/** Share a home. Wherever the browser has its own share sheet (phones, Safari and Chrome on a Mac, Windows) that opens: copy, AirDrop, mail, messengers, social networks.
+    (On a computer the system decides where the sheet appears; a page cannot move it next to the button.) Where there is none, a small window of our own opens
+    right next to the button that was pressed, with the link and the common ways to send it. */
 export async function shareHome(title: string, path: string, anchor?: Element | null) {
   const url = new URL(path, location.origin).href;
-  const hasSheet = typeof navigator.share === "function";
-  const computer = matchMedia("(hover: hover) and (pointer: fine)").matches;
-  if (hasSheet && !computer) {
+  if (typeof navigator.share === "function") {
     try {
       await navigator.share({ title, url });
       return;
@@ -16,7 +14,7 @@ export async function shareHome(title: string, path: string, anchor?: Element | 
       /* the sheet could not open: fall through to our own window */
     }
   }
-  openShareWindow(title, url, anchor ?? null, hasSheet);
+  openShareWindow(title, url, anchor ?? null);
 }
 
 async function copyText(text: string) {
@@ -58,7 +56,7 @@ function email(title: string, url: string, say: (t: string) => void) {
   }, 1200);
 }
 
-function openShareWindow(title: string, url: string, anchor: Element | null, hasSheet: boolean) {
+function openShareWindow(title: string, url: string, anchor: Element | null) {
   const back = document.activeElement as HTMLElement | null;
   const ov = document.createElement("div");
   ov.className = anchor ? "share-ov anchored" : "share-ov";
@@ -120,9 +118,7 @@ function openShareWindow(title: string, url: string, anchor: Element | null, has
     link("WhatsApp", `https://wa.me/?text=${body}`),
     link("Telegram", `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`),
   );
-  if (hasSheet) {
-    row.append(button("More…", () => { done(); void navigator.share({ title, url }).catch(() => {}); }));
-  }
+
 
   box.append(head, field, row);
   ov.appendChild(box);
