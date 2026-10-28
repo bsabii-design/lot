@@ -398,6 +398,8 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 /* the share window (where the device has no share sheet of its own), in the language of the filter window: paper, a hairline, one unit of padding and of
    space between its three rows — "Share" with "(Close)" at the right (and "Link copied" after the title), the link in a field like the filter's, the ways to send it */
 .share-ov { position: fixed; inset: 0; z-index: 1100; display: flex; align-items: center; justify-content: center; padding: var(--u); background: color-mix(in srgb, var(--bg) 70%, transparent); }
+.share-ov.anchored { display: block; padding: 0; background: none; }
+.share-ov.anchored .share-box { position: fixed; width: min(24rem, calc(100vw - 2 * var(--u))); }
 .share-box { box-sizing: border-box; width: min(24rem, 100%); padding: var(--u); display: flex; flex-direction: column; gap: var(--u); background: var(--bg); border: 1px solid var(--stroke); color: var(--text-read); font-size: var(--fs); line-height: var(--lh); }
 .share-head { display: flex; align-items: baseline; gap: var(--u); }
 .share-close { margin-left: auto; }

@@ -1,10 +1,13 @@
 "use client";
 
-/** Share a home. Where the device has its own share sheet (phones, Safari, Windows) it opens: copy, AirDrop, mail, messengers, social networks.
-    Where it has none (most desktop browsers) a small window of our own opens with the link and the common ways to send it. */
-export async function shareHome(title: string, path: string) {
+/** Share a home. On a phone or tablet the device's own share sheet opens (the system puts it where it belongs: copy, AirDrop, mail, messengers, social networks).
+    On a computer a small window of our own opens right next to the button that was pressed: the link, copy, mail, WhatsApp, Telegram and, where the browser has one,
+    "(More…)" for its own share sheet (AirDrop and the rest) — a computer's own sheet appears wherever the system likes, not by the button. */
+export async function shareHome(title: string, path: string, anchor?: Element | null) {
   const url = new URL(path, location.origin).href;
-  if (typeof navigator.share === "function") {
+  const hasSheet = typeof navigator.share === "function";
+  const computer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (hasSheet && !computer) {
     try {
       await navigator.share({ title, url });
       return;
@@ -13,7 +16,7 @@ export async function shareHome(title: string, path: string) {
       /* the sheet could not open: fall through to our own window */
     }
   }
-  openShareWindow(title, url);
+  openShareWindow(title, url, anchor ?? null, hasSheet);
 }
 
 async function copyText(text: string) {
@@ -55,10 +58,10 @@ function email(title: string, url: string, say: (t: string) => void) {
   }, 1200);
 }
 
-function openShareWindow(title: string, url: string) {
+function openShareWindow(title: string, url: string, anchor: Element | null, hasSheet: boolean) {
   const back = document.activeElement as HTMLElement | null;
   const ov = document.createElement("div");
-  ov.className = "share-ov";
+  ov.className = anchor ? "share-ov anchored" : "share-ov";
   ov.setAttribute("role", "dialog");
   ov.setAttribute("aria-modal", "true");
   ov.setAttribute("aria-label", "Share");
@@ -117,6 +120,9 @@ function openShareWindow(title: string, url: string) {
     link("WhatsApp", `https://wa.me/?text=${body}`),
     link("Telegram", `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`),
   );
+  if (hasSheet) {
+    row.append(button("More…", () => { done(); void navigator.share({ title, url }).catch(() => {}); }));
+  }
 
   box.append(head, field, row);
   ov.appendChild(box);
@@ -132,5 +138,25 @@ function openShareWindow(title: string, url: string) {
   ov.addEventListener("mousedown", (e) => { e.stopPropagation(); if (e.target === ov) done(); });
 
   document.body.appendChild(ov);
+
+  /* next to the button: under it, its left edge on the button's left edge (its right edge on the button's right edge when there is no room to the right),
+     above it when there is no room below; kept inside the window with one unit of margin */
+  if (anchor) {
+    const r = anchor.getBoundingClientRect();
+    const b = box.getBoundingClientRect();
+    const m = parseFloat(getComputedStyle(document.documentElement).fontSize) * 0.625;
+    const gap = m * 0.6;
+    let left = r.left;
+    if (left + b.width > innerWidth - m) left = r.right - b.width;
+    left = Math.max(m, Math.min(left, innerWidth - b.width - m));
+    let top = r.bottom + gap;
+    if (top + b.height > innerHeight - m) top = Math.max(m, r.top - b.height - gap);
+    box.style.left = `${left}px`;
+    box.style.top = `${top}px`;
+    /* it belongs to the button: when the page moves under it, it goes */
+    const leave = () => done();
+    addEventListener("resize", leave, { once: true });
+    addEventListener("scroll", leave, { capture: true, once: true });
+  }
   field.focus({ preventScroll: true });
 }

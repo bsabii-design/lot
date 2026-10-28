@@ -11,7 +11,7 @@ export default function ShareButton({ title, slug }: { title: string; slug: stri
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          void shareHome(title, `/homes/${slug}`);
+          void shareHome(title, `/homes/${slug}`, e.currentTarget);
         }}
       >
         Share

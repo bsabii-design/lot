@@ -86,7 +86,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     const btn = document.createElement("button");
     btn.className = "lk";
     btn.textContent = "Share";
-    btn.addEventListener("click", () => { void shareHome(p.title, `/homes/${p.slug}`); });
+    btn.addEventListener("click", () => { void shareHome(p.title, `/homes/${p.slug}`, btn); });
     share.append("(", btn, ")");
     const card = document.createElement("div");
     card.append(wrap, share);
