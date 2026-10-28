@@ -25,6 +25,8 @@ export default function Browse({ homes }: { homes: Property[] }) {
   const [filters, setFilters] = useState<Filters>(emptyFilters);
   const [draft, setDraft] = useState<Filters>(emptyFilters);
   const [open, setOpen] = useState(false);
+  /* the window stays in the page while it fades out (a quarter of a second after it is closed) */
+  const [mounted, setMounted] = useState(false);
 
   const avail = useMemo(() => available(homes), [homes]);
   const list = useMemo(() => visible(homes, tab, [], filters), [homes, tab, filters]);
@@ -73,6 +75,14 @@ export default function Browse({ homes }: { homes: Property[] }) {
       save();
     };
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    if (open) { setMounted(true); return; }
+    const t = setTimeout(() => setMounted(false), 250);
+    return () => clearTimeout(t);
+  }, [open]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
   /* the filter window closes on an outside click or Escape */
@@ -136,8 +146,9 @@ export default function Browse({ homes }: { homes: Property[] }) {
         </div>
       )}
 
-      {open && (
+      {mounted && (
         <FilterWindow
+          closing={!open}
           filters={draft}
           avail={avail}
           count={draftCount}

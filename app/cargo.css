@@ -438,3 +438,17 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 .filterwin .chipopt.on .lab { background: var(--paper); color: var(--text-read); }
 /* typed from–to is only there when "Custom" is chosen, and it is a lower field */
 .filterwin .range input { height: var(--h-chip); }
+
+/* motion in the filter window, in the site's own pace (the same easing as the overlay and the slides): the window comes in with a fade and a rise of a few pixels and
+   leaves with a shorter fade; the typed from–to and "More filters" open by growing their height while the content fades in, so everything below slides down */
+@keyframes fw-in { from { opacity: 0; translate: 0 -6px; } to { opacity: 1; translate: 0 0; } }
+@keyframes fw-out { from { opacity: 1; translate: 0 0; } to { opacity: 0; translate: 0 -4px; } }
+.filterwin { animation: fw-in 0.4s cubic-bezier(0.24, 1, 0.29, 1) both; }
+.filterwin.closing { animation: fw-out 0.22s cubic-bezier(0.4, 0, 0.2, 1) both; pointer-events: none; }
+.reveal { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.reveal.open { grid-template-rows: 1fr; opacity: 1; }
+.reveal-in { min-height: 0; overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .filterwin, .filterwin.closing { animation: none; }
+  .reveal { transition: none; }
+}

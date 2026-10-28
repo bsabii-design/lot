@@ -13,6 +13,8 @@ import { Cells } from "./Price";
 import type { Filters, NumRange } from "@/lib/types";
 
 interface Props {
+  /** the window is fading out (it is removed a moment later) */
+  closing?: boolean;
   filters: Filters;
   /** which choices have homes behind them (the rest are dimmed) */
   avail: Availability;
@@ -74,6 +76,15 @@ function OneRow({ entries, value, onPick }: { entries: Option[]; value: string; 
   );
 }
 
+/** Opens and closes smoothly: the height grows from nothing while the content fades in. Closed, it cannot be focused or clicked. */
+function Reveal({ open, children }: { open: boolean; children: React.ReactNode }) {
+  return (
+    <div className={cn("reveal", open && "open")} inert={!open}>
+      <div className="reveal-in">{children}</div>
+    </div>
+  );
+}
+
 const CUSTOM: Option = ["custom", "Custom"];
 
 /** The choices of a number group: the group's "any", its presets, then "Custom" (the typed min–max shows only when it is chosen). */
@@ -100,7 +111,7 @@ function NumberGroup({ label, unit, entries, range, custom, onPreset, onCustom, 
           />
         ))}
       </div>
-      {custom && <RangeInputs label={label} unit={unit} range={range} onChange={onChange} />}
+      <Reveal open={custom}><RangeInputs label={label} unit={unit} range={range} onChange={onChange} /></Reveal>
     </>
   );
 }
@@ -134,7 +145,7 @@ function RangeInputs({ label, unit, range, onChange }: { label: string; unit: st
 
 /** The filter window that opens above the dock. Picks are a draft: nothing changes behind the window until
     "Show N homes". Inside a group any of the picks matches; between groups all of them must. */
-export default function FilterWindow({ filters, avail, count, invalid, onChange, onClear, onApply }: Props) {
+export default function FilterWindow({ closing, filters, avail, count, invalid, onChange, onClear, onApply }: Props) {
   const [more, setMore] = useState(false);
   /** "Custom" is chosen: the typed from–to shows (it starts open when the filters already hold typed numbers) */
   const typed = (r: NumRange) => r.min !== "" || r.max !== "";
@@ -155,7 +166,7 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
   const extra = moreCount(filters);
 
   return (
-    <aside className="filterwin" id="filter-window">
+    <aside className={cn("filterwin", closing && "closing")} id="filter-window">
       <div className="fscroll">
         <div className="frow">
           <span className="flabel">Price</span>
@@ -182,7 +193,7 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
           <Icon name={more ? "minus" : "plus"} size="0.75rem" />
         </button>
 
-        {more && (
+        <Reveal open={more}>
           <div className="more" id="more-filters">
             <section className="msec">
               <h3 className="mhead">Plot &amp; outdoor</h3>
@@ -210,7 +221,7 @@ export default function FilterWindow({ filters, avail, count, invalid, onChange,
               <SetRow label="All of" sub entries={FEATURES} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
             </section>
           </div>
-        )}
+        </Reveal>
       </div>
       <div className="ffoot">
         <button className="bk sm" onClick={clearAll}>Clear all</button>
