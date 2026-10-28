@@ -6,7 +6,6 @@ import Card from "./Card";
 import Footer from "./Footer";
 import Icon from "./Icon";
 import FilterWindow from "./FilterWindow";
-import { useFavs } from "@/lib/favs";
 import { activeFacets, available, emptyFilters, hasInvalidRange, normalizeFilters, visible, withoutInvalid } from "@/lib/filters";
 import { RETURN_KEY, STATE_KEY, cn } from "@/lib/cn";
 import type { Filters, Property, Tab, View } from "@/lib/types";
@@ -15,7 +14,8 @@ import type { Filters, Property, Tab, View } from "@/lib/types";
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
 const TAB_URL: Record<Tab, string> = { all: "", favourites: "?tab=saved", archive: "?tab=archive" };
-const TABS: [Tab, string][] = [["all", "All posts"], ["favourites", "Saved"], ["archive", "Archive"]];
+/* (the "Saved" tab is off for now: with no accounts a saved home lives in one browser only) */
+const TABS: [Tab, string][] = [["all", "All posts"], ["archive", "Archive"]];
 
 interface Saved { tab: Tab; view: View; y: number; filters: Filters }
 
@@ -26,12 +26,11 @@ export default function Browse({ homes }: { homes: Property[] }) {
   const [filters, setFilters] = useState<Filters>(emptyFilters);
   const [draft, setDraft] = useState<Filters>(emptyFilters);
   const [open, setOpen] = useState(false);
-  const favs = useFavs();
 
   const avail = useMemo(() => available(homes), [homes]);
-  const list = useMemo(() => visible(homes, tab, favs, filters), [homes, tab, favs, filters]);
+  const list = useMemo(() => visible(homes, tab, [], filters), [homes, tab, filters]);
   const facets = useMemo(() => activeFacets(filters), [filters]);
-  const draftCount = useMemo(() => visible(homes, tab, favs, withoutInvalid(draft)).length, [homes, tab, favs, draft]);
+  const draftCount = useMemo(() => visible(homes, tab, [], withoutInvalid(draft)).length, [homes, tab, draft]);
 
   /* keep the browsing state when the visitor opens a home and comes back */
   const latest = useRef<Saved>({ tab, view, y: 0, filters });
@@ -57,7 +56,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
         }
       } catch {}
     } else {
-      const t = { saved: "favourites", archive: "archive" }[q.get("tab") ?? ""] as Tab | undefined;
+      const t = { archive: "archive" }[q.get("tab") ?? ""] as Tab | undefined;
       if (t) setTab(t);
       setFilters((f) => ({
         ...f,
@@ -101,7 +100,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
   const clearFilters = () => setFilters(emptyFilters());
 
   const empty = list.length === 0;
-  const where = tab === "favourites" ? "saved homes" : tab === "archive" ? "archived homes" : "homes";
+  const where = tab === "archive" ? "archived homes" : "homes";
 
   return (
     <div className="browse" data-view={view}>
@@ -111,7 +110,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
           <span key={key}>
             {i > 0 && <>&nbsp; &nbsp;</>}
             <button className={cn(tab === key && "active")} onClick={() => pickTab(key)}>
-              {label}{key === "favourites" && favs.length > 0 && <>{" "}<i>({favs.length})</i></>}
+              {label}
             </button>
           </span>
         ))}
@@ -127,12 +126,6 @@ export default function Browse({ homes }: { homes: Property[] }) {
                 <>
                   <p className="title">No {where} match these filters</p>
                   <button className="bk content on" onClick={clearFilters}>Clear filters</button>
-                </>
-              ) : tab === "favourites" ? (
-                <>
-                  <p className="title">No saved homes yet</p>
-                  <p className="sub">Tap Save on a home and it will wait for you here.</p>
-                  <button className="bk content on" onClick={() => pickTab("all")}>Browse all homes</button>
                 </>
               ) : tab === "archive" ? (
                 <>

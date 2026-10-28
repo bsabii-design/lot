@@ -8,7 +8,7 @@ import { STYLE_URL, clusterPoints, tuneStyle } from "@/lib/map";
 import { imageSrc, placeLine, price, priceShort } from "@/lib/format";
 import { facts } from "@/lib/facts";
 import { RETURN_KEY } from "@/lib/cn";
-import { isFav, onFavs, toggleFav } from "@/lib/favs";
+import { shareHome } from "@/lib/share";
 import regionsData from "@/data/regions.json";
 import type { Property } from "@/lib/types";
 
@@ -80,22 +80,17 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     }
     if (line.childElementCount) text.appendChild(line);
     wrap.append(img, text);
-    /* "(Save)" under the card, outside the link: the same word and the same state as on the feed */
-    const save = document.createElement("p");
-    save.className = "map-save";
+    /* "(Share)" under the card, outside the link */
+    const share = document.createElement("p");
+    share.className = "map-save";
     const btn = document.createElement("button");
     btn.className = "lk";
-    const paint = () => {
-      const on = isFav(p.id);
-      btn.textContent = on ? "Saved" : "Save";
-      btn.classList.toggle("saved", on);
-    };
-    btn.addEventListener("click", () => toggleFav(p.id));
-    paint();
-    save.append("(", btn, ")");
+    btn.textContent = "Share";
+    btn.addEventListener("click", () => { void shareHome(p.title, `/homes/${p.slug}`); });
+    share.append("(", btn, ")");
     const card = document.createElement("div");
-    card.append(wrap, save);
-    return { card, stop: onFavs(paint) };
+    card.append(wrap, share);
+    return card;
   }, [router]);
 
   const draw = useCallback(() => {
@@ -126,13 +121,13 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         popup.current?.remove();
-        const { card, stop } = preview(p);
+        const card = preview(p);
         const pop = new maplibregl.Popup({ closeButton: false, className: "lot-popup", offset: 16 * k, maxWidth: "none" })
           .setLngLat([lng, lat])
           .setDOMContent(card)
           .addTo(map);
         el.classList.add("on");
-        pop.on("close", () => { el.classList.remove("on"); stop(); });
+        pop.on("close", () => el.classList.remove("on"));
         /* the card must be on the screen whole: below the top bar, above the dock, not past the sides */
         requestAnimationFrame(() => {
           const r = pop.getElement()?.getBoundingClientRect();

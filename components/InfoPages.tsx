@@ -14,8 +14,8 @@ export function Privacy({ modal }: { modal: boolean }) {
   return (
     <InfoPanel title="Privacy" modal={modal}>
       <p>LOT has no accounts and no analytics, and it sets no cookies.</p>
-      <p>The homes you save with (Save) are kept in your own browser (local storage) and nowhere else. The filters you chose are kept in the browser for the length of your visit so that “(Close)” takes you back to where you were. Clearing the site data in your browser removes both.</p>
-      <p>The map is drawn with tiles from OpenFreeMap, built on OpenStreetMap data. Like any website you open, their servers see your IP address when the map loads. “View listing” opens the original listing on another website, which has its own privacy policy.</p>
+      <p>The filters you chose are kept in your browser for the length of your visit so that “(Close)” takes you back to where you were. Nothing about you is sent to us or kept anywhere else.</p>
+      <p>The map is drawn with tiles from OpenFreeMap, built on OpenStreetMap data. Like any website you open, their servers see your IP address when the map loads. “View listing” opens the original listing on another website, which has its own privacy policy. “(Share)” opens your device’s share sheet; what you send, and to whom, stays between you and that app.</p>
     </InfoPanel>
   );
 }

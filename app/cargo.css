@@ -199,7 +199,7 @@ html.has-panel { overflow: hidden; }
 .cg-tile .minimap { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; margin: 0; border: 0; border-radius: 0; }
 
 /* on a phone the panel is one page that scrolls, so the header with (Close) stays on top of it */
-.mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 8; /* above the slider's zones and arrows (z-index up to 3), so the "…" menu that hangs over the photo can be tapped */ background: var(--bg); margin: calc(var(--u) * -1) 0 0; padding: var(--u) 0; }
+.mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 2; background: var(--bg); margin: calc(var(--u) * -1) 0 0; padding: var(--u) 0; }
 
 .cg .datalist .posted { color: inherit; font-size: inherit; }
 
@@ -383,21 +383,19 @@ html:has(.cg-ov.wide) .logo { z-index: 1000; }
    (the black block reaches a little below its line, so 0.167em is added to the unit) */
 .mobile .cg-row > .cg-u + .cg-u { margin-top: calc(var(--u) + 0.167em); }
 
-/* the header buttons of a home: "(Save)  (Close)" in the line on a wide screen; on a phone "…  (Close)", with Save and Share behind the "…".
-   The dots are drawn like the full stop of the text: round, 0.15em across, a third of an em apart, on the middle of the capitals (0.33em above the line). */
-.cg-ovcontent > .cg-set .cg-actions-inline { text-align: right; }
-.cg-ovcontent > .cg-set .cg-actions-menu { display: none; }
-.mobile .cg-ovcontent > .cg-set .cg-actions-inline { display: none; }
-.mobile .cg-ovcontent > .cg-set .cg-actions-menu { display: block; text-align: right; }
-.cg-more-wrap { position: relative; display: inline-block; }
-.cg-more { display: inline-block; padding: 0; margin: 0; border: 0; background: none; color: inherit; cursor: pointer; line-height: 0; }
-.cg-more svg { display: block; width: 1em; height: 1em; fill: currentColor; }
-.mobile .cg-ovcontent > .cg-set .cg-more { padding: 0.7em 0.5em; margin: -0.7em -0.5em; }
-.cg-menu { position: absolute; top: 100%; right: 0; z-index: 5; margin-top: calc(var(--u) * 0.5); padding: var(--u); display: flex; flex-direction: column; gap: var(--u); align-items: flex-end; background: var(--bg); border: 1px solid var(--stroke); white-space: nowrap; }
-.cg-menu a, .cg-menu button.lk { padding: 0.5em; margin: -0.5em; }
 
 /* a home's photos on a phone: one slider (swipe, arrows, a tap in the middle opens the full-screen viewer) instead of a stack of them */
 .cg-slider { display: none; }
 .mobile .cg-slider { display: block; }
 .mobile .cg-photos > .media-item { display: none; }
 .cg-slider .ss { margin-bottom: 0; }
+
+/* the share window (where the device has no share sheet of its own): the link, the ways to send it, a quiet line for "Link copied" under them */
+.share-ov { position: fixed; inset: 0; z-index: 1100; display: flex; align-items: center; justify-content: center; padding: var(--u); background: color-mix(in srgb, var(--bg) 70%, transparent); }
+.share-box { box-sizing: border-box; width: min(26rem, 100%); padding: var(--u); background: var(--bg); border: 1px solid var(--stroke); outline: 0; color: var(--text-read); font-size: var(--fs); line-height: var(--lh); }
+.share-url { word-break: break-all; user-select: all; }
+.share-row { display: flex; flex-wrap: wrap; gap: 0 var(--u); margin-top: var(--u); }
+.share-note { margin: calc(var(--u) / 2) 0 0; min-height: calc(var(--fs) * var(--lh)); color: var(--text-3); }
+.share-box .lk, .share-box a { color: inherit; font: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+.share-box .ul { text-decoration: underline; }
+.mobile .share-box .lk { padding: 0.7em 0.3em; margin: -0.7em -0.3em; }
