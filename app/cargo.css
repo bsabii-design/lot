@@ -199,7 +199,7 @@ html.has-panel { overflow: hidden; }
 .cg-tile .minimap { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; margin: 0; border: 0; border-radius: 0; }
 
 /* on a phone the panel is one page that scrolls, so the header with (Close) stays on top of it */
-.mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 2; background: var(--bg); margin: calc(var(--u) * -1) 0 0; padding: var(--u) 0; }
+.mobile .cg-ovcontent > .cg-set { position: sticky; top: 0; z-index: 8; /* above the slider's zones and arrows (z-index up to 3), so the "…" menu that hangs over the photo can be tapped */ background: var(--bg); margin: calc(var(--u) * -1) 0 0; padding: var(--u) 0; }
 
 .cg .datalist .posted { color: inherit; font-size: inherit; }
 
