@@ -9,7 +9,7 @@ The approved filter panel: five main groups, then a collapsed **More filters** b
 | Price | Up to €50k … €150k; typed Min–Max | presets are **upper limits**; one at a time; typing clears the preset, picking a preset clears the typed numbers |
 | Location | all 13 metropolitan regions | several; OR |
 | Condition | Move-in ready · Light works · Needs renovation · Restoration project | several; OR; see "Condition" below |
-| Living area | Any size, 50+, 75+, 100+, 150+ m²; typed Min–Max | presets are **minimums**; one at a time |
+| Living area | Any area, 50+, 75+, 100+, 150+ m², Custom (typed Min–Max) | presets are **minimums**; one at a time |
 | Bedrooms | Any, 1+ … 4+ | minimum, one at a time |
 | **More filters** (starts collapsed) | | |
 | Plot & outdoor | Plot size (typed Min–Max, m²) · Outdoor: Garden, Courtyard | garden and courtyard are separate attributes, never inferred from plot size |

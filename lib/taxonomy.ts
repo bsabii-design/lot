@@ -17,7 +17,7 @@ export const PRICE_PRESETS: Option[] = [
 ];
 /** minimum living area, one at a time; "" = any */
 export const AREA_PRESETS: Option[] = [
-  ["", "Any size"], ["50", "50+ m²"], ["75", "75+ m²"], ["100", "100+ m²"], ["150", "150+ m²"],
+  ["", "Any area"], ["50", "50+ m²"], ["75", "75+ m²"], ["100", "100+ m²"], ["150", "150+ m²"],
 ];
 /** minimum bedrooms, one at a time; "" = any */
 export const BEDROOM_PRESETS: Option[] = [["", "Any"], ["1", "1+"], ["2", "2+"], ["3", "3+"], ["4", "4+"]];
