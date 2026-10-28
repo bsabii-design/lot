@@ -407,7 +407,7 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 .mobile .share-box .lk { padding: 0.7em 0.3em; margin: -0.7em -0.3em; }
 
 /* the view switch and Filter stand at the top, in the middle, on the line of the logo and About: only words, no panel, no frame.
-   The filter window opens below them (it used to open upward from the dock at the bottom). */
+   The filter window keeps its own place (hangs one unit below the top of the first photo), which is now below them. */
 .dock {
   top: calc(var(--u) * 0.9);
   bottom: auto;
@@ -418,4 +418,6 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 }
 .dock button, .mobile .dock button { height: auto; font-size: var(--fs); line-height: var(--lh); letter-spacing: var(--tracking); }
 .mobile .dock button { padding: 0.6em 0.45em; margin: -0.6em -0.45em; }
-.filterwin { top: calc(var(--u) * 0.9 + var(--fs) * 2.4); bottom: auto; max-height: calc(100vh - var(--u) * 0.9 - var(--fs) * 2.4 - 1rem); }
+
+/* the filter window: white, no outline */
+.filterwin { background: #fff; border: 0; }
