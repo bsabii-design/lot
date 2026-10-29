@@ -3,6 +3,16 @@ export interface Classified<T> {
   value: T;
   /** legacy = moved label-for-label from the old fields, not reviewed; stated / derived = checked against the listing */
   basis: "legacy" | "stated" | "derived";
+  /** stated / derived: where it is written (a quote and the listing's url); a feature list carries one quote per feature */
+  evidence?: Evidence | (Evidence & { feature: string })[];
+  /** derived: who concluded it */
+  reviewed_by?: string;
+}
+
+export interface Evidence {
+  quote: string;
+  url: string;
+  checked_at: string;
 }
 
 /** The attributes behind the filters that the old fields cannot answer reliably (data/classification.json). */

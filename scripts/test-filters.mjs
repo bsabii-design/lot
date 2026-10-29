@@ -11,6 +11,11 @@ const read = (f) => JSON.parse(readFileSync(new URL("../" + f, import.meta.url))
 const raw = read("data/properties.json").properties;
 const cls = read("data/classification.json").properties;
 const { archived, newestFirst } = await import("../lib/format.ts");
+const { conditionOf } = await import("../lib/taxonomy.ts");
+/* the expectations below are computed from data/classification.json with plain loops, so they stay right as more homes are reviewed */
+const val = (p, k) => cls[p.id]?.[k]?.value;
+const feats = (p) => val(p, "features") ?? [];
+const uniq = (xs) => [...new Set(xs)].sort();
 /* the filters see only the homes that are still listed (sold / no longer available ones are off the feed), so the checks run on those */
 const homes = raw.filter((p) => !archived(p)).map((p) => ({ ...p, facts: cls[p.id] }));
 
@@ -66,16 +71,16 @@ check("price: unknown never applies (all known)", run({ price: { preset: "150000
 /* --- sets: OR inside, AND between --- */
 check("regions OR", run({ regions: ["Bretagne", "Normandie"] }), brute((p) => ["Bretagne", "Normandie"].includes(p.region)));
 check("a region without homes returns none", run({ regions: ["Corse"] }), []);
-check("types OR (cottage, farmhouse)", run({ types: ["cottage", "farmhouse"] }), brute((p) => ["Cottage", "Farmhouse"].includes(p.property_type)));
+check("types OR (cottage, farmhouse)", run({ types: ["cottage", "farmhouse"] }), brute((p) => ["cottage", "farmhouse"].includes(val(p, "property_type"))));
 check("types: a type nobody has classified returns none", run({ types: ["mill"] }), []);
 check("landscape OR (mountains, countryside)", run({ landscapes: ["mountains", "countryside"] }), brute((p) => (cls[p.id]?.landscape?.value ?? []).some((l) => ["mountains", "countryside"].includes(l))));
-check("settlement town", run({ settlements: ["town"] }), brute((p) => p.setting === "Town"));
-check("settlement village: only the homes whose listing says so (stated)", run({ settlements: ["village"] }), ["jumilhac-village-house-bvi85468", "ladapeyre-modernised-house-a36890", "saint-laurent-de-ceris-farmhouse-bvi84419", "siran-village-house-a42822"]);
-check("condition: only the homes with a stated habitability and renovation level (never the old label)", run({ conditions: ["move_in"] }), ["jumilhac-village-house-bvi85468", "ladapeyre-modernised-house-a36890", "millac-hamlet-house-bvi87682", "saint-laurent-de-ceris-farmhouse-bvi84419", "siran-village-house-a42822"]);
-check("features need ALL (garden + stone)", run({ features: ["garden", "stone"] }), brute((p) => p.features.includes("garden") && p.features.includes("stone")));
-check("features single (pool)", run({ features: ["pool"] }), brute((p) => p.features.includes("pool")));
-check("features: detached only where the listing says so", run({ features: ["detached"] }), ["avene-stone-house-a36741", "saint-laurent-de-ceris-farmhouse-bvi84419"]);
-check("features: garden + courtyard returns none", run({ features: ["garden", "courtyard"] }), []);
+check("settlement town", run({ settlements: ["town"] }), brute((p) => val(p, "settlement") === "town"));
+check("settlement village: only homes whose settlement is recorded as village", run({ settlements: ["village"] }), brute((p) => val(p, "settlement") === "village"));
+check("condition: only homes whose habitability and renovation level are both recorded (never the old label)", run({ conditions: ["move_in"] }), brute((p) => conditionOf(cls[p.id]) === "move_in"));
+check("features need ALL (garden + stone)", run({ features: ["garden", "stone"] }), brute((p) => feats(p).includes("garden") && feats(p).includes("stone")));
+check("features single (pool)", run({ features: ["pool"] }), brute((p) => feats(p).includes("pool")));
+check("features: detached only where the listing says so", run({ features: ["detached"] }), brute((p) => feats(p).includes("detached")));
+check("features: garden + courtyard needs both", run({ features: ["garden", "courtyard"] }), brute((p) => feats(p).includes("garden") && feats(p).includes("courtyard")));
 check("features unknown is not false: nothing excluded without the filter", run({}).length, homes.length);
 check("AND across groups (Occitanie + garden + 3+ bedrooms)", run({ regions: ["Occitanie"], features: ["garden"], bedrooms: "3" }),
   brute((p) => p.region === "Occitanie" && p.features.includes("garden") && p.bedrooms >= 3));
@@ -108,11 +113,11 @@ check("old saved filter shapes are made safe", JSON.stringify(normalizeFilters({
 
 /* --- what is dimmed in the panel --- */
 const av = available(homes);
-check("conditions with homes", [...av.conditions], ["move_in"]);
-check("types with homes", [...av.types].sort(), ["cottage", "farmhouse", "house"]);
-check("landscapes with homes", [...av.landscapes].sort(), ["countryside", "mountains"]);
-check("settlements with homes", [...av.settlements].sort(), ["hamlet", "town", "village"]);
-check("features with homes", [...av.features].sort(), ["detached", "fireplace", "garage", "garden", "historic", "original_features", "outbuildings", "pool", "stone", "terrace", "views"]);
+check("conditions with homes", [...av.conditions].sort(), uniq(homes.map((p) => conditionOf(cls[p.id])).filter(Boolean)));
+check("types with homes", [...av.types].sort(), uniq(homes.map((p) => val(p, "property_type")).filter(Boolean)));
+check("landscapes with homes", [...av.landscapes].sort(), uniq(homes.flatMap((p) => val(p, "landscape") ?? [])));
+check("settlements with homes", [...av.settlements].sort(), uniq(homes.map((p) => val(p, "settlement")).filter(Boolean)));
+check("features with homes", [...av.features].sort(), uniq(homes.flatMap(feats)));
 
 console.log(failed ? `\n${failed} FAILED` : "\nall passed");
 process.exit(failed ? 1 : 0);

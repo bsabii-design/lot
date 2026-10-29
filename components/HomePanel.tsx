@@ -2,7 +2,7 @@ import Price from "./Price";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
 import PhotoColumn from "./PhotoColumn";
-import { seaKm } from "@/lib/facts";
+import { reviewedDetails, seaKm } from "@/lib/facts";
 import MiniMapLazy from "./MiniMapLazy";
 import ShareButton from "./ShareButton";
 import { CloseLink } from "./PanelLinks";
@@ -17,16 +17,17 @@ const span = (n: number) => ({ "--span": n }) as React.CSSProperties;
     stacked in one column; the map; two equal columns of caption text (the facts, then the text and buttons); and "(Return to homes)" with the date at the foot. */
 export default function HomePanel({ p }: { p: Property }) {
   const sold = archived(p);
+  const rev = reviewedDetails(p);
   const rows: [string, string | number | null][] = [
     ["Status", STATUS[p.status] ?? p.status],
-    ["Type", p.property_type],
-    ["Condition", p.condition],
-    ["Setting", p.setting],
+    ["Type", rev.type ?? p.property_type],
+    ["Condition", rev.condition ?? p.condition],
+    ["Setting", rev.setting ?? p.setting],
     ["Size", p.size_m2 ? p.size_m2 + " m²" : null],
     ["Land", p.land_size_m2 ? p.land_size_m2 + " m²" : null],
     ["Bedrooms", p.bedrooms],
     ["Bathrooms", p.bathrooms],
-    ["Features", (p.features || []).join(", ")],
+    ["Features", rev.features ?? (p.features || []).join(", ")],
     ...(p.extra_details ?? []),
     ["To the sea", seaKm(p) !== null ? `about ${seaKm(p)} km` : null],
   ].filter(([, v]) => v != null && v !== "") as [string, string | number][];

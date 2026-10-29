@@ -1,5 +1,5 @@
 import type { Property } from "./types";
-import { conditionOf } from "./taxonomy";
+import { CONDITIONS, FEATURES, LANDSCAPES, OUTDOOR, SETTLEMENTS, TYPES, conditionOf } from "./taxonomy";
 
 /** Up to this distance the sea is worth a fact on a card (about an hour's drive); a full list inside a home states it for every home. */
 const SEA_NEAR = 60;
@@ -32,5 +32,22 @@ export function facts(p: Property): Fact[] {
   if (p.land_size_m2) out.push([p.land_size_m2.toLocaleString("en-US") + " m²", "plot"]);
   const sea = seaKm(p);
   if (sea !== null && sea <= SEA_NEAR) out.push(["~" + sea + " km", "to the sea"]);
+  return out;
+}
+
+const label = (list: [string, string][], key: string) => list.find(([k]) => k === key)?.[1] ?? key;
+const reviewed = (c?: { basis: string }) => !!c && c.basis !== "legacy";
+
+/** The rows of a home's Details block that come from reviewed data: a value somebody has checked against the listing replaces the old label
+    (the old labels are not reviewed and can be wrong); a home without reviewed data keeps what it had. */
+export function reviewedDetails(p: Property): { type?: string; condition?: string; setting?: string; features?: string } {
+  const f = p.facts;
+  const out: { type?: string; condition?: string; setting?: string; features?: string } = {};
+  if (f?.property_type && reviewed(f.property_type)) out.type = label(TYPES, f.property_type.value);
+  const c = conditionOf(f);
+  if (c && f && (reviewed(f.habitability) && reviewed(f.renovation_level))) out.condition = label(CONDITIONS, c);
+  const place = [f?.settlement && reviewed(f.settlement) ? label(SETTLEMENTS, f.settlement.value) : null, ...(f?.landscape && reviewed(f.landscape) ? f.landscape.value.map((v) => label(LANDSCAPES, v)) : [])].filter(Boolean);
+  if (place.length) out.setting = place.join(", ");
+  if (f?.features && reviewed(f.features)) out.features = f.features.value.map((v) => label([...FEATURES, ...OUTDOOR], v)).join(", ");
   return out;
 }

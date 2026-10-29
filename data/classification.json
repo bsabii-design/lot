@@ -2,23 +2,122 @@
  "_about": "New filter attributes, keyed by property id. A missing key means UNKNOWN (never false). basis: legacy = moved label-for-label from the old fields, not reviewed; stated / derived = checked against the listing (evidence required). See docs/filter-taxonomy.md.",
  "properties": {
   "pepieux-stone-house-1962": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Residential (House); this pretty village house",
+     "url": "https://www.french-property.com/sale-property/3397-1962",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "this pretty village house",
+     "url": "https://www.french-property.com/sale-property/3397-1962",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "tastefully refitted, ... offering comfort and modern convenience",
+     "url": "https://www.french-property.com/sale-property/3397-1962",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "derived",
+    "evidence": {
+     "quote": "The house has been tastefully refitted",
+     "url": "https://www.french-property.com/sale-property/3397-1962",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
    "features": {
     "value": [
      "historic",
-     "original_features",
-     "stone"
+     "original_features"
     ],
-    "basis": "legacy"
+    "basis": "derived",
+    "evidence": [
+     {
+      "feature": "original_features",
+      "quote": "retains original features such as a water pump, exposed beams and decorative roof tiles",
+      "url": "https://www.french-property.com/sale-property/3397-1962",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "historic",
+      "quote": "Built in 1850 and originally part of a chateau",
+      "url": "https://www.french-property.com/sale-property/3397-1962",
+      "checked_at": "2026-10-29"
+     }
+    ],
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
    }
   },
   "le-vigeant-village-house-a37509": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "House",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A37509LW86/house-for-sale-in-le%20vigeant-vienne-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A37509LW86/house-for-sale-in-le%20vigeant-vienne-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A37509LW86/house-for-sale-in-le%20vigeant-vienne-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
    "features": {
     "value": [
+     "courtyard",
      "garden",
-     "outbuildings",
-     "pool"
+     "outbuildings"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "outbuildings",
+      "quote": "An attached stone outbuilding, accessible from the kitchen",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A37509LW86/house-for-sale-in-le%20vigeant-vienne-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "stone steps take you up to the superb garden",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A37509LW86/house-for-sale-in-le%20vigeant-vienne-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "courtyard",
+      "quote": "lovely views over the private courtyard",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A37509LW86/house-for-sale-in-le%20vigeant-vienne-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "merdrignac-stone-cottage-newton": {
@@ -42,132 +141,658 @@
    }
   },
   "lacaze-timbered-house-60636342": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Maison de village sur trois niveaux + cave",
+     "url": "https://www.selectionocean.com/fiches/4-40-26_60636342/maison-de-village-lacaze-6-piece-s-120-m2.html",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Au coeur du village médiéval de Lacaze",
+     "url": "https://www.selectionocean.com/fiches/4-40-26_60636342/maison-de-village-lacaze-6-piece-s-120-m2.html",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "needs_refreshing",
+    "basis": "stated",
+    "evidence": {
+     "quote": "La maison nécessite un rafraîchissement des étages supérieurs, isolation, menuiseries, modernisation intérieure. ... Le 1er étage est déjà rénové.",
+     "url": "https://www.selectionocean.com/fiches/4-40-26_60636342/maison-de-village-lacaze-6-piece-s-120-m2.html",
+     "checked_at": "2026-10-29"
+    }
+   },
    "features": {
     "value": [
+     "fireplace",
      "historic",
-     "original_features",
      "views"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "historic",
+      "quote": "authentique maison à colombage, ancienne demeure de l'arquebusier du Château; charpente des XVIe XVIIe siècles",
+      "url": "https://www.selectionocean.com/fiches/4-40-26_60636342/maison-de-village-lacaze-6-piece-s-120-m2.html",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "views",
+      "quote": "Vue sur le Château des Comtes de Bourbon Malause",
+      "url": "https://www.selectionocean.com/fiches/4-40-26_60636342/maison-de-village-lacaze-6-piece-s-120-m2.html",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "fireplace",
+      "quote": "Deux cheminées avec insert ouvert",
+      "url": "https://www.selectionocean.com/fiches/4-40-26_60636342/maison-de-village-lacaze-6-piece-s-120-m2.html",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "champgeneteux-renovation-a44098": {
+   "property_type": {
+    "value": "cottage",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Stone cottage renovation project; this charming cottage",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
+     "checked_at": "2026-10-29"
+    }
+   },
    "landscape": {
     "value": [
      "countryside"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": {
+     "quote": "title: ... outbuildings & countryside views; peaceful rural location",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable; The main house is currently habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "needs_renovation",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: To be renovated; would benefit from modernisation throughout",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
+     "garden",
      "outbuildings",
      "stone",
      "views"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "title: Stone cottage",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "tag: Barns - outbuildings",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "views",
+      "quote": "title: countryside views",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "tag: Garden",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "pressignac-stone-cottage-a41100": {
    "property_type": {
     "value": "cottage",
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Characterful cottage",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+     "checked_at": "2026-10-29"
+    }
    },
-   "landscape": {
-    "value": [
-     "countryside"
-    ],
-    "basis": "legacy"
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Situated in the centre of a pretty hamlet, 2 km from the village of Pressignac",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
+     "detached",
+     "garage",
      "garden",
-     "outbuildings",
-     "stone"
+     "historic",
+     "outbuildings"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "garden",
+      "quote": "A small garden",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "an adjoining Barn, garage",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garage",
+      "quote": "an adjoining Barn, garage",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "detached",
+      "quote": "tag: Detached",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "historic",
+      "quote": "tag: Historic property",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "la-chapelle-montbrandeix-stone-house-a29584": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "3 bed stone house",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "at the end of a small village",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "tag: Good condition (3 bedrooms, bathroom)",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
+     "checked_at": "2026-10-29"
+    }
+   },
    "features": {
     "value": [
+     "garage",
      "garden",
      "outbuildings",
      "stone"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "title: fabulous 3 bed stone house",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garage",
+      "quote": "tag: Garage",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "tag: Barns - outbuildings; large outbuilding",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "title: beautiful garden",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "thollet-farmhouse-bvi72280": {
    "property_type": {
     "value": "farmhouse",
-    "basis": "legacy"
+    "basis": "derived",
+    "evidence": {
+     "quote": "This charming longere",
+     "url": "https://beauxvillages.com/en/properties-for-sale-in-jarnac/property/332400-BVI72280",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
    },
-   "landscape": {
-    "value": [
-     "countryside"
-    ],
-    "basis": "legacy"
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "situated in a small hamlet; Setting: Hamlet",
+     "url": "https://beauxvillages.com/en/properties-for-sale-in-jarnac/property/332400-BVI72280",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "Condition: Good condition (all living space on the ground floor, bathroom)",
+     "url": "https://beauxvillages.com/en/properties-for-sale-in-jarnac/property/332400-BVI72280",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Condition: Good condition",
+     "url": "https://beauxvillages.com/en/properties-for-sale-in-jarnac/property/332400-BVI72280",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
+     "fireplace",
      "garden",
-     "stone",
      "terrace"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "terrace",
+      "quote": "The garden has a lovely terrace area",
+      "url": "https://beauxvillages.com/en/properties-for-sale-in-jarnac/property/332400-BVI72280",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "kitchen leading out into the garden",
+      "url": "https://beauxvillages.com/en/properties-for-sale-in-jarnac/property/332400-BVI72280",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "fireplace",
+      "quote": "Amenities: Fireplace",
+      "url": "https://beauxvillages.com/en/properties-for-sale-in-jarnac/property/332400-BVI72280",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "saint-sebastien-cottage-a45393": {
    "property_type": {
     "value": "cottage",
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Charming three bedroom cottage",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45393CHH23/maison-a-vendre-a-saint-s%C3%A9bastien-creuse-limousin-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Character cottage situated in a lively little village",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45393CHH23/maison-a-vendre-a-saint-s%C3%A9bastien-creuse-limousin-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "tag: Good condition (3 bedrooms, bathroom)",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45393CHH23/maison-a-vendre-a-saint-s%C3%A9bastien-creuse-limousin-france",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45393CHH23/maison-a-vendre-a-saint-s%C3%A9bastien-creuse-limousin-france",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
-     "garden",
-     "original_features"
+     "garden"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "garden",
+      "quote": "tag: Garden",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45393CHH23/maison-a-vendre-a-saint-s%C3%A9bastien-creuse-limousin-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "locarn-country-house-a45191": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Country House; Charming detached ... property",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+     "checked_at": "2026-10-29"
+    }
+   },
    "landscape": {
     "value": [
      "countryside"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": {
+     "quote": "panoramic views across the surrounding countryside",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "tag: Good condition; beautifully presented home",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
+     "detached",
      "garage",
+     "garden",
      "terrace",
      "views"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "detached",
+      "quote": "title: Charming detached",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garage",
+      "quote": "Attached to the house is a garage",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "terrace",
+      "quote": "tag: Terrace; first-floor balcony terrace",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "views",
+      "quote": "tag: Panoramic views",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "tag: Garden",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "saint-ouen-la-thene-house-a39000": {
-   "landscape": {
-    "value": [
-     "countryside"
-    ],
-    "basis": "legacy"
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Detached house",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Set in a calm and quiet hamlet and 3km to commerces",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "tag: Good condition; The house has been well cared for by the current owners",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
+     "detached",
      "garden",
-     "outbuildings"
+     "outbuildings",
+     "terrace"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "detached",
+      "quote": "tag: Detached",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "manageable garden with terrace",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "terrace",
+      "quote": "manageable garden with terrace",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "a barn of 50m2",
+      "url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "saint-germain-de-confolens-house-a44033": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "this beautiful stone village 3+bedroom house; tag: Country House",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "the picturesque village of Saint-Germain-de-Confolens",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "landscape": {
+    "value": [
+     "riverside"
+    ],
+    "basis": "stated",
+    "evidence": {
+     "quote": "title: riverside village; confluence of the Vienne and Issoire",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+     "checked_at": "2026-10-29"
+    }
+   },
    "features": {
     "value": [
-     "garden",
-     "stone"
+     "detached",
+     "historic",
+     "original_features",
+     "stone",
+     "views"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "this beautiful stone village 3+bedroom house",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "detached",
+      "quote": "title: Charming detached 3+BDR character home",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "historic",
+      "quote": "façade dating back to the 17-18th century",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "original_features",
+      "quote": "combining period features with a welcoming atmosphere",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "views",
+      "quote": "stunning views towards the historic ruins of the Château",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "exideuil-village-house-a44580": {
@@ -180,16 +805,109 @@
    }
   },
   "azillanet-stone-house-a44962": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "House",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44962LHS34/",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "the mellow terracotta roofs of the village",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44962LHS34/",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "title: Quality renovation ... in excellent condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44962LHS34/",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "recently_renovated",
+    "basis": "stated",
+    "evidence": {
+     "quote": "title: Quality renovation, 2-bed stone house, ... in excellent condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44962LHS34/",
+     "checked_at": "2026-10-29"
+    }
+   },
    "features": {
     "value": [
      "stone",
      "terrace",
      "views"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "title: 2-bed stone house",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44962LHS34/",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "terrace",
+      "quote": "sun terrace with great views",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44962LHS34/",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "views",
+      "quote": "tag: Mountain view; great views over the surrounding landscape",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44962LHS34/",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "gourdon-stone-house-a43147": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Country House; Maison de Maitre; authentic stone house",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "title: ... small garden in Hamlet near Gourdon (the text also calls it a charming old village)",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+     "checked_at": "2026-10-29"
+    }
+   },
    "features": {
     "value": [
      "fireplace",
@@ -201,59 +919,343 @@
      "terrace",
      "views"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "authentic stone house",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "historic",
+      "quote": "partly built in the 15th century",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "original_features",
+      "quote": "it charms with its original features",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "fireplace",
+      "quote": "Exposed beams and stone, fireplaces",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "tag: Barns - outbuildings",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "a shaded garden",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "terrace",
+      "quote": "one of the terraces",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "views",
+      "quote": "open views of the countryside",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "gace-colombage-house-a39921": {
-   "settlement": {
-    "value": "town",
-    "basis": "legacy"
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Country House; traditional colombage home",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39921NOE61/house-for-sale-gac%C3%A9-orne-normandy-france",
+     "checked_at": "2026-10-29"
+    }
    },
-   "features": {
-    "value": [
-     "garden",
-     "historic",
-     "original_features",
-     "terrace"
-    ],
-    "basis": "legacy"
-   }
-  },
-  "la-roque-sur-ceze-village-house-a44763": {
-   "features": {
-    "value": [
-     "historic",
-     "stone",
-     "terrace",
-     "views"
-    ],
-    "basis": "legacy"
-   }
-  },
-  "riberac-stone-house-bvi77914": {
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Tucked away in a peaceful hamlet near Gacé",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39921NOE61/house-for-sale-gac%C3%A9-orne-normandy-france",
+     "checked_at": "2026-10-29"
+    }
+   },
    "landscape": {
     "value": [
      "countryside"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": {
+     "quote": "stunning panoramic views over the surrounding countryside; true rural tranquility",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39921NOE61/house-for-sale-gac%C3%A9-orne-normandy-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable; It is immediately habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39921NOE61/house-for-sale-gac%C3%A9-orne-normandy-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "needs_renovation",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: To be renovated; presents exciting renovation potential",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39921NOE61/house-for-sale-gac%C3%A9-orne-normandy-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "features": {
+    "value": [
+     "outbuildings",
+     "views"
+    ],
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "views",
+      "quote": "tag: Panoramic views",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39921NOE61/house-for-sale-gac%C3%A9-orne-normandy-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "tag: Barns - outbuildings",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39921NOE61/house-for-sale-gac%C3%A9-orne-normandy-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
+   }
+  },
+  "la-roque-sur-ceze-village-house-a44763": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Country House; charming village house",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44763RSI30/house-for-sale-la-roque-sur-c%C3%A8ze-gard-languedoc-roussillon-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "in the heart of a beautiful perched medieval village",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44763RSI30/house-for-sale-la-roque-sur-c%C3%A8ze-gard-languedoc-roussillon-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44763RSI30/house-for-sale-la-roque-sur-c%C3%A8ze-gard-languedoc-roussillon-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44763RSI30/house-for-sale-la-roque-sur-c%C3%A8ze-gard-languedoc-roussillon-france",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "features": {
+    "value": [
+     "terrace",
+     "views"
+    ],
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "terrace",
+      "quote": "title: village house with terraces",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44763RSI30/house-for-sale-la-roque-sur-c%C3%A8ze-gard-languedoc-roussillon-france",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "views",
+      "quote": "panoramic views over the village and surrounding countryside",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44763RSI30/house-for-sale-la-roque-sur-c%C3%A8ze-gard-languedoc-roussillon-france",
+      "checked_at": "2026-10-29"
+     }
+    ]
+   }
+  },
+  "riberac-stone-house-bvi77914": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "A country house with huge potential",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "in a quiet hamlet",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "stated",
+    "evidence": {
+     "quote": "Setting: Rural",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "The house is habitable straight away",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "needs_renovation",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Condition: Requires renovation; An opportunity to renovate a beautiful country home",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
      "fireplace",
-     "original_features",
-     "stone"
+     "garden",
+     "outbuildings"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "outbuildings",
+      "quote": "Two stone barns are attached to the house; a separate workshop",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "over 8 hectares of garden and agricultural land",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "fireplace",
+      "quote": "Amenities: Fireplace",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "saint-sulpice-house-bvi80970": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Property Type: House",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Setting: Edge of Village; At the heart of the village",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Looking for a move-in home; a truly turn-key home",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Condition: Excellent condition",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+     "checked_at": "2026-10-29"
+    }
+   },
    "features": {
     "value": [
+     "courtyard",
      "fireplace",
      "garden",
-     "original_features"
+     "original_features",
+     "terrace"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "fireplace",
+      "quote": "a stunning marble fireplace",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "original_features",
+      "quote": "retains many features",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "a generous lawned garden",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "terrace",
+      "quote": "dining on the terrace",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "courtyard",
+      "quote": "the sheltered courtyard",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "chalais-stone-cottage-bvi86937": {
@@ -278,14 +1280,83 @@
    }
   },
   "la-trimouille-house-bvi85550": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Property Type: Village house",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Setting: Village; the lively river village of La Trimouille",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Move straight in",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "renovation_level": {
+    "value": "recently_renovated",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Recently renovated with new fitted kitchen, shower room ... and freshly painted throughout",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+     "checked_at": "2026-10-29"
+    }
+   },
    "features": {
     "value": [
-     "fireplace",
+     "garage",
      "garden",
      "original_features",
-     "outbuildings"
+     "outbuildings",
+     "single_storey"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "single_storey",
+      "quote": "this lovely one level property",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "a nice fenced garden",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "with attached garden and outbuildings",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garage",
+      "quote": "a basement consisting of a garage, laundry room, and cellar",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "original_features",
+      "quote": "maintains some classic features ... parquet floors",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "chateauponsac-stone-house-am5270": {
@@ -331,18 +1402,70 @@
    }
   },
   "lacourt-hamlet-house-32848": {
-   "landscape": {
-    "value": [
-     "mountains"
-    ],
-    "basis": "legacy"
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Type: Residential (House)",
+     "url": "https://www.french-property.com/sale-property/3397-32848",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "located in a peaceful hamlet at the end of a road",
+     "url": "https://www.french-property.com/sale-property/3397-32848",
+     "checked_at": "2026-10-29"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "completely renovated; No work is required",
+     "url": "https://www.french-property.com/sale-property/3397-32848",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "recently_renovated",
+    "basis": "stated",
+    "evidence": {
+     "quote": "The house has been completely renovated",
+     "url": "https://www.french-property.com/sale-property/3397-32848",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
-     "terrace",
-     "views"
+     "garden",
+     "outbuildings",
+     "terrace"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "terrace",
+      "quote": "a 20sqm terrace",
+      "url": "https://www.french-property.com/sale-property/3397-32848",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "Features: Garden(s)",
+      "url": "https://www.french-property.com/sale-property/3397-32848",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "semi-detached on one side with an outbuilding",
+      "url": "https://www.french-property.com/sale-property/3397-32848",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "ginals-watermill-32445": {
@@ -363,99 +1486,221 @@
   "millac-hamlet-house-bvi87682": {
    "property_type": {
     "value": "house",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Characterful Country Retreat (a house)",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi87682",
+     "checked_at": "2026-10-29"
+    }
    },
    "habitability": {
     "value": "habitable",
-    "basis": "stated"
+    "basis": "derived",
+    "evidence": {
+     "quote": "Condition: Excellent condition",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi87682",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
    },
    "settlement": {
     "value": "hamlet",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Setting: hamlet",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi87682",
+     "checked_at": "2026-10-29"
+    }
    },
    "renovation_level": {
     "value": "good_order",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Condition: Excellent condition",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi87682",
+     "checked_at": "2026-10-29"
+    }
    },
    "landscape": {
     "value": [
      "countryside"
     ],
-    "basis": "stated"
+    "basis": "derived",
+    "evidence": {
+     "quote": "hamlet in the countryside (our reading of the listing)",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi87682",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
    },
    "features": {
     "value": [
      "fireplace",
      "outbuildings"
     ],
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "fireplace",
+      "quote": "fireplace with pellet burner; barn with water and electricity",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi87682",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "fireplace with pellet burner; barn with water and electricity",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi87682",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "ladapeyre-modernised-house-a36890": {
    "property_type": {
     "value": "house",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Family Home; totally modernised house",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36890MKE23/",
+     "checked_at": "2026-10-29"
+    }
    },
    "habitability": {
     "value": "habitable",
-    "basis": "stated"
+    "basis": "derived",
+    "evidence": {
+     "quote": "tag: Good condition; totally modernised house",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36890MKE23/",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
    },
    "settlement": {
     "value": "village",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "the historic village of Ladepeyre with its château",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36890MKE23/",
+     "checked_at": "2026-10-29"
+    }
    },
    "renovation_level": {
     "value": "recently_renovated",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "totally, modernised house; tag: Good condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36890MKE23/",
+     "checked_at": "2026-10-29"
+    }
    },
    "landscape": {
     "value": [
      "countryside"
     ],
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "very pretty, rural village ... fabulous countryside on the doorstep",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36890MKE23/",
+     "checked_at": "2026-10-29"
+    }
    }
   },
   "siran-village-house-a42822": {
    "property_type": {
     "value": "house",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "newly renovated village property",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A42822CST34/",
+     "checked_at": "2026-10-29"
+    }
    },
    "habitability": {
     "value": "habitable",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "ready-to-move-into living space",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A42822CST34/",
+     "checked_at": "2026-10-29"
+    }
    },
    "settlement": {
     "value": "village",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "the sought-after village of Siran",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A42822CST34/",
+     "checked_at": "2026-10-29"
+    }
    },
    "renovation_level": {
     "value": "recently_renovated",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Beautifully presented and newly renovated",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A42822CST34/",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
      "stone",
      "terrace"
     ],
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "exposed stone walls; small private terrace",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A42822CST34/",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "terrace",
+      "quote": "exposed stone walls; small private terrace",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A42822CST34/",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "jumilhac-village-house-bvi85468": {
    "property_type": {
     "value": "house",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "House",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85468",
+     "checked_at": "2026-10-29"
+    }
    },
    "habitability": {
     "value": "habitable",
-    "basis": "stated"
+    "basis": "derived",
+    "evidence": {
+     "quote": "Condition: Good condition; beautifully renovated two-bedroom home",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85468",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
    },
    "settlement": {
     "value": "village",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Setting: Edge of Village",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85468",
+     "checked_at": "2026-10-29"
+    }
    },
    "renovation_level": {
     "value": "recently_renovated",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "beautifully renovated two-bedroom home",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85468",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
@@ -464,27 +1709,73 @@
      "original_features",
      "views"
     ],
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "fireplace",
+      "quote": "magnificent château views; original chimney in each bedroom; charming garden",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85468",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "magnificent château views; original chimney in each bedroom; charming garden",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85468",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "original_features",
+      "quote": "magnificent château views; original chimney in each bedroom; charming garden",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85468",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "views",
+      "quote": "magnificent château views; original chimney in each bedroom; charming garden",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85468",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "avene-stone-house-a36741": {
    "property_type": {
     "value": "house",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Country House",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36741ES34/",
+     "checked_at": "2026-10-29"
+    }
    },
    "habitability": {
     "value": "habitable",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36741ES34/",
+     "checked_at": "2026-10-29"
+    }
    },
    "settlement": {
     "value": "hamlet",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "title: idyllic hamlet location",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36741ES34/",
+     "checked_at": "2026-10-29"
+    }
    },
    "landscape": {
     "value": [
      "countryside"
     ],
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "surrounded by beautiful countryside",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36741ES34/",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
@@ -492,31 +1783,77 @@
      "garden",
      "stone"
     ],
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "detached",
+      "quote": "Character stone property; tag: Detached; small paved garden",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36741ES34/",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "Character stone property; tag: Detached; small paved garden",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36741ES34/",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "stone",
+      "quote": "Character stone property; tag: Detached; small paved garden",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36741ES34/",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   },
   "saint-laurent-de-ceris-farmhouse-bvi84419": {
    "property_type": {
     "value": "farmhouse",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Detached stone built farmhouse",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+     "checked_at": "2026-10-29"
+    }
    },
    "habitability": {
     "value": "habitable",
-    "basis": "stated"
+    "basis": "derived",
+    "evidence": {
+     "quote": "Condition: Good condition",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+     "checked_at": "2026-10-29"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
    },
    "settlement": {
     "value": "village",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Setting: Edge of Village",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+     "checked_at": "2026-10-29"
+    }
    },
    "renovation_level": {
     "value": "good_order",
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Condition: Good condition",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+     "checked_at": "2026-10-29"
+    }
    },
    "landscape": {
     "value": [
      "countryside"
     ],
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Surrounded by stunning countryside",
+     "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+     "checked_at": "2026-10-29"
+    }
    },
    "features": {
     "value": [
@@ -526,7 +1863,39 @@
      "outbuildings",
      "stone"
     ],
-    "basis": "stated"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "detached",
+      "quote": "stone built farmhouse boasts several original features; attached large barn; gardens front, rear and side",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "garden",
+      "quote": "stone built farmhouse boasts several original features; attached large barn; gardens front, rear and side",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "original_features",
+      "quote": "stone built farmhouse boasts several original features; attached large barn; gardens front, rear and side",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "stone built farmhouse boasts several original features; attached large barn; gardens front, rear and side",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+      "checked_at": "2026-10-29"
+     },
+     {
+      "feature": "stone",
+      "quote": "stone built farmhouse boasts several original features; attached large barn; gardens front, rear and side",
+      "url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi84419",
+      "checked_at": "2026-10-29"
+     }
+    ]
    }
   }
  }
