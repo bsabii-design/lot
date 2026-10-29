@@ -416,27 +416,6 @@ button, [role="button"], summary { cursor: pointer; }
 .range input[aria-invalid="true"] { border-color: var(--text); }
 .rangenote { color: var(--text-2); font-size: var(--fs-sm); line-height: var(--lh-sm); margin-top: 0.25rem; }
 
-/* More filters: one collapsible block under the five main groups */
-.moretoggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: var(--h-btn);
-  margin-top: 0.5rem;
-  padding: 0;
-  border-top: 1px solid var(--border);
-  color: var(--text);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-sm);
-  text-align: left;
-}
-.moretoggle:hover { color: var(--text-2); }
-.msec { padding: 0.25rem 0 0.5rem; }
-.msec + .msec { border-top: 1px solid var(--border); padding-top: 0.5rem; }
-.mhead { font-size: var(--fs-sm); line-height: var(--lh-sm); font-weight: 400; color: var(--text); margin-bottom: 0.25rem; }
-.flabel.sub { color: var(--text-3); }
-
 /* ---------- a home: see cargo.css ---------- */
 
 .minimap {

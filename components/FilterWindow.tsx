@@ -1,15 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { flushSync } from "react-dom";
-import { digits, moreCount, rangeInvalid, toggle, type Availability } from "@/lib/filters";
+import { useState } from "react";
+import { digits, rangeInvalid, toggle, type Availability } from "@/lib/filters";
 import {
-  AREA_PRESETS, BEDROOM_PRESETS, CONDITIONS, FEATURES, LANDSCAPES, OUTDOOR, PRICE_PRESETS, REGIONS, SETTLEMENTS, TYPES,
+  AREA_PRESETS, BEDROOM_PRESETS, CONDITIONS, FEATURES, LANDSCAPES, PRICE_PRESETS, REGIONS, SETTLEMENTS,
   type Option,
 } from "@/lib/taxonomy";
 import { regionLabel } from "@/lib/regions";
 import { cn } from "@/lib/cn";
-import Icon from "./Icon";
 import { Cells } from "./Price";
 import type { Filters, NumRange } from "@/lib/types";
 
@@ -147,61 +145,26 @@ function RangeInputs({ label, unit, range, onChange }: { label: string; unit: st
 /** The filter window that opens above the dock. Picks are a draft: nothing changes behind the window until
     "Show N homes". Inside a group any of the picks matches; between groups all of them must. */
 export default function FilterWindow({ closing, filters, avail, count, invalid, onChange, onClear, onApply }: Props) {
-  const [more, setMore] = useState(false);
-  const winRef = useRef<HTMLElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const toggleRef = useRef<HTMLButtonElement>(null);
-
-  /** "More filters" opens and closes smoothly. The window may only grow as fast as its own ceiling rises (otherwise it jumps to its full
-      height in a moment, with the new rows still below the edge), and when it opens the block slides up under the top edge so that what
-      opened is what you see. */
-  const toggleMore = () => {
-    const win = winRef.current, scroller = scrollRef.current, toggle = toggleRef.current;
-    if (!win || !scroller || !toggle || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setMore((v) => !v); return; }
-    const opening = !more;
-    win.style.transition = "none";
-    win.style.maxHeight = `${win.getBoundingClientRect().height}px`;
-    void win.offsetHeight;
-    flushSync(() => setMore(opening));
-    requestAnimationFrame(() => {
-      win.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
-      win.style.maxHeight = "";
-      window.setTimeout(() => { win.style.transition = ""; }, 450);
-    });
-    if (!opening) return;
-    const from = scroller.scrollTop;
-    const unit = parseFloat(getComputedStyle(scroller).paddingLeft);
-    const to = from + toggle.getBoundingClientRect().top - scroller.getBoundingClientRect().top - unit;
-    const start = performance.now();
-    const ease = (p: number) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
-    const step = (now: number) => {
-      const p = Math.min(1, (now - start) / 450);
-      scroller.scrollTop = Math.min(from + (to - from) * ease(p), scroller.scrollHeight - scroller.clientHeight);
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
   /** "Custom" is chosen: the typed from–to shows (it starts open when the filters already hold typed numbers) */
   const typed = (r: NumRange) => r.min !== "" || r.max !== "";
-  const [custom, setCustom] = useState({ price: typed(filters.price), area: typed(filters.area), plot: typed(filters.plot) });
+  const [custom, setCustom] = useState({ price: typed(filters.price), area: typed(filters.area) });
   const set = (patch: Partial<Filters>) => onChange({ ...filters, ...patch });
-  const pick = (key: "price" | "area" | "plot") => (value: string) => {
+  const pick = (key: "price" | "area") => (value: string) => {
     setCustom((c) => ({ ...c, [key]: false }));
     set({ [key]: { preset: value, min: "", max: "" } });
   };
-  const openCustom = (key: "price" | "area" | "plot") => (on: boolean) => {
+  const openCustom = (key: "price" | "area") => (on: boolean) => {
     setCustom((c) => ({ ...c, [key]: on }));
     set({ [key]: { preset: "", min: on ? filters[key].min : "", max: on ? filters[key].max : "" } });
   };
-  const clearAll = () => { setCustom({ price: false, area: false, plot: false }); onClear(); };
+  const clearAll = () => { setCustom({ price: false, area: false }); onClear(); };
   const setKey = (key: "regions" | "conditions" | "settlements" | "landscapes" | "types" | "features") => (value: string) =>
     set({ [key]: toggle(filters[key], value) });
   const regions: Option[] = REGIONS.map((v): Option => [v, regionLabel(v)]).sort((a, b) => a[1].localeCompare(b[1]));
-  const extra = moreCount(filters);
 
   return (
-    <aside ref={winRef} className={cn("filterwin", closing && "closing")} id="filter-window">
-      <div className="fscroll" ref={scrollRef}>
+    <aside className={cn("filterwin", closing && "closing")} id="filter-window">
+      <div className="fscroll">
         <div className="frow">
           <span className="flabel">Price</span>
           <NumberGroup label="Price" unit="€" entries={[["", "Any price"], ...PRICE_PRESETS]} range={filters.price} custom={custom.price}
@@ -222,25 +185,9 @@ export default function FilterWindow({ closing, filters, avail, count, invalid, 
           <OneRow entries={BEDROOM_PRESETS} value={filters.bedrooms} onPick={(bedrooms) => set({ bedrooms })} />
         </div>
 
-        <button ref={toggleRef} className="moretoggle" aria-expanded={more} aria-controls="more-filters" onClick={toggleMore}>
-          <span>More filters{extra > 0 && <>{" "}<i>({extra})</i></>}</span>
-          <Icon name={more ? "minus" : "plus"} size="0.75rem" />
-        </button>
-
-        <Reveal open={more}>
-          <div className="more" id="more-filters">
-            <div className="frow">
-              <span className="flabel">Plot size</span>
-              <NumberGroup label="Plot size" unit="m²" entries={[["", "Any plot"]]} range={filters.plot} custom={custom.plot}
-                onPreset={pick("plot")} onCustom={openCustom("plot")} onChange={(plot) => set({ plot })} />
-            </div>
-            <SetRow label="Outdoor" entries={OUTDOOR} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
-            <SetRow label="Settlement" entries={SETTLEMENTS} selected={filters.settlements} has={avail.settlements} onToggle={setKey("settlements")} />
-            <SetRow label="Landscape" entries={LANDSCAPES} selected={filters.landscapes} has={avail.landscapes} onToggle={setKey("landscapes")} />
-            <SetRow label="Type" entries={TYPES} selected={filters.types} has={avail.types} onToggle={setKey("types")} />
-            <SetRow label="Features" entries={FEATURES} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
-          </div>
-        </Reveal>
+        <SetRow label="Settlement" entries={SETTLEMENTS} selected={filters.settlements} has={avail.settlements} onToggle={setKey("settlements")} />
+        <SetRow label="Landscape" entries={LANDSCAPES} selected={filters.landscapes} has={avail.landscapes} onToggle={setKey("landscapes")} />
+        <SetRow label="Features" entries={FEATURES} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
       </div>
       <div className="ffoot">
         <button className="bk sm" onClick={clearAll}>Clear all</button>

@@ -1,6 +1,6 @@
 # Filter taxonomy
 
-The approved filter panel: five main groups, then a collapsed **More filters** block. Code: `lib/taxonomy.ts` (vocabulary), `lib/filters.ts` (logic), `components/FilterWindow.tsx` (panel). Tests: `node scripts/test-filters.mjs`.
+The approved filter panel: eight groups in one list, each starting on its own "Any". Code: `lib/taxonomy.ts` (vocabulary), `lib/filters.ts` (logic), `components/FilterWindow.tsx` (panel). Tests: `node scripts/test-filters.mjs`.
 
 ## Groups
 
@@ -11,13 +11,14 @@ The approved filter panel: five main groups, then a collapsed **More filters** b
 | Condition | Move-in ready · Light works · Needs renovation · Restoration project | several; OR; see "Condition" below |
 | Living area | Any area, 50+, 75+, 100+, 150+ m², Custom (typed Min–Max) | presets are **minimums**; one at a time |
 | Bedrooms | Any, 1+ … 4+ | minimum, one at a time |
-| **More filters** (starts collapsed; one flat list, each group has one label) | | |
-| Plot & outdoor | Plot size (typed Min–Max, m²) · Outdoor: Garden, Courtyard | garden and courtyard are separate attributes, never inferred from plot size |
-| Surroundings | Settlement: Village, Hamlet, Town, Isolated · Landscape: Countryside, Mountains, Coastal, Riverside | independent; a home has one settlement and any number of landscapes |
-| Property type | House, Cottage, Farmhouse, Townhouse, Mill, Converted barn, Other | the building only, not material, age or place |
+| Settlement | Village, Hamlet, Town, Isolated | several; OR |
+| Landscape | Countryside, Mountains, Coastal, Riverside | several; OR |
 | Features | Stone, Historic, Original features, Outbuildings, Garage, Terrace, Fireplace, Views, Pool, Detached, Single-storey | several; **all** selected must be present |
 
-Logic: OR inside Location, Settlement, Landscape, Property type and Condition; AND between groups; Features need every selected one. Selections are a draft until "Show N homes"; the count is live; Clear all resets every control, including More filters.
+Every group starts on its own "Any" (Any price, Any location, Any condition, Any area, Any); the typed from–to opens only after "Custom".
+There is no "More filters" block any more: plot size, Outdoor (garden, courtyard) and property type are no longer in the window (the logic for them is still in `lib/filters.ts`, covered by the tests, and the data is kept; they can come back as a group).
+
+Logic: OR inside Location, Settlement, Landscape, Property type and Condition; AND between groups; Features need every selected one. Selections are a draft until "Show N homes"; the count is live; Clear all resets every control.
 
 ## Unknown is never false
 
