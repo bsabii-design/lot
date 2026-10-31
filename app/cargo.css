@@ -469,8 +469,12 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
    as the logo and About keep to the edge of the window */
 .map, .map.maplibregl-map { top: calc(var(--u) * 4.9 + var(--fs) * var(--lh)); left: var(--u); right: var(--u); bottom: var(--u); }
 
-/* the map's credits (a licence requirement, so they stay) are folded into a small "i" that opens on a click, and when open they are set in the site's own type */
-.maplibregl-ctrl-attrib, .maplibregl-ctrl-attrib.maplibregl-compact { font-family: var(--font); font-size: var(--fs-sm); line-height: var(--lh-sm); letter-spacing: var(--tracking); }
-.maplibregl-ctrl-attrib.maplibregl-compact { margin: 0 var(--u) var(--u) 0; }
-.maplibregl-ctrl-attrib-button { opacity: 0.55; }
-.maplibregl-ctrl-attrib-button:hover { opacity: 1; }
+/* the map's credits (a licence requirement, so they stay): a quiet "(Credits)" in the site's own type at the bottom right of the map, which opens the line and
+   closes it again with "(Close)"; the words stand on the baseline of one row, the same height as the other quiet buttons */
+.map-credits { position: fixed; z-index: 6; right: calc(var(--u) * 2); bottom: calc(var(--u) * 2); display: flex; align-items: center; gap: var(--u); font-size: var(--fs-sm); line-height: var(--lh-sm); color: var(--text-3); max-width: calc(100vw - var(--u) * 4); }
+.map-credits .bk { height: auto; }
+.map-credits .credit-line { text-align: right; }
+.map-credits a { color: inherit; text-decoration: none; }
+.map-credits a:hover { color: var(--text); }
+.map-credits.in-mini { position: absolute; z-index: 3; right: var(--u); bottom: var(--u); }
+.mobile .map-credits .bk { padding: 0.6em 0.45em; margin: -0.6em -0.45em; }

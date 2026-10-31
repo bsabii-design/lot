@@ -312,9 +312,6 @@ button, [role="button"], summary { cursor: pointer; }
 .map-preview .open { display: inline-block; margin-top: 0.5rem; color: var(--text-2); }
 .map-preview .open:hover { color: var(--text); }
 
-.maplibregl-ctrl-attrib,
-.maplibregl-ctrl-attrib.maplibregl-compact { background: transparent !important; font-size: 0.5625rem; color: var(--text-3); }
-.maplibregl-ctrl-attrib a { color: var(--text-3) !important; }
 
 /* zoom: one small white capsule with the site hairline, same language as the dock and the filter window */
 .zoom {
