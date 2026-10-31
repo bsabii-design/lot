@@ -463,3 +463,7 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 .map-wait { position: fixed; top: 50%; left: 50%; translate: -50% -50%; margin: 0; z-index: 4; color: var(--text-3); font-size: var(--fs); line-height: var(--lh); pointer-events: none; animation: wait-in 0.6s cubic-bezier(0.24, 1, 0.29, 1) 0.9s both; transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .map-wait.gone { opacity: 0; animation: none; }
 @media (prefers-reduced-motion: reduce) { .map, .minimap > div:first-child { transition: none; } .map-wait { animation: none; } }
+
+/* the map starts where the first photo of the list starts (4.9 units and one line of text from the top), so the bar with the logo, the view switch and About
+   keeps the page's own background and the map never runs under it; the sides and the bottom stay open */
+.map, .map.maplibregl-map { top: calc(var(--u) * 4.9 + var(--fs) * var(--lh)); }
