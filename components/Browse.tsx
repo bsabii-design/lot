@@ -9,10 +9,13 @@ import Icon from "./Icon";
 import FilterWindow from "./FilterWindow";
 import { activeFacets, available, emptyFilters, hasInvalidRange, normalizeFilters, visible, withoutInvalid } from "@/lib/filters";
 import { RETURN_KEY, STATE_KEY, cn } from "@/lib/cn";
+import { warmMap } from "@/lib/map";
 import type { Filters, Property, Tab, View } from "@/lib/types";
 
 /* the map is client-only (WebGL) and loads on demand */
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
+/** the map's code and files are fetched while the visitor is still looking at the list (after the page is idle, and again the moment Map is touched) */
+const warm = () => { void import("./MapView"); warmMap(); };
 
 /* (the "Saved" tab is off for now: with no accounts a saved home lives in one browser only; the "Archive" tab is gone: sold homes stay in the data, not on the page) */
 
@@ -84,6 +87,12 @@ export default function Browse({ homes }: { homes: Property[] }) {
     return () => clearTimeout(t);
   }, [open]);
   /* eslint-enable react-hooks/set-state-in-effect */
+
+  useEffect(() => {
+    const idle = (window as unknown as { requestIdleCallback?: (f: () => void) => number }).requestIdleCallback;
+    const id = idle ? idle(warm) : window.setTimeout(warm, 1500);
+    return () => { if (!idle) window.clearTimeout(id); };
+  }, []);
 
   /* the filter window closes on an outside click or Escape */
   useEffect(() => {
@@ -162,7 +171,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
       <div className="dock">
         <div className="seg" role="group" aria-label="View">
           <button className={cn(view === "list" && "active")} onClick={() => setView("list")}>List</button>
-          <button className={cn(view === "map" && "active")} onClick={() => setView("map")}>Map</button>
+          <button className={cn(view === "map" && "active")} onPointerEnter={warm} onFocus={warm} onTouchStart={warm} onClick={() => setView("map")}>Map</button>
         </div>
         <button className={cn("filter-toggle", facets.length > 0 && "active", open && "open")} onClick={() => { if (!open) setDraft(filters); setOpen((o) => !o); }}>
           Filter{facets.length ? ` (${facets.length})` : ""}

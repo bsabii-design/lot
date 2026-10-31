@@ -18,6 +18,7 @@ export default function RootLayout({ children, modal }: LayoutProps<"/">) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://tiles.openfreemap.org" crossOrigin="anonymous" />
         <script dangerouslySetInnerHTML={{ __html: CARGO_SCALE }} />
       </head>
       <body>

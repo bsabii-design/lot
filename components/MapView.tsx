@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -43,6 +43,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
   const homesRef = useRef(homes);
   const regionsRef = useRef(regions);
   const windowOpenRef = useRef(windowOpen);
+  const [ready, setReady] = useState(false);
 
   /* the whole card is the link into the home */
   const preview = useCallback((p: Property) => {
@@ -178,6 +179,16 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     });
     map.touchZoomRotate.disableRotation();
     tuneStyle(map);
+    /* the map comes in with a soft fade once it has drawn (or after a few seconds whatever happens), not tile by tile */
+    let shown = false;
+    const reveal = () => {
+      if (shown) return;
+      shown = true;
+      box.current?.classList.add("ready");
+      setReady(true);
+    };
+    map.once("idle", reveal);
+    const fallback = window.setTimeout(reveal, 4500);
     map.on("zoomend", draw);
     map.on("load", () => {
       const firstLabel = map.getStyle().layers.find((l) => l.type === "symbol")?.id;
@@ -193,6 +204,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     mapRef.current = map;
     fit();
     return () => {
+      window.clearTimeout(fallback);
       markers.current = [];
       map.remove();
       mapRef.current = null;
@@ -212,5 +224,10 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     fit();
   }, [homes, regions, windowOpen, fit, showRegions]);
 
-  return <div className="map" ref={box} />;
+  return (
+    <>
+      <p className={ready ? "map-wait gone" : "map-wait"} aria-hidden="true">Loading the map</p>
+      <div className="map" ref={box} />
+    </>
+  );
 }

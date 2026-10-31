@@ -3,6 +3,16 @@ import type { Map as MapLibreMap, ExpressionSpecification } from "maplibre-gl";
 /* Free vector basemap: OpenFreeMap (no key, no limits, commercial use allowed; attribution required). */
 export const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 
+/** Fetches what the map needs before anyone asks for it (the style and the tile list; the map's code is loaded by the caller), once.
+    A later map then starts from the browser's cache instead of from nothing. */
+let warmed = false;
+export function warmMap() {
+  if (warmed || typeof window === "undefined") return;
+  warmed = true;
+  fetch(STYLE_URL).catch(() => {});
+  fetch("https://tiles.openfreemap.org/planet").catch(() => {});
+}
+
 /* The look of the reference map Sabina picked: very light and low-contrast, roads plain white without casings. Since 1 Nov the land is the
    site's own beige (#f8f4f1, the page background) and every other tone is a step darker in the same warm hue. The stock style is tinted
    blue-grey, so every colour first loses its tint (greyMap), then the colours are set per layer (paintMap). */

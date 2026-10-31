@@ -452,3 +452,14 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
   .filterwin, .filterwin.closing { animation: none; }
   .reveal { transition: none; }
 }
+
+/* the map comes in softly (the same pace as the other fades of the site): it stays beige and empty until it has drawn, then fades in as one;
+   a quiet "Loading the map" shows only if that takes a moment */
+.map { opacity: 0; transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1); }
+.map.ready { opacity: 1; }
+.minimap > div:first-child { opacity: 0; transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+.minimap > div.ready { opacity: 1; }
+@keyframes wait-in { from { opacity: 0; } to { opacity: 1; } }
+.map-wait { position: fixed; top: 50%; left: 50%; translate: -50% -50%; margin: 0; z-index: 4; color: var(--text-3); font-size: var(--fs); line-height: var(--lh); pointer-events: none; animation: wait-in 0.6s cubic-bezier(0.24, 1, 0.29, 1) 0.9s both; transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.map-wait.gone { opacity: 0; animation: none; }
+@media (prefers-reduced-motion: reduce) { .map, .minimap > div:first-child { transition: none; } .map-wait { animation: none; } }

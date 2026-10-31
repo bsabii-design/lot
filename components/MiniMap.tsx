@@ -27,6 +27,10 @@ export default function MiniMap({ p }: { p: Property }) {
     map.touchZoomRotate.disableRotation();
     mapRef.current = map;
     tuneStyle(map);
+    /* soft fade-in once it has drawn (or after a few seconds) */
+    const reveal = () => box.current?.classList.add("ready");
+    map.once("idle", reveal);
+    const fallback = window.setTimeout(reveal, 4500);
 
     /* trackpad pinch (wheel + ctrl) zooms; a plain two-finger scroll keeps scrolling the page */
     const onWheel = (e: WheelEvent) => {
@@ -50,7 +54,7 @@ export default function MiniMap({ p }: { p: Property }) {
         map.addLayer({ id: "area-line", type: "line", source: "area", minzoom: 10, paint: { "line-color": "#0a0a0a", "line-opacity": 0.5, "line-width": 1 } });
       });
     }
-    return () => { mapRef.current = null; map.remove(); };
+    return () => { window.clearTimeout(fallback); mapRef.current = null; map.remove(); };
   }, [p]);
 
   return (
