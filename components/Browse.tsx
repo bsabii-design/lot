@@ -28,6 +28,8 @@ export default function Browse({ homes }: { homes: Property[] }) {
   const [filters, setFilters] = useState<Filters>(emptyFilters);
   const [draft, setDraft] = useState<Filters>(emptyFilters);
   const [open, setOpen] = useState(false);
+  /* once the visitor has switched views, the list fades in when it comes back */
+  const [switched, setSwitched] = useState(false);
   /* the window stays in the page while it fades out (a quarter of a second after it is closed) */
   const [mounted, setMounted] = useState(false);
 
@@ -124,7 +126,7 @@ export default function Browse({ homes }: { homes: Property[] }) {
       {view === "map" && !empty ? (
         <MapView homes={list} regions={open ? draft.regions : filters.regions} windowOpen={open} />
       ) : (
-        <main className="cg-pages">
+        <main className={cn("cg-pages", switched && "page-in")}>
           {empty ? (
             <div className="empty">
               {facets.length ? (
@@ -170,8 +172,8 @@ export default function Browse({ homes }: { homes: Property[] }) {
 
       <div className="dock">
         <div className="seg" role="group" aria-label="View">
-          <button className={cn(view === "list" && "active")} onClick={() => setView("list")}>List</button>
-          <button className={cn(view === "map" && "active")} onPointerEnter={warm} onFocus={warm} onTouchStart={warm} onClick={() => setView("map")}>Map</button>
+          <button className={cn(view === "list" && "active")} onClick={() => { setSwitched(true); setView("list"); }}>List</button>
+          <button className={cn(view === "map" && "active")} onPointerEnter={warm} onFocus={warm} onTouchStart={warm} onClick={() => { setSwitched(true); setView("map"); }}>Map</button>
         </div>
         <button className={cn("filter-toggle", facets.length > 0 && "active", open && "open")} onClick={() => { if (!open) setDraft(filters); setOpen((o) => !o); }}>
           Filter{facets.length ? ` (${facets.length})` : ""}

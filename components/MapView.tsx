@@ -180,7 +180,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     });
     map.touchZoomRotate.disableRotation();
     tuneStyle(map);
-    /* the map comes in with a soft fade once it has drawn (or after a few seconds whatever happens), not tile by tile */
+    /* the map comes in with the site's fade once it has drawn its first view (or after a few seconds whatever happens), not tile by tile */
     let shown = false;
     const reveal = () => {
       if (shown) return;
@@ -188,7 +188,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
       box.current?.classList.add("ready");
       setReady(true);
     };
-    map.once("idle", reveal);
+    map.once("load", reveal);
     const fallback = window.setTimeout(reveal, 4500);
     map.on("zoomend", draw);
     map.on("load", () => {
@@ -229,7 +229,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     <>
       <p className={ready ? "map-wait gone" : "map-wait"} aria-hidden="true">Loading the map</p>
       <div className="map" ref={box} />
-      <MapCredits regions className="on-map" />
+      <MapCredits regions className={ready ? "on-map ready" : "on-map"} />
     </>
   );
 }

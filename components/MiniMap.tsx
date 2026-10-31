@@ -30,7 +30,7 @@ export default function MiniMap({ p }: { p: Property }) {
     tuneStyle(map);
     /* soft fade-in once it has drawn (or after a few seconds) */
     const reveal = () => box.current?.classList.add("ready");
-    map.once("idle", reveal);
+    map.once("load", reveal);
     const fallback = window.setTimeout(reveal, 4500);
 
     /* trackpad pinch (wheel + ctrl) zooms; a plain two-finger scroll keeps scrolling the page */

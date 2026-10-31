@@ -115,7 +115,7 @@ html.has-panel { overflow: hidden; }
   min-height: 100%;
   width: 100%;
   background: color-mix(in srgb, var(--bg) 95%, transparent);
-  animation: ov-in 0.4s cubic-bezier(0.24, 1, 0.29, 1) both;
+  animation: ov-in var(--enter) both;
 }
 @keyframes ov-in { from { opacity: 0; } to { opacity: 1; } }
 .cg-ovlayout { width: 66.6667%; max-width: 66.6667%; position: relative; display: flex; flex-direction: row; align-items: flex-start; min-height: fit-content; }
@@ -309,6 +309,8 @@ html.mobile .filterwin { left: calc(var(--u) * 2); right: calc(var(--u) * 2); wi
    a bracket's width (0.333em) at the sides. A capital's top sits 0.176em below the top of a 1em line box and a cell leaves 0.05em
    at each side of a digit, so to the eye the space above, below and at the sides is the same (~0.38em). Height: 1.4em for all of them. ---------- */
 :root { --pad: 0.333em; --pad-y: 0.2em; }
+/* the site's one way of coming in: a fade of this length and curve, for every page, the map, the filter window and what belongs to them */
+:root { --enter: 0.4s cubic-bezier(0.24, 1, 0.29, 1); }
 .cg .pr, .filterwin .pr, .map-preview .pr, .bubble, .chipopt.on .lab {
   background: var(--text-read);
   color: #fff;
@@ -443,7 +445,7 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
    leaves with a shorter fade; the typed from–to and "More filters" open by growing their height while the content fades in, so everything below slides down */
 @keyframes fw-in { from { opacity: 0; translate: 0 -6px; } to { opacity: 1; translate: 0 0; } }
 @keyframes fw-out { from { opacity: 1; translate: 0 0; } to { opacity: 0; translate: 0 -4px; } }
-.filterwin { animation: fw-in 0.4s cubic-bezier(0.24, 1, 0.29, 1) both; }
+.filterwin { animation: fw-in var(--enter) both; }
 .filterwin.closing { animation: fw-out 0.22s cubic-bezier(0.4, 0, 0.2, 1) both; pointer-events: none; }
 .reveal { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 .reveal.open { grid-template-rows: 1fr; opacity: 1; }
@@ -455,12 +457,12 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 
 /* the map comes in softly (the same pace as the other fades of the site): it stays beige and empty until it has drawn, then fades in as one;
    a quiet "Loading the map" shows only if that takes a moment */
-.map { opacity: 0; transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1); }
+.map { opacity: 0; transition: opacity var(--enter); }
 .map.ready { opacity: 1; }
-.minimap > div:first-child { opacity: 0; transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+.minimap > div:first-child { opacity: 0; transition: opacity var(--enter); }
 .minimap > div.ready { opacity: 1; }
 @keyframes wait-in { from { opacity: 0; } to { opacity: 1; } }
-.map-wait { position: fixed; top: 50%; left: 50%; translate: -50% -50%; margin: 0; z-index: 4; color: var(--text-3); font-size: var(--fs); line-height: var(--lh); pointer-events: none; animation: wait-in 0.6s cubic-bezier(0.24, 1, 0.29, 1) 0.9s both; transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.map-wait { position: fixed; top: 50%; left: 50%; translate: -50% -50%; margin: 0; z-index: 4; color: var(--text-3); font-size: var(--fs); line-height: var(--lh); pointer-events: none; animation: wait-in var(--enter) 0.9s both; transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .map-wait.gone { opacity: 0; animation: none; }
 @media (prefers-reduced-motion: reduce) { .map, .minimap > div:first-child { transition: none; } .map-wait { animation: none; } }
 
@@ -478,3 +480,13 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 .map-credits a:hover { color: var(--text); }
 .map-credits.in-mini { position: absolute; z-index: 3; right: var(--u); bottom: var(--u); }
 .mobile .map-credits .bk { padding: 0.6em 0.45em; margin: -0.6em -0.45em; }
+
+/* what belongs to the map comes in with it, not before it: the credits (and the zoom buttons of the small map) are hidden until the map has drawn */
+.map-credits.on-map { opacity: 0; transition: opacity var(--enter); }
+.map-credits.on-map.ready { opacity: 1; }
+.minimap .map-credits, .minimap .zoom { opacity: 0; transition: opacity var(--enter); }
+.minimap > div.ready ~ .map-credits, .minimap > div.ready ~ .zoom { opacity: 1; }
+/* going back from the map to the list: the list fades in the same way (the first load of the page is not delayed) */
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+.cg-pages.page-in { animation: page-in var(--enter) both; }
+@media (prefers-reduced-motion: reduce) { .map-credits.on-map, .minimap .map-credits, .minimap .zoom { transition: none; } .cg-pages.page-in { animation: none; } }
