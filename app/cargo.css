@@ -465,5 +465,6 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 @media (prefers-reduced-motion: reduce) { .map, .minimap > div:first-child { transition: none; } .map-wait { animation: none; } }
 
 /* the map starts where the first photo of the list starts (4.9 units and one line of text from the top), so the bar with the logo, the view switch and About
-   keeps the page's own background and the map never runs under it; the sides and the bottom stay open */
-.map, .map.maplibregl-map { top: calc(var(--u) * 4.9 + var(--fs) * var(--lh)); }
+   keeps the page's own background and the map never runs under it; one unit stays free at the left, right and bottom, the same margin
+   as the logo and About keep to the edge of the window */
+.map, .map.maplibregl-map { top: calc(var(--u) * 4.9 + var(--fs) * var(--lh)); left: var(--u); right: var(--u); bottom: var(--u); }
