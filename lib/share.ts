@@ -6,11 +6,15 @@
 export async function shareHome(title: string, path: string, anchor?: Element | null) {
   const url = new URL(path, location.origin).href;
   if (typeof navigator.share === "function") {
+    const started = performance.now();
     try {
       await navigator.share({ title, url });
       return;
     } catch (e) {
       if (e instanceof DOMException && e.name === "AbortError") return; // the visitor closed the sheet
+      /* Safari answers "NotAllowedError" when the visitor closes the sheet it has shown (or picks something in it), long after the click; only an answer that comes
+         at once means the sheet could not open. Our own window must never come up after the system's one has been on the screen. */
+      if (e instanceof DOMException && e.name === "NotAllowedError" && performance.now() - started > 400) return;
       /* the sheet could not open: fall through to our own window */
     }
   }
@@ -79,11 +83,10 @@ function openShareWindow(title: string, url: string, anchor: Element | null) {
     el.addEventListener("click", onClick);
     return bracket(label, el);
   };
+  /* a button that opens the page, not a link: blockers hide links to social sites by their address and the word went, leaving only "()" */
   const link = (label: string, href: string) => {
-    const el = document.createElement("a");
-    el.href = href;
-    el.target = "_blank";
-    el.rel = "noopener";
+    const el = document.createElement("button");
+    el.addEventListener("click", () => { window.open(href, "_blank", "noopener"); });
     return bracket(label, el);
   };
 
