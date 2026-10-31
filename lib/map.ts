@@ -3,6 +3,17 @@ import type { Map as MapLibreMap, ExpressionSpecification } from "maplibre-gl";
 /* Free vector basemap: OpenFreeMap (no key, no limits, commercial use allowed; attribution required). */
 export const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 
+/** The credits start folded into the small "i" (the control opens them by default) and open on a click. */
+export function foldCredits(map: MapLibreMap) {
+  const fold = () => {
+    const el = map.getContainer().querySelector(".maplibregl-ctrl-attrib");
+    el?.classList.remove("maplibregl-compact-show");
+    el?.removeAttribute("open");
+  };
+  map.once("load", fold);
+  fold();
+}
+
 /** Fetches what the map needs before anyone asks for it (the style and the tile list; the map's code is loaded by the caller), once.
     A later map then starts from the browser's cache instead of from nothing. */
 let warmed = false;

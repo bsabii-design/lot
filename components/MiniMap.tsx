@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Icon from "./Icon";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { STYLE_URL, circlePolygon, tuneStyle } from "@/lib/map";
+import { STYLE_URL, circlePolygon, foldCredits, tuneStyle } from "@/lib/map";
 import type { Property } from "@/lib/types";
 
 /** The small map on a home's page: one black dot, plus a 3 km circle when the location is only approximate. */
@@ -19,7 +19,7 @@ export default function MiniMap({ p }: { p: Property }) {
       style: STYLE_URL,
       center: [p.lng, p.lat],
       zoom: 10,
-      attributionControl: { compact: false },
+      attributionControl: { compact: true },
       dragRotate: false,
       pitchWithRotate: false,
       scrollZoom: false,
@@ -27,6 +27,7 @@ export default function MiniMap({ p }: { p: Property }) {
     map.touchZoomRotate.disableRotation();
     mapRef.current = map;
     tuneStyle(map);
+    foldCredits(map);
     /* soft fade-in once it has drawn (or after a few seconds) */
     const reveal = () => box.current?.classList.add("ready");
     map.once("idle", reveal);

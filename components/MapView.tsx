@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { STYLE_URL, clusterPoints, tuneStyle } from "@/lib/map";
+import { STYLE_URL, clusterPoints, foldCredits, tuneStyle } from "@/lib/map";
 import { imageSrc, placeLine, price, priceShort } from "@/lib/format";
 import { facts } from "@/lib/facts";
 import { RETURN_KEY } from "@/lib/cn";
@@ -171,7 +171,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     const map = new maplibregl.Map({
       container: box.current!,
       style: STYLE_URL,
-      attributionControl: { compact: false, customAttribution: "Régions: IGN / Etalab" },
+      attributionControl: { compact: true, customAttribution: "Régions: IGN / Etalab" },
       dragRotate: false,
       pitchWithRotate: false,
       center: [2.4, 46.6],
@@ -179,6 +179,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     });
     map.touchZoomRotate.disableRotation();
     tuneStyle(map);
+    foldCredits(map);
     /* the map comes in with a soft fade once it has drawn (or after a few seconds whatever happens), not tile by tile */
     let shown = false;
     const reveal = () => {
