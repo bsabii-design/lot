@@ -3,9 +3,9 @@ import type { Map as MapLibreMap, ExpressionSpecification } from "maplibre-gl";
 /* Free vector basemap: OpenFreeMap (no key, no limits, commercial use allowed; attribution required). */
 export const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 
-/* The look of the reference map Sabina picked: very light and low-contrast, land #f0f0f0, buildings #e7e7e7,
-   water/ponds #e1e5e6, roads plain white without casings. The stock style is tinted blue-grey, so every colour
-   first loses its tint (greyMap), then the reference colours are set per layer (paintMap). */
+/* The look of the reference map Sabina picked: very light and low-contrast, roads plain white without casings. Since 1 Nov the land is the
+   site's own beige (#f8f4f1, the page background) and every other tone is a step darker in the same warm hue. The stock style is tinted
+   blue-grey, so every colour first loses its tint (greyMap), then the colours are set per layer (paintMap). */
 
 const LABEL_GREY: Record<string, string> = {
   label_country_1: "#999999", label_country_2: "#999999", label_country_3: "#999999",
@@ -51,28 +51,28 @@ function greyMap(map: MapLibreMap) {
 }
 
 function paintMap(map: MapLibreMap) {
-  const LAND = "#f0f0f0", WHITE = "#ffffff", CASING = "#e7e7e7";
+  const LAND = "#f8f4f1", WHITE = "#ffffff", CASING = "#ebe5df";
   const set = (id: string, prop: string, v: unknown) => { if (map.getLayer(id)) map.setPaintProperty(id, prop, v); };
   set("background", "background-color", LAND);
-  set("water", "fill-color", "#e1e5e6");
-  set("waterway", "line-color", "#d6dbdc");
-  set("park", "fill-color", "#e7e8e7");
-  set("landcover_wood", "fill-color", "#e6e7e6");
-  set("landuse_residential", "fill-color", "#ececec");
-  set("building", "fill-color", "#e7e7e7");
-  set("building", "fill-outline-color", "#e0e0e0");
+  set("water", "fill-color", "#e9e3dd");
+  set("waterway", "line-color", "#ddd6cf");
+  set("park", "fill-color", "#efeae4");
+  set("landcover_wood", "fill-color", "#ede8e2");
+  set("landuse_residential", "fill-color", "#f3eee9");
+  set("building", "fill-color", "#ebe5df");
+  set("building", "fill-outline-color", "#e4ded8");
   set("road_area_pier", "fill-color", LAND);
   set("road_pier", "line-color", LAND);
   for (const id of ["highway_minor", "highway_major_inner", "highway_motorway_inner", "highway_motorway_bridge_inner", "tunnel_motorway_inner", "aeroway-runway", "aeroway-area"])
     set(id, id === "aeroway-area" ? "fill-color" : "line-color", WHITE);
-  set("highway_path", "line-color", "#fafafa");
+  set("highway_path", "line-color", "#fbf8f5");
   for (const id of ["highway_major_casing", "highway_motorway_casing", "highway_motorway_bridge_casing", "tunnel_motorway_casing", "aeroway-taxiway", "aeroway-runway-casing"])
     set(id, "line-color", CASING);
   for (const id of ["highway_major_subtle", "highway_motorway_subtle"]) set(id, "line-color", "rgba(255,255,255,0.55)");
-  for (const id of ["railway", "railway_service", "railway_transit"]) set(id, "line-color", "#e2e2e2");
-  for (const id of ["railway_dashline", "railway_service_dashline", "railway_transit_dashline"]) set(id, "line-color", "#f6f6f6");
-  for (const id of ["boundary_2", "boundary_3", "boundary_disputed"]) set(id, "line-color", "#c2c2c2");
-  for (const layer of map.getStyle().layers) if (layer.type === "symbol") set(layer.id, "text-halo-color", "rgba(240,240,240,0.85)");
+  for (const id of ["railway", "railway_service", "railway_transit"]) set(id, "line-color", "#e3ddd7");
+  for (const id of ["railway_dashline", "railway_service_dashline", "railway_transit_dashline"]) set(id, "line-color", "#f6f2ee");
+  for (const id of ["boundary_2", "boundary_3", "boundary_disputed"]) set(id, "line-color", "#c9c0b8");
+  for (const layer of map.getStyle().layers) if (layer.type === "symbol") set(layer.id, "text-halo-color", "rgba(248,244,241,0.85)");
   for (const id of ["highway-name-path", "highway-name-minor", "highway-name-major", "airport", "waterway_line_label", "water_name_point_label", "water_name_line_label"])
     set(id, "text-color", "#777777");
 }
