@@ -27,7 +27,7 @@ export default function MediaFrame({ src, alt, sizes, priority, onOpen }: { src:
       aria-label={onOpen ? `Open photo: ${alt}` : undefined}
     >
       <span className="mi-frame">
-        <Image src={src} alt={alt} fill sizes={sizes} priority={priority} />
+        <Image src={src} alt={alt} fill sizes={sizes} quality={90} priority={priority} />
       </span>
     </figure>
   );

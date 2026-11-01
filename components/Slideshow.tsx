@@ -132,6 +132,7 @@ export default function Slideshow({ images, alt, priority, href, onOpen }: { ima
                     alt={k ? `${alt} ${k + 1}` : alt}
                     fill
                     sizes={SIZES}
+                    quality={90}
                     priority={priority && k === 0}
                     loading={k === 0 || warm ? "eager" : "lazy"}
                     draggable={false}
