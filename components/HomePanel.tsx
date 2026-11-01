@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Price from "./Price";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
@@ -48,13 +49,18 @@ export default function HomePanel({ p }: { p: Property }) {
         {/* the photos scroll, the map is the last tile of them ... */}
         <PhotoColumn images={p.images} title={p.title}>
           {p.lat != null && <div className="cg-tile"><MiniMapLazy p={p} /></div>}
-          <p className="ui cg-added"><Ago date={p.date_added} prefix="Added " /></p>
         </PhotoColumn>
         {/* ... while the text stays put: the details, then the text */}
         <aside className="cg-info">
           <div className="cg-scroll">
             <dl className="datalist cg-block cg-first">
-              {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
+              {rows.map(([k, v]) => (
+                <Fragment key={k}>
+                  <div><dt>{k}</dt><dd>{v}</dd></div>
+                  {/* when it was added belongs with the status: it says how fresh the listing is */}
+                  {k === "Status" && <div><dt>Added</dt><dd><Ago date={p.date_added} /></dd></div>}
+                </Fragment>
+              ))}
             </dl>
             {p.short_description && (
               <p className="cg-block">
