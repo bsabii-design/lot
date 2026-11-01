@@ -1950,6 +1950,265 @@
      }
     ]
    }
+  },
+  "bouteilles-saint-sebastien-stone-house-a33462": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Three bedroomed stone house; tag: Family Home",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A33462JJE24/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tucked away in a small and very quiet hamlet",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A33462JJE24/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "tag: Good condition; a very nice and well maintained property",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A33462JJE24/",
+     "checked_at": "2026-11-02"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A33462JJE24/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "features": {
+    "value": [
+     "fireplace",
+     "stone",
+     "terrace",
+     "views"
+    ],
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "title: Three bedroomed stone house",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A33462JJE24/",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "terrace",
+      "quote": "the gorgeous roof top terrace that has recently been re-sealed and tiled",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A33462JJE24/",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "views",
+      "quote": "tag: Panoramic views; the most stunning views across the beautiful rolling countryside",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A33462JJE24/",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "fireplace",
+      "quote": "a large open plan kitchen/dining and living room with a chimney",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A33462JJE24/",
+      "checked_at": "2026-11-02"
+     }
+    ]
+   }
+  },
+  "lessac-hamlet-house-a48448": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "House",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A48448JBR16/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "The property is situated in a peaceful hamlet",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A48448JBR16/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A48448JBR16/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "features": {
+    "value": [
+     "garden"
+    ],
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "garden",
+      "quote": "title: Charming 2 Bedroom property in a tranquil hamlet with adjoining garden",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A48448JBR16/",
+      "checked_at": "2026-11-02"
+     }
+    ]
+   }
+  },
+  "bonnefond-detached-house-a46567": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "This charming detached house",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A46567HAT19/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "settlement": {
+    "value": "hamlet",
+    "basis": "stated",
+    "evidence": {
+     "quote": "situated in a quiet hamlet",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A46567HAT19/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "landscape": {
+    "value": [
+     "countryside"
+    ],
+    "basis": "stated",
+    "evidence": {
+     "quote": "Charming house in the heart of the countryside – Plateau de Millevaches",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A46567HAT19/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Habitable",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A46567HAT19/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "features": {
+    "value": [
+     "detached",
+     "garden",
+     "views"
+    ],
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "detached",
+      "quote": "This charming detached house",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A46567HAT19/",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "garden",
+      "quote": "The spacious garden, covering over 800 m²",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A46567HAT19/",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "views",
+      "quote": "tag: Panoramic views; sweeping views across the Plateau de Millevaches",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A46567HAT19/",
+      "checked_at": "2026-11-02"
+     }
+    ]
+   }
+  },
+  "charras-stone-village-house-a39270": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Country House; stone house",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39270NGA16/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "settlement": {
+    "value": "village",
+    "basis": "stated",
+    "evidence": {
+     "quote": "title: Lovely Village house with outbuildings and garden",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39270NGA16/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39270NGA16/",
+     "checked_at": "2026-11-02"
+    },
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "good_order",
+    "basis": "stated",
+    "evidence": {
+     "quote": "tag: Good condition",
+     "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39270NGA16/",
+     "checked_at": "2026-11-02"
+    }
+   },
+   "features": {
+    "value": [
+     "garden",
+     "outbuildings",
+     "stone",
+     "views"
+    ],
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "Great potential for this stone house",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39270NGA16/",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "Two adjoining barns",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39270NGA16/",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "garden",
+      "quote": "A pleasant adjoining garden",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39270NGA16/",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "views",
+      "quote": "views over the countryside",
+      "url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39270NGA16/",
+      "checked_at": "2026-11-02"
+     }
+    ]
+   }
   }
  }
 }

@@ -120,6 +120,90 @@
     "Agency fee",
     "Included in the price (10%)"
    ]
+  ],
+  "bouteilles-saint-sebastien-stone-house-a33462": [
+   [
+    "Energy use",
+    "288 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€2,880–3,950 a year (estimate)"
+   ],
+   [
+    "Property tax",
+    "From €912 a year"
+   ],
+   [
+    "Furnished",
+    "Sold furnished"
+   ],
+   [
+    "Drainage",
+    "Private"
+   ],
+   [
+    "Agency fee",
+    "Included in the price (9%)"
+   ]
+  ],
+  "lessac-hamlet-house-a48448": [
+   [
+    "Energy use",
+    "279 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€2,070–2,800 a year (estimate)"
+   ],
+   [
+    "Property tax",
+    "From €291 a year"
+   ],
+   [
+    "Agency fee",
+    "Included in the price (10%)"
+   ]
+  ],
+  "bonnefond-detached-house-a46567": [
+   [
+    "Energy use",
+    "496 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€2,290–3,140 a year (estimate)"
+   ],
+   [
+    "Property tax",
+    "From €243 a year"
+   ],
+   [
+    "Drainage",
+    "Private"
+   ],
+   [
+    "Agency fee",
+    "Included in the price (9%)"
+   ]
+  ],
+  "charras-stone-village-house-a39270": [
+   [
+    "Energy use",
+    "536 kWh/m² a year"
+   ],
+   [
+    "Energy cost",
+    "€2,180–2,990 a year (estimate)"
+   ],
+   [
+    "Property tax",
+    "From €198 a year"
+   ],
+   [
+    "Agency fee",
+    "Included in the price (9%)"
+   ]
   ]
  }
 }

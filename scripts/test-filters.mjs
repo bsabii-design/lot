@@ -30,9 +30,9 @@ const run = (patch, list = homes) => ids(visible(list, "all", [], { ...emptyFilt
 const brute = (test, list = homes) => ids(list.filter(test));
 
 /* --- the catalogue itself is untouched --- */
-check("32 records", raw.length, 32);
+check("36 records", raw.length, 36);
 check("id equals slug for all", raw.every((p) => p.id === p.slug), true);
-const baseline = "eeaf5d3a42f436ffebe01e75c2ed9e48fb2c73c1";
+const baseline = "3544a3a79d3a5807a473131a4b8c1a9de06381a7";
 check("properties.json is byte-identical to the published version", execSync("git hash-object data/properties.json").toString().trim(), baseline);
 
 /* --- the order of the feed: newest additions first, the same day keeps the file order --- */
