@@ -1,5 +1,5 @@
 import type { Property } from "./types";
-import { CONDITIONS, FEATURES, LANDSCAPES, OUTDOOR, SETTLEMENTS, TYPES, conditionOf } from "./taxonomy";
+import { CONDITIONS, FEATURES, OUTDOOR, SETTLEMENTS, conditionOf } from "./taxonomy";
 
 /** Up to this distance the sea is worth a fact on a card (about an hour's drive); a full list inside a home states it for every home. */
 const SEA_NEAR = 60;
@@ -38,16 +38,13 @@ export function facts(p: Property): Fact[] {
 const label = (list: [string, string][], key: string) => list.find(([k]) => k === key)?.[1] ?? key;
 const reviewed = (c?: { basis: string }) => !!c && c.basis !== "legacy";
 
-/** The rows of a home's Details block that come from reviewed data: a value somebody has checked against the listing replaces the old label
-    (the old labels are not reviewed and can be wrong); a home without reviewed data keeps what it had. */
-export function reviewedDetails(p: Property): { type?: string; condition?: string; setting?: string; features?: string } {
+/** The rows of a home's Details block that come from reviewed data (a value somebody has checked against the listing; the old unreviewed labels are gone). */
+export function reviewedDetails(p: Property): { condition?: string; setting?: string; features?: string } {
   const f = p.facts;
-  const out: { type?: string; condition?: string; setting?: string; features?: string } = {};
-  if (f?.property_type && reviewed(f.property_type)) out.type = label(TYPES, f.property_type.value);
+  const out: { condition?: string; setting?: string; features?: string } = {};
   const c = conditionOf(f);
-  if (c && f && (reviewed(f.habitability) && reviewed(f.renovation_level))) out.condition = label(CONDITIONS, c);
-  const place = [f?.settlement && reviewed(f.settlement) ? label(SETTLEMENTS, f.settlement.value) : null, ...(f?.landscape && reviewed(f.landscape) ? f.landscape.value.map((v) => label(LANDSCAPES, v)) : [])].filter(Boolean);
-  if (place.length) out.setting = place.join(", ");
+  if (c && f && reviewed(f.habitability) && reviewed(f.renovation_level)) out.condition = label(CONDITIONS, c);
+  if (f?.settlement && reviewed(f.settlement)) out.setting = label(SETTLEMENTS, f.settlement.value);
   if (f?.features && reviewed(f.features)) out.features = f.features.value.map((v) => label([...FEATURES, ...OUTDOOR], v)).join(", ");
   return out;
 }

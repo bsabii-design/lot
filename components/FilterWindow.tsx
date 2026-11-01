@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { digits, rangeInvalid, toggle, type Availability } from "@/lib/filters";
 import {
-  AREA_PRESETS, BEDROOM_PRESETS, CONDITIONS, FEATURES, LANDSCAPES, PRICE_PRESETS, REGIONS, SETTLEMENTS,
+  AREA_PRESETS, BEDROOM_PRESETS, CONDITIONS, FEATURES, PRICE_PRESETS, REGIONS, SETTLEMENTS,
   type Option,
 } from "@/lib/taxonomy";
 import { regionLabel } from "@/lib/regions";
@@ -158,7 +158,7 @@ export default function FilterWindow({ closing, filters, avail, count, invalid, 
     set({ [key]: { preset: "", min: on ? filters[key].min : "", max: on ? filters[key].max : "" } });
   };
   const clearAll = () => { setCustom({ price: false, area: false }); onClear(); };
-  const setKey = (key: "regions" | "conditions" | "settlements" | "landscapes" | "types" | "features") => (value: string) =>
+  const setKey = (key: "regions" | "conditions" | "settlements" | "features") => (value: string) =>
     set({ [key]: toggle(filters[key], value) });
   const regions: Option[] = REGIONS.map((v): Option => [v, regionLabel(v)]).sort((a, b) => a[1].localeCompare(b[1]));
 
@@ -186,7 +186,6 @@ export default function FilterWindow({ closing, filters, avail, count, invalid, 
         </div>
 
         <SetRow label="Settlement" entries={SETTLEMENTS} selected={filters.settlements} has={avail.settlements} onToggle={setKey("settlements")} />
-        <SetRow label="Landscape" entries={LANDSCAPES} selected={filters.landscapes} has={avail.landscapes} onToggle={setKey("landscapes")} />
         <SetRow label="Features" entries={FEATURES} selected={filters.features} has={avail.features} onToggle={setKey("features")} />
       </div>
       <div className="ffoot">

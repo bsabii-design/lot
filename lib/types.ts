@@ -64,13 +64,12 @@ export interface Property {
   facts?: Facts;
   /** computed from the coordinates (data/geo.json): the distance to the nearest coast in km, good to roughly 5-10 km */
   geo?: { sea_km: number };
-  /** extra rows for the Details block (data/details.json): energy, heating, drainage, tax, agency fee; absent = none stated */
+  /** extra rows for the Details block (data/details.json): energy, heating, drainage, tax, furnished; absent = none stated */
   extra_details?: [label: string, value: string][];
   /** a draft second paragraph (data/description-drafts.json), built from the record's own fields; absent = none */
   description_more?: string;
 }
 
-export type Tab = "all" | "favourites" | "archive";
 export type View = "list" | "map";
 
 /** One numeric facet: a quick preset (one at a time) or a typed min–max, never both. Strings so an empty box is "". */
@@ -88,12 +87,6 @@ export interface Filters {
   area: NumRange;
   /** minimum bedrooms ("" = any) */
   bedrooms: string;
-  plot: NumRange;
   settlements: string[];
-  landscapes: string[];
-  types: string[];
   features: string[];
-  /** the #hashtags on cards and home pages still filter on the old labels */
-  tagTypes: string[];
-  tagConditions: string[];
 }

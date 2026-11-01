@@ -18,18 +18,20 @@ const span = (n: number) => ({ "--span": n }) as React.CSSProperties;
 export default function HomePanel({ p }: { p: Property }) {
   const sold = archived(p);
   const rev = reviewedDetails(p);
+  const sea = seaKm(p);
   const rows: [string, string | number | null][] = [
-    ["Status", STATUS[p.status] ?? p.status],
-    ["Type", rev.type ?? p.property_type],
-    ["Condition", rev.condition ?? p.condition],
-    ["Setting", rev.setting ?? p.setting],
+    /* the status is only said when it is not the usual one (a home under offer also has its price block in red) */
+    ["Status", p.status === "available" ? null : STATUS[p.status] ?? p.status],
+    ["Condition", rev.condition ?? null],
+    ["Setting", rev.setting ?? null],
     ["Size", p.size_m2 ? p.size_m2 + " m²" : null],
     ["Land", p.land_size_m2 ? p.land_size_m2 + " m²" : null],
     ["Bedrooms", p.bedrooms],
     ["Bathrooms", p.bathrooms],
-    ["Features", rev.features ?? (p.features || []).join(", ")],
+    ["Features", rev.features ?? null],
     ...(p.extra_details ?? []),
-    ["To the sea", seaKm(p) !== null ? `about ${seaKm(p)} km` : null],
+    /* the distance to the sea is only worth a row when it is within a day trip */
+    ["To the sea", sea !== null && sea <= 100 ? `about ${sea} km` : null],
   ].filter(([, v]) => v != null && v !== "") as [string, string | number][];
 
   return (

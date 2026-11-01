@@ -1,6 +1,6 @@
 # Filter taxonomy
 
-The approved filter panel: eight groups in one list, each starting on its own "Any". Code: `lib/taxonomy.ts` (vocabulary), `lib/filters.ts` (logic), `components/FilterWindow.tsx` (panel). Tests: `node scripts/test-filters.mjs`.
+The approved filter panel: seven groups in one list, each starting on its own "Any". Code: `lib/taxonomy.ts` (vocabulary), `lib/filters.ts` (logic), `components/FilterWindow.tsx` (panel). Tests: `node scripts/test-filters.mjs`.
 
 ## Groups
 
@@ -12,13 +12,12 @@ The approved filter panel: eight groups in one list, each starting on its own "A
 | Living area | Any area, 50+, 75+, 100+, 150+ m², Custom (typed Min–Max) | presets are **minimums**; one at a time |
 | Bedrooms | Any, 1+ … 4+ | minimum, one at a time |
 | Settlement | Village, Hamlet, Town, Isolated | several; OR |
-| Landscape | Countryside, Mountains, Coastal, Riverside | several; OR |
 | Features | Stone, Historic, Original features, Outbuildings, Garage, Terrace, Fireplace, Views, Pool, Detached, Single-storey | several; **all** selected must be present |
 
 Every group starts on its own "Any" (Any price, Any location, Any condition, Any area, Any); the typed from–to opens only after "Custom".
-There is no "More filters" block any more: plot size, Outdoor (garden, courtyard) and property type are no longer in the window (the logic for them is still in `lib/filters.ts`, covered by the tests, and the data is kept; they can come back as a group).
+There is no "More filters" block and no filter for plot size, Outdoor, property type or landscape (removed on 2 Nov 2026 together with their code; the data in `data/classification.json` is kept and a group can come back). The favourites and archive tabs, the hashtag filters and the Save button are gone too.
 
-Logic: OR inside Location, Settlement, Landscape, Property type and Condition; AND between groups; Features need every selected one. Selections are a draft until "Show N homes"; the count is live; Clear all resets every control.
+Logic: OR inside Location, Settlement and Condition; AND between groups; Features need every selected one. Selections are a draft until "Show N homes"; the count is live; Clear all resets every control.
 
 ## Unknown is never false
 
@@ -53,7 +52,7 @@ Two attributes per home: **habitability** (`habitable`, `habitable_after_light_w
 
 ## Choices without data
 
-A choice with no home behind it is dimmed and cannot be picked (a filter that can only return an empty list would mislead). It switches on by itself once a home has the value. Today: all of **Condition**, Settlement (Village, Hamlet, Isolated), Landscape (Coastal, Riverside), Property type (House, Townhouse, Mill, Converted barn, Other), Features (Courtyard, Detached, Single-storey). Regions are never dimmed: location is known for every home, so a region with no homes is a real empty result.
+A choice with no home behind it is dimmed and cannot be picked (a filter that can only return an empty list would mislead). It switches on by itself once a home has the value. Regions are never dimmed: location is known for every home, so a region with no homes is a real empty result.
 
 ## Hashtags
 

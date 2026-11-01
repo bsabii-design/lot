@@ -1,14 +1,10 @@
 {
- "_about": "Extra rows for the Details block of a home (energy use and cost, heating, drainage, tax, agency fee), keyed by property id, quoted from the listing; a row that is not here is unknown, not zero. Energy use is the DPE figure in kWh per m² per year; the energy cost is the agency's estimate for standard use.",
+ "_about": "Extra rows for the Details block of a home (energy, heating, drainage, tax, furnished), keyed by property id, quoted from the listing; a row that is not here is unknown, not zero. Energy is the DPE figure in kWh per m² per year and, after it, the agency's estimate of the yearly cost for standard use. (The agency fee is not a row: every price on the site already includes it.)",
  "homes": {
   "millac-hamlet-house-bvi87682": [
    [
-    "Energy use",
-    "214 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€2,380–3,260 a year (estimate)"
+    "Energy",
+    "214 kWh/m² a year, about €2,380–3,260 a year"
    ],
    [
     "Heating",
@@ -17,38 +13,22 @@
    [
     "Drainage",
     "Micro sewage treatment plant"
-   ],
-   [
-    "Agency fee",
-    "Included in the price (9%)"
    ]
   ],
   "ladapeyre-modernised-house-a36890": [
    [
-    "Energy use",
-    "230 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€1,510–2,090 a year (estimate)"
+    "Energy",
+    "230 kWh/m² a year, about €1,510–2,090 a year"
    ],
    [
     "Drainage",
     "Mains"
-   ],
-   [
-    "Agency fee",
-    "Included in the price"
    ]
   ],
   "siran-village-house-a42822": [
    [
-    "Energy use",
-    "232 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€1,100–1,540 a year (estimate)"
+    "Energy",
+    "232 kWh/m² a year, about €1,100–1,540 a year"
    ],
    [
     "Property tax",
@@ -57,20 +37,12 @@
    [
     "Furnished",
     "Sold furnished"
-   ],
-   [
-    "Agency fee",
-    "Paid by the seller, included in the price"
    ]
   ],
   "jumilhac-village-house-bvi85468": [
    [
-    "Energy use",
-    "291 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€1,710–2,350 a year (estimate)"
+    "Energy",
+    "291 kWh/m² a year, about €1,710–2,350 a year"
    ],
    [
     "Heating",
@@ -79,34 +51,18 @@
    [
     "Drainage",
     "Mains"
-   ],
-   [
-    "Agency fee",
-    "Included in the price (9%)"
    ]
   ],
   "avene-stone-house-a36741": [
    [
-    "Energy use",
-    "483 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€2,409–3,259 a year (estimate)"
-   ],
-   [
-    "Agency fee",
-    "Included in the price"
+    "Energy",
+    "483 kWh/m² a year, about €2,409–3,259 a year"
    ]
   ],
   "saint-laurent-de-ceris-farmhouse-bvi84419": [
    [
-    "Energy use",
-    "216 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€2,050–2,860 a year (estimate)"
+    "Energy",
+    "216 kWh/m² a year, about €2,050–2,860 a year"
    ],
    [
     "Heating",
@@ -115,20 +71,12 @@
    [
     "Drainage",
     "Mains"
-   ],
-   [
-    "Agency fee",
-    "Included in the price (10%)"
    ]
   ],
   "bouteilles-saint-sebastien-stone-house-a33462": [
    [
-    "Energy use",
-    "288 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€2,880–3,950 a year (estimate)"
+    "Energy",
+    "288 kWh/m² a year, about €2,880–3,950 a year"
    ],
    [
     "Property tax",
@@ -141,38 +89,22 @@
    [
     "Drainage",
     "Private"
-   ],
-   [
-    "Agency fee",
-    "Included in the price (9%)"
    ]
   ],
   "lessac-hamlet-house-a48448": [
    [
-    "Energy use",
-    "279 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€2,070–2,800 a year (estimate)"
+    "Energy",
+    "279 kWh/m² a year, about €2,070–2,800 a year"
    ],
    [
     "Property tax",
     "From €291 a year"
-   ],
-   [
-    "Agency fee",
-    "Included in the price (10%)"
    ]
   ],
   "bonnefond-detached-house-a46567": [
    [
-    "Energy use",
-    "496 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€2,290–3,140 a year (estimate)"
+    "Energy",
+    "496 kWh/m² a year, about €2,290–3,140 a year"
    ],
    [
     "Property tax",
@@ -181,28 +113,16 @@
    [
     "Drainage",
     "Private"
-   ],
-   [
-    "Agency fee",
-    "Included in the price (9%)"
    ]
   ],
   "charras-stone-village-house-a39270": [
    [
-    "Energy use",
-    "536 kWh/m² a year"
-   ],
-   [
-    "Energy cost",
-    "€2,180–2,990 a year (estimate)"
+    "Energy",
+    "536 kWh/m² a year, about €2,180–2,990 a year"
    ],
    [
     "Property tax",
     "From €198 a year"
-   ],
-   [
-    "Agency fee",
-    "Included in the price (9%)"
    ]
   ]
  }

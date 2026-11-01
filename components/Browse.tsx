@@ -10,20 +10,17 @@ import FilterWindow from "./FilterWindow";
 import { activeFacets, available, emptyFilters, hasInvalidRange, normalizeFilters, visible, withoutInvalid } from "@/lib/filters";
 import { RETURN_KEY, STATE_KEY, cn } from "@/lib/cn";
 import { warmMap } from "@/lib/map";
-import type { Filters, Property, Tab, View } from "@/lib/types";
+import type { Filters, Property, View } from "@/lib/types";
 
 /* the map is client-only (WebGL) and loads on demand */
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 /** the map's code and files are fetched while the visitor is still looking at the list (after the page is idle, and again the moment Map is touched) */
 const warm = () => { void import("./MapView"); warmMap(); };
 
-/* (the "Saved" tab is off for now: with no accounts a saved home lives in one browser only; the "Archive" tab is gone: sold homes stay in the data, not on the page) */
+interface Saved { view: View; y: number; filters: Filters }
 
-interface Saved { tab: Tab; view: View; y: number; filters: Filters }
-
-/** The feed page: tabs, list or map, filters. Everything the visitor picks lives here. */
+/** The feed page: list or map, filters. Everything the visitor picks lives here. */
 export default function Browse({ homes }: { homes: Property[] }) {
-  const [tab, setTab] = useState<Tab>("all");
   const [view, setView] = useState<View>("list");
   const [filters, setFilters] = useState<Filters>(emptyFilters);
   const [draft, setDraft] = useState<Filters>(emptyFilters);
@@ -34,39 +31,30 @@ export default function Browse({ homes }: { homes: Property[] }) {
   const [mounted, setMounted] = useState(false);
 
   const avail = useMemo(() => available(homes), [homes]);
-  const list = useMemo(() => visible(homes, tab, [], filters), [homes, tab, filters]);
+  const list = useMemo(() => visible(homes, filters), [homes, filters]);
   const facets = useMemo(() => activeFacets(filters), [filters]);
-  const draftCount = useMemo(() => visible(homes, tab, [], withoutInvalid(draft)).length, [homes, tab, draft]);
+  const draftCount = useMemo(() => visible(homes, withoutInvalid(draft)).length, [homes, draft]);
 
   /* keep the browsing state when the visitor opens a home and comes back */
-  const latest = useRef<Saved>({ tab, view, y: 0, filters });
-  useEffect(() => { latest.current = { ...latest.current, tab, view, filters }; });
+  const latest = useRef<Saved>({ view, y: 0, filters });
+  useEffect(() => { latest.current = { ...latest.current, view, filters }; });
 
   /* Restoring from the URL and sessionStorage must wait until the browser (server and first client render
      have to match), so this is one of the places where setting state in an effect is the right tool. */
   /* eslint-disable react-hooks/set-state-in-effect */
   useLayoutEffect(() => {
-    const q = new URLSearchParams(location.search);
     let y = 0;
-    const explicit = q.get("tab") || q.get("t") || q.get("c");
     let returning = false;
     try { returning = sessionStorage.getItem(RETURN_KEY) === "1"; sessionStorage.removeItem(RETURN_KEY); } catch {}
-    if (!explicit && returning) {
+    if (returning) {
       try {
         const s = JSON.parse(sessionStorage.getItem(STATE_KEY) || "null") as Saved | null;
         if (s) {
-          setTab("all"); // an older visit may have left the Saved or Archive tab: both are gone
           setView(s.view || "list");
           setFilters(normalizeFilters(s.filters));
           y = s.y || 0;
         }
       } catch {}
-    } else {
-      setFilters((f) => ({
-        ...f,
-        tagTypes: q.get("t") ? [q.get("t")!] : f.tagTypes,
-        tagConditions: q.get("c") ? [q.get("c")!] : f.tagConditions,
-      }));
     }
     if (y) requestAnimationFrame(() => window.scrollTo(0, y));
 

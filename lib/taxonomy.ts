@@ -26,11 +26,6 @@ export const CONDITIONS: Option[] = [["move_in", "Move-in ready"], ["light_works
 
 export const OUTDOOR: Option[] = [["garden", "Garden"], ["courtyard", "Courtyard"]];
 export const SETTLEMENTS: Option[] = [["village", "Village"], ["hamlet", "Hamlet"], ["town", "Town"], ["isolated", "Isolated"]];
-export const LANDSCAPES: Option[] = [["countryside", "Countryside"], ["mountains", "Mountains"], ["coastal", "Coastal"], ["riverside", "Riverside"]];
-export const TYPES: Option[] = [
-  ["house", "House"], ["cottage", "Cottage"], ["farmhouse", "Farmhouse"], ["townhouse", "Townhouse"], ["mill", "Mill"],
-  ["converted_barn", "Converted barn"], ["other", "Other"],
-];
 export const FEATURES: Option[] = [
   ["stone", "Stone"], ["historic", "Historic"], ["original_features", "Original features"], ["outbuildings", "Outbuildings"],
   ["garage", "Garage"], ["terrace", "Terrace"], ["fireplace", "Fireplace"], ["views", "Views"], ["pool", "Pool"],

@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 register("./ts-hooks.mjs", import.meta.url);
 
-const { visible, emptyFilters, activeFacets, withoutInvalid, hasInvalidRange, normalizeFilters, available, moreCount } =
+const { visible, emptyFilters, activeFacets, withoutInvalid, hasInvalidRange, normalizeFilters, available } =
   await import("../lib/filters.ts");
 const read = (f) => JSON.parse(readFileSync(new URL("../" + f, import.meta.url)));
 const raw = read("data/properties.json").properties;
@@ -26,7 +26,7 @@ const check = (name, got, want) => {
   console.log((ok ? "ok   " : "FAIL ") + name + (ok ? "" : `  got ${JSON.stringify(got)} want ${JSON.stringify(want)}`));
 };
 const ids = (list) => list.map((p) => p.id).sort();
-const run = (patch, list = homes) => ids(visible(list, "all", [], { ...emptyFilters(), ...patch }));
+const run = (patch, list = homes) => ids(visible(list, { ...emptyFilters(), ...patch }));
 const brute = (test, list = homes) => ids(list.filter(test));
 
 /* --- the catalogue itself is untouched --- */
@@ -60,10 +60,7 @@ const synth = [
   { ...homes[0], id: "z-zero", land_size_m2: 0, size_m2: 60, bedrooms: 2 },
   { ...homes[0], id: "z-big", land_size_m2: 5000, size_m2: 120, bedrooms: 3 },
 ];
-check("plot: unknown never matches an active plot filter", run({ plot: { preset: "", min: "0", max: "100" } }, synth), ["z-zero"]);
-check("plot: zero is a real value (0-0)", run({ plot: { preset: "", min: "0", max: "0" } }, synth), ["z-zero"]);
-check("plot: min 1000 excludes zero and unknown", run({ plot: { preset: "", min: "1000", max: "" } }, synth), ["z-big"]);
-check("plot: no filter keeps unknown", run({}, synth).length, 3);
+check("plain list keeps unknown", run({}, synth).length, 3);
 check("area: unknown never matches (preset)", run({ area: { preset: "50", min: "", max: "" } }, synth), ["z-big", "z-zero"]);
 check("bedrooms: unknown never matches", run({ bedrooms: "1" }, synth), ["z-big", "z-zero"]);
 check("price: unknown never applies (all known)", run({ price: { preset: "150000", min: "", max: "" } }, synth).length, 3);
@@ -71,14 +68,10 @@ check("price: unknown never applies (all known)", run({ price: { preset: "150000
 /* --- sets: OR inside, AND between --- */
 check("regions OR", run({ regions: ["Bretagne", "Normandie"] }), brute((p) => ["Bretagne", "Normandie"].includes(p.region)));
 check("a region without homes returns none", run({ regions: ["Corse"] }), []);
-check("types OR (cottage, farmhouse)", run({ types: ["cottage", "farmhouse"] }), brute((p) => ["cottage", "farmhouse"].includes(val(p, "property_type"))));
-check("types: a type nobody has classified returns none", run({ types: ["mill"] }), []);
-check("landscape OR (mountains, countryside)", run({ landscapes: ["mountains", "countryside"] }), brute((p) => (cls[p.id]?.landscape?.value ?? []).some((l) => ["mountains", "countryside"].includes(l))));
 check("settlement town", run({ settlements: ["town"] }), brute((p) => val(p, "settlement") === "town"));
 check("settlement village: only homes whose settlement is recorded as village", run({ settlements: ["village"] }), brute((p) => val(p, "settlement") === "village"));
 check("condition: only homes whose habitability and renovation level are both recorded (never the old label)", run({ conditions: ["move_in"] }), brute((p) => conditionOf(cls[p.id]) === "move_in"));
 check("features need ALL (garden + stone)", run({ features: ["garden", "stone"] }), brute((p) => feats(p).includes("garden") && feats(p).includes("stone")));
-check("features single (pool)", run({ features: ["pool"] }), brute((p) => feats(p).includes("pool")));
 check("features: detached only where the listing says so", run({ features: ["detached"] }), brute((p) => feats(p).includes("detached")));
 check("features: garden + courtyard needs both", run({ features: ["garden", "courtyard"] }), brute((p) => feats(p).includes("garden") && feats(p).includes("courtyard")));
 check("features unknown is not false: nothing excluded without the filter", run({}).length, homes.length);
@@ -87,35 +80,26 @@ check("AND across groups (Occitanie + garden + 3+ bedrooms)", run({ regions: ["O
 check("AND across groups (price<=100k + area>=75 + Nouvelle-Aquitaine)", run({ price: { preset: "100000", min: "", max: "" }, area: { preset: "75", min: "", max: "" }, regions: ["Nouvelle-Aquitaine"] }),
   brute((p) => p.price <= 100000 && p.size_m2 >= 75 && p.region === "Nouvelle-Aquitaine"));
 
-/* --- tags keep their old behaviour --- */
-check("#tag on the old type label", run({ tagTypes: ["Village house"] }), brute((p) => p.property_type === "Village house"));
-check("#tag on the old condition label", run({ tagConditions: ["Needs some work"] }), brute((p) => p.condition === "Needs some work"));
-
 /* --- ranges --- */
 const bad = { ...emptyFilters(), price: { preset: "", min: "200", max: "100" } };
 check("wrong-way range is detected", hasInvalidRange(bad), true);
-check("wrong-way range is ignored in live counts", visible(homes, "all", [], withoutInvalid(bad)).length, homes.length);
-check("wrong-way range matches nothing if it ever reaches visible()", visible(homes, "all", [], bad).length, 0);
+check("wrong-way range is ignored in live counts", visible(homes, withoutInvalid(bad)).length, homes.length);
+check("wrong-way range matches nothing if it ever reaches visible()", visible(homes, bad).length, 0);
 
 /* --- facets list and clearing --- */
 const all = {
   ...emptyFilters(), price: { preset: "100000", min: "", max: "" }, regions: ["Bretagne"], conditions: ["move_in"],
-  area: { preset: "", min: "60", max: "90" }, bedrooms: "2", plot: { preset: "", min: "500", max: "" }, settlements: ["town"],
-  landscapes: ["mountains"], types: ["cottage"], features: ["garden", "stone"], tagTypes: ["Cottage"],
+  area: { preset: "", min: "60", max: "90" }, bedrooms: "2", settlements: ["town"], features: ["garden", "stone"],
 };
 const facets = activeFacets(all);
-check("one facet per active group", facets.map((f) => f.name),
-  ["Price", "Location", "Condition", "Living area", "Bedrooms", "Plot", "Features", "Settlement", "Landscape", "Property type", "Tag"]);
-check("More filters count", moreCount(all), 5);
+check("one facet per active group", facets.map((f) => f.name), ["Price", "Location", "Condition", "Living area", "Bedrooms", "Settlement", "Features"]);
 check("switching every facet off resets everything", JSON.stringify(facets.reduce((f, x) => x.off(f), all)), JSON.stringify(emptyFilters()));
-check("old saved filter shapes are made safe", JSON.stringify(normalizeFilters({ types: ["Village house"], price: { presets: ["u80"], min: "5a", max: "" }, bedrooms: ["2"] })),
-  JSON.stringify({ ...emptyFilters(), types: ["Village house"], price: { preset: "", min: "5", max: "" } }));
+check("old saved filter shapes are made safe", JSON.stringify(normalizeFilters({ types: ["Village house"], plot: { min: "1" }, price: { presets: ["u80"], min: "5a", max: "" }, bedrooms: ["2"] })),
+  JSON.stringify({ ...emptyFilters(), price: { preset: "", min: "5", max: "" } }));
 
 /* --- what is dimmed in the panel --- */
 const av = available(homes);
 check("conditions with homes", [...av.conditions].sort(), uniq(homes.map((p) => conditionOf(cls[p.id])).filter(Boolean)));
-check("types with homes", [...av.types].sort(), uniq(homes.map((p) => val(p, "property_type")).filter(Boolean)));
-check("landscapes with homes", [...av.landscapes].sort(), uniq(homes.flatMap((p) => val(p, "landscape") ?? [])));
 check("settlements with homes", [...av.settlements].sort(), uniq(homes.map((p) => val(p, "settlement")).filter(Boolean)));
 check("features with homes", [...av.features].sort(), uniq(homes.flatMap(feats)));
 
