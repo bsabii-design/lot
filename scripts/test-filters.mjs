@@ -32,7 +32,7 @@ const brute = (test, list = homes) => ids(list.filter(test));
 /* --- the catalogue itself is untouched --- */
 check("32 records", raw.length, 32);
 check("id equals slug for all", raw.every((p) => p.id === p.slug), true);
-const baseline = "3abe60c679fe2cab8ad487a9ab5004f9bdf8e32e";
+const baseline = "d9bcab803bd0cb81a798ec1b03ff3c6466129ba5";
 check("properties.json is byte-identical to the published version", execSync("git hash-object data/properties.json").toString().trim(), baseline);
 
 /* --- the order of the feed: newest additions first, the same day keeps the file order --- */

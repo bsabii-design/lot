@@ -1360,11 +1360,44 @@
    }
   },
   "chateauponsac-stone-house-am5270": {
+   "property_type": {
+    "value": "house",
+    "basis": "stated",
+    "evidence": {
+     "quote": "cette belle maison en pierre",
+     "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
+     "checked_at": "2026-11-01"
+    }
+   },
    "landscape": {
     "value": [
      "countryside"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": {
+     "quote": "Située au coeur de la campagne limousine, en Haute-Vienne",
+     "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
+     "checked_at": "2026-11-01"
+    }
+   },
+   "habitability": {
+    "value": "habitable",
+    "basis": "derived",
+    "evidence": {
+     "quote": "Actuellement utilisée comme résidence secondaire et proposée également à la location saisonnière en gîte",
+     "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
+     "checked_at": "2026-11-01"
+    },
+    "reviewed_by": "Claude, from the listing page Sabina sent as a screenshot on 1 Nov 2026 (to be confirmed by Sabina)"
+   },
+   "renovation_level": {
+    "value": "recently_renovated",
+    "basis": "stated",
+    "evidence": {
+     "quote": "Superbe maison en pierre entièrement rénovée",
+     "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
+     "checked_at": "2026-11-01"
+    }
    },
    "features": {
     "value": [
@@ -1372,7 +1405,27 @@
      "outbuildings",
      "stone"
     ],
-    "basis": "legacy"
+    "basis": "stated",
+    "evidence": [
+     {
+      "feature": "stone",
+      "quote": "Superbe maison en pierre entièrement rénovée",
+      "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
+      "checked_at": "2026-11-01"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "jardin de 2 917 m² et grande grange",
+      "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
+      "checked_at": "2026-11-01"
+     },
+     {
+      "feature": "garden",
+      "quote": "jardin de 2 917 m²",
+      "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
+      "checked_at": "2026-11-01"
+     }
+    ]
    }
   },
   "chamberet-stone-house-cc4941": {
