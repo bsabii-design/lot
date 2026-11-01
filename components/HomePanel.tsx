@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Price from "./Price";
 import Glossed from "./Glossed";
 import Icon from "./Icon";
@@ -54,13 +53,7 @@ export default function HomePanel({ p }: { p: Property }) {
         <aside className="cg-info">
           <div className="cg-scroll">
             <dl className="datalist cg-block cg-first">
-              {rows.map(([k, v]) => (
-                <Fragment key={k}>
-                  <div><dt>{k}</dt><dd className={k === "Status" && p.status === "under_offer" ? "uo" : undefined}>{v}</dd></div>
-                  {/* when it was added belongs with the status: it says how fresh the listing is */}
-                  {k === "Status" && <div><dt>Added</dt><dd><Ago date={p.date_added} /></dd></div>}
-                </Fragment>
-              ))}
+              {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd className={k === "Status" && p.status === "under_offer" ? "uo" : undefined}>{v}</dd></div>)}
             </dl>
             {p.short_description && (
               <p className="cg-block">
@@ -72,6 +65,8 @@ export default function HomePanel({ p }: { p: Property }) {
                 ))}
               </p>
             )}
+            {/* how fresh the listing is: a quiet grey line at the end of the text, like the date at the end of an article */}
+            <p className="cg-added"><Ago date={p.date_added} prefix="Added " /></p>
           </div>
         </aside>
       </div>
