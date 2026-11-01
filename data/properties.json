@@ -67,11 +67,10 @@
    "setting": "Village",
    "features": [
     "garden",
-    "pool",
     "outbuildings"
    ],
    "highlights": [
-    "walled garden"
+    "private courtyard"
    ],
    "images": [
     "images/le-vigeant-village-house-a37509/01.jpg",
@@ -83,13 +82,13 @@
     "images/le-vigeant-village-house-a37509/07.jpg",
     "images/le-vigeant-village-house-a37509/08.jpg"
    ],
-   "short_description": "A pretty two-bedroom home with a courtyard, a walled garden, a pool and a barn, within walking distance of the village restaurants and riverside walks of Le Vigeant.",
+   "short_description": "A two-bedroom house on a residents-only street, a short walk downhill from the River Vienne. It has a private courtyard, an attached stone outbuilding and a garden up some stone steps. Three restaurants and bars are within walking distance.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A37509LW86/house-for-sale-in-le%20vigeant-vienne-poitou-charentes-france",
    "source_reference": "A37509LW86",
    "date_added": "2026-08-25",
-   "last_checked": "2026-10-28",
+   "last_checked": "2026-11-01",
    "original_listing_price": null
   },
   {
@@ -1096,12 +1095,12 @@
     "images/valzergues-farmhouse-28262/08.jpg"
    ],
    "short_description": "An authentic 1900 stone country house in the heart of an Aveyron village, on a flat green plot of 1,679 m² — with a covered balcony, cellars and a two-level 98 m² stone barn. Ideal for heritage lovers.",
-   "status": "available",
+   "status": "unavailable",
    "source_name": "Selection Habitat",
    "source_url": "https://www.french-property.com/sale-property/3397-12008-DeE-28262MI",
    "source_reference": "12008-DeE-28262MI",
    "date_added": "2026-08-25",
-   "last_checked": "2026-10-28",
+   "last_checked": "2026-11-01",
    "original_listing_price": null
   },
   {
@@ -1187,12 +1186,12 @@
     "images/ginals-watermill-32445/08.jpg"
    ],
    "short_description": "An 1800s watermill on the banks of the river Seye, with about 1.1 hectares of woodland and garden and its own water rights. The interior requires general updating.",
-   "status": "available",
+   "status": "unavailable",
    "source_name": "Selection Habitat",
    "source_url": "https://www.french-property.com/sale-property/3397-32445",
    "source_reference": "32445",
    "date_added": "2026-08-25",
-   "last_checked": "2026-10-28",
+   "last_checked": "2026-11-01",
    "original_listing_price": null
   },
   {
