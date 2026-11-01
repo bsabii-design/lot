@@ -12,9 +12,9 @@ import { RETURN_KEY } from "@/lib/cn";
 import regionsData from "@/data/regions.json";
 import type { Property } from "@/lib/types";
 
-function bubble(text: string, count = false) {
+function bubble(text: string, count = false, muted = false) {
   const el = document.createElement("div");
-  el.className = "bubble" + (count ? " count" : "");
+  el.className = "bubble" + (count ? " count" : "") + (muted ? " muted" : "");
   el.textContent = text;
   return el;
 }
@@ -111,7 +111,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
         continue;
       }
       const { p, lng, lat } = g.items[0];
-      const el = bubble(priceShort(p.price));
+      const el = bubble(priceShort(p.price), false, p.status === "under_offer");
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         popup.current?.remove();

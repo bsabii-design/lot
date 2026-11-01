@@ -13,7 +13,7 @@ export function Cells({ text, children }: { text: string; children?: ReactNode }
   );
 }
 
-/** The price block. (`id` is kept for the callers; nothing marks a price any more now that homes cannot be saved.) */
-export default function Price({ value }: { value: number; id?: string }) {
-  return <span className="pr">{price(value)}</span>;
+/** The price block. `muted`: the home is under offer, so the block is a faded grey instead of the black one. (`id` is kept for the callers.) */
+export default function Price({ value, muted }: { value: number; id?: string; muted?: boolean }) {
+  return <span className={muted ? "pr muted" : "pr"}>{price(value)}</span>;
 }

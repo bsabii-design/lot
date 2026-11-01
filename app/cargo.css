@@ -490,3 +490,11 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 @keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
 .cg-pages.page-in { animation: page-in var(--enter) both; }
 @media (prefers-reduced-motion: reduce) { .map-credits.on-map, .minimap .map-credits, .minimap .zoom { transition: none; } .cg-pages.page-in { animation: none; } }
+
+/* a home under offer: its price block is a faded warm grey instead of the black one, and "Under offer" stands first in the facts, in grey, on its own line
+   (it used to follow the price on the same line and made the line long and blurred). The colour is one variable, to be changed in one place. */
+:root { --pr-muted: #8c8782; }
+.cg .pr.muted, .filterwin .pr.muted, .map-preview .pr.muted, .bubble.muted { background: var(--pr-muted); }
+.bubble.muted:hover { background: rgba(140, 135, 130, 0.8); }
+.bubble.muted.on { background: var(--bg); color: var(--text-read); }
+.cg .facts .status-line { color: var(--text-3); }
