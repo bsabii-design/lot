@@ -43,7 +43,7 @@ export default function MiniMap({ p }: { p: Property }) {
     map.getContainer().addEventListener("wheel", onWheel, { passive: false });
 
     const el = document.createElement("div");
-    el.className = "bubble dot";
+    el.className = p.status === "under_offer" ? "bubble dot muted" : "bubble dot";
     el.style.pointerEvents = "none";
     new maplibregl.Marker({ element: el }).setLngLat([p.lng, p.lat]).addTo(map);
 

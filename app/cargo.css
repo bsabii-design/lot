@@ -498,3 +498,9 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 .bubble.muted:hover { background: rgba(143, 61, 56, 0.85); }
 .bubble.muted.on { background: var(--bg); color: var(--text-read); }
 .cg .facts .status-line { color: var(--pr-muted); }
+
+/* under offer, the rest of it: the status words on the home page, the big button, the line in the map's card and the dot of the small map */
+.cg .datalist dd.uo { color: var(--pr-muted); }
+.cg a.cta.muted:hover { background: rgba(143, 61, 56, 0.85); }
+.map-preview .status-line { color: var(--pr-muted); }
+.bubble.dot.muted { background: var(--pr-muted); }

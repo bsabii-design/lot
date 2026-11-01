@@ -64,6 +64,7 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
     const text = document.createElement("div");
     text.innerHTML = '<span class="pr price"></span> <span class="where"></span>';
     text.querySelector(".price")!.textContent = price(p.price);
+    if (p.status === "under_offer") text.querySelector(".price")!.classList.add("muted");
     text.querySelector(".where")!.textContent = placeLine(p);
     /* the same few facts as on the feed, on one compact line */
     const line = document.createElement("div");
@@ -78,6 +79,12 @@ export default function MapView({ homes, regions, windowOpen }: { homes: Propert
         item.append(" ", word);
       }
       line.appendChild(item);
+    }
+    if (p.status === "under_offer") {
+      const uo = document.createElement("span");
+      uo.className = "status-line";
+      uo.textContent = "Under offer";
+      line.prepend(uo);
     }
     if (line.childElementCount) text.appendChild(line);
     wrap.append(img, text);

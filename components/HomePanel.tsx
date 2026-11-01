@@ -56,7 +56,7 @@ export default function HomePanel({ p }: { p: Property }) {
             <dl className="datalist cg-block cg-first">
               {rows.map(([k, v]) => (
                 <Fragment key={k}>
-                  <div><dt>{k}</dt><dd>{v}</dd></div>
+                  <div><dt>{k}</dt><dd className={k === "Status" && p.status === "under_offer" ? "uo" : undefined}>{v}</dd></div>
                   {/* when it was added belongs with the status: it says how fresh the listing is */}
                   {k === "Status" && <div><dt>Added</dt><dd><Ago date={p.date_added} /></dd></div>}
                 </Fragment>
@@ -76,7 +76,7 @@ export default function HomePanel({ p }: { p: Property }) {
         </aside>
       </div>
       {/* the way out, the width of the panel, always on screen */}
-      <a className="pr cta" href={p.source_url} target="_blank" rel="noopener" aria-label="View listing">
+      <a className={p.status === "under_offer" ? "pr cta muted" : "pr cta"} href={p.source_url} target="_blank" rel="noopener" aria-label="View listing">
         View listing <Icon name="arrow-up-right" size="1.1em" />
       </a>
     </>
