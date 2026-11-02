@@ -59,9 +59,8 @@ export default function HomePanel({ p }: { p: Property }) {
             </dl>
             {p.short_description && (
               <p className="cg-block">
-                {[...p.short_description.split("\n"), ...(p.description_more ? [p.description_more] : [])].map((para, i) => (
-                  <span key={i}>
-                    {i > 0 && <><br />{"\u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 "}</>}
+                {[...p.short_description.split("\n"), ...(p.description_more ? p.description_more.split("\n") : [])].map((para, i) => (
+                  <span key={i} className="cg-para">
                     <Glossed text={para} focusable />
                   </span>
                 ))}
