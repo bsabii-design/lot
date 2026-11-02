@@ -507,7 +507,3 @@ html:not(.mobile) .cg-ov.wide .cg-ovcontent > .cg-set:first-child { position: ab
 
 /* "Added 4 days ago" ends the text column, one unit under the text */
 .cg-scroll .cg-added { margin: var(--u) 0 0; flex: none; }
-
-/* the paragraphs of a home's text stand apart by one unit of air (no first-line indent), so a long text reads in parts */
-.cg-para { display: block; }
-.cg-para + .cg-para { margin-top: var(--u); }
