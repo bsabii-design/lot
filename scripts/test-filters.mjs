@@ -32,7 +32,7 @@ const brute = (test, list = homes) => ids(list.filter(test));
 /* --- the catalogue itself is untouched --- */
 check("36 records", raw.length, 36);
 check("id equals slug for all", raw.every((p) => p.id === p.slug), true);
-const baseline = "3544a3a79d3a5807a473131a4b8c1a9de06381a7";
+const baseline = "e9ecba5c51b34c171c676d767c926b501bf226d0";
 check("properties.json is byte-identical to the published version", execSync("git hash-object data/properties.json").toString().trim(), baseline);
 
 /* --- the order of the feed: newest additions first, the same day keeps the file order --- */
@@ -76,7 +76,7 @@ check("features: detached only where the listing says so", run({ features: ["det
 check("features: garden + courtyard needs both", run({ features: ["garden", "courtyard"] }), brute((p) => feats(p).includes("garden") && feats(p).includes("courtyard")));
 check("features unknown is not false: nothing excluded without the filter", run({}).length, homes.length);
 check("AND across groups (Occitanie + garden + 3+ bedrooms)", run({ regions: ["Occitanie"], features: ["garden"], bedrooms: "3" }),
-  brute((p) => p.region === "Occitanie" && p.features.includes("garden") && p.bedrooms >= 3));
+  brute((p) => p.region === "Occitanie" && feats(p).includes("garden") && p.bedrooms >= 3));
 check("AND across groups (price<=100k + area>=75 + Nouvelle-Aquitaine)", run({ price: { preset: "100000", min: "", max: "" }, area: { preset: "75", min: "", max: "" }, regions: ["Nouvelle-Aquitaine"] }),
   brute((p) => p.price <= 100000 && p.size_m2 >= 75 && p.region === "Nouvelle-Aquitaine"));
 

@@ -16,17 +16,6 @@
    "land_size_m2": null,
    "bedrooms": 2,
    "bathrooms": 2,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "historic",
-    "original features"
-   ],
-   "highlights": [
-    "former château wing"
-   ],
    "images": [
     "images/pepieux-stone-house-1962/01.jpg",
     "images/pepieux-stone-house-1962/02.jpg",
@@ -37,7 +26,7 @@
     "images/pepieux-stone-house-1962/07.jpg",
     "images/pepieux-stone-house-1962/08.jpg"
    ],
-   "short_description": "Built in 1850 and originally part of a château, this village house keeps its original features — a water pump, exposed beams, decorative roof tiles. Tastefully refitted, with a quintessential French country feel.",
+   "short_description": "A village house built in 1850 as part of a château, in the heart of the Minervois.",
    "status": "available",
    "source_name": "Selection Habitat",
    "source_url": "https://www.french-property.com/sale-property/3397-1962",
@@ -49,7 +38,7 @@
   {
    "id": "le-vigeant-village-house-a37509",
    "slug": "le-vigeant-village-house-a37509",
-   "title": "Village house in Le Vigeant",
+   "title": "House in Le Vigeant",
    "price": 75600,
    "currency": "EUR",
    "country": "France",
@@ -62,16 +51,6 @@
    "land_size_m2": 298,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "garden",
-    "outbuildings"
-   ],
-   "highlights": [
-    "private courtyard"
-   ],
    "images": [
     "images/le-vigeant-village-house-a37509/01.jpg",
     "images/le-vigeant-village-house-a37509/02.jpg",
@@ -82,7 +61,7 @@
     "images/le-vigeant-village-house-a37509/07.jpg",
     "images/le-vigeant-village-house-a37509/08.jpg"
    ],
-   "short_description": "A two-bedroom house on a residents-only street, a short walk downhill from the River Vienne. It has a private courtyard, an attached stone outbuilding and a garden up some stone steps. Three restaurants and bars are within walking distance.",
+   "short_description": "A two-bedroom house on a residents-only street, a short walk downhill from the River Vienne.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A37509LW86/house-for-sale-in-le%20vigeant-vienne-poitou-charentes-france",
@@ -107,17 +86,6 @@
    "land_size_m2": 265,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Cottage",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "terrace",
-    "garden"
-   ],
-   "highlights": [
-    "beautifully presented"
-   ],
    "images": [
     "images/merdrignac-stone-cottage-newton/01.jpg",
     "images/merdrignac-stone-cottage-newton/02.jpg",
@@ -153,17 +121,6 @@
    "land_size_m2": null,
    "bedrooms": 1,
    "bathrooms": 1,
-   "property_type": "Historic house",
-   "condition": "Needs some work",
-   "setting": "Village",
-   "features": [
-    "historic",
-    "original features",
-    "views"
-   ],
-   "highlights": [
-    "arquebusier's house"
-   ],
    "images": [
     "images/lacaze-timbered-house-60636342/01.jpg",
     "images/lacaze-timbered-house-60636342/02.jpg",
@@ -174,7 +131,7 @@
     "images/lacaze-timbered-house-60636342/07.jpg",
     "images/lacaze-timbered-house-60636342/08.jpg"
    ],
-   "short_description": "An authentic timber-framed house in the medieval village of Lacaze, a listed Petite Cité de Caractère in the Tarn. Once home to the arquebusier of the Château des Comtes de Bourbon Malause — the château is visible from the house.",
+   "short_description": "A timber-framed house in a medieval village, once the home of the château's arquebusier, with a view of the château.",
    "status": "available",
    "source_name": "Selection Habitat",
    "source_url": "https://www.selectionocean.com/fiches/4-40-26_60636342/maison-de-village-lacaze-6-piece-s-120-m2.html",
@@ -186,7 +143,7 @@
   {
    "id": "champgeneteux-renovation-a44098",
    "slug": "champgeneteux-renovation-a44098",
-   "title": "Stone cottage project in Champgenéteux",
+   "title": "Stone cottage in Champgenéteux",
    "price": 59600,
    "currency": "EUR",
    "country": "France",
@@ -199,18 +156,6 @@
    "land_size_m2": 2225,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Stone house",
-   "condition": "Renovation project",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "outbuildings",
-    "views",
-    "renovation"
-   ],
-   "highlights": [
-    "three stone buildings"
-   ],
    "images": [
     "images/champgeneteux-renovation-a44098/01.jpg",
     "images/champgeneteux-renovation-a44098/02.jpg",
@@ -221,7 +166,7 @@
     "images/champgeneteux-renovation-a44098/07.jpg",
     "images/champgeneteux-renovation-a44098/08.jpg"
    ],
-   "short_description": "Three stone buildings — a habitable cottage, a second house to renovate and a ruin — on 2,225 m² with countryside views and gîte potential, in the Mayenne countryside.",
+   "short_description": "A stone cottage down a quiet lane shared with one other house, with outbuildings and countryside views.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44098SVM53/house-for-sale-champgen%C3%A9teux-mayenne-pays-de-la-loire-france",
@@ -246,17 +191,6 @@
    "land_size_m2": 368,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Cottage",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "garden",
-    "outbuildings"
-   ],
-   "highlights": [
-    "barn"
-   ],
    "images": [
     "images/pressignac-stone-cottage-a41100/01.jpg",
     "images/pressignac-stone-cottage-a41100/02.jpg",
@@ -267,7 +201,7 @@
     "images/pressignac-stone-cottage-a41100/07.jpg",
     "images/pressignac-stone-cottage-a41100/08.jpg"
    ],
-   "short_description": "A characterful stone cottage in a pretty hamlet near Pressignac: two bedrooms, a lounge/dining room with fitted kitchen, a small garden and a barn.",
+   "short_description": "A characterful cottage in the centre of a pretty hamlet, 2 km from the village of Pressignac.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A41100SVA16/maison-a-vendre-a-pressignac-charente--france",
@@ -292,17 +226,6 @@
    "land_size_m2": 1646,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Stone house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "garden",
-    "outbuildings"
-   ],
-   "highlights": [
-    "large outbuilding"
-   ],
    "images": [
     "images/la-chapelle-montbrandeix-stone-house-a29584/01.jpg",
     "images/la-chapelle-montbrandeix-stone-house-a29584/02.jpg",
@@ -313,7 +236,7 @@
     "images/la-chapelle-montbrandeix-stone-house-a29584/07.jpg",
     "images/la-chapelle-montbrandeix-stone-house-a29584/08.jpg"
    ],
-   "short_description": "A three-bedroom stone house on the edge of the village, with a beautiful garden of 1,646 m² and a large outbuilding, in the Parc naturel régional Périgord-Limousin.",
+   "short_description": "A stone cottage at the end of a small village, in a green setting, with a large garden and a big outbuilding.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A29584ARO87/maison-a-vendre-a-la-chapelle-montbrandeix-haute-vienne-limousin-france",
@@ -325,7 +248,7 @@
   {
    "id": "thollet-farmhouse-bvi72280",
    "slug": "thollet-farmhouse-bvi72280",
-   "title": "Farmhouse in Thollet",
+   "title": "Longère in Thollet",
    "price": 89980,
    "currency": "EUR",
    "country": "France",
@@ -338,17 +261,6 @@
    "land_size_m2": null,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Farmhouse",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "terrace",
-    "garden"
-   ],
-   "highlights": [
-    "hot tub patio"
-   ],
    "images": [
     "images/thollet-farmhouse-bvi72280/01.jpg",
     "images/thollet-farmhouse-bvi72280/02.jpg",
@@ -359,7 +271,7 @@
     "images/thollet-farmhouse-bvi72280/07.jpg",
     "images/thollet-farmhouse-bvi72280/08.jpg"
    ],
-   "short_description": "A hamlet farmhouse near Thollet with three bedrooms plus a study, a patio with a hot tub, and open Vienne countryside all around.",
+   "short_description": "A longère in a small hamlet, with everything on one floor and a garden with a terrace.",
    "status": "available",
    "source_name": "Beaux Villages",
    "source_url": "https://beauxvillages.com/en/properties-for-sale-in-jarnac/property/332400-BVI72280",
@@ -384,16 +296,6 @@
    "land_size_m2": 400,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Cottage",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "garden",
-    "original features"
-   ],
-   "highlights": [
-    "charming cottage"
-   ],
    "images": [
     "images/saint-sebastien-cottage-a45393/01.jpg",
     "images/saint-sebastien-cottage-a45393/02.jpg",
@@ -404,7 +306,7 @@
     "images/saint-sebastien-cottage-a45393/07.jpg",
     "images/saint-sebastien-cottage-a45393/08.jpg"
    ],
-   "short_description": "A charming three-bedroom cottage in good condition in the Creuse, with a 400 m² garden.",
+   "short_description": "A character cottage in a lively little village in the Creuse, with a garden.",
    "status": "under_offer",
    "source_name": "Leggett",
    "source_url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45393CHH23/maison-a-vendre-a-saint-s%C3%A9bastien-creuse-limousin-france",
@@ -416,7 +318,7 @@
   {
    "id": "locarn-country-house-a45191",
    "slug": "locarn-country-house-a45191",
-   "title": "Country house in Locarn",
+   "title": "House in Locarn",
    "price": 119600,
    "currency": "EUR",
    "country": "France",
@@ -429,17 +331,6 @@
    "land_size_m2": 259,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Country house",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "views",
-    "terrace",
-    "garage"
-   ],
-   "highlights": [
-    "stunning views"
-   ],
    "images": [
     "images/locarn-country-house-a45191/01.jpg",
     "images/locarn-country-house-a45191/02.jpg",
@@ -450,7 +341,7 @@
     "images/locarn-country-house-a45191/07.jpg",
     "images/locarn-country-house-a45191/08.jpg"
    ],
-   "short_description": "A detached, luminous two-bedroom house with a balcony enjoying stunning countryside views, plus a garage and terrace, near Locarn in central Brittany.",
+   "short_description": "A detached house with a balcony terrace and wide views over the countryside, near Locarn in the Côtes-d'Armor.",
    "status": "under_offer",
    "source_name": "Leggett",
    "source_url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A45191GCA22/maison-a-vendre-a-locarn-c%C3%B4tes-d%27armor-bretagne-france",
@@ -462,7 +353,7 @@
   {
    "id": "saint-ouen-la-thene-house-a39000",
    "slug": "saint-ouen-la-thene-house-a39000",
-   "title": "House in Saint-Ouen-la-Thène",
+   "title": "Detached house in Saint-Ouen-la-Thène",
    "price": 134900,
    "currency": "EUR",
    "country": "France",
@@ -475,16 +366,6 @@
    "land_size_m2": 600,
    "bedrooms": 3,
    "bathrooms": 3,
-   "property_type": "Country house",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "garden",
-    "outbuildings"
-   ],
-   "highlights": [
-    "3 bathrooms"
-   ],
    "images": [
     "images/saint-ouen-la-thene-house-a39000/01.jpg",
     "images/saint-ouen-la-thene-house-a39000/02.jpg",
@@ -495,7 +376,7 @@
     "images/saint-ouen-la-thene-house-a39000/07.jpg",
     "images/saint-ouen-la-thene-house-a39000/08.jpg"
    ],
-   "short_description": "A detached house with three bedrooms and three bathrooms, gardens and a dependance, in a calm and quiet spot 12 km from Matha in the Charente-Maritime.",
+   "short_description": "A detached house in a calm, quiet hamlet, with a garden, a terrace and a 50 m² barn.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.leggett-immo.com/acheter-vendre-une-maison/view/A39000JHI17/maison-a-vendre-a-saint-ouen-la-th%C3%A8ne-charente-maritime-poitou-charentes-france",
@@ -520,16 +401,6 @@
    "land_size_m2": null,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Stone house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "garden"
-   ],
-   "highlights": [
-    "riverside village"
-   ],
    "images": [
     "images/saint-germain-de-confolens-house-a44033/01.jpg",
     "images/saint-germain-de-confolens-house-a44033/02.jpg",
@@ -540,7 +411,7 @@
     "images/saint-germain-de-confolens-house-a44033/07.jpg",
     "images/saint-germain-de-confolens-house-a44033/08.jpg"
    ],
-   "short_description": "A charming detached character home in a highly popular riverside village at the confluence of the Vienne and Issoire, near Confolens and all amenities.",
+   "short_description": "A detached stone house in a riverside village at the meeting of the Vienne and the Issoire, near Confolens.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44033TEL16/house-for-sale-confolens-charente-poitou-charentes-france",
@@ -565,16 +436,6 @@
    "land_size_m2": 669,
    "bedrooms": 5,
    "bathrooms": 2,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "garden",
-    "outbuildings"
-   ],
-   "highlights": [
-    "potential 2 homes"
-   ],
    "images": [
     "images/exideuil-village-house-a44580/01.jpg",
     "images/exideuil-village-house-a44580/02.jpg",
@@ -610,18 +471,6 @@
    "land_size_m2": null,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Stone house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "terrace",
-    "views",
-    "renovation"
-   ],
-   "highlights": [
-    "sun terrace"
-   ],
    "images": [
     "images/azillanet-stone-house-a44962/01.jpg",
     "images/azillanet-stone-house-a44962/02.jpg",
@@ -632,7 +481,7 @@
     "images/azillanet-stone-house-a44962/07.jpg",
     "images/azillanet-stone-house-a44962/08.jpg"
    ],
-   "short_description": "A quality 2017 renovation of an 1874 stone house in the Minervois: two bedrooms and a sun terrace with fabulous views.",
+   "short_description": "A renovated stone house from 1874 in the Minervois, with a sun terrace on the top floor and wide views.",
    "status": "under_offer",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44962LHS34/",
@@ -644,7 +493,7 @@
   {
    "id": "gourdon-stone-house-a43147",
    "slug": "gourdon-stone-house-a43147",
-   "title": "Stone house near Gourdon",
+   "title": "Stone house in Gourdon",
    "price": 142500,
    "currency": "EUR",
    "country": "France",
@@ -657,22 +506,6 @@
    "land_size_m2": 267,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Stone house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "historic",
-    "original features",
-    "fireplace",
-    "terrace",
-    "garden",
-    "outbuildings",
-    "views"
-   ],
-   "highlights": [
-    "bread oven"
-   ],
    "images": [
     "images/gourdon-stone-house-a43147/01.jpg",
     "images/gourdon-stone-house-a43147/02.jpg",
@@ -685,7 +518,7 @@
     "images/gourdon-stone-house-a43147/09.jpg",
     "images/gourdon-stone-house-a43147/10.jpg"
    ],
-   "short_description": "A 15th & 19th-century stone house in a small hamlet 4 km from Gourdon, dominated by its 12th–16th century church. Exposed beams and stone, fireplaces, a mullioned window with window seat. Three bedrooms, a convertible attic, a shaded garden and a wooden terrace with open views of the countryside. The 19th-century bread oven remains in its original state.",
+   "short_description": "A stone house, partly 15th century, in a small hamlet, with exposed beams, fireplaces and a terrace with open views.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A43147NB46/house-for-sale-gourdon-lot-midi-pyrenees-france",
@@ -710,18 +543,6 @@
    "land_size_m2": 690,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Historic house",
-   "condition": "Move-in ready",
-   "setting": "Town",
-   "features": [
-    "historic",
-    "original features",
-    "garden",
-    "terrace"
-   ],
-   "highlights": [
-    "colombage"
-   ],
    "images": [
     "images/gace-colombage-house-a39921/01.jpg",
     "images/gace-colombage-house-a39921/02.jpg",
@@ -732,7 +553,7 @@
     "images/gace-colombage-house-a39921/07.jpg",
     "images/gace-colombage-house-a39921/08.jpg"
    ],
-   "short_description": "A traditional timber-framed colombage house in the heart of the Pays d'Auge — 150 m², three to four bedrooms, a 50 m² terrace and a 690 m² plot.",
+   "short_description": "A traditional colombage house in a peaceful hamlet near Gacé, in the Pays d'Auge, with views over the countryside.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A39921NOE61/house-for-sale-gac%C3%A9-orne-normandy-france",
@@ -744,7 +565,7 @@
   {
    "id": "la-roque-sur-ceze-village-house-a44763",
    "slug": "la-roque-sur-ceze-village-house-a44763",
-   "title": "Village house in La Roque-sur-Cèze",
+   "title": "House in La Roque-sur-Cèze",
    "price": 149000,
    "currency": "EUR",
    "country": "France",
@@ -757,18 +578,6 @@
    "land_size_m2": 28,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "historic",
-    "terrace",
-    "views"
-   ],
-   "highlights": [
-    "medieval village"
-   ],
    "images": [
     "images/la-roque-sur-ceze-village-house-a44763/01.jpg",
     "images/la-roque-sur-ceze-village-house-a44763/02.jpg",
@@ -779,7 +588,7 @@
     "images/la-roque-sur-ceze-village-house-a44763/07.jpg",
     "images/la-roque-sur-ceze-village-house-a44763/08.jpg"
    ],
-   "short_description": "A house full of authenticity in one of France's most beautiful medieval villages, above the Cèze valley — two bedrooms and two terraces with panoramic views.",
+   "short_description": "A village house with terraces and wide views, in a medieval village above the Cèze valley.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A44763RSI30/house-for-sale-la-roque-sur-c%C3%A8ze-gard-languedoc-roussillon-france",
@@ -791,7 +600,7 @@
   {
    "id": "riberac-stone-house-bvi77914",
    "slug": "riberac-stone-house-bvi77914",
-   "title": "Stone house near Ribérac",
+   "title": "Stone house in Ribérac",
    "price": 140400,
    "currency": "EUR",
    "country": "France",
@@ -804,18 +613,6 @@
    "land_size_m2": 80000,
    "bedrooms": 3,
    "bathrooms": 2,
-   "property_type": "Stone house",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "fireplace",
-    "original features",
-    "land"
-   ],
-   "highlights": [
-    "8 hectares"
-   ],
    "images": [
     "images/riberac-stone-house-bvi77914/01.jpg",
     "images/riberac-stone-house-bvi77914/02.jpg",
@@ -826,7 +623,7 @@
     "images/riberac-stone-house-bvi77914/07.jpg",
     "images/riberac-stone-house-bvi77914/08.jpg"
    ],
-   "short_description": "A stone house in a quiet hamlet near Ribérac with two period fireplaces, exposed beams and wooden floors — and more than eight hectares of land.",
+   "short_description": "A country house in a quiet hamlet near Ribérac, with stone barns and over 8 hectares of land.",
    "status": "available",
    "source_name": "Beaux Villages",
    "source_url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi77914",
@@ -851,17 +648,6 @@
    "land_size_m2": null,
    "bedrooms": 3,
    "bathrooms": 2,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "fireplace",
-    "original features",
-    "garden"
-   ],
-   "highlights": [
-    "marble fireplace"
-   ],
    "images": [
     "images/saint-sulpice-house-bvi80970/01.jpg",
     "images/saint-sulpice-house-bvi80970/02.jpg",
@@ -870,7 +656,7 @@
     "images/saint-sulpice-house-bvi80970/05.jpg",
     "images/saint-sulpice-house-bvi80970/06.jpg"
    ],
-   "short_description": "A house of character with a marble fireplace and an oak staircase, a courtyard dining space and a garden with its own well.",
+   "short_description": "A move-in house at the heart of a village, set well back from the street, with a courtyard and a lawned garden.",
    "status": "available",
    "source_name": "Beaux Villages",
    "source_url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi80970",
@@ -895,18 +681,6 @@
    "land_size_m2": null,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Cottage",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "fireplace",
-    "original features",
-    "garden"
-   ],
-   "highlights": [
-    "hamlet cottage"
-   ],
    "images": [
     "images/chalais-stone-cottage-bvi86937/01.jpg",
     "images/chalais-stone-cottage-bvi86937/02.jpg"
@@ -936,24 +710,12 @@
    "land_size_m2": 1462,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "fireplace",
-    "original features",
-    "garden",
-    "outbuildings"
-   ],
-   "highlights": [
-    "single storey"
-   ],
    "images": [
     "images/la-trimouille-house-bvi85550/01.jpg",
     "images/la-trimouille-house-bvi85550/02.jpg",
     "images/la-trimouille-house-bvi85550/03.jpg"
    ],
-   "short_description": "A renovated single-storey village house with a fireplace, parquet floors and old windows, a 1,462 m² garden and outbuildings.",
+   "short_description": "A small renovated village house on one level, with a fenced garden, outbuildings and the village on the doorstep.",
    "status": "available",
    "source_name": "Beaux Villages",
    "source_url": "https://beauxvillages.com/en/buy/properties-for-sale/bvi85550",
@@ -965,7 +727,7 @@
   {
    "id": "chateauponsac-stone-house-am5270",
    "slug": "chateauponsac-stone-house-am5270",
-   "title": "Stone house near Châteauponsac",
+   "title": "Stone house in Châteauponsac",
    "price": 122475,
    "currency": "EUR",
    "country": "France",
@@ -978,18 +740,6 @@
    "land_size_m2": 2917,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Stone house",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "garden",
-    "outbuildings",
-    "renovation"
-   ],
-   "highlights": [
-    "big barn"
-   ],
    "images": [
     "images/chateauponsac-stone-house-am5270/01.jpg",
     "images/chateauponsac-stone-house-am5270/02.jpg",
@@ -1000,7 +750,7 @@
     "images/chateauponsac-stone-house-am5270/07.jpg",
     "images/chateauponsac-stone-house-am5270/08.jpg"
    ],
-   "short_description": "A fully restored stone house in the Limousin countryside near Châteauponsac, with a wood stove, a large attached barn and a 2,917 m² garden.",
+   "short_description": "A fully renovated stone house in the Limousin countryside, near Châteauponsac, with a large barn and a garden.",
    "status": "available",
    "source_name": "Agence Newton",
    "source_url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
@@ -1025,19 +775,6 @@
    "land_size_m2": 1835,
    "bedrooms": 3,
    "bathrooms": 2,
-   "property_type": "Stone house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "fireplace",
-    "garden",
-    "garage",
-    "original features"
-   ],
-   "highlights": [
-    "summer kitchen"
-   ],
    "images": [
     "images/chamberet-stone-house-cc4941/01.jpg",
     "images/chamberet-stone-house-cc4941/02.jpg",
@@ -1073,17 +810,6 @@
    "land_size_m2": 1679,
    "bedrooms": 3,
    "bathrooms": 1,
-   "property_type": "Farmhouse",
-   "condition": "Needs some work",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "garden",
-    "outbuildings"
-   ],
-   "highlights": [
-    "two-level barn"
-   ],
    "images": [
     "images/valzergues-farmhouse-28262/01.jpg",
     "images/valzergues-farmhouse-28262/02.jpg",
@@ -1106,7 +832,7 @@
   {
    "id": "lacourt-hamlet-house-32848",
    "slug": "lacourt-hamlet-house-32848",
-   "title": "House in a Pyrenean hamlet, Lacourt",
+   "title": "House in Lacourt",
    "price": 125000,
    "currency": "EUR",
    "country": "France",
@@ -1119,16 +845,6 @@
    "land_size_m2": 387,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Mountains",
-   "features": [
-    "terrace",
-    "views"
-   ],
-   "highlights": [
-    "Pyrenean hamlet at 600 m"
-   ],
    "images": [
     "images/lacourt-hamlet-house-32848/01.jpg",
     "images/lacourt-hamlet-house-32848/02.jpg",
@@ -1139,7 +855,7 @@
     "images/lacourt-hamlet-house-32848/07.jpg",
     "images/lacourt-hamlet-house-32848/08.jpg"
    ],
-   "short_description": "A fully renovated house in a Pyrenean hamlet at 600 m altitude — no work required. A 20 m² terrace, a 28 m² convertible attic and a 387 m² plot in the Couserans.",
+   "short_description": "A fully renovated house in a peaceful hamlet at the end of a road, at 600 m altitude, with a terrace.",
    "status": "available",
    "source_name": "Selection Habitat",
    "source_url": "https://www.french-property.com/sale-property/3397-32848",
@@ -1164,17 +880,6 @@
    "land_size_m2": 11000,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Other",
-   "condition": "Needs some work",
-   "setting": "Countryside",
-   "features": [
-    "historic",
-    "land",
-    "original features"
-   ],
-   "highlights": [
-    "watermill"
-   ],
    "images": [
     "images/ginals-watermill-32445/01.jpg",
     "images/ginals-watermill-32445/02.jpg",
@@ -1197,7 +902,7 @@
   {
    "id": "millac-hamlet-house-bvi87682",
    "slug": "millac-hamlet-house-bvi87682",
-   "title": "House in a hamlet in Millac",
+   "title": "House in Millac",
    "price": 130000,
    "currency": "EUR",
    "country": "France",
@@ -1210,13 +915,6 @@
    "land_size_m2": 651,
    "bedrooms": 2,
    "bathrooms": null,
-   "property_type": "Country house",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "fireplace",
-    "outbuildings"
-   ],
    "images": [
     "images/millac-hamlet-house-bvi87682/01.jpg",
     "images/millac-hamlet-house-bvi87682/02.jpg",
@@ -1256,10 +954,6 @@
    "land_size_m2": 2081,
    "bedrooms": 3,
    "bathrooms": 2,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [],
    "images": [
     "images/ladapeyre-modernised-house-a36890/01.jpg",
     "images/ladapeyre-modernised-house-a36890/02.jpg",
@@ -1272,7 +966,7 @@
     "images/ladapeyre-modernised-house-a36890/09.jpg",
     "images/ladapeyre-modernised-house-a36890/10.jpg"
    ],
-   "short_description": "A fully modernised house in a historic village with a château. The village has a bakery, a bar and a post office.",
+   "short_description": "A fully modernised house in a historic village with a château, with a bakery, a bar and a post office.",
    "status": "available",
    "source_name": "Leggett",
    "source_url": "https://www.frenchestateagents.com/french-property-for-sale/view/A36890MKE23/",
@@ -1297,13 +991,6 @@
    "land_size_m2": null,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "terrace"
-   ],
    "images": [
     "images/siran-village-house-a42822/01.jpg",
     "images/siran-village-house-a42822/02.jpg",
@@ -1343,15 +1030,6 @@
    "land_size_m2": 193,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "views",
-    "original features",
-    "fireplace",
-    "garden"
-   ],
    "images": [
     "images/jumilhac-village-house-bvi85468/01.jpg",
     "images/jumilhac-village-house-bvi85468/02.jpg",
@@ -1391,13 +1069,6 @@
    "land_size_m2": null,
    "bedrooms": 3,
    "bathrooms": 2,
-   "property_type": "Stone house",
-   "condition": "Habitable",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "garden"
-   ],
    "images": [
     "images/avene-stone-house-a36741/01.jpg",
     "images/avene-stone-house-a36741/02.jpg",
@@ -1437,15 +1108,6 @@
    "land_size_m2": 935,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Farmhouse",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "outbuildings",
-    "garden",
-    "original features"
-   ],
    "images": [
     "images/saint-laurent-de-ceris-farmhouse-bvi84419/01.jpg",
     "images/saint-laurent-de-ceris-farmhouse-bvi84419/02.jpg",
@@ -1485,15 +1147,6 @@
    "land_size_m2": 92,
    "bedrooms": 3,
    "bathrooms": 2,
-   "property_type": "Stone house",
-   "condition": "Move-in ready",
-   "setting": "Countryside",
-   "features": [
-    "stone",
-    "terrace",
-    "views",
-    "fireplace"
-   ],
    "images": [
     "images/bouteilles-saint-sebastien-stone-house-a33462/01.jpg",
     "images/bouteilles-saint-sebastien-stone-house-a33462/02.jpg",
@@ -1520,7 +1173,7 @@
   {
    "id": "lessac-hamlet-house-a48448",
    "slug": "lessac-hamlet-house-a48448",
-   "title": "House in a hamlet in Lessac",
+   "title": "House in Lessac",
    "price": 88000,
    "currency": "EUR",
    "country": "France",
@@ -1533,12 +1186,6 @@
    "land_size_m2": 564,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Country house",
-   "condition": "Habitable",
-   "setting": "Countryside",
-   "features": [
-    "garden"
-   ],
    "images": [
     "images/lessac-hamlet-house-a48448/01.jpg",
     "images/lessac-hamlet-house-a48448/02.jpg",
@@ -1578,14 +1225,6 @@
    "land_size_m2": 830,
    "bedrooms": 3,
    "bathrooms": 2,
-   "property_type": "Country house",
-   "condition": "Habitable",
-   "setting": "Countryside",
-   "features": [
-    "detached",
-    "garden",
-    "views"
-   ],
    "images": [
     "images/bonnefond-detached-house-a46567/01.jpg",
     "images/bonnefond-detached-house-a46567/02.jpg",
@@ -1625,15 +1264,6 @@
    "land_size_m2": 400,
    "bedrooms": 2,
    "bathrooms": 1,
-   "property_type": "Village house",
-   "condition": "Move-in ready",
-   "setting": "Village",
-   "features": [
-    "stone",
-    "outbuildings",
-    "garden",
-    "views"
-   ],
    "images": [
     "images/charras-stone-village-house-a39270/01.jpg",
     "images/charras-stone-village-house-a39270/02.jpg",

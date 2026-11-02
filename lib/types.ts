@@ -45,11 +45,6 @@ export interface Property {
   land_size_m2: number | null;
   bedrooms: number | null;
   bathrooms: number | null;
-  property_type: string;
-  condition: string;
-  setting: string;
-  features: string[];
-  highlights?: string[];
   /** paths under images/<slug>/, without a leading slash */
   images: string[];
   short_description: string;

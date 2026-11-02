@@ -124,6 +124,220 @@
     "Property tax",
     "From €198 a year"
    ]
+  ],
+  "le-vigeant-village-house-a37509": [
+   [
+    "Energy",
+    "322 kWh/m² a year, about €2,240–3,080 a year"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ]
+  ],
+  "champgeneteux-renovation-a44098": [
+   [
+    "Energy",
+    "466 kWh/m² a year, about €2,770–3,810 a year"
+   ],
+   [
+    "Property tax",
+    "From €286 a year"
+   ],
+   [
+    "Drainage",
+    "Private"
+   ]
+  ],
+  "pressignac-stone-cottage-a41100": [
+   [
+    "Energy",
+    "282 kWh/m² a year, about €1,100–1,530 a year"
+   ],
+   [
+    "Property tax",
+    "From €558 a year"
+   ],
+   [
+    "Drainage",
+    "Private"
+   ]
+  ],
+  "la-chapelle-montbrandeix-stone-house-a29584": [
+   [
+    "Energy",
+    "356 kWh/m² a year, about €2,710–3,720 a year"
+   ]
+  ],
+  "saint-sebastien-cottage-a45393": [
+   [
+    "Energy",
+    "263 kWh/m² a year, about €1,940–2,680 a year"
+   ],
+   [
+    "Property tax",
+    "From €700 a year"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ]
+  ],
+  "locarn-country-house-a45191": [
+   [
+    "Energy",
+    "386 kWh/m² a year, about €1,920–2,650 a year"
+   ],
+   [
+    "Property tax",
+    "From €328 a year"
+   ],
+   [
+    "Drainage",
+    "Private"
+   ]
+  ],
+  "saint-ouen-la-thene-house-a39000": [
+   [
+    "Energy",
+    "271 kWh/m² a year, about €2,830–3,890 a year"
+   ],
+   [
+    "Drainage",
+    "Private"
+   ],
+   [
+    "Furnished",
+    "Sold furnished"
+   ]
+  ],
+  "saint-germain-de-confolens-house-a44033": [
+   [
+    "Energy",
+    "472 kWh/m² a year"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ]
+  ],
+  "azillanet-stone-house-a44962": [
+   [
+    "Energy",
+    "138 kWh/m² a year, about €746–1,010 a year"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ]
+  ],
+  "gourdon-stone-house-a43147": [
+   [
+    "Energy",
+    "214 kWh/m² a year, about €1,870–2,600 a year"
+   ],
+   [
+    "Property tax",
+    "From €1,343 a year"
+   ],
+   [
+    "Drainage",
+    "Septic tank"
+   ],
+   [
+    "Furnished",
+    "Can be sold furnished"
+   ]
+  ],
+  "gace-colombage-house-a39921": [
+   [
+    "Energy",
+    "323 kWh/m² a year, about €3,550–4,860 a year"
+   ],
+   [
+    "Property tax",
+    "From €604 a year"
+   ],
+   [
+    "Drainage",
+    "Private"
+   ]
+  ],
+  "la-roque-sur-ceze-village-house-a44763": [
+   [
+    "Property tax",
+    "From €269 a year"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ]
+  ],
+  "thollet-farmhouse-bvi72280": [
+   [
+    "Energy",
+    "347 kWh/m² a year, about €1,090–1,510 a year"
+   ],
+   [
+    "Heating",
+    "Electric, wood"
+   ],
+   [
+    "Drainage",
+    "Septic tank"
+   ]
+  ],
+  "riberac-stone-house-bvi77914": [
+   [
+    "Energy",
+    "248 kWh/m² a year, about €2,090–2,870 a year"
+   ],
+   [
+    "Heating",
+    "Fuel oil, wood"
+   ],
+   [
+    "Drainage",
+    "Septic tank"
+   ]
+  ],
+  "saint-sulpice-house-bvi80970": [
+   [
+    "Energy",
+    "155 kWh/m² a year, about €2,219–3,003 a year"
+   ],
+   [
+    "Heating",
+    "Heat pump"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ],
+   [
+    "Furnished",
+    "Furniture can be included, by negotiation"
+   ]
+  ],
+  "la-trimouille-house-bvi85550": [
+   [
+    "Energy",
+    "222 kWh/m² a year, about €1,550–2,140 a year"
+   ],
+   [
+    "Heating",
+    "Electric"
+   ],
+   [
+    "Drainage",
+    "Mains"
+   ]
+  ],
+  "lacaze-timbered-house-60636342": [
+   [
+    "Energy",
+    "About €1,100–1,500 a year"
+   ]
   ]
  }
 }
