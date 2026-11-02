@@ -336,7 +336,25 @@
   "lacaze-timbered-house-60636342": [
    [
     "Energy",
-    "About €1,100–1,500 a year"
+    "299 kWh/m² a year, about €1,100–1,500 a year"
+   ],
+   [
+    "Property tax",
+    "€693 a year"
+   ]
+  ],
+  "chateauponsac-stone-house-am5270": [
+   [
+    "Heating",
+    "Electric"
+   ],
+   [
+    "Drainage",
+    "Septic tank"
+   ],
+   [
+    "Furnished",
+    "Sold partly furnished"
    ]
   ]
  }

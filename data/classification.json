@@ -1361,12 +1361,12 @@
   },
   "chateauponsac-stone-house-am5270": {
    "property_type": {
-    "value": "house",
+    "value": "cottage",
     "basis": "stated",
     "evidence": {
-     "quote": "cette belle maison en pierre",
-     "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
-     "checked_at": "2026-11-01"
+     "quote": "Type: Residential (Cottage, Farmhouse / Fermette, House)",
+     "url": "https://www.french-property.com/sale-property/1689-1686",
+     "checked_at": "2026-11-02"
     }
    },
    "landscape": {
@@ -1383,47 +1383,61 @@
    "habitability": {
     "value": "habitable",
     "basis": "derived",
+    "reviewed_by": "Claude, from the listing (to be confirmed by Sabina)",
     "evidence": {
-     "quote": "Actuellement utilisée comme résidence secondaire et proposée également à la location saisonnière en gîte",
-     "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
-     "checked_at": "2026-11-01"
-    },
-    "reviewed_by": "Claude, from the listing page Sabina sent as a screenshot on 1 Nov 2026 (to be confirmed by Sabina)"
+     "quote": "Presented in first-class condition; currently used as a holiday home and let as a gîte",
+     "url": "https://www.french-property.com/sale-property/1689-1686",
+     "checked_at": "2026-11-02"
+    }
    },
    "renovation_level": {
     "value": "recently_renovated",
     "basis": "stated",
     "evidence": {
-     "quote": "Superbe maison en pierre entièrement rénovée",
-     "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
-     "checked_at": "2026-11-01"
+     "quote": "gorgeous fully renovated three-bedroom stone cottage",
+     "url": "https://www.french-property.com/sale-property/1689-1686",
+     "checked_at": "2026-11-02"
     }
    },
    "features": {
     "value": [
      "garden",
      "outbuildings",
-     "stone"
+     "stone",
+     "terrace",
+     "views"
     ],
     "basis": "stated",
     "evidence": [
      {
       "feature": "stone",
-      "quote": "Superbe maison en pierre entièrement rénovée",
-      "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
-      "checked_at": "2026-11-01"
-     },
-     {
-      "feature": "outbuildings",
-      "quote": "jardin de 2 917 m² et grande grange",
-      "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
-      "checked_at": "2026-11-01"
+      "quote": "gorgeous fully renovated three-bedroom stone cottage",
+      "url": "https://www.french-property.com/sale-property/1689-1686",
+      "checked_at": "2026-11-02"
      },
      {
       "feature": "garden",
-      "quote": "jardin de 2 917 m²",
-      "url": "https://www.agencenewton.com/vente/haute-vienne-superbe-maison-en-pierre-entierement-renovee-avec-jardin-de-2-917-m2-et-grande",
-      "checked_at": "2026-11-01"
+      "quote": "The attractive garden enjoys lovely open views",
+      "url": "https://www.french-property.com/sale-property/1689-1686",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "outbuildings",
+      "quote": "a large adjoining barn",
+      "url": "https://www.french-property.com/sale-property/1689-1686",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "terrace",
+      "quote": "There is a sunny terrace",
+      "url": "https://www.french-property.com/sale-property/1689-1686",
+      "checked_at": "2026-11-02"
+     },
+     {
+      "feature": "views",
+      "quote": "lovely open views over the surrounding countryside",
+      "url": "https://www.french-property.com/sale-property/1689-1686",
+      "checked_at": "2026-11-02"
      }
     ]
    }
